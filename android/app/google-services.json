@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "362802745760",
+    "project_id": "smart-courier-assistant-app",
+    "storage_bucket": "smart-courier-assistant-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362802745760:android:a0778a7c8f91085a5014c5",
+        "android_client_info": {
+          "package_name": "com.example.smart_courier_assistant_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT57SpeJvQD5ceO9ip46YD-rjEXfrSohg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
