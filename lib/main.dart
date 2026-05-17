@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_courier_assistant_app/feature/splash/splash.dart';
 import 'package:smart_courier_assistant_app/firebase_options.dart';
 
 Future<void> main() async {
@@ -15,9 +16,9 @@ class SmartCourierAssistantApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      home: SplashPage(),
     );
   }
 }
