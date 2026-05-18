@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_courier_assistant_app/feature/login/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 
@@ -8,6 +9,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.only(
@@ -37,7 +39,35 @@ class LoginPage extends StatelessWidget {
                 fontFamily: FontFamily.inter,
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 45),
+            const Text(
+              'Email',
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: AppColors.grey,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                fontFamily: FontFamily.plusJakartaSans,
+              ),
+            ),
+            const SizedBox(height: 5),
+            const LoginEmailField(),
+            const SizedBox(height: 25),
+            const Text(
+              'Password',
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: AppColors.grey,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                fontFamily: FontFamily.plusJakartaSans,
+              ),
+            ),
+            const SizedBox(height: 5),
+            const LoginPasswordField(),
+            const SizedBox(height: 20),
+            const ForgotPasswordTextButton(),
+            const SizedBox(height: 20),
           ],
         ),
       ),
