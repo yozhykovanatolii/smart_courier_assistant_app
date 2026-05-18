@@ -10,7 +10,7 @@ class LogInButton extends StatelessWidget {
     return AppElevatedButton(
       onPressed: () {},
       padding: const EdgeInsetsGeometry.symmetric(
-        vertical: 18,
+        vertical: 16,
       ),
       child: const Text(
         'Log In',
