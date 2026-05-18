@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 
-class OrDivider extends StatelessWidget {
-  const OrDivider({super.key});
+class LoginDivider extends StatelessWidget {
+  const LoginDivider({super.key});
 
   @override
   Widget build(BuildContext context) {

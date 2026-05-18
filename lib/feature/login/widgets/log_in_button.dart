@@ -12,6 +12,18 @@ class LogInButton extends StatelessWidget {
       padding: const EdgeInsetsGeometry.symmetric(
         vertical: 16,
       ),
+      backgroundColor: const Color(0xFF1D61E7),
+      boxShadows: [
+        const BoxShadow(
+          spreadRadius: 1,
+          color: Color(0xFF375DFB),
+        ),
+        BoxShadow(
+          offset: const Offset(0, 1),
+          blurRadius: 2,
+          color: const Color(0xFF253EA7).withValues(alpha: 0.48),
+        ),
+      ],
       child: const Text(
         'Log In',
         style: TextStyle(
