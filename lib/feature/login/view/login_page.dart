@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.only(
-            top: 45,
+            top: 40,
             left: 24,
             right: 24,
           ),
@@ -76,7 +76,7 @@ class LoginPage extends StatelessWidget {
             const LoginDivider(),
             const SizedBox(height: 30),
             const LogInWithGoogle(),
-            const SizedBox(height: 110),
+            const SizedBox(height: 65),
             const Align(
               alignment: AlignmentGeometry.bottomCenter,
               child: HaveNotAccountSection(),
