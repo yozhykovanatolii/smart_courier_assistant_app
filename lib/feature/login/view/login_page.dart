@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
+import 'package:smart_courier_assistant_app/ui/app_colors.dart';
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.only(
+            top: 28,
+            left: 24,
+            right: 24,
+          ),
+          children: [
+            const Text(
+              'Sign in to your Account',
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: AppColors.black,
+                fontSize: 32,
+                fontWeight: FontWeight.w700,
+                fontFamily: FontFamily.inter,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Enter your email and password to log in',
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: AppColors.grey,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                fontFamily: FontFamily.inter,
+              ),
+            ),
+            const SizedBox(height: 30),
+          ],
+        ),
+      ),
+    );
+  }
+}
