@@ -7,17 +7,14 @@ class ForgotPasswordTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: AlignmentGeometry.centerEnd,
-      child: GestureDetector(
-        child: const Text(
-          'Forgot Password?',
-          style: TextStyle(
-            color: AppColors.blue500,
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            fontFamily: FontFamily.inter,
-          ),
+    return GestureDetector(
+      child: const Text(
+        'Forgot Password?',
+        style: TextStyle(
+          color: AppColors.blue500,
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          fontFamily: FontFamily.inter,
         ),
       ),
     );

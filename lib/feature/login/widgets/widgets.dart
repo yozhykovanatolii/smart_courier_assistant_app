@@ -4,3 +4,4 @@ export 'forgot_password_text_button.dart';
 export 'log_in_button.dart';
 export 'log_in_with_google.dart';
 export 'login_divider.dart';
+export 'have_not_account_section.dart';
