@@ -13,7 +13,7 @@ class EmailValidator extends FormzInput<String, EmailInputError> {
   @override
   EmailInputError? validator(String email) {
     if (email.isEmpty) return EmailInputError.empty;
-    if (email.endsWith('@gmail.com')) return EmailInputError.invalidFormat;
+    if (!email.endsWith('@gmail.com')) return EmailInputError.invalidFormat;
     return null;
   }
 }

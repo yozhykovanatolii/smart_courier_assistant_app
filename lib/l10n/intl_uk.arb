@@ -1,0 +1,8 @@
+{
+  "emailEmpty": "Пошта не повинна бути порожньою",
+  "emailIncorrectFormat": "Введена пошта має неправильний формат.",
+  "passwordEmpty": "Пароль не повинен бути порожнім",
+  "passwordLengthLessEight": "Пароль має містити щонайменше 8 символів",
+  "passwordContainsUpperLetter": "Пароль повинен містити хоча б одну велику літеру",
+  "passwordContainsSpecialCharacter": "Пароль повинен містити принаймні один спеціальний символ"
+}

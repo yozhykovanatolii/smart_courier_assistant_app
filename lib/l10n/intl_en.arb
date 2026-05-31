@@ -1,0 +1,8 @@
+{
+  "emailEmpty": "The email should not be empty",
+  "emailIncorrectFormat": "The email entered is in an incorrect format.",
+  "passwordEmpty": "The password must not be empty",
+  "passwordLengthLessEight": "The password must be at least 8 characters long",
+  "passwordContainsUpperLetter": "The password must contain at least one uppercase letter",
+  "passwordContainsSpecialCharacter": "The password must contain at least one special character"
+}

@@ -7,11 +7,13 @@ class AppTextField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.onChanged,
+    this.errorMessage,
     this.obscureText = false,
   });
 
   final String hintText;
   final ValueChanged<String>? onChanged;
+  final String? errorMessage;
   final bool obscureText;
 
   @override
@@ -44,6 +46,7 @@ class AppTextField extends StatelessWidget {
         obscuringCharacter: '*',
         decoration: InputDecoration(
           hintText: hintText,
+          errorText: errorMessage,
           hintStyle: const TextStyle(
             color: AppColors.grey,
             fontSize: 14,
