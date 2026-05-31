@@ -16,4 +16,7 @@ class FontFamily {
 
   /// Font family: Pacifico
   static const String pacifico = 'Pacifico';
+
+  /// Font family: PlusJakartaSans
+  static const String plusJakartaSans = 'PlusJakartaSans';
 }
