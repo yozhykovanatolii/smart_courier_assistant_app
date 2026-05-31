@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
+import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_text_field.dart';
 import 'package:smart_courier_assistant_app/validation/password_validator.dart';
@@ -18,11 +19,27 @@ class LoginPasswordField extends StatelessWidget {
       passwordValidator.error,
     );
 
-    return AppTextField(
-      hintText: 'exampleA#',
-      obscureText: true,
-      onChanged: context.read<LoginCubit>().setLoginPassword,
-      errorMessage: passwordValidator.isPure ? null : errorMessage,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 5,
+      children: [
+        AppTextField(
+          hintText: 'exampleA#',
+          obscureText: true,
+          onChanged: context.read<LoginCubit>().setLoginPassword,
+          isValid: passwordValidator.isPure || errorMessage == null,
+        ),
+        if (!passwordValidator.isPure && errorMessage != null)
+          Text(
+            errorMessage,
+            style: const TextStyle(
+              color: Colors.red,
+              fontFamily: FontFamily.inter,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+      ],
     );
   }
 
