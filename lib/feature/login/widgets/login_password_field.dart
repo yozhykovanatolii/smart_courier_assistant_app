@@ -11,12 +11,12 @@ class LoginPasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final passwordValidator = context.select<LoginCubit, PasswordValidator>(
-      (loginCubit) => loginCubit.state.passwordValidator,
+    final passwordInputError = context.select<LoginCubit, PasswordInputError?>(
+      (loginCubit) => loginCubit.state.passwordValidator.displayError,
     );
     final errorMessage = _mapPasswordInputErrorToString(
       context,
-      passwordValidator.error,
+      passwordInputError
     );
 
     return Column(
@@ -27,9 +27,9 @@ class LoginPasswordField extends StatelessWidget {
           hintText: 'exampleA#',
           obscureText: true,
           onChanged: context.read<LoginCubit>().setLoginPassword,
-          isValid: passwordValidator.isPure || errorMessage == null,
+          isValid: errorMessage == null,
         ),
-        if (!passwordValidator.isPure && errorMessage != null)
+        if (errorMessage != null)
           Text(
             errorMessage,
             style: const TextStyle(

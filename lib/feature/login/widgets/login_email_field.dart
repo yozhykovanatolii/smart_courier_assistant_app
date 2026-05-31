@@ -11,12 +11,12 @@ class LoginEmailField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final emailValidator = context.select<LoginCubit, EmailValidator>(
-      (loginCubit) => loginCubit.state.emailValidator,
+    final emailInputError = context.select<LoginCubit, EmailInputError?>(
+      (loginCubit) => loginCubit.state.emailValidator.displayError,
     );
     final errorMessage = _mapEmailInputErrorToString(
       context,
-      emailValidator.error,
+      emailInputError,
     );
 
     return Column(
@@ -26,9 +26,9 @@ class LoginEmailField extends StatelessWidget {
         AppTextField(
           hintText: 'example@gmail.com',
           onChanged: context.read<LoginCubit>().setLoginEmail,
-          isValid: emailValidator.isPure || errorMessage == null,
+          isValid: errorMessage == null,
         ),
-        if (!emailValidator.isPure && errorMessage != null)
+        if (errorMessage != null)
           Text(
             errorMessage,
             style: const TextStyle(
