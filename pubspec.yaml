@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   firebase_core: ^4.9.0
   another_flutter_splash_screen: ^1.2.1
+  formz: ^0.8.0
+  bloc: ^9.2.1
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:

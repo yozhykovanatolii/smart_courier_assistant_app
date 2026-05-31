@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/login/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => LoginCubit(),
+      child: const _LoginView(),
+    );
+  }
+}
+
+class _LoginView extends StatelessWidget {
+  const _LoginView();
 
   @override
   Widget build(BuildContext context) {
