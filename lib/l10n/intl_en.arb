@@ -4,5 +4,11 @@
   "passwordEmpty": "The password must not be empty",
   "passwordLengthLessEight": "The password must be at least 8 characters long",
   "passwordContainsUpperLetter": "The password must contain at least one uppercase letter",
-  "passwordContainsSpecialCharacter": "The password must contain at least one special character"
+  "passwordContainsSpecialCharacter": "The password must contain at least one special character",
+  "invalidEmail": "Invalid email, try again.",
+  "userDisabled": "User are disabled.",
+  "wrongPassword": "Password is wrong, try again.",
+  "invalidCredential": "Invalid credential.",
+  "loginErrorUnknown": "An unknown authorization exception occurred.",
+  "successAuthorization": "Success authorization."
 }

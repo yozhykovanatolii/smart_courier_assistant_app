@@ -113,6 +113,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Invalid email, try again.`
+  String get invalidEmail {
+    return Intl.message(
+      'Invalid email, try again.',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User are disabled.`
+  String get userDisabled {
+    return Intl.message(
+      'User are disabled.',
+      name: 'userDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is wrong, try again.`
+  String get wrongPassword {
+    return Intl.message(
+      'Password is wrong, try again.',
+      name: 'wrongPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid credential.`
+  String get invalidCredential {
+    return Intl.message(
+      'Invalid credential.',
+      name: 'invalidCredential',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown authorization exception occurred.`
+  String get loginErrorUnknown {
+    return Intl.message(
+      'An unknown authorization exception occurred.',
+      name: 'loginErrorUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success authorization.`
+  String get successAuthorization {
+    return Intl.message(
+      'Success authorization.',
+      name: 'successAuthorization',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

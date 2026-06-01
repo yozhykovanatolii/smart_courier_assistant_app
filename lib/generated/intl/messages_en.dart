@@ -28,6 +28,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "The email entered is in an incorrect format.",
     ),
+    "invalidCredential": MessageLookupByLibrary.simpleMessage(
+      "Invalid credential.",
+    ),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage(
+      "Invalid email, try again.",
+    ),
+    "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "An unknown authorization exception occurred.",
+    ),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "The password must contain at least one special character",
     ),
@@ -39,6 +48,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "passwordLengthLessEight": MessageLookupByLibrary.simpleMessage(
       "The password must be at least 8 characters long",
+    ),
+    "successAuthorization": MessageLookupByLibrary.simpleMessage(
+      "Success authorization.",
+    ),
+    "userDisabled": MessageLookupByLibrary.simpleMessage("User are disabled."),
+    "wrongPassword": MessageLookupByLibrary.simpleMessage(
+      "Password is wrong, try again.",
     ),
   };
 }

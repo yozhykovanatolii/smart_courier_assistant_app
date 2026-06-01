@@ -28,6 +28,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "Введена пошта має неправильний формат.",
     ),
+    "invalidCredential": MessageLookupByLibrary.simpleMessage(
+      "Недійсні облікові дані.",
+    ),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage(
+      "Недійсна пошта, спробуйте ще раз.",
+    ),
+    "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "Сталася невідома помилка авторизації.",
+    ),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "Пароль повинен містити принаймні один спеціальний символ",
     ),
@@ -39,6 +48,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "passwordLengthLessEight": MessageLookupByLibrary.simpleMessage(
       "Пароль має містити щонайменше 8 символів",
+    ),
+    "successAuthorization": MessageLookupByLibrary.simpleMessage(
+      "Успішна авторизація.",
+    ),
+    "userDisabled": MessageLookupByLibrary.simpleMessage(
+      "Користувач вимкнений.",
+    ),
+    "wrongPassword": MessageLookupByLibrary.simpleMessage(
+      "Пароль неправильний, спробуйте ще раз.",
     ),
   };
 }
