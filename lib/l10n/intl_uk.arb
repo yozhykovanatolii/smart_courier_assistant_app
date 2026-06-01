@@ -10,5 +10,7 @@
   "wrongPassword": "Пароль неправильний, спробуйте ще раз.",
   "invalidCredential": "Недійсні облікові дані.",
   "loginErrorUnknown": "Сталася невідома помилка авторизації.",
-  "successAuthorization": "Успішна авторизація."
+  "successAuthorization": "Успішна авторизація.",
+  "accountExistsWithDifferentCredentials": "Обліковий запис існує з іншими обліковими даними.",
+  "successAuthorizationWithGoogle": "Успішна авторизація через Google"
 }

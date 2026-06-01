@@ -10,5 +10,7 @@
   "wrongPassword": "Password is wrong, try again.",
   "invalidCredential": "Invalid credential.",
   "loginErrorUnknown": "An unknown authorization exception occurred.",
-  "successAuthorization": "Success authorization."
+  "successAuthorization": "Success authorization.",
+  "accountExistsWithDifferentCredentials": "Account exists with different credentials.",
+  "successAuthorizationWithGoogle": "Success authorization with Google"
 }

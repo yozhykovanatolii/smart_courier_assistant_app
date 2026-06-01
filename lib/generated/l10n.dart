@@ -173,6 +173,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Account exists with different credentials.`
+  String get accountExistsWithDifferentCredentials {
+    return Intl.message(
+      'Account exists with different credentials.',
+      name: 'accountExistsWithDifferentCredentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success authorization with Google`
+  String get successAuthorizationWithGoogle {
+    return Intl.message(
+      'Success authorization with Google',
+      name: 'successAuthorizationWithGoogle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/login_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/login_with_google_exception.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_state.dart';
 import 'package:smart_courier_assistant_app/feature/login/widgets/widgets.dart';
@@ -32,11 +33,31 @@ class _LoginView extends StatelessWidget {
       backgroundColor: Colors.white,
       body: BlocListener<LoginCubit, LoginState>(
         listenWhen: (previous, current) {
-          return previous.loginStatus != current.loginStatus;
+          return previous.loginStatus != current.loginStatus ||
+              previous.googleStatus != current.googleStatus;
         },
         listener: (context, state) {
           final l10n = S.of(context);
           final loginStatus = state.loginStatus;
+          final googleStatus = state.googleStatus;
+
+          if (googleStatus == FormzSubmissionStatus.failure) {
+            final errorMessage = _mapLoginGoogleErrorStatusToString(
+              context,
+              state.loginGoogleErrorStatus,
+            );
+            UiHelper.showSnackBar(
+              context: context,
+              message: errorMessage,
+              isErrorSnackBar: true,
+            );
+          }
+          if (googleStatus == FormzSubmissionStatus.success) {
+            UiHelper.showSnackBar(
+              context: context,
+              message: l10n.successAuthorizationWithGoogle,
+            );
+          }
           if (loginStatus == FormzSubmissionStatus.failure) {
             final errorMessage = _mapLoginErrorStatusToString(
               context,
@@ -151,6 +172,28 @@ class _LoginView extends StatelessWidget {
       case LoginErrorStatus.invalidCredential:
         return l10n.invalidCredential;
       case LoginErrorStatus.unknown:
+        return l10n.loginErrorUnknown;
+    }
+  }
+
+  String _mapLoginGoogleErrorStatusToString(
+    BuildContext context,
+    LoginGoogleErrorStatus? loginGoogleErrorStatus,
+  ) {
+    final l10n = S.of(context);
+
+    if (loginGoogleErrorStatus == null) return '';
+
+    switch (loginGoogleErrorStatus) {
+      case LoginGoogleErrorStatus.accountWithDifferentCredential:
+        return l10n.accountExistsWithDifferentCredentials;
+      case LoginGoogleErrorStatus.userDisabled:
+        return l10n.userDisabled;
+      case LoginGoogleErrorStatus.wrongPassword:
+        return l10n.wrongPassword;
+      case LoginGoogleErrorStatus.invalidCredential:
+        return l10n.invalidCredential;
+      case LoginGoogleErrorStatus.unknown:
         return l10n.loginErrorUnknown;
     }
   }

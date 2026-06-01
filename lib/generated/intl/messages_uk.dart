@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "accountExistsWithDifferentCredentials":
+        MessageLookupByLibrary.simpleMessage(
+          "Обліковий запис існує з іншими обліковими даними.",
+        ),
     "emailEmpty": MessageLookupByLibrary.simpleMessage(
       "Пошта не повинна бути порожньою",
     ),
@@ -51,6 +55,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Успішна авторизація.",
+    ),
+    "successAuthorizationWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Успішна авторизація через Google",
     ),
     "userDisabled": MessageLookupByLibrary.simpleMessage(
       "Користувач вимкнений.",

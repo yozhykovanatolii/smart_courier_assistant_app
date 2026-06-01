@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "accountExistsWithDifferentCredentials":
+        MessageLookupByLibrary.simpleMessage(
+          "Account exists with different credentials.",
+        ),
     "emailEmpty": MessageLookupByLibrary.simpleMessage(
       "The email should not be empty",
     ),
@@ -51,6 +55,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Success authorization.",
+    ),
+    "successAuthorizationWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Success authorization with Google",
     ),
     "userDisabled": MessageLookupByLibrary.simpleMessage("User are disabled."),
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
