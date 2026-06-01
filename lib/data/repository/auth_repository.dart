@@ -8,4 +8,8 @@ class AuthRepository {
   Future<void> signInUser(String email, String password) async {
     await _userAuth.signInWithEmailAndPassword(email, password);
   }
+
+  Future<void> signInWithGoogle() async {
+    await _userAuth.signInWithGoogle();
+  }
 }

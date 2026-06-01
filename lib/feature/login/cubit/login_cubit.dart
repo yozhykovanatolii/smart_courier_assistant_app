@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/login_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/login_with_google_exception.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_state.dart';
 import 'package:smart_courier_assistant_app/validation/email_validator.dart';
@@ -40,6 +41,21 @@ class LoginCubit extends Cubit<LoginState> {
         state.copyWith(
           loginErrorStatus: exception.errorStatus,
           loginStatus: FormzSubmissionStatus.failure,
+        ),
+      );
+    }
+  }
+
+  Future<void> signInWithGoogle() async {
+    emit(state.copyWith(googleStatus: FormzSubmissionStatus.inProgress));
+    try {
+      await _authRepository.signInWithGoogle();
+      emit(state.copyWith(googleStatus: FormzSubmissionStatus.success));
+    } on LoginWithGoogleException catch (exception) {
+      emit(
+        state.copyWith(
+          loginGoogleErrorStatus: exception.googleErrorStatus,
+          googleStatus: FormzSubmissionStatus.failure,
         ),
       );
     }
