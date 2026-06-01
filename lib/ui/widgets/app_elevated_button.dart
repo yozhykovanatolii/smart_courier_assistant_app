@@ -12,9 +12,9 @@ class AppElevatedButton extends StatelessWidget {
   });
 
   final Color backgroundColor;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final EdgeInsetsGeometry padding;
-  final List<BoxShadow> boxShadows;
+  final List<BoxShadow>? boxShadows;
   final Border? border;
   final Widget child;
 
