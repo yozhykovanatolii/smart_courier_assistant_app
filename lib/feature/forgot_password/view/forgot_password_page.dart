@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
@@ -6,6 +8,18 @@ import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => ForgotPasswordCubit(),
+      child: const _ForgotPasswordView(),
+    );
+  }
+}
+
+class _ForgotPasswordView extends StatelessWidget {
+  const _ForgotPasswordView();
 
   @override
   Widget build(BuildContext context) {
