@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
-import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/ui/extensions/email_input_error_extension.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_text_field.dart';
 import 'package:smart_courier_assistant_app/validation/email_validator.dart';
 
@@ -14,10 +14,7 @@ class LoginEmailField extends StatelessWidget {
     final emailInputError = context.select<LoginCubit, EmailInputError?>(
       (loginCubit) => loginCubit.state.emailValidator.displayError,
     );
-    final errorMessage = _mapEmailInputErrorToString(
-      context,
-      emailInputError,
-    );
+    final errorMessage = emailInputError.mapEmailInputErrorToMessage(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,21 +37,5 @@ class LoginEmailField extends StatelessWidget {
           ),
       ],
     );
-  }
-
-  String? _mapEmailInputErrorToString(
-    BuildContext context,
-    EmailInputError? emailInputError,
-  ) {
-    final l10n = S.of(context);
-
-    if (emailInputError == null) return null;
-
-    switch (emailInputError) {
-      case EmailInputError.empty:
-        return l10n.emailEmpty;
-      case EmailInputError.invalidFormat:
-        return l10n.emailIncorrectFormat;
-    }
   }
 }
