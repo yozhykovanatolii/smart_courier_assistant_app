@@ -1,0 +1,16 @@
+{
+  "emailEmpty": "Пошта не повинна бути порожньою",
+  "emailIncorrectFormat": "Введена пошта має неправильний формат.",
+  "passwordEmpty": "Пароль не повинен бути порожнім",
+  "passwordLengthLessEight": "Пароль має містити щонайменше 8 символів",
+  "passwordContainsUpperLetter": "Пароль повинен містити хоча б одну велику літеру",
+  "passwordContainsSpecialCharacter": "Пароль повинен містити принаймні один спеціальний символ",
+  "invalidEmail": "Недійсна пошта, спробуйте ще раз.",
+  "userDisabled": "Користувач вимкнений.",
+  "wrongPassword": "Пароль неправильний, спробуйте ще раз.",
+  "invalidCredential": "Недійсні облікові дані.",
+  "loginErrorUnknown": "Сталася невідома помилка авторизації.",
+  "successAuthorization": "Успішна авторизація.",
+  "accountExistsWithDifferentCredentials": "Обліковий запис існує з іншими обліковими даними.",
+  "successAuthorizationWithGoogle": "Успішна авторизація через Google"
+}

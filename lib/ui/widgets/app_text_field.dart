@@ -6,10 +6,14 @@ class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,
     required this.hintText,
+    required this.onChanged,
+    required this.isValid,
     this.obscureText = false,
   });
 
   final String hintText;
+  final ValueChanged<String>? onChanged;
+  final bool isValid;
   final bool obscureText;
 
   @override
@@ -18,7 +22,7 @@ class AppTextField extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
-          color: const Color(0xFFEDF1F3),
+          color: isValid ? const Color(0xFFEDF1F3) : Colors.red,
         ),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
@@ -38,6 +42,7 @@ class AppTextField extends StatelessWidget {
           fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
+        onChanged: onChanged,
         obscuringCharacter: '*',
         decoration: InputDecoration(
           hintText: hintText,
