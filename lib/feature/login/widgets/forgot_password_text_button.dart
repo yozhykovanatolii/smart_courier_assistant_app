@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_courier_assistant_app/feature/forgot_password/forgot_password.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 
@@ -8,6 +9,12 @@ class ForgotPasswordTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const ForgotPasswordPage()),
+        );
+      },
       child: const Text(
         'Forgot Password?',
         style: TextStyle(
