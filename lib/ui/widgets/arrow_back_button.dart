@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class ArrowBackButton extends StatelessWidget {
@@ -6,7 +7,7 @@ class ArrowBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.maybePop(context),
+      onTap: () => context.router.maybePop(context),
       child: Container(
         padding: const EdgeInsets.all(7),
         decoration: const BoxDecoration(

@@ -1,7 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/feature/register/view/register_page.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
+import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 
 class HaveNotAccountSection extends StatelessWidget {
@@ -33,10 +34,7 @@ class HaveNotAccountSection extends StatelessWidget {
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const RegisterPage()),
-                );
+                context.router.push(const RegisterRoute());
               },
           ),
         ],

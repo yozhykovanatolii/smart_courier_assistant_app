@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -12,6 +13,7 @@ import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 
+@RoutePage()
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 

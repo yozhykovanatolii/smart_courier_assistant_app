@@ -1,9 +1,11 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/feature/login/login.dart';
+import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/app_text_styles.dart';
 
+@RoutePage()
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
@@ -12,7 +14,9 @@ class SplashPage extends StatelessWidget {
     return FlutterSplashScreen(
       useImmersiveMode: true,
       duration: const Duration(milliseconds: 2000),
-      nextScreen: const LoginPage(),
+      onEnd: () {
+        context.router.replace(const LoginRoute());
+      },
       splashScreenBody: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(

@@ -1,6 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/feature/forgot_password/forgot_password.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
+import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 
 class ForgotPasswordTextButton extends StatelessWidget {
@@ -10,10 +11,7 @@ class ForgotPasswordTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const ForgotPasswordPage()),
-        );
+        context.router.push(const ForgotPasswordRoute());
       },
       child: const Text(
         'Forgot Password?',

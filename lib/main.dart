@@ -2,9 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:smart_courier_assistant_app/dependencies.dart';
-import 'package:smart_courier_assistant_app/feature/splash/splash.dart';
 import 'package:smart_courier_assistant_app/firebase_options.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/router/app_router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +18,11 @@ Future<void> main() async {
 class SmartCourierAssistantApp extends StatelessWidget {
   const SmartCourierAssistantApp({super.key});
 
+  static final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         S.delegate,
@@ -29,7 +31,7 @@ class SmartCourierAssistantApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: const SplashPage(),
+      routerConfig: _appRouter.config(),
     );
   }
 }

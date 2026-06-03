@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -6,13 +7,13 @@ import 'package:smart_courier_assistant_app/core/exceptions/reset_password_excep
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_state.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/widgets/widgets.dart';
-import 'package:smart_courier_assistant_app/feature/login/login.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 
+@RoutePage()
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
 
@@ -54,10 +55,7 @@ class _ForgotPasswordView extends StatelessWidget {
               context: context,
               message: S.of(context).resetEmailLetter,
             );
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const LoginPage()),
-            );
+            context.router.maybePop();
           }
         },
         child: SafeArea(
