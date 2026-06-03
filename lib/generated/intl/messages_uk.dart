@@ -41,6 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка авторизації.",
     ),
+    "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
+      "Network error. Try again.",
+    ),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "Пароль повинен містити принаймні один спеціальний символ",
     ),
@@ -53,11 +56,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordLengthLessEight": MessageLookupByLibrary.simpleMessage(
       "Пароль має містити щонайменше 8 символів",
     ),
+    "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
+      "Якщо обліковий запис із цією поштою існує, ви отримаєте електронний лист для скидання пароля.",
+    ),
+    "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "Сталася невідома помилка скидання пароля.",
+    ),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Успішна авторизація.",
     ),
     "successAuthorizationWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Успішна авторизація через Google",
+    ),
+    "tooManyRequests": MessageLookupByLibrary.simpleMessage(
+      "Too many requests. Please try again later.",
     ),
     "userDisabled": MessageLookupByLibrary.simpleMessage(
       "Користувач вимкнений.",

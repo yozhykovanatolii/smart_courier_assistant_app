@@ -41,6 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown authorization exception occurred.",
     ),
+    "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
+      "Network error. Try again.",
+    ),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "The password must contain at least one special character",
     ),
@@ -53,11 +56,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordLengthLessEight": MessageLookupByLibrary.simpleMessage(
       "The password must be at least 8 characters long",
     ),
+    "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
+      "If an account with this email exists, you will receive a password reset email.",
+    ),
+    "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "An unknown reset password exception occurred.",
+    ),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Success authorization.",
     ),
     "successAuthorizationWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Success authorization with Google",
+    ),
+    "tooManyRequests": MessageLookupByLibrary.simpleMessage(
+      "Too many requests. Please try again later.",
     ),
     "userDisabled": MessageLookupByLibrary.simpleMessage("User are disabled."),
     "wrongPassword": MessageLookupByLibrary.simpleMessage(

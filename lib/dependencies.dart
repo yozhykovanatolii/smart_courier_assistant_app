@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/data/datasource/firebase/firebase_auth/user_auth.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository.dart';
+import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 
 class Dependencies {
@@ -25,6 +26,12 @@ class Dependencies {
 
   static void _setupBloc() {
     final authRepository = _getIt<AuthRepository>();
-    _getIt.registerFactory<LoginCubit>(() => LoginCubit(authRepository));
+    _getIt
+      ..registerFactory<LoginCubit>(
+        () => LoginCubit(authRepository),
+      )
+      ..registerFactory<ForgotPasswordCubit>(
+        () => ForgotPasswordCubit(authRepository),
+      );
   }
 }

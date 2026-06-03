@@ -12,5 +12,9 @@
   "loginErrorUnknown": "Сталася невідома помилка авторизації.",
   "successAuthorization": "Успішна авторизація.",
   "accountExistsWithDifferentCredentials": "Обліковий запис існує з іншими обліковими даними.",
-  "successAuthorizationWithGoogle": "Успішна авторизація через Google"
+  "successAuthorizationWithGoogle": "Успішна авторизація через Google",
+  "resetEmailLetter": "Якщо обліковий запис із цією поштою існує, ви отримаєте електронний лист для скидання пароля.",
+  "resetPasswordErrorUnknown": "Сталася невідома помилка скидання пароля.",
+  "networkRequestFailed": "Network error. Try again.",
+  "tooManyRequests": "Too many requests. Please try again later."
 }

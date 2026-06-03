@@ -12,4 +12,8 @@ class AuthRepository {
   Future<void> signInWithGoogle() async {
     await _userAuth.signInWithGoogle();
   }
+
+  Future<void> resetPassword(String email) async {
+    return await _userAuth.resetPassword(email);
+  }
 }

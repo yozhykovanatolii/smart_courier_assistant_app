@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/login_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/login_with_google_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/reset_password_exception.dart';
 
 class UserAuth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -43,5 +44,15 @@ class UserAuth {
       throw LoginWithGoogleException();
     }
     return user;
+  }
+
+  Future<void> resetPassword(String email) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (exception) {
+      throw ResetPasswordException.convertFromCode(exception.code);
+    } catch (_) {
+      throw ResetPasswordException();
+    }
   }
 }

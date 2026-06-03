@@ -193,6 +193,46 @@ class S {
       args: [],
     );
   }
+
+  /// `If an account with this email exists, you will receive a password reset email.`
+  String get resetEmailLetter {
+    return Intl.message(
+      'If an account with this email exists, you will receive a password reset email.',
+      name: 'resetEmailLetter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown reset password exception occurred.`
+  String get resetPasswordErrorUnknown {
+    return Intl.message(
+      'An unknown reset password exception occurred.',
+      name: 'resetPasswordErrorUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Network error. Try again.`
+  String get networkRequestFailed {
+    return Intl.message(
+      'Network error. Try again.',
+      name: 'networkRequestFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Too many requests. Please try again later.`
+  String get tooManyRequests {
+    return Intl.message(
+      'Too many requests. Please try again later.',
+      name: 'tooManyRequests',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
