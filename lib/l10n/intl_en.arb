@@ -18,5 +18,7 @@
   "networkRequestFailed": "Network error. Try again.",
   "tooManyRequests": "Too many requests. Please try again later.",
   "fullNameEmpty": "Full name must not be empty.",
-  "fullNameInvalidFormat": "Full name must not contain special characters."
+  "fullNameInvalidFormat": "Full name must not contain special characters.",
+  "phoneNumberEmpty": "Phone number must not be empty.",
+  "phoneNumberInvalidFormat": "Enter a valid phone number."
 }

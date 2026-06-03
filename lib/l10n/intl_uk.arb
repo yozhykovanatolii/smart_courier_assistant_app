@@ -18,5 +18,7 @@
   "networkRequestFailed": "Network error. Try again.",
   "tooManyRequests": "Too many requests. Please try again later.",
   "fullNameEmpty": "Повне ім'я не повинно бути порожнім.",
-  "fullNameInvalidFormat": "Повне ім'я не повинно містити спеціальних символів."
+  "fullNameInvalidFormat": "Повне ім'я не повинно містити спеціальних символів.",
+  "phoneNumberEmpty": "Номер телефону не може бути порожнім.",
+  "phoneNumberInvalidFormat": "Введіть дійсний номер телефону."
 }

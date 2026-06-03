@@ -62,6 +62,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordLengthLessEight": MessageLookupByLibrary.simpleMessage(
       "The password must be at least 8 characters long",
     ),
+    "phoneNumberEmpty": MessageLookupByLibrary.simpleMessage(
+      "Phone number must not be empty.",
+    ),
+    "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
+      "Enter a valid phone number.",
+    ),
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "If an account with this email exists, you will receive a password reset email.",
     ),

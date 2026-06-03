@@ -253,6 +253,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Phone number must not be empty.`
+  String get phoneNumberEmpty {
+    return Intl.message(
+      'Phone number must not be empty.',
+      name: 'phoneNumberEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid phone number.`
+  String get phoneNumberInvalidFormat {
+    return Intl.message(
+      'Enter a valid phone number.',
+      name: 'phoneNumberInvalidFormat',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
