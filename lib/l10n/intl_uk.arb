@@ -16,5 +16,7 @@
   "resetEmailLetter": "Якщо обліковий запис із цією поштою існує, ви отримаєте електронний лист для скидання пароля.",
   "resetPasswordErrorUnknown": "Сталася невідома помилка скидання пароля.",
   "networkRequestFailed": "Network error. Try again.",
-  "tooManyRequests": "Too many requests. Please try again later."
+  "tooManyRequests": "Too many requests. Please try again later.",
+  "fullNameEmpty": "Повне ім'я не повинно бути порожнім.",
+  "fullNameInvalidFormat": "Повне ім'я не повинно містити спеціальних символів."
 }

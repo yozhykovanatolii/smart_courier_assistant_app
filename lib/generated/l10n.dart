@@ -233,6 +233,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Full name must not be empty.`
+  String get fullNameEmpty {
+    return Intl.message(
+      'Full name must not be empty.',
+      name: 'fullNameEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full name must not contain special characters.`
+  String get fullNameInvalidFormat {
+    return Intl.message(
+      'Full name must not contain special characters.',
+      name: 'fullNameInvalidFormat',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -32,6 +32,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "The email entered is in an incorrect format.",
     ),
+    "fullNameEmpty": MessageLookupByLibrary.simpleMessage(
+      "Full name must not be empty.",
+    ),
+    "fullNameInvalidFormat": MessageLookupByLibrary.simpleMessage(
+      "Full name must not contain special characters.",
+    ),
     "invalidCredential": MessageLookupByLibrary.simpleMessage(
       "Invalid credential.",
     ),

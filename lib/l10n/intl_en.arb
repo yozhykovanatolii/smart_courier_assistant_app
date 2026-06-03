@@ -16,5 +16,7 @@
   "resetEmailLetter": "If an account with this email exists, you will receive a password reset email.",
   "resetPasswordErrorUnknown": "An unknown reset password exception occurred.",
   "networkRequestFailed": "Network error. Try again.",
-  "tooManyRequests": "Too many requests. Please try again later."
+  "tooManyRequests": "Too many requests. Please try again later.",
+  "fullNameEmpty": "Full name must not be empty.",
+  "fullNameInvalidFormat": "Full name must not contain special characters."
 }

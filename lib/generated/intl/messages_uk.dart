@@ -32,6 +32,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "Введена пошта має неправильний формат.",
     ),
+    "fullNameEmpty": MessageLookupByLibrary.simpleMessage(
+      "Повне ім\'я не повинно бути порожнім.",
+    ),
+    "fullNameInvalidFormat": MessageLookupByLibrary.simpleMessage(
+      "Повне ім\'я не повинно містити спеціальних символів.",
+    ),
     "invalidCredential": MessageLookupByLibrary.simpleMessage(
       "Недійсні облікові дані.",
     ),
