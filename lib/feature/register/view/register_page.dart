@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_courier_assistant_app/feature/register/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
@@ -57,6 +58,8 @@ class RegisterPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
+            const RegisterFullNameTextField(),
+            const SizedBox(height: 25),
             const Text(
               'Email',
               textAlign: TextAlign.start,
@@ -68,6 +71,8 @@ class RegisterPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
+            const RegisterEmailTextField(),
+            const SizedBox(height: 25),
             const Text(
               'Password',
               textAlign: TextAlign.start,
@@ -79,6 +84,8 @@ class RegisterPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
+            const RegisterPasswordTextField(),
+            const SizedBox(height: 25),
             const Text(
               'Phone number',
               textAlign: TextAlign.start,
@@ -90,6 +97,9 @@ class RegisterPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
+            const RegisterPhoneNumberTextField(),
+            const SizedBox(height: 50),
+            const RegisterButton(),
           ],
         ),
       ),
