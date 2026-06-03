@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_courier_assistant_app/feature/register/view/register_page.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 
@@ -28,8 +29,15 @@ class HaveNotAccountSection extends StatelessWidget {
               fontSize: 12,
               fontWeight: FontWeight.w600,
               fontFamily: FontFamily.inter,
+              decoration: TextDecoration.underline,
             ),
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const RegisterPage()),
+                );
+              },
           ),
         ],
       ),
