@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/register/cubit/register_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/register/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
@@ -8,6 +10,18 @@ import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 @RoutePage()
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => RegisterCubit(),
+      child: const _RegisterView(),
+    );
+  }
+}
+
+class _RegisterView extends StatelessWidget {
+  const _RegisterView();
 
   @override
   Widget build(BuildContext context) {
