@@ -273,6 +273,56 @@ class S {
       args: [],
     );
   }
+
+  /// `An account already exists for that email.`
+  String get emailAlreadyInUse {
+    return Intl.message(
+      'An account already exists for that email.',
+      name: 'emailAlreadyInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a stronger password.`
+  String get weakPassword {
+    return Intl.message(
+      'Please enter a stronger password.',
+      name: 'weakPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown register exception occurred.`
+  String get registerErrorUnknown {
+    return Intl.message(
+      'An unknown register exception occurred.',
+      name: 'registerErrorUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is not valid or badly formatted.`
+  String get registerInvalidEmail {
+    return Intl.message(
+      'Email is not valid or badly formatted.',
+      name: 'registerInvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success registration`
+  String get successRegistration {
+    return Intl.message(
+      'Success registration',
+      name: 'successRegistration',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -26,6 +26,9 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Обліковий запис існує з іншими обліковими даними.",
         ),
+    "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+      "Для цієї пошти вже існує обліковий запис.",
+    ),
     "emailEmpty": MessageLookupByLibrary.simpleMessage(
       "Пошта не повинна бути порожньою",
     ),
@@ -48,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Сталася невідома помилка авторизації.",
     ),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
-      "Network error. Try again.",
+      "Помилка мережі. Спробуйте ще раз.",
     ),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "Пароль повинен містити принаймні один спеціальний символ",
@@ -68,6 +71,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Введіть дійсний номер телефону.",
     ),
+    "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "Сталася невідома помилка під час регістрації.",
+    ),
+    "registerInvalidEmail": MessageLookupByLibrary.simpleMessage(
+      "Пошта недійсна або неправильно відформатована.",
+    ),
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "Якщо обліковий запис із цією поштою існує, ви отримаєте електронний лист для скидання пароля.",
     ),
@@ -80,11 +89,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "successAuthorizationWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Успішна авторизація через Google",
     ),
+    "successRegistration": MessageLookupByLibrary.simpleMessage(
+      "Успішна регістрація",
+    ),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
-      "Too many requests. Please try again later.",
+      "Забагато запитів. Спробуйте пізніше.",
     ),
     "userDisabled": MessageLookupByLibrary.simpleMessage(
       "Користувач вимкнений.",
+    ),
+    "weakPassword": MessageLookupByLibrary.simpleMessage(
+      "Будь ласка, введіть надійніший пароль.",
     ),
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "Пароль неправильний, спробуйте ще раз.",

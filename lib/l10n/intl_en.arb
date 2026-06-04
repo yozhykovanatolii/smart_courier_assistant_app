@@ -20,5 +20,10 @@
   "fullNameEmpty": "Full name must not be empty.",
   "fullNameInvalidFormat": "Full name must not contain special characters.",
   "phoneNumberEmpty": "Phone number must not be empty.",
-  "phoneNumberInvalidFormat": "Enter a valid phone number."
+  "phoneNumberInvalidFormat": "Enter a valid phone number.",
+  "emailAlreadyInUse": "An account already exists for that email.",
+  "weakPassword": "Please enter a stronger password.",
+  "registerErrorUnknown": "An unknown register exception occurred.",
+  "registerInvalidEmail": "Email is not valid or badly formatted.",
+  "successRegistration": "Success registration"
 }

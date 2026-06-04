@@ -26,6 +26,9 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Account exists with different credentials.",
         ),
+    "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+      "An account already exists for that email.",
+    ),
     "emailEmpty": MessageLookupByLibrary.simpleMessage(
       "The email should not be empty",
     ),
@@ -68,6 +71,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Enter a valid phone number.",
     ),
+    "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "An unknown register exception occurred.",
+    ),
+    "registerInvalidEmail": MessageLookupByLibrary.simpleMessage(
+      "Email is not valid or badly formatted.",
+    ),
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "If an account with this email exists, you will receive a password reset email.",
     ),
@@ -80,10 +89,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "successAuthorizationWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Success authorization with Google",
     ),
+    "successRegistration": MessageLookupByLibrary.simpleMessage(
+      "Success registration",
+    ),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "Too many requests. Please try again later.",
     ),
     "userDisabled": MessageLookupByLibrary.simpleMessage("User are disabled."),
+    "weakPassword": MessageLookupByLibrary.simpleMessage(
+      "Please enter a stronger password.",
+    ),
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "Password is wrong, try again.",
     ),

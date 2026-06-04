@@ -16,4 +16,16 @@ class AuthRepository {
   Future<void> resetPassword(String email) async {
     return await _userAuth.resetPassword(email);
   }
+
+  Future<void> signUpUser(
+    String email,
+    String password,
+    String fullName,
+    String phoneNumber,
+  ) async {
+    final userId = await _userAuth.signUpWithEmailAndPassword(
+      email,
+      password,
+    );
+  }
 }

@@ -15,10 +15,15 @@
   "successAuthorizationWithGoogle": "Успішна авторизація через Google",
   "resetEmailLetter": "Якщо обліковий запис із цією поштою існує, ви отримаєте електронний лист для скидання пароля.",
   "resetPasswordErrorUnknown": "Сталася невідома помилка скидання пароля.",
-  "networkRequestFailed": "Network error. Try again.",
-  "tooManyRequests": "Too many requests. Please try again later.",
+  "networkRequestFailed": "Помилка мережі. Спробуйте ще раз.",
+  "tooManyRequests": "Забагато запитів. Спробуйте пізніше.",
   "fullNameEmpty": "Повне ім'я не повинно бути порожнім.",
   "fullNameInvalidFormat": "Повне ім'я не повинно містити спеціальних символів.",
   "phoneNumberEmpty": "Номер телефону не може бути порожнім.",
-  "phoneNumberInvalidFormat": "Введіть дійсний номер телефону."
+  "phoneNumberInvalidFormat": "Введіть дійсний номер телефону.",
+  "emailAlreadyInUse": "Для цієї пошти вже існує обліковий запис.",
+  "weakPassword": "Будь ласка, введіть надійніший пароль.",
+  "registerErrorUnknown": "Сталася невідома помилка під час регістрації.",
+  "registerInvalidEmail": "Пошта недійсна або неправильно відформатована.",
+  "successRegistration": "Успішна регістрація"
 }
