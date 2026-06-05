@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
+import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
 
@@ -47,9 +48,9 @@ class ResetPasswordButton extends StatelessWidget {
             ],
       child: isLoading
           ? const AppProgressIndicator(scale: 0.7)
-          : const Text(
-              'Reset password',
-              style: TextStyle(
+          : Text(
+              S.of(context).resetPassword,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 15,
                 fontWeight: FontWeight.w500,

@@ -31,6 +31,8 @@ class _LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocListener<LoginCubit, LoginState>(
@@ -86,10 +88,10 @@ class _LoginView extends StatelessWidget {
               right: 24,
             ),
             children: [
-              const Text(
-                'Sign in to your Account',
+              Text(
+                l10n.signInToYourAccount,
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.black,
                   fontSize: 32,
                   fontWeight: FontWeight.w700,
@@ -97,10 +99,10 @@ class _LoginView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Enter your email and password to log in',
+              Text(
+                l10n.enterYourEmailAndPasswordToLogIn,
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -108,10 +110,10 @@ class _LoginView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 45),
-              const Text(
-                'Email',
+              Text(
+                l10n.email,
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -121,10 +123,10 @@ class _LoginView extends StatelessWidget {
               const SizedBox(height: 5),
               const LoginEmailField(),
               const SizedBox(height: 25),
-              const Text(
-                'Password',
+              Text(
+                l10n.password,
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
+import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 
@@ -10,9 +11,11 @@ class HaveNotAccountSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
+
     return RichText(
       text: TextSpan(
-        text: 'Don\'t have an account?',
+        text: l10n.dontHaveAnAccount,
         style: const TextStyle(
           color: Color(0xFF6C7278),
           fontSize: 12,
@@ -24,7 +27,7 @@ class HaveNotAccountSection extends StatelessWidget {
             child: SizedBox(width: 5),
           ),
           TextSpan(
-            text: 'Sign Up',
+            text: l10n.signUp,
             style: const TextStyle(
               color: AppColors.blue500,
               fontSize: 12,

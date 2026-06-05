@@ -25,5 +25,21 @@
   "weakPassword": "Please enter a stronger password.",
   "registerErrorUnknown": "An unknown register exception occurred.",
   "registerInvalidEmail": "Email is not valid or badly formatted.",
-  "successRegistration": "Success registration"
+  "successRegistration": "Success registration",
+  "signInToYourAccount": "Sign in to your Account",
+  "email": "Email",
+  "password": "Password",
+  "enterYourEmailAndPasswordToLogIn": "Enter your email and password to log in",
+  "logIn": "Log In",
+  "continueWithGoogle": "Continue with Google",
+  "or": "Or",
+  "forgotPassword": "Forgot Password?",
+  "signUp": "Sign Up",
+  "dontHaveAnAccount": "Don't have an account?",
+  "enterYourEmailAddress": "Enter your email address and we will send you a link to reset your password",
+  "resetPassword": "Reset password",
+  "createAnAccountToContinue": "Create an account to continue!",
+  "fullName": "Full name",
+  "phoneNumber": "Phone number",
+  "register": "Register"
 }

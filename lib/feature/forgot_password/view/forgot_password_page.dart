@@ -31,6 +31,8 @@ class _ForgotPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocListener<ForgotPasswordCubit, ForgotPasswordState>(
@@ -71,10 +73,10 @@ class _ForgotPasswordView extends StatelessWidget {
                 child: ArrowBackButton(),
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Forgot Password?',
+              Text(
+                l10n.forgotPassword,
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.black,
                   fontSize: 32,
                   fontWeight: FontWeight.w700,
@@ -82,10 +84,10 @@ class _ForgotPasswordView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Enter your email address and we will send you a link to reset your password',
+              Text(
+                l10n.enterYourEmailAddress,
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -93,10 +95,10 @@ class _ForgotPasswordView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 45),
-              const Text(
-                'Email',
+              Text(
+                l10n.email,
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,

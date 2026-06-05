@@ -25,7 +25,7 @@ class RegisterPhoneNumberTextField extends StatelessWidget {
       spacing: 5,
       children: [
         AppTextField(
-          hintText: 'Example: +380991234567',
+          hintText: '+380991234567',
           onChanged: context.read<RegisterCubit>().setRegisterPhoneNumber,
           isValid: errorMessage == null,
         ),

@@ -4,6 +4,7 @@ import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/gen/assets.gen.dart';
 import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
+import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
@@ -50,9 +51,9 @@ class LogInWithGoogle extends StatelessWidget {
                   width: 18,
                   height: 18,
                 ),
-                const Text(
-                  'Continue with Google',
-                  style: TextStyle(
+                Text(
+                  S.of(context).continueWithGoogle,
+                  style: const TextStyle(
                     color: AppColors.black,
                     fontSize: 14,
                     fontWeight: FontWeight.w600,

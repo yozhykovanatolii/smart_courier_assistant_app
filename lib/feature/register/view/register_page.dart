@@ -31,6 +31,8 @@ class _RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocListener<RegisterCubit, RegisterState>(
@@ -70,9 +72,9 @@ class _RegisterView extends StatelessWidget {
                 child: ArrowBackButton(),
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Sign up',
-                style: TextStyle(
+              Text(
+                l10n.signUp,
+                style: const TextStyle(
                   color: AppColors.black,
                   fontSize: 32,
                   fontWeight: FontWeight.w700,
@@ -80,10 +82,10 @@ class _RegisterView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Create an account to continue!',
+              Text(
+                l10n.createAnAccountToContinue,
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -91,10 +93,9 @@ class _RegisterView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 45),
-              const Text(
-                'Full name',
-                textAlign: TextAlign.start,
-                style: TextStyle(
+              Text(
+                l10n.fullName,
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -104,10 +105,9 @@ class _RegisterView extends StatelessWidget {
               const SizedBox(height: 5),
               const RegisterFullNameTextField(),
               const SizedBox(height: 25),
-              const Text(
-                'Email',
-                textAlign: TextAlign.start,
-                style: TextStyle(
+              Text(
+                l10n.email,
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -117,10 +117,10 @@ class _RegisterView extends StatelessWidget {
               const SizedBox(height: 5),
               const RegisterEmailTextField(),
               const SizedBox(height: 25),
-              const Text(
-                'Password',
+              Text(
+                l10n.password,
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -130,10 +130,9 @@ class _RegisterView extends StatelessWidget {
               const SizedBox(height: 5),
               const RegisterPasswordTextField(),
               const SizedBox(height: 25),
-              const Text(
-                'Phone number',
-                textAlign: TextAlign.start,
-                style: TextStyle(
+              Text(
+                l10n.phoneNumber,
+                style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,

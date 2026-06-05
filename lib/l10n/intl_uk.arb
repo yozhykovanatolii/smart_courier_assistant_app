@@ -25,5 +25,21 @@
   "weakPassword": "Будь ласка, введіть надійніший пароль.",
   "registerErrorUnknown": "Сталася невідома помилка під час регістрації.",
   "registerInvalidEmail": "Пошта недійсна або неправильно відформатована.",
-  "successRegistration": "Успішна регістрація"
+  "successRegistration": "Успішна регістрація",
+  "signInToYourAccount": "Увійдіть до свого облікового запису",
+  "email": "Пошта",
+  "password": "Пароль",
+  "enterYourEmailAndPasswordToLogIn": "Введіть свою пошту та пароль для входу",
+  "logIn": "Увійти",
+  "continueWithGoogle": "Увійти через Google",
+  "or": "Або",
+  "forgotPassword": "Забув Пароль?",
+  "signUp": "Зареєструватися",
+  "dontHaveAnAccount": "Don't have an account?",
+  "enterYourEmailAddress": "Введіть свою пошту, і ми надішлемо вам посилання для скидання пароля",
+  "resetPassword": "Скинути пароль",
+  "createAnAccountToContinue": "Створіть обліковий запис, щоб продовжити!",
+  "fullName": "ПІБ",
+  "phoneNumber": "Номер телефону",
+  "register": "Зареєструватися"
 }

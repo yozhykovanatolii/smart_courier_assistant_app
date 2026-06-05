@@ -26,6 +26,16 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Обліковий запис існує з іншими обліковими даними.",
         ),
+    "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Увійти через Google",
+    ),
+    "createAnAccountToContinue": MessageLookupByLibrary.simpleMessage(
+      "Створіть обліковий запис, щоб продовжити!",
+    ),
+    "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account?",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("Пошта"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "Для цієї пошти вже існує обліковий запис.",
     ),
@@ -35,6 +45,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "Введена пошта має неправильний формат.",
     ),
+    "enterYourEmailAddress": MessageLookupByLibrary.simpleMessage(
+      "Введіть свою пошту, і ми надішлемо вам посилання для скидання пароля",
+    ),
+    "enterYourEmailAndPasswordToLogIn": MessageLookupByLibrary.simpleMessage(
+      "Введіть свою пошту та пароль для входу",
+    ),
+    "forgotPassword": MessageLookupByLibrary.simpleMessage("Забув Пароль?"),
+    "fullName": MessageLookupByLibrary.simpleMessage("ПІБ"),
     "fullNameEmpty": MessageLookupByLibrary.simpleMessage(
       "Повне ім\'я не повинно бути порожнім.",
     ),
@@ -47,12 +65,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Недійсна пошта, спробуйте ще раз.",
     ),
+    "logIn": MessageLookupByLibrary.simpleMessage("Увійти"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка авторизації.",
     ),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Помилка мережі. Спробуйте ще раз.",
     ),
+    "or": MessageLookupByLibrary.simpleMessage("Або"),
+    "password": MessageLookupByLibrary.simpleMessage("Пароль"),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "Пароль повинен містити принаймні один спеціальний символ",
     ),
@@ -65,12 +86,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordLengthLessEight": MessageLookupByLibrary.simpleMessage(
       "Пароль має містити щонайменше 8 символів",
     ),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефону"),
     "phoneNumberEmpty": MessageLookupByLibrary.simpleMessage(
       "Номер телефону не може бути порожнім.",
     ),
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Введіть дійсний номер телефону.",
     ),
+    "register": MessageLookupByLibrary.simpleMessage("Зареєструватися"),
     "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка під час регістрації.",
     ),
@@ -80,9 +103,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "Якщо обліковий запис із цією поштою існує, ви отримаєте електронний лист для скидання пароля.",
     ),
+    "resetPassword": MessageLookupByLibrary.simpleMessage("Скинути пароль"),
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка скидання пароля.",
     ),
+    "signInToYourAccount": MessageLookupByLibrary.simpleMessage(
+      "Увійдіть до свого облікового запису",
+    ),
+    "signUp": MessageLookupByLibrary.simpleMessage("Зареєструватися"),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Успішна авторизація.",
     ),

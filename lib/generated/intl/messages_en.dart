@@ -26,6 +26,16 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Account exists with different credentials.",
         ),
+    "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Continue with Google",
+    ),
+    "createAnAccountToContinue": MessageLookupByLibrary.simpleMessage(
+      "Create an account to continue!",
+    ),
+    "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account?",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "An account already exists for that email.",
     ),
@@ -35,6 +45,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "The email entered is in an incorrect format.",
     ),
+    "enterYourEmailAddress": MessageLookupByLibrary.simpleMessage(
+      "Enter your email address and we will send you a link to reset your password",
+    ),
+    "enterYourEmailAndPasswordToLogIn": MessageLookupByLibrary.simpleMessage(
+      "Enter your email and password to log in",
+    ),
+    "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+    "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
     "fullNameEmpty": MessageLookupByLibrary.simpleMessage(
       "Full name must not be empty.",
     ),
@@ -47,12 +65,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Invalid email, try again.",
     ),
+    "logIn": MessageLookupByLibrary.simpleMessage("Log In"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown authorization exception occurred.",
     ),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Network error. Try again.",
     ),
+    "or": MessageLookupByLibrary.simpleMessage("Or"),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "The password must contain at least one special character",
     ),
@@ -65,12 +86,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordLengthLessEight": MessageLookupByLibrary.simpleMessage(
       "The password must be at least 8 characters long",
     ),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
     "phoneNumberEmpty": MessageLookupByLibrary.simpleMessage(
       "Phone number must not be empty.",
     ),
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Enter a valid phone number.",
     ),
+    "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown register exception occurred.",
     ),
@@ -80,9 +103,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "If an account with this email exists, you will receive a password reset email.",
     ),
+    "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown reset password exception occurred.",
     ),
+    "signInToYourAccount": MessageLookupByLibrary.simpleMessage(
+      "Sign in to your Account",
+    ),
+    "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Success authorization.",
     ),
