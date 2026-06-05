@@ -7,9 +7,7 @@ import 'package:smart_courier_assistant_app/core/exceptions/register_exception.d
 import 'package:smart_courier_assistant_app/feature/register/cubit/register_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/register/cubit/register_state.dart';
 import 'package:smart_courier_assistant_app/feature/register/widgets/widgets.dart';
-import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
-import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 
@@ -32,6 +30,7 @@ class _RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
+    final labelLargeStyle = Theme.of(context).textTheme.labelLarge;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -74,45 +73,25 @@ class _RegisterView extends StatelessWidget {
               const SizedBox(height: 20),
               Text(
                 l10n.signUp,
-                style: const TextStyle(
-                  color: AppColors.black,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: FontFamily.inter,
-                ),
+                style: Theme.of(context).textTheme.displaySmall,
               ),
               const SizedBox(height: 10),
               Text(
                 l10n.createAnAccountToContinue,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.inter,
-                ),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 45),
               Text(
                 l10n.fullName,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.plusJakartaSans,
-                ),
+                style: labelLargeStyle,
               ),
               const SizedBox(height: 5),
               const RegisterFullNameTextField(),
               const SizedBox(height: 25),
               Text(
                 l10n.email,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.plusJakartaSans,
-                ),
+                style: labelLargeStyle,
               ),
               const SizedBox(height: 5),
               const RegisterEmailTextField(),
@@ -120,24 +99,14 @@ class _RegisterView extends StatelessWidget {
               Text(
                 l10n.password,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.plusJakartaSans,
-                ),
+                style: labelLargeStyle,
               ),
               const SizedBox(height: 5),
               const RegisterPasswordTextField(),
               const SizedBox(height: 25),
               Text(
                 l10n.phoneNumber,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.plusJakartaSans,
-                ),
+                style: labelLargeStyle,
               ),
               const SizedBox(height: 5),
               const RegisterPhoneNumberTextField(),

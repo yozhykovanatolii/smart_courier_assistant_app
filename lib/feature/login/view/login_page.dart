@@ -8,9 +8,7 @@ import 'package:smart_courier_assistant_app/core/exceptions/login_with_google_ex
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_state.dart';
 import 'package:smart_courier_assistant_app/feature/login/widgets/widgets.dart';
-import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
-import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 
 @RoutePage()
@@ -32,9 +30,9 @@ class _LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
+    final labelLargeStyle = Theme.of(context).textTheme.labelLarge;
 
     return Scaffold(
-      backgroundColor: Colors.white,
       body: BlocListener<LoginCubit, LoginState>(
         listenWhen: (previous, current) {
           return previous.loginStatus != current.loginStatus ||
@@ -91,34 +89,19 @@ class _LoginView extends StatelessWidget {
               Text(
                 l10n.signInToYourAccount,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: AppColors.black,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: FontFamily.inter,
-                ),
+                style: Theme.of(context).textTheme.displaySmall,
               ),
               const SizedBox(height: 10),
               Text(
                 l10n.enterYourEmailAndPasswordToLogIn,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.inter,
-                ),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 45),
               Text(
                 l10n.email,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.plusJakartaSans,
-                ),
+                style: labelLargeStyle,
               ),
               const SizedBox(height: 5),
               const LoginEmailField(),
@@ -126,12 +109,7 @@ class _LoginView extends StatelessWidget {
               Text(
                 l10n.password,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.plusJakartaSans,
-                ),
+                style: labelLargeStyle,
               ),
               const SizedBox(height: 5),
               const LoginPasswordField(),

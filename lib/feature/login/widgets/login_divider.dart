@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class LoginDivider extends StatelessWidget {
   const LoginDivider({super.key});
@@ -14,22 +14,20 @@ class LoginDivider extends StatelessWidget {
         const Expanded(
           child: Divider(
             thickness: 1,
-            color: Color(0xFFEDF1F3),
+            color: AppColors.grey300,
           ),
         ),
         Text(
           S.of(context).or,
-          style: const TextStyle(
-            color: Color(0xFF6C7278),
-            fontSize: 12,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: AppColors.grey,
             fontWeight: FontWeight.w400,
-            fontFamily: FontFamily.inter,
           ),
         ),
         const Expanded(
           child: Divider(
             thickness: 1,
-            color: Color(0xFFEDF1F3),
+            color: AppColors.grey300,
           ),
         ),
       ],

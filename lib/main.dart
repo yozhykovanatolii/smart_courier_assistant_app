@@ -5,6 +5,7 @@ import 'package:smart_courier_assistant_app/dependencies.dart';
 import 'package:smart_courier_assistant_app/firebase_options.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/router/app_router.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,7 @@ class SmartCourierAssistantApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      theme: AppTheme.lightTheme,
       supportedLocales: S.delegate.supportedLocales,
       routerConfig: _appRouter.config(),
     );

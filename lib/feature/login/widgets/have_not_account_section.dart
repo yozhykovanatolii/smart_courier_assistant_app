@@ -1,10 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
-import 'package:smart_courier_assistant_app/ui/app_colors.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class HaveNotAccountSection extends StatelessWidget {
   const HaveNotAccountSection({super.key});
@@ -12,15 +11,13 @@ class HaveNotAccountSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
+    final bodySmallStyle = Theme.of(context).textTheme.bodySmall;
 
     return RichText(
       text: TextSpan(
         text: l10n.dontHaveAnAccount,
-        style: const TextStyle(
-          color: Color(0xFF6C7278),
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-          fontFamily: FontFamily.inter,
+        style: bodySmallStyle?.copyWith(
+          color: AppColors.grey,
         ),
         children: [
           const WidgetSpan(
@@ -28,12 +25,11 @@ class HaveNotAccountSection extends StatelessWidget {
           ),
           TextSpan(
             text: l10n.signUp,
-            style: const TextStyle(
+            style: bodySmallStyle?.copyWith(
               color: AppColors.blue500,
-              fontSize: 12,
               fontWeight: FontWeight.w600,
-              fontFamily: FontFamily.inter,
               decoration: TextDecoration.underline,
+              decorationColor: AppColors.blue500,
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {

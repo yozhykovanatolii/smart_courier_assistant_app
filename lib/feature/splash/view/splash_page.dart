@@ -2,8 +2,8 @@ import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
-import 'package:smart_courier_assistant_app/ui/app_colors.dart';
-import 'package:smart_courier_assistant_app/ui/app_text_styles.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
+import 'package:smart_courier_assistant_app/ui/theme/styles/app_text_styles.dart';
 
 @RoutePage()
 class SplashPage extends StatelessWidget {
@@ -24,7 +24,7 @@ class SplashPage extends StatelessWidget {
             end: AlignmentGeometry.bottomCenter,
             colors: [
               AppColors.blue,
-              AppColors.syan,
+              AppColors.cyan,
             ],
           ),
         ),

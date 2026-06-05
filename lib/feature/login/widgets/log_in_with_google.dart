@@ -3,9 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/gen/assets.gen.dart';
-import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
-import 'package:smart_courier_assistant_app/ui/app_colors.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
 
@@ -32,13 +31,13 @@ class LogInWithGoogle extends StatelessWidget {
       border: isLoading
           ? null
           : Border.all(
-              color: const Color(0xFFEFF0F6),
+              color: AppColors.grey200,
             ),
       boxShadows: [
         BoxShadow(
           offset: const Offset(0, -3),
           blurRadius: 6,
-          color: const Color(0xFFF4F5FA).withValues(alpha: 0.6),
+          color: AppColors.grey100.withValues(alpha: 0.6),
         ),
       ],
       child: isLoading
@@ -53,11 +52,8 @@ class LogInWithGoogle extends StatelessWidget {
                 ),
                 Text(
                   S.of(context).continueWithGoogle,
-                  style: const TextStyle(
-                    color: AppColors.black,
-                    fontSize: 14,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.w600,
-                    fontFamily: FontFamily.inter,
                   ),
                 ),
               ],

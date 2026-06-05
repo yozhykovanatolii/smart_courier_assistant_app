@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
-import 'package:smart_courier_assistant_app/ui/app_colors.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -36,25 +35,9 @@ class AppTextField extends StatelessWidget {
       child: TextField(
         obscureText: obscureText,
         cursorColor: AppColors.blue,
-        style: const TextStyle(
-          color: AppColors.black,
-          fontFamily: FontFamily.inter,
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-        ),
         onChanged: onChanged,
         obscuringCharacter: '*',
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: const TextStyle(
-            color: AppColors.grey,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            fontFamily: FontFamily.inter,
-          ),
-          border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 14),
-        ),
+        decoration: InputDecoration(hintText: hintText),
       ),
     );
   }

@@ -7,9 +7,7 @@ import 'package:smart_courier_assistant_app/core/exceptions/reset_password_excep
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_state.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/widgets/widgets.dart';
-import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
-import 'package:smart_courier_assistant_app/ui/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 
@@ -76,34 +74,19 @@ class _ForgotPasswordView extends StatelessWidget {
               Text(
                 l10n.forgotPassword,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: AppColors.black,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: FontFamily.inter,
-                ),
+                style: Theme.of(context).textTheme.displaySmall,
               ),
               const SizedBox(height: 10),
               Text(
                 l10n.enterYourEmailAddress,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.inter,
-                ),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 45),
               Text(
                 l10n.email,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: FontFamily.plusJakartaSans,
-                ),
+                style: Theme.of(context).textTheme.labelLarge,
               ),
               const SizedBox(height: 5),
               const EmailTextField(),

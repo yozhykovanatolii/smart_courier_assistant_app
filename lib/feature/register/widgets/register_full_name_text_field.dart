@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/register/cubit/register_cubit.dart';
-import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/full_name_input_error_extension.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_text_field.dart';
 import 'package:smart_courier_assistant_app/validation/full_name_validator.dart';
@@ -31,11 +30,8 @@ class RegisterFullNameTextField extends StatelessWidget {
         if (errorMessage != null)
           Text(
             errorMessage,
-            style: const TextStyle(
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: Colors.red,
-              fontFamily: FontFamily.inter,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
             ),
           ),
       ],
