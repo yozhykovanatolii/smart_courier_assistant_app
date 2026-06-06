@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get_it/get_it.dart';
+import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
 import 'package:smart_courier_assistant_app/dependencies.dart';
 import 'package:smart_courier_assistant_app/firebase_options.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
@@ -13,7 +16,12 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Dependencies.setupDependencies();
-  runApp(const SmartCourierAssistantApp());
+  runApp(
+    BlocProvider(
+      create: (_) => GetIt.I<SettingsCubit>(),
+      child: const SmartCourierAssistantApp(),
+    ),
+  );
 }
 
 class SmartCourierAssistantApp extends StatelessWidget {
@@ -23,6 +31,12 @@ class SmartCourierAssistantApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = context.select(
+      (SettingsCubit cubit) => cubit.state.isDarkMode,
+    );
+    final languageCode = context.select(
+      (SettingsCubit cubit) => cubit.state.languageCode,
+    );
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
@@ -31,7 +45,8 @@ class SmartCourierAssistantApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      theme: AppTheme.lightTheme,
+      theme: isDarkMode ? AppTheme.darkTheme : AppTheme.lightTheme,
+      locale: Locale(languageCode),
       supportedLocales: S.delegate.supportedLocales,
       routerConfig: _appRouter.config(),
     );

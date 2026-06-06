@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
@@ -79,16 +81,21 @@ class _LanguageListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLanguageSelected = context.select(
+      (SettingsCubit cubit) => cubit.state.languageCode == languageCode,
+    );
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          width: 2,
-          color: Colors.blue,
+          width: isLanguageSelected ? 2 : 0.8,
+          color: isLanguageSelected ? Colors.blue : Colors.black,
         ),
       ),
       child: ListTile(
-        onTap: () {},
+        onTap: () {
+          context.read<SettingsCubit>().changeLanguageCode(languageCode);
+        },
         leading: Text(
           countryCode,
           style: const TextStyle(
@@ -101,11 +108,13 @@ class _LanguageListTile extends StatelessWidget {
             fontSize: 18,
           ),
         ),
-        trailing: const Icon(
-          color: AppColors.teal,
-          Icons.check_circle,
-          size: 25,
-        ),
+        trailing: isLanguageSelected
+            ? const Icon(
+                color: AppColors.teal,
+                Icons.check_circle,
+                size: 25,
+              )
+            : null,
       ),
     );
   }

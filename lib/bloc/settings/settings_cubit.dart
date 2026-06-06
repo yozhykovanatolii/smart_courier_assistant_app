@@ -1,0 +1,30 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/bloc/settings/settings_state.dart';
+import 'package:smart_courier_assistant_app/data/repository/settings_repository.dart';
+
+class SettingsCubit extends Cubit<SettingsState> {
+  final SettingsRepository settingsRepository;
+
+  SettingsCubit(this.settingsRepository) : super(SettingsState.initial());
+
+  Future<void> fetchSettings() async {
+    final isDarkMode = await settingsRepository.loadThemeMode();
+    final languageCode = await settingsRepository.loadLanguageCode();
+    emit(
+      state.copyWith(
+        isDarkMode: isDarkMode,
+        languageCode: languageCode,
+      ),
+    );
+  }
+
+  Future<void> changeThemeMode(bool isDarkMode) async {
+    emit(state.copyWith(isDarkMode: isDarkMode));
+    await settingsRepository.saveThemeMode(isDarkMode);
+  }
+
+  Future<void> changeLanguageCode(String languageCode) async {
+    emit(state.copyWith(languageCode: languageCode));
+    await settingsRepository.saveLanguageCode(languageCode);
+  }
+}
