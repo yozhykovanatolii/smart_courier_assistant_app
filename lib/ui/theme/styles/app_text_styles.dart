@@ -37,4 +37,9 @@ class AppTextStyles {
     fontSize: 14,
     fontWeight: FontWeight.w500,
   );
+  static final TextStyle titleMedium = const TextStyle(
+    fontFamily: FontFamily.inter,
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
 }

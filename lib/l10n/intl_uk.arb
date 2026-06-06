@@ -41,5 +41,8 @@
   "createAnAccountToContinue": "Створіть обліковий запис, щоб продовжити!",
   "fullName": "ПІБ",
   "phoneNumber": "Номер телефону",
-  "register": "Зареєструватися"
+  "register": "Зареєструватися",
+  "settings": "Налаштування",
+  "darkMode": "Темна тема",
+  "language": "Мова"
 }

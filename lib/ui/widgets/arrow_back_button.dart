@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class ArrowBackButton extends StatelessWidget {
   const ArrowBackButton({super.key});
@@ -12,7 +13,7 @@ class ArrowBackButton extends StatelessWidget {
         padding: const EdgeInsets.all(7),
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: Color(0xFFECECEC),
+          color: AppColors.grey400,
         ),
         child: const Icon(
           Icons.arrow_back_sharp,

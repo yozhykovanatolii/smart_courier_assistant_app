@@ -41,5 +41,8 @@
   "createAnAccountToContinue": "Create an account to continue!",
   "fullName": "Full name",
   "phoneNumber": "Phone number",
-  "register": "Register"
+  "register": "Register",
+  "settings": "Settings",
+  "darkMode": "Dark Mode",
+  "language": "Language"
 }

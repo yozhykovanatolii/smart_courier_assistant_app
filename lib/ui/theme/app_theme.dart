@@ -10,6 +10,7 @@ class AppTheme {
       scaffoldBackgroundColor: Colors.white,
       inputDecorationTheme: AppTextFieldStyles.inputDecorationTheme,
       textTheme: TextTheme(
+        titleMedium: AppTextStyles.titleMedium,
         displaySmall: AppTextStyles.displaySmall,
         labelLarge: AppTextStyles.labelLarge,
         bodyLarge: AppTextStyles.bodyLarge,
@@ -25,6 +26,7 @@ class AppTheme {
       scaffoldBackgroundColor: Colors.black,
       inputDecorationTheme: AppTextFieldStyles.inputDecorationTheme,
       textTheme: TextTheme(
+        titleMedium: AppTextStyles.titleMedium,
         displaySmall: AppTextStyles.displaySmall,
         labelLarge: AppTextStyles.labelLarge,
         bodyLarge: AppTextStyles.bodyLarge,

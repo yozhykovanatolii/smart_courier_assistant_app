@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAnAccountToContinue": MessageLookupByLibrary.simpleMessage(
       "Створіть обліковий запис, щоб продовжити!",
     ),
+    "darkMode": MessageLookupByLibrary.simpleMessage("Темна тема"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -65,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Недійсна пошта, спробуйте ще раз.",
     ),
+    "language": MessageLookupByLibrary.simpleMessage("Мова"),
     "logIn": MessageLookupByLibrary.simpleMessage("Увійти"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка авторизації.",
@@ -107,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка скидання пароля.",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("Налаштування"),
     "signInToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Увійдіть до свого облікового запису",
     ),

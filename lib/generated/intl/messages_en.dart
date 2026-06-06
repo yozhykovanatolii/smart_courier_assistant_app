@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAnAccountToContinue": MessageLookupByLibrary.simpleMessage(
       "Create an account to continue!",
     ),
+    "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -65,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Invalid email, try again.",
     ),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
     "logIn": MessageLookupByLibrary.simpleMessage("Log In"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown authorization exception occurred.",
@@ -107,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown reset password exception occurred.",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "signInToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Sign in to your Account",
     ),
