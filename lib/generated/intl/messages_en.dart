@@ -67,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Invalid email, try again.",
     ),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "languages": MessageLookupByLibrary.simpleMessage("Languages"),
     "logIn": MessageLookupByLibrary.simpleMessage("Log In"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown authorization exception occurred.",
@@ -108,6 +109,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown reset password exception occurred.",
+    ),
+    "selectLanguage": MessageLookupByLibrary.simpleMessage(
+      "Select the language that is most convenient for you to use the application in.",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "signInToYourAccount": MessageLookupByLibrary.simpleMessage(

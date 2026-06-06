@@ -67,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Недійсна пошта, спробуйте ще раз.",
     ),
     "language": MessageLookupByLibrary.simpleMessage("Мова"),
+    "languages": MessageLookupByLibrary.simpleMessage("Languages"),
     "logIn": MessageLookupByLibrary.simpleMessage("Увійти"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка авторизації.",
@@ -108,6 +109,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPassword": MessageLookupByLibrary.simpleMessage("Скинути пароль"),
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка скидання пароля.",
+    ),
+    "selectLanguage": MessageLookupByLibrary.simpleMessage(
+      "Select the language that is most convenient for you to use the application in.",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("Налаштування"),
     "signInToYourAccount": MessageLookupByLibrary.simpleMessage(

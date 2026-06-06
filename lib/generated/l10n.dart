@@ -463,6 +463,21 @@ class S {
   String get language {
     return Intl.message('Language', name: 'language', desc: '', args: []);
   }
+
+  /// `Languages`
+  String get languages {
+    return Intl.message('Languages', name: 'languages', desc: '', args: []);
+  }
+
+  /// `Select the language that is most convenient for you to use the application in.`
+  String get selectLanguage {
+    return Intl.message(
+      'Select the language that is most convenient for you to use the application in.',
+      name: 'selectLanguage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -14,4 +14,8 @@ class AppColors {
   static const Color grey300 = Color(0xFFEDF1F3);
   static const Color grey400 = Color(0xFFECECEC);
   static const Color grey500 = Color(0xFFE4E5E7);
+  static const Color teal = Color(0xFF009688);
+  static const Color lightPink = Color(0xFFFFEEEF);
+  static const Color lightCyan = Color(0xFFD4FFFE);
+  static const Color rosePink = Color(0xFFE77282);
 }

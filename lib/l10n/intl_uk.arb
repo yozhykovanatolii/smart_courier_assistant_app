@@ -44,5 +44,7 @@
   "register": "Зареєструватися",
   "settings": "Налаштування",
   "darkMode": "Темна тема",
-  "language": "Мова"
+  "language": "Мова",
+  "languages": "Languages",
+  "selectLanguage": "Select the language that is most convenient for you to use the application in."
 }
