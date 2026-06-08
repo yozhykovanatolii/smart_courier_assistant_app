@@ -508,6 +508,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
+  }
+
+  /// `Edit profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My routes`
+  String get myRoutes {
+    return Intl.message('My routes', name: 'myRoutes', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

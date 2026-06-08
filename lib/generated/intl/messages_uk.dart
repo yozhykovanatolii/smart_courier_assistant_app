@@ -27,7 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
           "Обліковий запис існує з іншими обліковими даними.",
         ),
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
-      "Are you sure you want to log out?",
+      "Ви впевнені, що хочете вийти?",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
@@ -38,8 +38,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Темна тема"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
-      "Don\'t have an account?",
+      "Немаєш облікового запису?",
     ),
+    "editProfile": MessageLookupByLibrary.simpleMessage("Редагування профілю"),
     "email": MessageLookupByLibrary.simpleMessage("Пошта"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "Для цієї пошти вже існує обліковий запис.",
@@ -71,12 +72,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Недійсна пошта, спробуйте ще раз.",
     ),
     "language": MessageLookupByLibrary.simpleMessage("Мова"),
-    "languages": MessageLookupByLibrary.simpleMessage("Languages"),
+    "languages": MessageLookupByLibrary.simpleMessage("Мови"),
     "logIn": MessageLookupByLibrary.simpleMessage("Увійти"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка авторизації.",
     ),
-    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "logout": MessageLookupByLibrary.simpleMessage("Вихід з аккаунту"),
+    "myRoutes": MessageLookupByLibrary.simpleMessage("Мої маршрути"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Помилка мережі. Спробуйте ще раз.",
     ),
@@ -101,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Введіть дійсний номер телефону.",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("Профіль"),
     "register": MessageLookupByLibrary.simpleMessage("Зареєструватися"),
     "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка під час регістрації.",
@@ -116,7 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Сталася невідома помилка скидання пароля.",
     ),
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
-      "Select the language that is most convenient for you to use the application in.",
+      "Виберіть мову, якою вам найзручніше користуватися застосунком.",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("Налаштування"),
     "signInToYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -145,6 +148,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "Пароль неправильний, спробуйте ще раз.",
     ),
-    "yesLogout": MessageLookupByLibrary.simpleMessage("Yes, Logout"),
+    "yesLogout": MessageLookupByLibrary.simpleMessage("Так, вийти"),
   };
 }

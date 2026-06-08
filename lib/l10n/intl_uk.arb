@@ -35,7 +35,7 @@
   "or": "Або",
   "forgotPassword": "Забув Пароль?",
   "signUp": "Зареєструватися",
-  "dontHaveAnAccount": "Don't have an account?",
+  "dontHaveAnAccount": "Немаєш облікового запису?",
   "enterYourEmailAddress": "Введіть свою пошту, і ми надішлемо вам посилання для скидання пароля",
   "resetPassword": "Скинути пароль",
   "createAnAccountToContinue": "Створіть обліковий запис, щоб продовжити!",
@@ -45,11 +45,14 @@
   "settings": "Налаштування",
   "darkMode": "Темна тема",
   "language": "Мова",
-  "languages": "Languages",
-  "selectLanguage": "Select the language that is most convenient for you to use the application in.",
+  "languages": "Мови",
+  "selectLanguage": "Виберіть мову, якою вам найзручніше користуватися застосунком.",
   "unknown": "Невідомий",
-  "logout": "Logout",
+  "logout": "Вихід з аккаунту",
   "cancel": "Cancel",
-  "yesLogout": "Yes, Logout",
-  "areYouSureYouWantToLogOut": "Are you sure you want to log out?"
+  "yesLogout": "Так, вийти",
+  "areYouSureYouWantToLogOut": "Ви впевнені, що хочете вийти?",
+  "profile": "Профіль",
+  "editProfile": "Редагування профілю",
+  "myRoutes": "Мої маршрути"
 }

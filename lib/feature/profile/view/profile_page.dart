@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/feature/profile/widgets/widgets.dart';
+import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
@@ -12,6 +13,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = context.router;
+    final l10n = S.of(context);
 
     return Scaffold(
       body: SafeArea(
@@ -27,7 +29,7 @@ class ProfilePage extends StatelessWidget {
               children: [
                 const ArrowBackButton(),
                 Text(
-                  'Profile',
+                  l10n.profile,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(width: 32),
@@ -43,22 +45,22 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   SectionListTile(
                     leadingIcon: Icons.edit,
-                    title: 'Edit profile',
+                    title: l10n.editProfile,
                     onTap: () {},
                   ),
                   SectionListTile(
                     leadingIcon: Icons.route,
-                    title: 'My routes',
+                    title: l10n.myRoutes,
                     onTap: () {},
                   ),
                   SectionListTile(
                     leadingIcon: Icons.settings,
-                    title: 'Settings',
+                    title: l10n.settings,
                     onTap: () => router.push(const SettingsRoute()),
                   ),
                   SectionListTile(
                     leadingIcon: Icons.logout,
-                    title: 'Logout',
+                    title: l10n.logout,
                     isLogOut: true,
                     onTap: () {
                       UiHelper.showModalSheet(

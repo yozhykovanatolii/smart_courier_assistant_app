@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
+    "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "An account already exists for that email.",
@@ -77,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "An unknown authorization exception occurred.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "myRoutes": MessageLookupByLibrary.simpleMessage("My routes"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Network error. Try again.",
     ),
@@ -101,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Enter a valid phone number.",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown register exception occurred.",

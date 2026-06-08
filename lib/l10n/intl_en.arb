@@ -51,5 +51,8 @@
   "logout": "Logout",
   "cancel": "Cancel",
   "yesLogout": "Yes, Logout",
-  "areYouSureYouWantToLogOut": "Are you sure you want to log out?"
+  "areYouSureYouWantToLogOut": "Are you sure you want to log out?",
+  "profile": "Profile",
+  "editProfile": "Edit profile",
+  "myRoutes": "My routes"
 }
