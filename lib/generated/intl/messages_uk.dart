@@ -26,6 +26,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Обліковий запис існує з іншими обліковими даними.",
         ),
+    "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to log out?",
+    ),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Увійти через Google",
     ),
@@ -72,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка авторизації.",
     ),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Помилка мережі. Спробуйте ще раз.",
     ),
@@ -130,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "Забагато запитів. Спробуйте пізніше.",
     ),
+    "unknown": MessageLookupByLibrary.simpleMessage("Невідомий"),
     "userDisabled": MessageLookupByLibrary.simpleMessage(
       "Користувач вимкнений.",
     ),
@@ -139,5 +145,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "Пароль неправильний, спробуйте ще раз.",
     ),
+    "yesLogout": MessageLookupByLibrary.simpleMessage("Yes, Logout"),
   };
 }

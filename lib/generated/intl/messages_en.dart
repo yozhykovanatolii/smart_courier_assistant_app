@@ -26,6 +26,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Account exists with different credentials.",
         ),
+    "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to log out?",
+    ),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Continue with Google",
     ),
@@ -72,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown authorization exception occurred.",
     ),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Network error. Try again.",
     ),
@@ -130,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "Too many requests. Please try again later.",
     ),
+    "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "userDisabled": MessageLookupByLibrary.simpleMessage("User are disabled."),
     "weakPassword": MessageLookupByLibrary.simpleMessage(
       "Please enter a stronger password.",
@@ -137,5 +143,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "Password is wrong, try again.",
     ),
+    "yesLogout": MessageLookupByLibrary.simpleMessage("Yes, Logout"),
   };
 }

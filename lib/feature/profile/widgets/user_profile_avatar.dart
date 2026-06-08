@@ -1,4 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_state.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class UserProfileAvatar extends StatelessWidget {
@@ -6,6 +9,9 @@ class UserProfileAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<AppBloc>().state;
+    final user = state is AppAuthenticatedState ? state.user : null;
+
     return Container(
       width: 80,
       height: 80,
@@ -15,10 +21,11 @@ class UserProfileAvatar extends StatelessWidget {
           color: AppColors.grey500,
         ),
         shape: BoxShape.circle,
-        image: const DecorationImage(
+        image: DecorationImage(
           fit: BoxFit.cover,
           image: NetworkImage(
-            'https://fojohxjzxvieoakjyzwz.supabase.co/storage/v1/object/public/images/users/default_avatar.jpg',
+            user?.avatar ??
+                'https://fojohxjzxvieoakjyzwz.supabase.co/storage/v1/object/public/images/users/default_avatar.jpg',
           ),
         ),
       ),

@@ -44,4 +44,6 @@ class AuthRepository {
       phoneNumber: phoneNumber,
     );
   }
+
+  Future<void> logOut() async => _userAuth.signOut();
 }

@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/feature/profile/widgets/widgets.dart';
+import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
+import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 
 @RoutePage()
@@ -9,6 +11,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final router = context.router;
+
     return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.symmetric(
@@ -38,7 +42,7 @@ class ProfilePage extends StatelessWidget {
               child: ListView(
                 children: [
                   SectionListTile(
-                    leadingIcon: Icons.person,
+                    leadingIcon: Icons.edit,
                     title: 'Edit profile',
                     onTap: () {},
                   ),
@@ -50,13 +54,18 @@ class ProfilePage extends StatelessWidget {
                   SectionListTile(
                     leadingIcon: Icons.settings,
                     title: 'Settings',
-                    onTap: () {},
+                    onTap: () => router.push(const SettingsRoute()),
                   ),
                   SectionListTile(
                     leadingIcon: Icons.logout,
                     title: 'Logout',
                     isLogOut: true,
-                    onTap: () {},
+                    onTap: () {
+                      UiHelper.showModalSheet(
+                        context,
+                        const LogoutModalSheet(),
+                      );
+                    },
                   ),
                 ],
               ),

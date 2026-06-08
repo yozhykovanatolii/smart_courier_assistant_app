@@ -75,4 +75,8 @@ class UserAuth {
       throw ResetPasswordException();
     }
   }
+
+  Future<void> signOut() async => _firebaseAuth.signOut();
+
+  Stream<User?> get user => _firebaseAuth.authStateChanges();
 }

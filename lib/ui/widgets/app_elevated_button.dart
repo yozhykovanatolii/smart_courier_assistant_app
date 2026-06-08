@@ -7,7 +7,7 @@ class AppElevatedButton extends StatelessWidget {
     required this.child,
     required this.padding,
     required this.backgroundColor,
-    required this.boxShadows,
+    this.boxShadows,
     this.border,
   });
 

@@ -46,5 +46,10 @@
   "darkMode": "Темна тема",
   "language": "Мова",
   "languages": "Languages",
-  "selectLanguage": "Select the language that is most convenient for you to use the application in."
+  "selectLanguage": "Select the language that is most convenient for you to use the application in.",
+  "unknown": "Невідомий",
+  "logout": "Logout",
+  "cancel": "Cancel",
+  "yesLogout": "Yes, Logout",
+  "areYouSureYouWantToLogOut": "Are you sure you want to log out?"
 }

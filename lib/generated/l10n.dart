@@ -478,6 +478,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message('Unknown', name: 'unknown', desc: '', args: []);
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Yes, Logout`
+  String get yesLogout {
+    return Intl.message('Yes, Logout', name: 'yesLogout', desc: '', args: []);
+  }
+
+  /// `Are you sure you want to log out?`
+  String get areYouSureYouWantToLogOut {
+    return Intl.message(
+      'Are you sure you want to log out?',
+      name: 'areYouSureYouWantToLogOut',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
