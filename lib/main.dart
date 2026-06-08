@@ -18,7 +18,7 @@ Future<void> main() async {
   Dependencies.setupDependencies();
   runApp(
     BlocProvider(
-      create: (_) => GetIt.I<SettingsCubit>(),
+      create: (_) => GetIt.I<SettingsCubit>()..fetchSettings(),
       child: const SmartCourierAssistantApp(),
     ),
   );
