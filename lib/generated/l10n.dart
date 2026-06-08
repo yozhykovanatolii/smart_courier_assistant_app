@@ -528,6 +528,11 @@ class S {
   String get myRoutes {
     return Intl.message('My routes', name: 'myRoutes', desc: '', args: []);
   }
+
+  /// `Save`
+  String get save {
+    return Intl.message('Save', name: 'save', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

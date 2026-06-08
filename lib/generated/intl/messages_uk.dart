@@ -118,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка скидання пароля.",
     ),
+    "save": MessageLookupByLibrary.simpleMessage("Зберегти"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
       "Виберіть мову, якою вам найзручніше користуватися застосунком.",
     ),

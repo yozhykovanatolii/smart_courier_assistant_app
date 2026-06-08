@@ -118,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown reset password exception occurred.",
     ),
+    "save": MessageLookupByLibrary.simpleMessage("Save"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
       "Select the language that is most convenient for you to use the application in.",
     ),

@@ -46,7 +46,9 @@ class ProfilePage extends StatelessWidget {
                   SectionListTile(
                     leadingIcon: Icons.edit,
                     title: l10n.editProfile,
-                    onTap: () {},
+                    onTap: () {
+                      router.push(const EditProfileRoute());
+                    },
                   ),
                   SectionListTile(
                     leadingIcon: Icons.route,

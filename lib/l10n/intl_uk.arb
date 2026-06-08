@@ -54,5 +54,6 @@
   "areYouSureYouWantToLogOut": "Ви впевнені, що хочете вийти?",
   "profile": "Профіль",
   "editProfile": "Редагування профілю",
-  "myRoutes": "Мої маршрути"
+  "myRoutes": "Мої маршрути",
+  "save": "Зберегти"
 }

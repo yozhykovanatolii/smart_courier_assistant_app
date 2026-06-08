@@ -54,5 +54,6 @@
   "areYouSureYouWantToLogOut": "Are you sure you want to log out?",
   "profile": "Profile",
   "editProfile": "Edit profile",
-  "myRoutes": "My routes"
+  "myRoutes": "My routes",
+  "save": "Save"
 }
