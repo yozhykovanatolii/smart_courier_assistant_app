@@ -4,7 +4,7 @@ import 'package:smart_courier_assistant_app/data/models/user_model.dart';
 class UserFirestore {
   final _firestore = FirebaseFirestore.instance;
 
-  Future<void> createUser(
+  Future<void> saveUser(
     String id, {
     String? fullName,
     String? phoneNumber,

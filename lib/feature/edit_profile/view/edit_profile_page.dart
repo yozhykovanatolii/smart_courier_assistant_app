@@ -1,5 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_state.dart';
+import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
@@ -7,6 +12,46 @@ import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 @RoutePage()
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => GetIt.I<EditProfileCubit>(),
+      child: const _EditProfileView(),
+    );
+  }
+}
+
+class _EditProfileView extends StatefulWidget {
+  const _EditProfileView();
+
+  @override
+  State<_EditProfileView> createState() => _EditProfileViewState();
+}
+
+class _EditProfileViewState extends State<_EditProfileView> {
+  final _fullNameController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final appState = context.read<AppBloc>().state;
+      if (appState is AppAuthenticatedState) {
+        context.read<EditProfileCubit>().fetchUserProfile(appState.user);
+        _fullNameController.text = appState.user.fullName;
+        _phoneNumberController.text = appState.user.phoneNumber;
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _fullNameController.dispose();
+    _phoneNumberController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +95,10 @@ class EditProfilePage extends StatelessWidget {
             const SliverToBoxAdapter(
               child: SizedBox(height: 5),
             ),
-            const SliverToBoxAdapter(
-              child: EditProfileFullNameTextField(),
+            SliverToBoxAdapter(
+              child: EditProfileFullNameTextField(
+                controller: _fullNameController,
+              ),
             ),
             const SliverToBoxAdapter(
               child: SizedBox(height: 25),
@@ -65,8 +112,10 @@ class EditProfilePage extends StatelessWidget {
             const SliverToBoxAdapter(
               child: SizedBox(height: 5),
             ),
-            const SliverToBoxAdapter(
-              child: EditProfilePhoneNumberTextField(),
+            SliverToBoxAdapter(
+              child: EditProfilePhoneNumberTextField(
+                controller: _phoneNumberController,
+              ),
             ),
             const SliverToBoxAdapter(
               child: SizedBox(height: 40),

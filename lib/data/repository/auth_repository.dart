@@ -15,7 +15,7 @@ class AuthRepository {
     final user = await _userAuth.signInWithGoogle();
     final isUserExist = await _userFirestore.isUserExist(user!.uid);
     if (!isUserExist) {
-      await _userFirestore.createUser(
+      await _userFirestore.saveUser(
         user.uid,
         fullName: user.displayName,
         phoneNumber: user.phoneNumber,
@@ -38,7 +38,7 @@ class AuthRepository {
       email,
       password,
     );
-    await _userFirestore.createUser(
+    await _userFirestore.saveUser(
       userId,
       fullName: fullName,
       phoneNumber: phoneNumber,

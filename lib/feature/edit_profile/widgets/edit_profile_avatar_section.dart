@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class EditProfileAvatarSection extends StatelessWidget {
@@ -26,12 +28,18 @@ class _EditProfileAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    final userAvatarUrl = context.select(
+      (EditProfileCubit bloc) => bloc.state.userAvatar,
+    );
+
+    return SizedBox(
       height: 100,
       width: 100,
       child: CircleAvatar(
         backgroundImage: NetworkImage(
-          'https://fojohxjzxvieoakjyzwz.supabase.co/storage/v1/object/public/images/users/default_avatar.jpg',
+          userAvatarUrl.isNotEmpty
+              ? userAvatarUrl
+              : 'https://fojohxjzxvieoakjyzwz.supabase.co/storage/v1/object/public/images/users/default_avatar.jpg',
         ),
       ),
     );
@@ -44,7 +52,9 @@ class _EditAvatarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton.filled(
-      onPressed: () {},
+      onPressed: () {
+        context.read<EditProfileCubit>().editUserAvatar();
+      },
       style: const ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(AppColors.blue600),
       ),

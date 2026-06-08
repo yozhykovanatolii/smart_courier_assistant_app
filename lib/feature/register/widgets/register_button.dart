@@ -29,9 +29,7 @@ class RegisterButton extends StatelessWidget {
       padding: isLoading
           ? const EdgeInsetsGeometry.symmetric(vertical: 10)
           : const EdgeInsetsGeometry.symmetric(vertical: 16),
-      backgroundColor: !isValid || isLoading
-          ? Colors.grey
-          : const Color(0xFF1D61E7),
+      backgroundColor: !isValid || isLoading ? Colors.grey : AppColors.blue600,
       boxShadows: !isValid || isLoading
           ? null
           : [

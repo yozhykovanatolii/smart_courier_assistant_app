@@ -4,6 +4,7 @@ import 'package:smart_courier_assistant_app/core/exceptions/login_exception.dart
 import 'package:smart_courier_assistant_app/core/exceptions/login_with_google_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/register_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/reset_password_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
 
 class UserAuth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -74,6 +75,12 @@ class UserAuth {
     } catch (_) {
       throw ResetPasswordException();
     }
+  }
+
+  String get userId {
+    final currentUser = _firebaseAuth.currentUser;
+    if (currentUser == null) throw UserNotFoundException();
+    return currentUser.uid;
   }
 
   Future<void> signOut() async => _firebaseAuth.signOut();

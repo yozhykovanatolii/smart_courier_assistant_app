@@ -16,4 +16,18 @@ class UserRepository {
       return userModel;
     });
   }
+
+  Future<void> updateUser(
+    String avatar,
+    String fullName,
+    String phoneNumber,
+  ) async {
+    final userId = _userAuth.userId;
+    await _userFirestore.saveUser(
+      userId,
+      avatarUrl: avatar,
+      fullName: fullName,
+      phoneNumber: phoneNumber,
+    );
+  }
 }
