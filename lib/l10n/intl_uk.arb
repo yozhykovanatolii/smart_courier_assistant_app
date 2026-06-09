@@ -59,5 +59,13 @@
   "storagePermissionDeny": "У доступі до галереї відмовлено",
   "photoWasNotSelected": "Фотографію не вибрано",
   "userNotFound": "Користувач не був знайдений",
-  "successUpdatingProfile": "Успішне оновлення профілю"
+  "successUpdatingProfile": "Успішне оновлення профілю",
+  "address": "Address",
+  "client": "Client",
+  "contactPhone": "Contact Phone",
+  "category": "Category",
+  "saveOrder": "Save order",
+  "parcel": "Parcel",
+  "food": "Food",
+  "docs": "Documentation"
 }

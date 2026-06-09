@@ -26,10 +26,14 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Account exists with different credentials.",
         ),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to log out?",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "category": MessageLookupByLibrary.simpleMessage("Category"),
+    "client": MessageLookupByLibrary.simpleMessage("Client"),
+    "contactPhone": MessageLookupByLibrary.simpleMessage("Contact Phone"),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Continue with Google",
     ),
@@ -37,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create an account to continue!",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "docs": MessageLookupByLibrary.simpleMessage("Documentation"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -57,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourEmailAndPasswordToLogIn": MessageLookupByLibrary.simpleMessage(
       "Enter your email and password to log in",
     ),
+    "food": MessageLookupByLibrary.simpleMessage("Food"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
     "fullNameEmpty": MessageLookupByLibrary.simpleMessage(
@@ -83,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Network error. Try again.",
     ),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
+    "parcel": MessageLookupByLibrary.simpleMessage("Parcel"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "The password must contain at least one special character",
@@ -122,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "An unknown reset password exception occurred.",
     ),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
+    "saveOrder": MessageLookupByLibrary.simpleMessage("Save order"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
       "Select the language that is most convenient for you to use the application in.",
     ),

@@ -59,5 +59,13 @@
   "storagePermissionDeny": "Gallery permission was denied",
   "photoWasNotSelected": "Photo was not selected",
   "userNotFound": "User was not found",
-  "successUpdatingProfile": "Success updating profile"
+  "successUpdatingProfile": "Success updating profile",
+  "address": "Address",
+  "client": "Client",
+  "contactPhone": "Contact Phone",
+  "category": "Category",
+  "saveOrder": "Save order",
+  "parcel": "Parcel",
+  "food": "Food",
+  "docs": "Documentation"
 }

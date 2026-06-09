@@ -26,10 +26,14 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Обліковий запис існує з іншими обліковими даними.",
         ),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Ви впевнені, що хочете вийти?",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "category": MessageLookupByLibrary.simpleMessage("Category"),
+    "client": MessageLookupByLibrary.simpleMessage("Client"),
+    "contactPhone": MessageLookupByLibrary.simpleMessage("Contact Phone"),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Увійти через Google",
     ),
@@ -37,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Створіть обліковий запис, щоб продовжити!",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Темна тема"),
+    "docs": MessageLookupByLibrary.simpleMessage("Documentation"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Немаєш облікового запису?",
     ),
@@ -57,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourEmailAndPasswordToLogIn": MessageLookupByLibrary.simpleMessage(
       "Введіть свою пошту та пароль для входу",
     ),
+    "food": MessageLookupByLibrary.simpleMessage("Food"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Забув Пароль?"),
     "fullName": MessageLookupByLibrary.simpleMessage("ПІБ"),
     "fullNameEmpty": MessageLookupByLibrary.simpleMessage(
@@ -83,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Помилка мережі. Спробуйте ще раз.",
     ),
     "or": MessageLookupByLibrary.simpleMessage("Або"),
+    "parcel": MessageLookupByLibrary.simpleMessage("Parcel"),
     "password": MessageLookupByLibrary.simpleMessage("Пароль"),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "Пароль повинен містити принаймні один спеціальний символ",
@@ -122,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Сталася невідома помилка скидання пароля.",
     ),
     "save": MessageLookupByLibrary.simpleMessage("Зберегти"),
+    "saveOrder": MessageLookupByLibrary.simpleMessage("Save order"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
       "Виберіть мову, якою вам найзручніше користуватися застосунком.",
     ),
