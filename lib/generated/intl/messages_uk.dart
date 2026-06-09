@@ -103,6 +103,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Введіть дійсний номер телефону.",
     ),
+    "photoWasNotSelected": MessageLookupByLibrary.simpleMessage(
+      "Фотографію не вибрано",
+    ),
     "profile": MessageLookupByLibrary.simpleMessage("Профіль"),
     "register": MessageLookupByLibrary.simpleMessage("Зареєструватися"),
     "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
@@ -127,6 +130,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Увійдіть до свого облікового запису",
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Зареєструватися"),
+    "storagePermissionDeny": MessageLookupByLibrary.simpleMessage(
+      "У доступі до галереї відмовлено",
+    ),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Успішна авторизація.",
     ),
@@ -136,12 +142,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "successRegistration": MessageLookupByLibrary.simpleMessage(
       "Успішна регістрація",
     ),
+    "successUpdatingProfile": MessageLookupByLibrary.simpleMessage(
+      "Успішне оновлення профілю",
+    ),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "Забагато запитів. Спробуйте пізніше.",
     ),
     "unknown": MessageLookupByLibrary.simpleMessage("Невідомий"),
     "userDisabled": MessageLookupByLibrary.simpleMessage(
       "Користувач вимкнений.",
+    ),
+    "userNotFound": MessageLookupByLibrary.simpleMessage(
+      "Користувач не був знайдений",
     ),
     "weakPassword": MessageLookupByLibrary.simpleMessage(
       "Будь ласка, введіть надійніший пароль.",

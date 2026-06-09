@@ -55,5 +55,9 @@
   "profile": "Профіль",
   "editProfile": "Редагування профілю",
   "myRoutes": "Мої маршрути",
-  "save": "Зберегти"
+  "save": "Зберегти",
+  "storagePermissionDeny": "У доступі до галереї відмовлено",
+  "photoWasNotSelected": "Фотографію не вибрано",
+  "userNotFound": "Користувач не був знайдений",
+  "successUpdatingProfile": "Успішне оновлення профілю"
 }

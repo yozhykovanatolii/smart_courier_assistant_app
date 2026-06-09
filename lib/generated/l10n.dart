@@ -533,6 +533,46 @@ class S {
   String get save {
     return Intl.message('Save', name: 'save', desc: '', args: []);
   }
+
+  /// `Gallery permission was denied`
+  String get storagePermissionDeny {
+    return Intl.message(
+      'Gallery permission was denied',
+      name: 'storagePermissionDeny',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Photo was not selected`
+  String get photoWasNotSelected {
+    return Intl.message(
+      'Photo was not selected',
+      name: 'photoWasNotSelected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User was not found`
+  String get userNotFound {
+    return Intl.message(
+      'User was not found',
+      name: 'userNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success updating profile`
+  String get successUpdatingProfile {
+    return Intl.message(
+      'Success updating profile',
+      name: 'successUpdatingProfile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

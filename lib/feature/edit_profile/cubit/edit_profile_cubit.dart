@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/permission_deny_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/photo_not_selected_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/data/models/user_model.dart';
 import 'package:smart_courier_assistant_app/data/repository/user_repository.dart';
@@ -12,7 +14,28 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
   EditProfileCubit(this._userRepository) : super(EditProfileState.initial());
 
-  Future<void> editUserAvatar() async {}
+  Future<void> editUserAvatar() async {
+    try {
+      final userAvatarUrl = await _userRepository.getUserImage();
+      emit(
+        state.copyWith(userAvatar: userAvatarUrl),
+      );
+    } on PermissionDenyException {
+      emit(
+        state.copyWith(
+          editProfileErrorType: EditProfileErrorType.storagePermissionDeny,
+          formStatus: FormzSubmissionStatus.failure,
+        ),
+      );
+    } on PhotoNotSelectedException {
+      emit(
+        state.copyWith(
+          editProfileErrorType: EditProfileErrorType.userPhotoNotSelected,
+          formStatus: FormzSubmissionStatus.failure,
+        ),
+      );
+    }
+  }
 
   void setProfileFullName(String fullName) {
     emit(
@@ -60,7 +83,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           clearEditProfileErrorType: true,
         ),
       );
-    } on UserNotFoundException catch (_) {
+    } on UserNotFoundException {
       emit(
         state.copyWith(
           formStatus: FormzSubmissionStatus.failure,

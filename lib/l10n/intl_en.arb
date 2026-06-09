@@ -55,5 +55,9 @@
   "profile": "Profile",
   "editProfile": "Edit profile",
   "myRoutes": "My routes",
-  "save": "Save"
+  "save": "Save",
+  "storagePermissionDeny": "Gallery permission was denied",
+  "photoWasNotSelected": "Photo was not selected",
+  "userNotFound": "User was not found",
+  "successUpdatingProfile": "Success updating profile"
 }

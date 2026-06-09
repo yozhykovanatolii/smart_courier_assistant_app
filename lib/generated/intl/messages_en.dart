@@ -103,6 +103,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Enter a valid phone number.",
     ),
+    "photoWasNotSelected": MessageLookupByLibrary.simpleMessage(
+      "Photo was not selected",
+    ),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
@@ -127,6 +130,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sign in to your Account",
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "storagePermissionDeny": MessageLookupByLibrary.simpleMessage(
+      "Gallery permission was denied",
+    ),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Success authorization.",
     ),
@@ -136,11 +142,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "successRegistration": MessageLookupByLibrary.simpleMessage(
       "Success registration",
     ),
+    "successUpdatingProfile": MessageLookupByLibrary.simpleMessage(
+      "Success updating profile",
+    ),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "Too many requests. Please try again later.",
     ),
     "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "userDisabled": MessageLookupByLibrary.simpleMessage("User are disabled."),
+    "userNotFound": MessageLookupByLibrary.simpleMessage("User was not found"),
     "weakPassword": MessageLookupByLibrary.simpleMessage(
       "Please enter a stronger password.",
     ),

@@ -1,9 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
-import 'package:smart_courier_assistant_app/data/datasource/firebase/firebase_auth/user_auth.dart';
-import 'package:smart_courier_assistant_app/data/datasource/firebase/firestore/user_firestore.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/user_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/local/settings_shared_preferences.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/settings_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/user_repository.dart';
@@ -27,13 +28,15 @@ class Dependencies {
       ..registerSingleton<UserFirestore>(UserFirestore())
       ..registerSingleton<SettingsSharedPreference>(
         SettingsSharedPreference(),
-      );
+      )
+      ..registerSingleton<SupabaseStorage>(SupabaseStorage());
   }
 
   static void _setupRepositories() {
     final userAuth = _getIt<UserAuth>();
     final userFirestore = _getIt<UserFirestore>();
     final settingsSharedPreference = _getIt<SettingsSharedPreference>();
+    final supabaseStorage = _getIt<SupabaseStorage>();
     _getIt
       ..registerFactory<AuthRepository>(
         () => AuthRepository(userAuth, userFirestore),
@@ -42,7 +45,7 @@ class Dependencies {
         () => SettingsRepository(settingsSharedPreference),
       )
       ..registerFactory<UserRepository>(
-        () => UserRepository(userAuth, userFirestore),
+        () => UserRepository(userAuth, userFirestore, supabaseStorage),
       );
   }
 
