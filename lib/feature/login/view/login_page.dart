@@ -9,6 +9,7 @@ import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_state.dart';
 import 'package:smart_courier_assistant_app/feature/login/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 
 @RoutePage()
@@ -59,6 +60,7 @@ class _LoginView extends StatelessWidget {
               context: context,
               message: l10n.successAuthorizationWithGoogle,
             );
+            context.router.replace(const HomeRoute());
           }
           if (loginStatus == FormzSubmissionStatus.failure) {
             final errorMessage = _mapLoginErrorStatusToString(
@@ -76,6 +78,7 @@ class _LoginView extends StatelessWidget {
               context: context,
               message: l10n.successAuthorization,
             );
+            context.router.replace(const HomeRoute());
           }
         },
         child: SafeArea(

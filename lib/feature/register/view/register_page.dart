@@ -8,6 +8,7 @@ import 'package:smart_courier_assistant_app/feature/register/cubit/register_cubi
 import 'package:smart_courier_assistant_app/feature/register/cubit/register_state.dart';
 import 'package:smart_courier_assistant_app/feature/register/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 
@@ -56,6 +57,7 @@ class _RegisterView extends StatelessWidget {
               context: context,
               message: S.of(context).successRegistration,
             );
+            context.router.replace(const HomeRoute());
           }
         },
         child: SafeArea(
