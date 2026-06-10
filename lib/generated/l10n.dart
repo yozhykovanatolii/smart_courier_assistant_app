@@ -638,6 +638,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Success saving order`
+  String get successSavingOrder {
+    return Intl.message(
+      'Success saving order',
+      name: 'successSavingOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location did not find by address`
+  String get locationNotFound {
+    return Intl.message(
+      'Location did not find by address',
+      name: 'locationNotFound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

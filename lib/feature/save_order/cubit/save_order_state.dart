@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:formz/formz.dart';
+
 import 'package:smart_courier_assistant_app/validation/address_validator.dart';
 import 'package:smart_courier_assistant_app/validation/full_name_validator.dart';
 import 'package:smart_courier_assistant_app/validation/phone_number_validator.dart';
@@ -9,6 +11,11 @@ enum SaveOrderCategory {
   docs,
 }
 
+enum SaveOrderErrorType {
+  userNotFound,
+  locationNotFound,
+}
+
 class SaveOrderState {
   final FullNameValidator clientFullNameValidator;
   final PhoneNumberValidator clientPhoneNumberValidator;
@@ -16,6 +23,7 @@ class SaveOrderState {
   final AddressValidator addressValidator;
   final DateTime deliveryBy;
   final FormzSubmissionStatus formStatus;
+  final SaveOrderErrorType? saveOrderErrorType;
 
   SaveOrderState({
     required this.clientFullNameValidator,
@@ -24,6 +32,7 @@ class SaveOrderState {
     required this.addressValidator,
     required this.deliveryBy,
     required this.formStatus,
+    this.saveOrderErrorType,
   });
 
   factory SaveOrderState.initial() {
@@ -50,6 +59,8 @@ class SaveOrderState {
     AddressValidator? addressValidator,
     DateTime? deliveryBy,
     FormzSubmissionStatus? formStatus,
+    SaveOrderErrorType? saveOrderErrorType,
+    bool clearSaveOrderErrorType = false,
   }) {
     return SaveOrderState(
       clientFullNameValidator:
@@ -60,6 +71,9 @@ class SaveOrderState {
       addressValidator: addressValidator ?? this.addressValidator,
       deliveryBy: deliveryBy ?? this.deliveryBy,
       formStatus: formStatus ?? this.formStatus,
+      saveOrderErrorType: clearSaveOrderErrorType
+          ? null
+          : saveOrderErrorType ?? this.saveOrderErrorType,
     );
   }
 }

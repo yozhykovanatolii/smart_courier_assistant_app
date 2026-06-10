@@ -85,6 +85,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "languages": MessageLookupByLibrary.simpleMessage("Languages"),
+    "locationNotFound": MessageLookupByLibrary.simpleMessage(
+      "Location did not find by address",
+    ),
     "logIn": MessageLookupByLibrary.simpleMessage("Log In"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown authorization exception occurred.",
@@ -155,6 +158,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "successRegistration": MessageLookupByLibrary.simpleMessage(
       "Success registration",
+    ),
+    "successSavingOrder": MessageLookupByLibrary.simpleMessage(
+      "Success saving order",
     ),
     "successUpdatingProfile": MessageLookupByLibrary.simpleMessage(
       "Success updating profile",

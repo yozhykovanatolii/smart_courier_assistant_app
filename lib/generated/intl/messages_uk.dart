@@ -85,6 +85,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "language": MessageLookupByLibrary.simpleMessage("Мова"),
     "languages": MessageLookupByLibrary.simpleMessage("Мови"),
+    "locationNotFound": MessageLookupByLibrary.simpleMessage(
+      "Місцезнаходження не знайдено за адресою",
+    ),
     "logIn": MessageLookupByLibrary.simpleMessage("Увійти"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка авторизації.",
@@ -155,6 +158,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "successRegistration": MessageLookupByLibrary.simpleMessage(
       "Успішна регістрація",
+    ),
+    "successSavingOrder": MessageLookupByLibrary.simpleMessage(
+      "Успішне збереження замовлення",
     ),
     "successUpdatingProfile": MessageLookupByLibrary.simpleMessage(
       "Успішне оновлення профілю",

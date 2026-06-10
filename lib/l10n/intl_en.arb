@@ -69,5 +69,7 @@
   "food": "Food",
   "docs": "Documentation",
   "addressEmpty": "Address must not be empty.",
-  "addressInvalidFormat": "Please enter the order address correctly."
+  "addressInvalidFormat": "Please enter the order address correctly.",
+  "successSavingOrder": "Success saving order",
+  "locationNotFound": "Location did not find by address"
 }

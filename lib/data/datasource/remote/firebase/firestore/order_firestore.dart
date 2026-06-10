@@ -1,0 +1,54 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+
+class OrderFirestore {
+  final _firestore = FirebaseFirestore.instance;
+
+  Future<void> saveOrder(
+    String routeId, {
+    String? clientFullName,
+    String? clientPhoneNumber,
+    String? address,
+    double? latitude,
+    double? longitude,
+    String? recommendation,
+    String? deliveryRisk,
+    DateTime? plannedEta,
+    DateTime? deliveryBy,
+    String? status,
+    int? orderIndex,
+  }) async {
+    OrderModel orderModel = OrderModel.initial();
+    orderModel = orderModel.copyWith(
+      clientFullName: clientFullName,
+      clientPhoneNumber: clientPhoneNumber,
+      address: address,
+      latitude: latitude,
+      longitude: longitude,
+      plannedEta: plannedEta,
+      deliveryBy: deliveryBy,
+      deliveryRisk: deliveryRisk,
+      recommendation: recommendation,
+      status: status,
+      orderIndex: orderIndex,
+    );
+    final docReference = _getOrderDocumentReference(orderModel.id, routeId);
+    await docReference.set(orderModel);
+  }
+
+  DocumentReference<OrderModel> _getOrderDocumentReference(
+    String id,
+    String routeId,
+  ) {
+    return _firestore
+        .collection('routes')
+        .doc(routeId)
+        .collection('orders')
+        .doc(id)
+        .withConverter(
+          fromFirestore: OrderModel.fromFirestore,
+          toFirestore: (OrderModel orderModel, options) =>
+              orderModel.toFirestore(),
+        );
+  }
+}

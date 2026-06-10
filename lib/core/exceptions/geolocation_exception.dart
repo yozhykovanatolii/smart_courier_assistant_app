@@ -1,0 +1,1 @@
+class GeolocationException implements Exception {}

@@ -1,12 +1,20 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/geolocation_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/data/repository/order_repository.dart';
+import 'package:smart_courier_assistant_app/data/repository/route_repository.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_state.dart';
 import 'package:smart_courier_assistant_app/validation/address_validator.dart';
 import 'package:smart_courier_assistant_app/validation/full_name_validator.dart';
 import 'package:smart_courier_assistant_app/validation/phone_number_validator.dart';
 
 class SaveOrderCubit extends Cubit<SaveOrderState> {
-  SaveOrderCubit() : super(SaveOrderState.initial());
+  final OrderRepository _orderRepository;
+  final RouteRepository _routeRepository;
+
+  SaveOrderCubit(this._orderRepository, this._routeRepository)
+    : super(SaveOrderState.initial());
 
   void setClientFullName(String clientFullName) {
     emit(
@@ -56,5 +64,30 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
 
   Future<void> saveOrder() async {
     emit(state.copyWith(formStatus: FormzSubmissionStatus.inProgress));
+    try {
+      final routeId = await _routeRepository.createRoute();
+      await _orderRepository.saveOrder(
+        routeId,
+        state.clientFullNameValidator.value,
+        state.clientPhoneNumberValidator.value,
+        state.addressValidator.value,
+        state.deliveryBy,
+      );
+      emit(state.copyWith(formStatus: FormzSubmissionStatus.success));
+    } on UserNotFoundException {
+      emit(
+        state.copyWith(
+          saveOrderErrorType: SaveOrderErrorType.userNotFound,
+          formStatus: FormzSubmissionStatus.success,
+        ),
+      );
+    } on GeolocationException {
+      emit(
+        state.copyWith(
+          saveOrderErrorType: SaveOrderErrorType.locationNotFound,
+          formStatus: FormzSubmissionStatus.failure,
+        ),
+      );
+    }
   }
 }
