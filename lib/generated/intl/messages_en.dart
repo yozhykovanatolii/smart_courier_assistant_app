@@ -27,6 +27,12 @@ class MessageLookup extends MessageLookupByLibrary {
           "Account exists with different credentials.",
         ),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "addressEmpty": MessageLookupByLibrary.simpleMessage(
+      "Address must not be empty.",
+    ),
+    "addressInvalidFormat": MessageLookupByLibrary.simpleMessage(
+      "Please enter the order address correctly.",
+    ),
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to log out?",
     ),

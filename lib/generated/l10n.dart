@@ -618,6 +618,26 @@ class S {
   String get docs {
     return Intl.message('Documentation', name: 'docs', desc: '', args: []);
   }
+
+  /// `Address must not be empty.`
+  String get addressEmpty {
+    return Intl.message(
+      'Address must not be empty.',
+      name: 'addressEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the order address correctly.`
+  String get addressInvalidFormat {
+    return Intl.message(
+      'Please enter the order address correctly.',
+      name: 'addressInvalidFormat',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

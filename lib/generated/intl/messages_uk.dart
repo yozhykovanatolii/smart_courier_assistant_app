@@ -27,6 +27,12 @@ class MessageLookup extends MessageLookupByLibrary {
           "Обліковий запис існує з іншими обліковими даними.",
         ),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "addressEmpty": MessageLookupByLibrary.simpleMessage(
+      "Адреса замовлення не повинна бути пустою.",
+    ),
+    "addressInvalidFormat": MessageLookupByLibrary.simpleMessage(
+      "Введіть корректно адресу замовлення.",
+    ),
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Ви впевнені, що хочете вийти?",
     ),

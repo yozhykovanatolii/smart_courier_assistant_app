@@ -67,5 +67,7 @@
   "saveOrder": "Save order",
   "parcel": "Parcel",
   "food": "Food",
-  "docs": "Documentation"
+  "docs": "Documentation",
+  "addressEmpty": "Адреса замовлення не повинна бути пустою.",
+  "addressInvalidFormat": "Введіть корректно адресу замовлення."
 }

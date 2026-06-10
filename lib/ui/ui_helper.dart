@@ -34,4 +34,15 @@ class UiHelper {
       builder: (_) => widget,
     );
   }
+
+  static Future<TimeOfDay> showTimePickerDialog({
+    required BuildContext context,
+    required TimeOfDay initialTime,
+  }) async {
+    final newSelectedTime = await showTimePicker(
+      context: context,
+      initialTime: initialTime,
+    );
+    return newSelectedTime ?? initialTime;
+  }
 }

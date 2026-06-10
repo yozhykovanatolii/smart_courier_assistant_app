@@ -67,5 +67,7 @@
   "saveOrder": "Save order",
   "parcel": "Parcel",
   "food": "Food",
-  "docs": "Documentation"
+  "docs": "Documentation",
+  "addressEmpty": "Address must not be empty.",
+  "addressInvalidFormat": "Please enter the order address correctly."
 }
