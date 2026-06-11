@@ -8,6 +8,7 @@ import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/fire
 import 'package:smart_courier_assistant_app/data/datasource/local/settings_shared_preferences.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository.dart';
+import 'package:smart_courier_assistant_app/data/repository/geolocation_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/order_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/route_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/settings_repository.dart';
@@ -62,7 +63,8 @@ class Dependencies {
       )
       ..registerFactory<OrderRepository>(
         () => OrderRepository(orderFirestore, userAuth, routeFirestore),
-      );
+      )
+      ..registerFactory<GeolocationRepository>(() => GeolocationRepository());
   }
 
   static void _setupBloc() {
@@ -71,6 +73,7 @@ class Dependencies {
     final settingsRepository = _getIt<SettingsRepository>();
     final orderRepository = _getIt<OrderRepository>();
     final routeRepository = _getIt<RouteRepository>();
+    final geolocationRepository = _getIt<GeolocationRepository>();
     _getIt
       ..registerFactory<LoginCubit>(
         () => LoginCubit(authRepository),
@@ -94,7 +97,7 @@ class Dependencies {
         () => SaveOrderCubit(orderRepository, routeRepository),
       )
       ..registerFactory<HomeCubit>(
-        () => HomeCubit(orderRepository, userRepository),
+        () => HomeCubit(orderRepository, userRepository, geolocationRepository),
       );
   }
 }

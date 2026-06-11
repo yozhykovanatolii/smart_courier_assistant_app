@@ -3,7 +3,7 @@ import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 
 class ErrorOrdersSection extends StatelessWidget {
-  final HomeErrorType? errorType;
+  final OrderErrorType? errorType;
 
   const ErrorOrdersSection({
     super.key,
@@ -37,19 +37,21 @@ class ErrorOrdersSection extends StatelessWidget {
 
   String _mapHomeErrorTypeToMessage(
     BuildContext context,
-    HomeErrorType? errorType,
+    OrderErrorType? errorType,
   ) {
     final l10n = S.of(context);
 
     if (errorType == null) return '';
 
     switch (errorType) {
-      case HomeErrorType.routeNotFound:
-        return l10n.invalidEmail;
-      case HomeErrorType.ordersNotFound:
-        return l10n.userDisabled;
-      case HomeErrorType.unknown:
-        return l10n.wrongPassword;
+      case OrderErrorType.userNotFound:
+        return l10n.userNotFound;
+      case OrderErrorType.routeNotFound:
+        return l10n.routeNotFound;
+      case OrderErrorType.ordersNotFound:
+        return l10n.ordersNotFound;
+      case OrderErrorType.unknown:
+        return l10n.somethingWentWrong;
     }
   }
 }

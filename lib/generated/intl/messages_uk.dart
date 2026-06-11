@@ -26,7 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Обліковий запис існує з іншими обліковими даними.",
         ),
-    "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "address": MessageLookupByLibrary.simpleMessage("Адреса"),
     "addressEmpty": MessageLookupByLibrary.simpleMessage(
       "Адреса замовлення не повинна бути пустою.",
     ),
@@ -36,12 +36,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Ви впевнені, що хочете вийти?",
     ),
-    "call": MessageLookupByLibrary.simpleMessage("📞 Call"),
+    "call": MessageLookupByLibrary.simpleMessage("📞 Виклик"),
+    "callUnavailable": MessageLookupByLibrary.simpleMessage(
+      "Виклик недоступний. Спробуйте ще раз.",
+    ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-    "category": MessageLookupByLibrary.simpleMessage("Category"),
-    "chat": MessageLookupByLibrary.simpleMessage("💬 Chat"),
-    "client": MessageLookupByLibrary.simpleMessage("Client"),
-    "contactPhone": MessageLookupByLibrary.simpleMessage("Contact Phone"),
+    "category": MessageLookupByLibrary.simpleMessage("Категорії"),
+    "chat": MessageLookupByLibrary.simpleMessage("💬 Чат"),
+    "client": MessageLookupByLibrary.simpleMessage("Клієнт"),
+    "contactPhone": MessageLookupByLibrary.simpleMessage("Номер телефону"),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Увійти через Google",
     ),
@@ -49,8 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Створіть обліковий запис, щоб продовжити!",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Темна тема"),
-    "docs": MessageLookupByLibrary.simpleMessage("Documentation"),
-    "done": MessageLookupByLibrary.simpleMessage("✅ Done"),
+    "docs": MessageLookupByLibrary.simpleMessage("Документ"),
+    "done": MessageLookupByLibrary.simpleMessage("✅ Зроблено"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Немаєш облікового запису?",
     ),
@@ -71,7 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourEmailAndPasswordToLogIn": MessageLookupByLibrary.simpleMessage(
       "Введіть свою пошту та пароль для входу",
     ),
-    "food": MessageLookupByLibrary.simpleMessage("Food"),
+    "food": MessageLookupByLibrary.simpleMessage("Їжа"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Забув Пароль?"),
     "fullName": MessageLookupByLibrary.simpleMessage("ПІБ"),
     "fullNameEmpty": MessageLookupByLibrary.simpleMessage(
@@ -91,19 +94,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "locationNotFound": MessageLookupByLibrary.simpleMessage(
       "Місцезнаходження не знайдено за адресою",
     ),
+    "locationPermissionDenied": MessageLookupByLibrary.simpleMessage(
+      "Дозволи на доступ до геоданих відхилено",
+    ),
+    "locationServiceDisabled": MessageLookupByLibrary.simpleMessage(
+      "Служби визначення місцезнаходження вимкнено.",
+    ),
     "logIn": MessageLookupByLibrary.simpleMessage("Увійти"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка авторизації.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Вихід з аккаунту"),
+    "messageUnavailable": MessageLookupByLibrary.simpleMessage(
+      "Повідомлення недоступне. Спробуйте ще раз.",
+    ),
     "myRoutes": MessageLookupByLibrary.simpleMessage("Мої маршрути"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Помилка мережі. Спробуйте ще раз.",
     ),
-    "optimizeRoute": MessageLookupByLibrary.simpleMessage("Optimize route"),
+    "optimizeRoute": MessageLookupByLibrary.simpleMessage("Оптимізувати"),
     "or": MessageLookupByLibrary.simpleMessage("Або"),
-    "orders": MessageLookupByLibrary.simpleMessage("Orders"),
-    "parcel": MessageLookupByLibrary.simpleMessage("Parcel"),
+    "orders": MessageLookupByLibrary.simpleMessage("Замовлення"),
+    "ordersNotFound": MessageLookupByLibrary.simpleMessage(
+      "Замовлення не знайдено",
+    ),
+    "parcel": MessageLookupByLibrary.simpleMessage("Посилка"),
     "password": MessageLookupByLibrary.simpleMessage("Пароль"),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
       "Пароль повинен містити принаймні один спеціальний символ",
@@ -142,8 +157,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка скидання пароля.",
     ),
+    "routeNotFound": MessageLookupByLibrary.simpleMessage(
+      "Маршрут не знайдено",
+    ),
     "save": MessageLookupByLibrary.simpleMessage("Зберегти"),
-    "saveOrder": MessageLookupByLibrary.simpleMessage("Save order"),
+    "saveOrder": MessageLookupByLibrary.simpleMessage("Зберегти замовлення"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
       "Виберіть мову, якою вам найзручніше користуватися застосунком.",
     ),
@@ -152,6 +170,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Увійдіть до свого облікового запису",
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Зареєструватися"),
+    "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
+      "Щось пішло не так",
+    ),
     "storagePermissionDeny": MessageLookupByLibrary.simpleMessage(
       "У доступі до галереї відмовлено",
     ),

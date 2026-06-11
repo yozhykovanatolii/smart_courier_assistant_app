@@ -76,5 +76,13 @@
   "optimizeRoute": "Optimize route",
   "call": "📞 Call",
   "chat": "💬 Chat",
-  "done": "✅ Done"
+  "done": "✅ Done",
+  "somethingWentWrong": "Something went wrong",
+  "ordersNotFound": "Orders weren\\'t found",
+  "routeWasNotFound": "Route was not found",
+  "routeNotFound": "Route was not found",
+  "locationServiceDisabled": "Location services are disabled.",
+  "locationPermissionDenied": "Location permissions are denied",
+  "messageUnavailable": "Message is unavailable. Try again.",
+  "callUnavailable": "Call is unavailable. Try again."
 }

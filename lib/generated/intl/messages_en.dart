@@ -37,6 +37,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to log out?",
     ),
     "call": MessageLookupByLibrary.simpleMessage("📞 Call"),
+    "callUnavailable": MessageLookupByLibrary.simpleMessage(
+      "Call is unavailable. Try again.",
+    ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "category": MessageLookupByLibrary.simpleMessage("Category"),
     "chat": MessageLookupByLibrary.simpleMessage("💬 Chat"),
@@ -91,11 +94,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "locationNotFound": MessageLookupByLibrary.simpleMessage(
       "Location did not find by address",
     ),
+    "locationPermissionDenied": MessageLookupByLibrary.simpleMessage(
+      "Location permissions are denied",
+    ),
+    "locationServiceDisabled": MessageLookupByLibrary.simpleMessage(
+      "Location services are disabled.",
+    ),
     "logIn": MessageLookupByLibrary.simpleMessage("Log In"),
     "loginErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown authorization exception occurred.",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "messageUnavailable": MessageLookupByLibrary.simpleMessage(
+      "Message is unavailable. Try again.",
+    ),
     "myRoutes": MessageLookupByLibrary.simpleMessage("My routes"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Network error. Try again.",
@@ -103,6 +115,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "optimizeRoute": MessageLookupByLibrary.simpleMessage("Optimize route"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
+    "ordersNotFound": MessageLookupByLibrary.simpleMessage(
+      "Orders weren\\\'t found",
+    ),
     "parcel": MessageLookupByLibrary.simpleMessage("Parcel"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
@@ -142,6 +157,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown reset password exception occurred.",
     ),
+    "routeNotFound": MessageLookupByLibrary.simpleMessage(
+      "Route was not found",
+    ),
+    "routeWasNotFound": MessageLookupByLibrary.simpleMessage(
+      "Route was not found",
+    ),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "saveOrder": MessageLookupByLibrary.simpleMessage("Save order"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
@@ -152,6 +173,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sign in to your Account",
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong",
+    ),
     "storagePermissionDeny": MessageLookupByLibrary.simpleMessage(
       "Gallery permission was denied",
     ),

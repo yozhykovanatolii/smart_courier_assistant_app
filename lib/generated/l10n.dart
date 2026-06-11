@@ -688,6 +688,86 @@ class S {
   String get done {
     return Intl.message('✅ Done', name: 'done', desc: '', args: []);
   }
+
+  /// `Something went wrong`
+  String get somethingWentWrong {
+    return Intl.message(
+      'Something went wrong',
+      name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Orders weren\'t found`
+  String get ordersNotFound {
+    return Intl.message(
+      'Orders weren\\\'t found',
+      name: 'ordersNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Route was not found`
+  String get routeWasNotFound {
+    return Intl.message(
+      'Route was not found',
+      name: 'routeWasNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Route was not found`
+  String get routeNotFound {
+    return Intl.message(
+      'Route was not found',
+      name: 'routeNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location services are disabled.`
+  String get locationServiceDisabled {
+    return Intl.message(
+      'Location services are disabled.',
+      name: 'locationServiceDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permissions are denied`
+  String get locationPermissionDenied {
+    return Intl.message(
+      'Location permissions are denied',
+      name: 'locationPermissionDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message is unavailable. Try again.`
+  String get messageUnavailable {
+    return Intl.message(
+      'Message is unavailable. Try again.',
+      name: 'messageUnavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call is unavailable. Try again.`
+  String get callUnavailable {
+    return Intl.message(
+      'Call is unavailable. Try again.',
+      name: 'callUnavailable',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

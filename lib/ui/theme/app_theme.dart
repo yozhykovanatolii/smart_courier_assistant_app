@@ -9,6 +9,10 @@ class AppTheme {
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.white,
       inputDecorationTheme: AppTextFieldStyles.inputDecorationTheme,
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.blue,
+      ),
       textTheme: TextTheme(
         titleMedium: AppTextStyles.titleMedium,
         displaySmall: AppTextStyles.displaySmall,
@@ -25,6 +29,10 @@ class AppTheme {
       brightness: Brightness.dark,
       scaffoldBackgroundColor: Colors.black,
       inputDecorationTheme: AppTextFieldStyles.inputDecorationTheme,
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.blue,
+      ),
       textTheme: TextTheme(
         titleMedium: AppTextStyles.titleMedium,
         displaySmall: AppTextStyles.displaySmall,
