@@ -94,7 +94,7 @@ class Dependencies {
         () => SaveOrderCubit(orderRepository, routeRepository),
       )
       ..registerFactory<HomeCubit>(
-        () => HomeCubit(orderRepository),
+        () => HomeCubit(orderRepository, userRepository),
       );
   }
 }

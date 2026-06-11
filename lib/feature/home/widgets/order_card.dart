@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
 
@@ -139,14 +141,22 @@ class _OrderCardContent extends StatelessWidget {
                     child: _OrderActionButton(
                       text: S.of(context).call,
                       backgroundColor: Colors.blue,
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<HomeCubit>().openCallDialer(
+                          order.clientPhoneNumber,
+                        );
+                      },
                     ),
                   ),
                   Expanded(
                     child: _OrderActionButton(
                       text: S.of(context).chat,
                       backgroundColor: Colors.orange,
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<HomeCubit>().openUserMessanger(
+                          order.clientPhoneNumber,
+                        );
+                      },
                     ),
                   ),
                 ],

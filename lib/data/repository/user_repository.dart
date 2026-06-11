@@ -3,6 +3,7 @@ import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/fire
 import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
 import 'package:smart_courier_assistant_app/data/models/user_model.dart';
 import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
+import 'package:smart_courier_assistant_app/data/service/native_service.dart';
 
 class UserRepository {
   final UserAuth _userAuth;
@@ -45,5 +46,13 @@ class UserRepository {
       'users',
     );
     return userImageUrl;
+  }
+
+  Future<void> callUserDialer(String userPhoneNumber) async {
+    await NativeService.openExtrenal('openDialer', userPhoneNumber);
+  }
+
+  Future<void> messageUser(String userPhoneNumber) async {
+    await NativeService.openExtrenal('openWhatsAppChat', userPhoneNumber);
   }
 }
