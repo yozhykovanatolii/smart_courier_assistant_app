@@ -1,0 +1,1 @@
+class OrdersNotFoundException implements Exception {}

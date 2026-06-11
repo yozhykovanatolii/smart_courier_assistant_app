@@ -71,5 +71,10 @@
   "addressEmpty": "Адреса замовлення не повинна бути пустою.",
   "addressInvalidFormat": "Введіть корректно адресу замовлення.",
   "successSavingOrder": "Успішне збереження замовлення",
-  "locationNotFound": "Місцезнаходження не знайдено за адресою"
+  "locationNotFound": "Місцезнаходження не знайдено за адресою",
+  "orders": "Orders",
+  "optimizeRoute": "Optimize route",
+  "call": "📞 Call",
+  "chat": "💬 Chat",
+  "done": "✅ Done"
 }

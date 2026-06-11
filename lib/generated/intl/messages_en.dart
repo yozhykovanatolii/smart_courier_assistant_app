@@ -36,8 +36,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to log out?",
     ),
+    "call": MessageLookupByLibrary.simpleMessage("📞 Call"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "category": MessageLookupByLibrary.simpleMessage("Category"),
+    "chat": MessageLookupByLibrary.simpleMessage("💬 Chat"),
     "client": MessageLookupByLibrary.simpleMessage("Client"),
     "contactPhone": MessageLookupByLibrary.simpleMessage("Contact Phone"),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
@@ -48,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "docs": MessageLookupByLibrary.simpleMessage("Documentation"),
+    "done": MessageLookupByLibrary.simpleMessage("✅ Done"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -97,7 +100,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Network error. Try again.",
     ),
+    "optimizeRoute": MessageLookupByLibrary.simpleMessage("Optimize route"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
+    "orders": MessageLookupByLibrary.simpleMessage("Orders"),
     "parcel": MessageLookupByLibrary.simpleMessage("Parcel"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordContainsSpecialCharacter": MessageLookupByLibrary.simpleMessage(
