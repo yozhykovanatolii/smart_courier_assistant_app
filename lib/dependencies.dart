@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_gpt_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_direction_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
@@ -42,7 +43,8 @@ class Dependencies {
       )
       ..registerSingleton<SupabaseStorage>(SupabaseStorage())
       ..registerSingleton<RouteOptimizeClient>(RouteOptimizeClient())
-      ..registerSingleton<RouteDirectionClient>(RouteDirectionClient());
+      ..registerSingleton<RouteDirectionClient>(RouteDirectionClient())
+      ..registerSingleton<RecommendationGptClient>(RecommendationGptClient());
   }
 
   static void _setupRepositories() {
@@ -54,6 +56,7 @@ class Dependencies {
     final supabaseStorage = _getIt<SupabaseStorage>();
     final routeOptimizeClient = _getIt<RouteOptimizeClient>();
     final routeDirectionClient = _getIt<RouteDirectionClient>();
+    final recommendationGptClient = _getIt<RecommendationGptClient>();
     _getIt
       ..registerFactory<AuthRepository>(
         () => AuthRepository(userAuth, userFirestore),
@@ -65,7 +68,12 @@ class Dependencies {
         () => UserRepository(userAuth, userFirestore, supabaseStorage),
       )
       ..registerFactory<RouteRepository>(
-        () => RouteRepository(routeFirestore, userAuth, routeDirectionClient),
+        () => RouteRepository(
+          routeFirestore,
+          userAuth,
+          routeDirectionClient,
+          recommendationGptClient,
+        ),
       )
       ..registerFactory<OrderRepository>(
         () => OrderRepository(

@@ -27,6 +27,7 @@ class HomeState {
   final List<LatLng> routePoints;
   final HomeStatus orderStatus;
   final HomeStatus routeOptimizationStatus;
+  final String routeRecommendation;
   final OrderErrorType? errorType;
   final UserActionError? userActionError;
   final OptimizationErrorType? optimizationErrorType;
@@ -38,6 +39,7 @@ class HomeState {
     required this.routePoints,
     required this.orderStatus,
     required this.routeOptimizationStatus,
+    required this.routeRecommendation,
     this.errorType,
     this.userActionError,
     this.optimizationErrorType,
@@ -49,6 +51,7 @@ class HomeState {
     return HomeState(
       orders: [],
       routePoints: [],
+      routeRecommendation: '',
       orderStatus: HomeStatus.initial,
       routeOptimizationStatus: HomeStatus.initial,
       latitude: 50.4501,
@@ -61,6 +64,7 @@ class HomeState {
     List<LatLng>? routePoints,
     HomeStatus? orderStatus,
     HomeStatus? routeOptimizationStatus,
+    String? routeRecommendation,
     OrderErrorType? errorType,
     UserActionError? userActionError,
     OptimizationErrorType? optimizationErrorType,
@@ -73,6 +77,7 @@ class HomeState {
       orderStatus: orderStatus ?? this.orderStatus,
       routeOptimizationStatus:
           routeOptimizationStatus ?? this.routeOptimizationStatus,
+      routeRecommendation: routeRecommendation ?? this.routeRecommendation,
       errorType: errorType ?? this.errorType,
       userActionError: userActionError ?? this.userActionError,
       optimizationErrorType:

@@ -23,7 +23,7 @@ class MarkerFactory {
 
     final borderPaint = Paint()
       ..color = Colors.white
-      ..strokeWidth = 6
+      ..strokeWidth = 4
       ..style = PaintingStyle.stroke
       ..isAntiAlias = true;
 

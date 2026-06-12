@@ -5,6 +5,7 @@ import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/error_orders_section.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/header_sheet_section.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/order_card.dart';
+import 'package:smart_courier_assistant_app/feature/home/widgets/recommendation_route_section.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
 
@@ -59,6 +60,8 @@ class OrdersDraggableSheet extends StatelessWidget {
                               ),
                             ),
                           ),
+                          const SizedBox(height: 15),
+                          const RecommendationRouteSection(),
                           const SizedBox(height: 15),
                           const HeaderSheetSection(),
                           const SizedBox(height: 15),

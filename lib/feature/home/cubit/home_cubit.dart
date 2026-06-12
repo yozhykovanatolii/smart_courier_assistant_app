@@ -28,10 +28,13 @@ class HomeCubit extends Cubit<HomeState> {
     emit(state.copyWith(orderStatus: HomeStatus.loading));
     try {
       final activeOrders = await _orderRepository.getAllCourierActiveOrders();
+      final routeRecommendation = await _routeRepository
+          .getCurrentRouteRecommendation();
       emit(
         state.copyWith(
           orderStatus: HomeStatus.success,
           orders: activeOrders,
+          routeRecommendation: routeRecommendation,
         ),
       );
     } on UserNotFoundException {
@@ -124,6 +127,10 @@ class HomeCubit extends Cubit<HomeState> {
         state.latitude,
         state.longitude,
       );
+      final recommendation = await _routeRepository.getRouteRecommendationByAI(
+        updatedOrders,
+      );
+      print('Recommendation: $recommendation');
       final routePoints = await _routeRepository.buildRoutePolyline(
         updatedOrders,
         state.latitude,
@@ -133,6 +140,7 @@ class HomeCubit extends Cubit<HomeState> {
         state.copyWith(
           orders: updatedOrders,
           routePoints: routePoints,
+          routeRecommendation: recommendation,
           routeOptimizationStatus: HomeStatus.success,
         ),
       );

@@ -46,6 +46,14 @@ class RouteFirestore {
     return querySnapshot.docs.first.data();
   }
 
+  Future<void> saveRouteRecommendation(
+    String recommendation,
+    String routeId,
+  ) async {
+    final docReference = _getRouteDocumentReference(routeId);
+    await docReference.update({'recommendation': recommendation});
+  }
+
   CollectionReference<RouteModel> _getRouteCollectionReference() {
     return _firestore
         .collection('routes')
