@@ -1,11 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/geolocation_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/optimization_route_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/orders_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/route_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/data/repository/geolocation_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/order_repository.dart';
+import 'package:smart_courier_assistant_app/data/repository/route_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/user_repository.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
 
@@ -13,11 +15,13 @@ class HomeCubit extends Cubit<HomeState> {
   final OrderRepository _orderRepository;
   final UserRepository _userRepository;
   final GeolocationRepository _geolocationRepository;
+  final RouteRepository _routeRepository;
 
   HomeCubit(
     this._orderRepository,
     this._userRepository,
     this._geolocationRepository,
+    this._routeRepository,
   ) : super(HomeState.initial());
 
   Future<void> fetchOrders() async {
@@ -105,6 +109,46 @@ class HomeCubit extends Cubit<HomeState> {
       emit(
         state.copyWith(
           userActionError: UserActionError.locationServiceDisabled,
+        ),
+      );
+    }
+  }
+
+  Future<void> optimizeOrdersRoute() async {
+    emit(
+      state.copyWith(routeOptimizationStatus: HomeStatus.loading),
+    );
+    try {
+      final updatedOrders = await _orderRepository.optimizeOrdersRoute(
+        state.orders,
+        state.latitude,
+        state.longitude,
+      );
+      final routePoints = await _routeRepository.buildRoutePolyline(
+        updatedOrders,
+        state.latitude,
+        state.longitude,
+      );
+      emit(
+        state.copyWith(
+          orders: updatedOrders,
+          routePoints: routePoints,
+          routeOptimizationStatus: HomeStatus.success,
+        ),
+      );
+    } on OptimizationRouteException {
+      emit(
+        state.copyWith(
+          optimizationErrorType:
+              OptimizationErrorType.failedCalculateOptimalRoute,
+          routeOptimizationStatus: HomeStatus.failure,
+        ),
+      );
+    } on UserNotFoundException {
+      emit(
+        state.copyWith(
+          optimizationErrorType: OptimizationErrorType.userNotFound,
+          routeOptimizationStatus: HomeStatus.failure,
         ),
       );
     }

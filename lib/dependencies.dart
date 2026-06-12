@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_direction_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/order_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
@@ -38,7 +40,9 @@ class Dependencies {
       ..registerSingleton<SettingsSharedPreference>(
         SettingsSharedPreference(),
       )
-      ..registerSingleton<SupabaseStorage>(SupabaseStorage());
+      ..registerSingleton<SupabaseStorage>(SupabaseStorage())
+      ..registerSingleton<RouteOptimizeClient>(RouteOptimizeClient())
+      ..registerSingleton<RouteDirectionClient>(RouteDirectionClient());
   }
 
   static void _setupRepositories() {
@@ -48,6 +52,8 @@ class Dependencies {
     final userFirestore = _getIt<UserFirestore>();
     final settingsSharedPreference = _getIt<SettingsSharedPreference>();
     final supabaseStorage = _getIt<SupabaseStorage>();
+    final routeOptimizeClient = _getIt<RouteOptimizeClient>();
+    final routeDirectionClient = _getIt<RouteDirectionClient>();
     _getIt
       ..registerFactory<AuthRepository>(
         () => AuthRepository(userAuth, userFirestore),
@@ -59,10 +65,15 @@ class Dependencies {
         () => UserRepository(userAuth, userFirestore, supabaseStorage),
       )
       ..registerFactory<RouteRepository>(
-        () => RouteRepository(routeFirestore, userAuth),
+        () => RouteRepository(routeFirestore, userAuth, routeDirectionClient),
       )
       ..registerFactory<OrderRepository>(
-        () => OrderRepository(orderFirestore, userAuth, routeFirestore),
+        () => OrderRepository(
+          orderFirestore,
+          userAuth,
+          routeFirestore,
+          routeOptimizeClient,
+        ),
       )
       ..registerFactory<GeolocationRepository>(() => GeolocationRepository());
   }
@@ -97,7 +108,12 @@ class Dependencies {
         () => SaveOrderCubit(orderRepository, routeRepository),
       )
       ..registerFactory<HomeCubit>(
-        () => HomeCubit(orderRepository, userRepository, geolocationRepository),
+        () => HomeCubit(
+          orderRepository,
+          userRepository,
+          geolocationRepository,
+          routeRepository,
+        ),
       );
   }
 }

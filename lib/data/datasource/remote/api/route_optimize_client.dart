@@ -1,0 +1,50 @@
+import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
+import 'package:smart_courier_assistant_app/core/exceptions/optimization_route_exception.dart';
+import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+
+class RouteOptimizeClient {
+  static final _apiKey = dotenv.env['OPENROUTE_API_KEY'] ?? '';
+
+  Future<List<Map<String, dynamic>>> optimizeRoute(
+    List<OrderModel> orders,
+    double latitude,
+    double longitude,
+  ) async {
+    final jobs = _ordersToJobs(orders);
+    final startCoordinates = [longitude, latitude];
+    final response = await http.post(
+      Uri.parse('https://api.openrouteservice.org/optimization'),
+      headers: {
+        'Authorization': _apiKey,
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        "jobs": jobs,
+        "vehicles": [
+          {
+            "id": 1,
+            "start": startCoordinates,
+            "profile": "driving-car",
+          },
+        ],
+      }),
+    );
+    if (response.statusCode != 200) throw OptimizationRouteException();
+    final data = jsonDecode(response.body);
+    final steps = data['routes'][0]['steps'] as List<dynamic>;
+    return steps.cast<Map<String, dynamic>>();
+  }
+
+  List<Map<String, dynamic>> _ordersToJobs(List<OrderModel> orders) {
+    return orders
+        .map(
+          (order) => {
+            'id': order.id.hashCode,
+            'location': [order.longitude, order.latitude],
+          },
+        )
+        .toList();
+  }
+}

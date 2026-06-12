@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 
 class HeaderSheetSection extends StatelessWidget {
@@ -28,7 +30,9 @@ class _OptimizeRouteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.read<HomeCubit>().optimizeOrdersRoute();
+      },
       child: Row(
         spacing: 5,
         children: [

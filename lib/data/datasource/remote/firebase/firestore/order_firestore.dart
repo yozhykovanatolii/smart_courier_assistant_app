@@ -44,6 +44,18 @@ class OrderFirestore {
     return querySnapshot.docs.map((document) => document.data()).toList();
   }
 
+  Future<void> saveOrders(
+    List<OrderModel> orders,
+    String routeId,
+  ) async {
+    final collectionReference = _getOrderCollectionReference(routeId);
+    final batch = _firestore.batch();
+    for (final order in orders) {
+      batch.set(collectionReference.doc(order.id), order);
+    }
+    await batch.commit();
+  }
+
   CollectionReference<OrderModel> _getOrderCollectionReference(String routeId) {
     return _firestore
         .collection('routes')

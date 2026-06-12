@@ -1,0 +1,1 @@
+class OptimizationRouteException implements Exception {}

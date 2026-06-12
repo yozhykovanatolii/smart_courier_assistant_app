@@ -3,6 +3,17 @@ import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/snack_bar_body.dart';
 
 class UiHelper {
+  static void showConfirmDialog(
+    BuildContext context,
+    Widget widget,
+  ) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => widget,
+    );
+  }
+
   static void showSnackBar({
     required BuildContext context,
     required String message,

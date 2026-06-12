@@ -30,10 +30,30 @@ class _HomeView extends StatelessWidget {
     return Scaffold(
       body: BlocListener<HomeCubit, HomeState>(
         listenWhen: (previous, current) {
-          return previous.userActionError != current.userActionError;
+          return previous.userActionError != current.userActionError ||
+              previous.routeOptimizationStatus !=
+                  current.routeOptimizationStatus;
         },
         listener: (context, state) {
           final userActionError = state.userActionError;
+          final optimizationStatus = state.routeOptimizationStatus;
+          if (optimizationStatus == HomeStatus.loading) {
+            UiHelper.showConfirmDialog(
+              context,
+              const RouteOptimizationDialog(),
+            );
+          }
+          if (optimizationStatus == HomeStatus.success) {
+            context.router.maybePop(context);
+          }
+          if (optimizationStatus == HomeStatus.failure) {
+            UiHelper.showSnackBar(
+              context: context,
+              message: '',
+              isErrorSnackBar: true,
+            );
+            context.router.maybePop(context);
+          }
           if (userActionError != null) {
             final actionErrorMessage = _mapUserActionErrorToMessage(
               context,
