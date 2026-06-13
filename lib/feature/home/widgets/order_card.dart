@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
 
 class OrderCard extends StatelessWidget {
@@ -95,13 +96,17 @@ class _OrderCardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
+    final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
+    final bodyLarge = Theme.of(context).textTheme.bodyLarge;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _CardHeaderSection(order),
         Text(
           'ETA ${order.plannedEta.hour}:${order.plannedEta.minute.toString().padLeft(2, '0')} • ${order.deliveryRisk}',
-          style: const TextStyle(
+          style: bodyLarge?.copyWith(
             //color: Color(order.deliveryRisk),
             fontSize: 16,
             fontWeight: FontWeight.w600,
@@ -110,10 +115,9 @@ class _OrderCardContent extends StatelessWidget {
         const SizedBox(height: 5),
         Text(
           order.clientFullName,
-          style: const TextStyle(
-            color: Color(0xFF6E6E73),
+          style: bodyLarge?.copyWith(
+            color: AppColors.grey,
             fontSize: 15,
-            fontWeight: FontWeight.w500,
           ),
         ),
         const SizedBox(height: 10),
@@ -125,10 +129,8 @@ class _OrderCardContent extends StatelessWidget {
               : [
                   Expanded(
                     child: _OrderActionButton(
-                      text: S.of(context).done,
-                      backgroundColor: Theme.of(
-                        context,
-                      ).scaffoldBackgroundColor,
+                      text: l10n.done,
+                      backgroundColor: scaffoldBackgroundColor,
                       border: Border.all(
                         color: Colors.green,
                         width: 1.5,
@@ -139,7 +141,7 @@ class _OrderCardContent extends StatelessWidget {
                   ),
                   Expanded(
                     child: _OrderActionButton(
-                      text: S.of(context).call,
+                      text: l10n.call,
                       backgroundColor: Colors.blue,
                       onPressed: () {
                         context.read<HomeCubit>().openCallDialer(
@@ -150,7 +152,7 @@ class _OrderCardContent extends StatelessWidget {
                   ),
                   Expanded(
                     child: _OrderActionButton(
-                      text: S.of(context).chat,
+                      text: l10n.chat,
                       backgroundColor: Colors.orange,
                       onPressed: () {
                         context.read<HomeCubit>().openUserMessanger(

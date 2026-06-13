@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:smart_courier_assistant_app/generated/l10n.dart';
 
 class RouteOptimizationDialog extends StatelessWidget {
   const RouteOptimizationDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const AlertDialog(
+    final l10n = S.of(context);
+    final textTheme = Theme.of(context).textTheme;
+
+    return AlertDialog(
       content: SizedBox(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Optimize route',
-              style: TextStyle(
+              l10n.optimizeRoute,
+              style: textTheme.titleMedium?.copyWith(
                 fontSize: 25,
-                fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
-              'Route optimization in progress. Please wait a few minutes.',
+              l10n.routeOptimizationInProgress,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: textTheme.bodyLarge?.copyWith(
                 fontSize: 18,
-                fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(height: 30),
-            _OptimizationProgressIndicator(),
+            const SizedBox(height: 30),
+            const _OptimizationProgressIndicator(),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class RecommendationRouteSection extends StatelessWidget {
   const RecommendationRouteSection({super.key});
@@ -25,17 +26,16 @@ class RecommendationRouteSection extends StatelessWidget {
         children: [
           const Icon(
             Icons.auto_awesome_rounded,
-            color: Color(0xFF1976D2),
+            color: AppColors.blue600,
             size: 20,
           ),
           const SizedBox(width: 8),
           Flexible(
             child: Text(
               recommendation,
-              style: const TextStyle(
-                color: Color(0xFF0D47A1),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontSize: 13.5,
-                fontWeight: FontWeight.w600,
+                color: AppColors.blue600,
               ),
             ),
           ),

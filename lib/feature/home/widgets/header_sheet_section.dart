@@ -13,9 +13,8 @@ class HeaderSheetSection extends StatelessWidget {
       children: [
         Text(
           S.of(context).orders,
-          style: const TextStyle(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontSize: 24,
-            fontWeight: FontWeight.w600,
           ),
         ),
         const _OptimizeRouteButton(),
@@ -42,9 +41,8 @@ class _OptimizeRouteButton extends StatelessWidget {
           ),
           Text(
             S.of(context).optimizeRoute,
-            style: TextStyle(
-              fontSize: MediaQuery.textScalerOf(context).scale(17),
-              fontWeight: FontWeight.w600,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontSize: 17,
               color: Colors.blue,
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class ErrorOrdersSection extends StatelessWidget {
   final OrderErrorType? errorType;
@@ -19,15 +20,13 @@ class ErrorOrdersSection extends StatelessWidget {
           const Icon(
             Icons.inventory_2,
             size: 50,
-            color: Color(0xFF9CA3BF),
+            color: AppColors.grey600,
           ),
           Text(
             _mapHomeErrorTypeToMessage(context, errorType),
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontSize: 14,
-              color: Color(0xFF9CA3BF),
-              fontWeight: FontWeight.w500,
             ),
           ),
         ],

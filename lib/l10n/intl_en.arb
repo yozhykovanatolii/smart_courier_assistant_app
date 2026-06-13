@@ -84,5 +84,6 @@
   "locationServiceDisabled": "Location services are disabled.",
   "locationPermissionDenied": "Location permissions are denied",
   "messageUnavailable": "Message is unavailable. Try again.",
-  "callUnavailable": "Call is unavailable. Try again."
+  "callUnavailable": "Call is unavailable. Try again.",
+  "routeOptimizationInProgress": "Route optimization in progress. Please wait a few minutes."
 }

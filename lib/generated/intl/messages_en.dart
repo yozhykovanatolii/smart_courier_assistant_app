@@ -160,6 +160,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "routeNotFound": MessageLookupByLibrary.simpleMessage(
       "Route was not found",
     ),
+    "routeOptimizationInProgress": MessageLookupByLibrary.simpleMessage(
+      "Route optimization in progress. Please wait a few minutes.",
+    ),
     "routeWasNotFound": MessageLookupByLibrary.simpleMessage(
       "Route was not found",
     ),

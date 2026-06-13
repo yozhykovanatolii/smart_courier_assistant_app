@@ -768,6 +768,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Route optimization in progress. Please wait a few minutes.`
+  String get routeOptimizationInProgress {
+    return Intl.message(
+      'Route optimization in progress. Please wait a few minutes.',
+      name: 'routeOptimizationInProgress',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
