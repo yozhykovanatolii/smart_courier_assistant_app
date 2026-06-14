@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
 
@@ -81,7 +82,7 @@ class _DottedLine extends StatelessWidget {
         20,
         (_) => Container(
           width: 2,
-          height: 6,
+          height: 5,
           color: Colors.blue,
         ),
       ),
@@ -99,19 +100,22 @@ class _OrderCardContent extends StatelessWidget {
     final l10n = S.of(context);
     final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
     final bodyLarge = Theme.of(context).textTheme.bodyLarge;
+    final deliveryRiskColor = order.deliveryRisk.mapDeliveryRiskToColor();
+    final deliveryRiskText = order.deliveryRisk.mapDeliveryRiskToText(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _CardHeaderSection(order),
-        Text(
-          'ETA ${order.plannedEta.hour}:${order.plannedEta.minute.toString().padLeft(2, '0')} • ${order.deliveryRisk}',
-          style: bodyLarge?.copyWith(
-            //color: Color(order.deliveryRisk),
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+        if (deliveryRiskColor != null && deliveryRiskText != null)
+          Text(
+            'ETA ${order.plannedEta.hour}:${order.plannedEta.minute.toString().padLeft(2, '0')} • $deliveryRiskText',
+            style: bodyLarge?.copyWith(
+              color: deliveryRiskColor,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        ),
         const SizedBox(height: 5),
         Text(
           order.clientFullName,
@@ -136,7 +140,9 @@ class _OrderCardContent extends StatelessWidget {
                         width: 1.5,
                       ),
                       textColor: Colors.green,
-                      onPressed: () {},
+                      onPressed: order.deliveryRisk == DeliveryRisk.unknown
+                          ? null
+                          : () {},
                     ),
                   ),
                   Expanded(

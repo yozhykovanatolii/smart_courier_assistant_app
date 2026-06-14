@@ -36,12 +36,6 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
     );
   }
 
-  void setOrderCategory(SaveOrderCategory orderCategory) {
-    final currentOrderCategory = state.orderCategory;
-    if (currentOrderCategory == orderCategory) return;
-    emit(state.copyWith(orderCategory: orderCategory));
-  }
-
   void setOrderAddress(String address) {
     emit(
       state.copyWith(

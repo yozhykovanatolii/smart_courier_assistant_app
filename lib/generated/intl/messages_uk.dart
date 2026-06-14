@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Ви впевнені, що хочете вийти?",
     ),
+    "atRisk": MessageLookupByLibrary.simpleMessage("Під ризиком"),
     "call": MessageLookupByLibrary.simpleMessage("📞 Виклик"),
     "callUnavailable": MessageLookupByLibrary.simpleMessage(
       "Виклик недоступний. Спробуйте ще раз.",
@@ -52,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Створіть обліковий запис, щоб продовжити!",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Темна тема"),
+    "delayed": MessageLookupByLibrary.simpleMessage("Затримається"),
     "docs": MessageLookupByLibrary.simpleMessage("Документ"),
     "done": MessageLookupByLibrary.simpleMessage("✅ Зроблено"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
@@ -112,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Помилка мережі. Спробуйте ще раз.",
     ),
+    "onTime": MessageLookupByLibrary.simpleMessage("Вчасно"),
     "optimizeRoute": MessageLookupByLibrary.simpleMessage("Оптимізувати"),
     "or": MessageLookupByLibrary.simpleMessage("Або"),
     "orders": MessageLookupByLibrary.simpleMessage("Замовлення"),

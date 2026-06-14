@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to log out?",
     ),
+    "atRisk": MessageLookupByLibrary.simpleMessage("At risk"),
     "call": MessageLookupByLibrary.simpleMessage("📞 Call"),
     "callUnavailable": MessageLookupByLibrary.simpleMessage(
       "Call is unavailable. Try again.",
@@ -52,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create an account to continue!",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "delayed": MessageLookupByLibrary.simpleMessage("Delayed"),
     "docs": MessageLookupByLibrary.simpleMessage("Documentation"),
     "done": MessageLookupByLibrary.simpleMessage("✅ Done"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
@@ -112,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Network error. Try again.",
     ),
+    "onTime": MessageLookupByLibrary.simpleMessage("On time"),
     "optimizeRoute": MessageLookupByLibrary.simpleMessage("Optimize route"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),

@@ -10,6 +10,7 @@ class RouteOptimizationDialog extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return AlertDialog(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       content: SizedBox(
         child: Column(
           mainAxisSize: MainAxisSize.min,

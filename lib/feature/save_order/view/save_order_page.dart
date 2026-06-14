@@ -57,7 +57,7 @@ class _SaveOrderView extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        margin: const EdgeInsets.only(top: 75),
+        margin: const EdgeInsets.only(top: 170),
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: const BorderRadius.vertical(
@@ -109,13 +109,6 @@ class _SaveOrderView extends StatelessWidget {
                     const ClientPhoneNumberTextField(),
                     const SizedBox(height: 10),
                     const OrderDeliveryTimeSection(),
-                    const SizedBox(height: 10),
-                    Text(
-                      l10n.category,
-                      style: labelLargeStyle,
-                    ),
-                    const SizedBox(height: 5),
-                    const OrderCategoryListChoice(),
                   ],
                 ),
               ),

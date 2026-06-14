@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:smart_courier_assistant_app/data/models/api/route_point.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 
 class RouteDirectionClient {
   static final _apiKey = dotenv.env['OPENROUTE_API_KEY'] ?? '';
 
-  Future<List<LatLng>> getRoutePolyline(
+  Future<List<RoutePoint>> getRoutePolyline(
     List<OrderModel> orders,
     double latitude,
     double longitude,
@@ -34,9 +34,9 @@ class RouteDirectionClient {
         data['features'][0]['geometry']['coordinates'] as List<dynamic>;
     return geometry
         .map(
-          (point) => LatLng(
-            point[1] as double,
-            point[0] as double,
+          (point) => RoutePoint(
+            latitude: point[1] as double,
+            longitude: point[0] as double,
           ),
         )
         .toList();

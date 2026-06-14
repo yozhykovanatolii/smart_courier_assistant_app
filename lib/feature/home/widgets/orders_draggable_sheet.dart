@@ -28,61 +28,64 @@ class OrdersDraggableSheet extends StatelessWidget {
               top: Radius.circular(20),
             ),
           ),
-          child: BlocBuilder<HomeCubit, HomeState>(
-            builder: (context, state) {
-              final orderStatus = state.orderStatus;
-              if (orderStatus == HomeStatus.failure) {
-                return ErrorOrdersSection(
-                  errorType: state.errorType,
-                );
-              }
-              if (orderStatus == HomeStatus.success) {
-                final activeOrders = state.orders;
-                return ListView.builder(
-                  controller: scrollController,
-                  itemCount: activeOrders.length + 1,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 5,
-                    vertical: 20,
-                  ),
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            height: 3.5,
-                            width: 50,
-                            decoration: const BoxDecoration(
-                              color: AppColors.grey,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(100),
+          child: SafeArea(
+            top: false,
+            child: BlocBuilder<HomeCubit, HomeState>(
+              builder: (context, state) {
+                final orderStatus = state.orderStatus;
+                if (orderStatus == HomeStatus.failure) {
+                  return ErrorOrdersSection(
+                    errorType: state.errorType,
+                  );
+                }
+                if (orderStatus == HomeStatus.success) {
+                  final activeOrders = state.orders;
+                  return ListView.builder(
+                    controller: scrollController,
+                    itemCount: activeOrders.length + 1,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 5,
+                      vertical: 20,
+                    ),
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              height: 3.5,
+                              width: 50,
+                              decoration: const BoxDecoration(
+                                color: AppColors.grey,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(100),
+                                ),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 15),
-                          const RecommendationRouteSection(),
-                          const SizedBox(height: 15),
-                          const HeaderSheetSection(),
-                          const SizedBox(height: 15),
-                        ],
+                            const SizedBox(height: 15),
+                            const RecommendationRouteSection(),
+                            const SizedBox(height: 15),
+                            const HeaderSheetSection(),
+                            const SizedBox(height: 15),
+                          ],
+                        );
+                      }
+                      final order = activeOrders[index - 1];
+                      return OrderCard(
+                        index: index,
+                        order: order,
                       );
-                    }
-                    final order = activeOrders[index - 1];
-                    return OrderCard(
-                      index: index,
-                      order: order,
-                    );
-                  },
+                    },
+                  );
+                }
+                return const Center(
+                  child: AppProgressIndicator(
+                    scale: 1.08,
+                    color: Colors.blue,
+                  ),
                 );
-              }
-              return const Center(
-                child: AppProgressIndicator(
-                  scale: 1.08,
-                  color: Colors.blue,
-                ),
-              );
-            },
+              },
+            ),
           ),
         );
       },

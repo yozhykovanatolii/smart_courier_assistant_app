@@ -1,4 +1,4 @@
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:smart_courier_assistant_app/data/models/api/route_point.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 
 enum HomeStatus { initial, loading, success, failure }
@@ -24,7 +24,7 @@ enum OptimizationErrorType {
 
 class HomeState {
   final List<OrderModel> orders;
-  final List<LatLng> routePoints;
+  final List<RoutePoint> routePoints;
   final HomeStatus orderStatus;
   final HomeStatus routeOptimizationStatus;
   final String routeRecommendation;
@@ -61,7 +61,7 @@ class HomeState {
 
   HomeState copyWith({
     List<OrderModel>? orders,
-    List<LatLng>? routePoints,
+    List<RoutePoint>? routePoints,
     HomeStatus? orderStatus,
     HomeStatus? routeOptimizationStatus,
     String? routeRecommendation,

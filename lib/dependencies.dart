@@ -73,6 +73,7 @@ class Dependencies {
           userAuth,
           routeDirectionClient,
           recommendationGptClient,
+          settingsSharedPreference,
         ),
       )
       ..registerFactory<OrderRepository>(

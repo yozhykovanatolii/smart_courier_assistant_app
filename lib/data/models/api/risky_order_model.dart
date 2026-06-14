@@ -34,7 +34,7 @@ class RiskyOrderModel {
     return RiskyOrderModel(
       id: order.id,
       address: order.address,
-      status: order.deliveryRisk,
+      status: order.deliveryRisk.name,
       delayMinutes: order.deliveryBy.difference(order.plannedEta).inMinutes,
       positionInRoute: order.orderIndex,
     );

@@ -43,7 +43,6 @@ class OrderRepository {
     final courierId = _userAuth.userId;
     final routeModel = await _routeFirestore.getTodayRoute(courierId);
     _routeId = routeModel.routeId;
-    print('Success route: ${routeModel.routeId}');
     return await _orderFirestore.getAllUserOrders(
       routeModel.routeId,
     );
@@ -64,7 +63,6 @@ class OrderRepository {
       orders,
     );
     await _orderFirestore.saveOrders(updatedOrders, _routeId);
-    print('Маршрут $_routeId успешно оптимизирован и сохранён.');
     return updatedOrders;
   }
 }

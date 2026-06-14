@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:smart_courier_assistant_app/data/models/api/route_point.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
@@ -26,7 +27,8 @@ class _GoogleMapSectionState extends State<GoogleMapSection> {
       listenWhen: (previous, current) {
         return previous.latitude != current.longitude ||
             previous.longitude != current.longitude ||
-            previous.routePoints != current.routePoints;
+            previous.routePoints != current.routePoints ||
+            previous.orders != current.orders;
       },
       listener: (context, state) {
         _updateMap(state);
@@ -59,11 +61,13 @@ class _GoogleMapSectionState extends State<GoogleMapSection> {
     }
   }
 
-  Set<Polyline> _buildRoutePolyline(List<LatLng> points) {
+  Set<Polyline> _buildRoutePolyline(List<RoutePoint> points) {
     return {
       Polyline(
         polylineId: const PolylineId('route'),
-        points: points,
+        points: points
+            .map((point) => LatLng(point.latitude, point.longitude))
+            .toList(),
         width: 5,
         color: Colors.blue,
       ),
@@ -94,7 +98,7 @@ class _GoogleMapSectionState extends State<GoogleMapSection> {
     });
   }
 
-  void _moveCameraToBounds(List<LatLng> points) {
+  void _moveCameraToBounds(List<RoutePoint> points) {
     if (_controller == null || points.isEmpty) return;
 
     double minLat = points.first.latitude;

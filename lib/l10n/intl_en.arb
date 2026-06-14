@@ -85,5 +85,8 @@
   "locationPermissionDenied": "Location permissions are denied",
   "messageUnavailable": "Message is unavailable. Try again.",
   "callUnavailable": "Call is unavailable. Try again.",
-  "routeOptimizationInProgress": "Route optimization in progress. Please wait a few minutes."
+  "routeOptimizationInProgress": "Route optimization in progress. Please wait a few minutes.",
+  "atRisk": "At risk",
+  "onTime": "On time",
+  "delayed": "Delayed"
 }

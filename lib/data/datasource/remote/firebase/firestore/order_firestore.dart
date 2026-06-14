@@ -13,7 +13,7 @@ class OrderFirestore {
     double? latitude,
     double? longitude,
     String? recommendation,
-    String? deliveryRisk,
+    DeliveryRisk? deliveryRisk,
     DateTime? plannedEta,
     DateTime? deliveryBy,
     String? status,

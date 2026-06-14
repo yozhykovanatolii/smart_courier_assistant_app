@@ -778,6 +778,21 @@ class S {
       args: [],
     );
   }
+
+  /// `At risk`
+  String get atRisk {
+    return Intl.message('At risk', name: 'atRisk', desc: '', args: []);
+  }
+
+  /// `On time`
+  String get onTime {
+    return Intl.message('On time', name: 'onTime', desc: '', args: []);
+  }
+
+  /// `Delayed`
+  String get delayed {
+    return Intl.message('Delayed', name: 'delayed', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -95,7 +95,6 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getUserLocation() async {
     try {
       final location = await _geolocationRepository.getCurrentLocation();
-      print('${location.latitude}, ${location.longitude}');
       emit(
         state.copyWith(
           latitude: location.latitude,
@@ -130,7 +129,6 @@ class HomeCubit extends Cubit<HomeState> {
       final recommendation = await _routeRepository.getRouteRecommendationByAI(
         updatedOrders,
       );
-      print('Recommendation: $recommendation');
       final routePoints = await _routeRepository.buildRoutePolyline(
         updatedOrders,
         state.latitude,

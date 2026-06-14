@@ -34,13 +34,13 @@ class CalculationEtaUtil {
     return updatedOrders;
   }
 
-  static String _getDeliveryRiskByETA(DateTime eta, DateTime deliverBy) {
+  static DeliveryRisk _getDeliveryRiskByETA(DateTime eta, DateTime deliverBy) {
     final difference = deliverBy.difference(eta).inMinutes;
     if (difference >= 5) {
-      return 'On time';
+      return DeliveryRisk.onTime;
     } else if (difference >= 0) {
-      return 'At risk';
+      return DeliveryRisk.atRisk;
     }
-    return 'Delayed';
+    return DeliveryRisk.delayed;
   }
 }
