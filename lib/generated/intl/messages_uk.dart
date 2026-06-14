@@ -33,6 +33,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "addressInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Введіть корректно адресу замовлення.",
     ),
+    "areYouGoingToDeleteOrder": MessageLookupByLibrary.simpleMessage(
+      "You\'re going to delete an order. Are you sure?",
+    ),
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Ви впевнені, що хочете вийти?",
     ),
@@ -54,6 +57,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Темна тема"),
     "delayed": MessageLookupByLibrary.simpleMessage("Затримається"),
+    "deletingOrder": MessageLookupByLibrary.simpleMessage(
+      "Видалити замовлення",
+    ),
     "docs": MessageLookupByLibrary.simpleMessage("Документ"),
     "done": MessageLookupByLibrary.simpleMessage("✅ Зроблено"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
@@ -114,6 +120,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Помилка мережі. Спробуйте ще раз.",
     ),
+    "noCancelIt": MessageLookupByLibrary.simpleMessage("Ні, відмінити"),
+    "noKeepIt": MessageLookupByLibrary.simpleMessage("Ні, зберегти"),
     "onTime": MessageLookupByLibrary.simpleMessage("Вчасно"),
     "optimizeRoute": MessageLookupByLibrary.simpleMessage("Оптимізувати"),
     "or": MessageLookupByLibrary.simpleMessage("Або"),
@@ -213,6 +221,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "Пароль неправильний, спробуйте ще раз.",
     ),
+    "yesConfirmIt": MessageLookupByLibrary.simpleMessage("Так, підтвердити!"),
+    "yesDeleteIt": MessageLookupByLibrary.simpleMessage("Так, видалити!"),
     "yesLogout": MessageLookupByLibrary.simpleMessage("Так, вийти"),
   };
 }

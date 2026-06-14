@@ -793,6 +793,61 @@ class S {
   String get delayed {
     return Intl.message('Delayed', name: 'delayed', desc: '', args: []);
   }
+
+  /// `You're going to delete an order. Are you sure?`
+  String get areYouGoingToDeleteOrder {
+    return Intl.message(
+      'You\'re going to delete an order. Are you sure?',
+      name: 'areYouGoingToDeleteOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleting order`
+  String get deletingOrder {
+    return Intl.message(
+      'Deleting order',
+      name: 'deletingOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No, Keep It.`
+  String get noKeepIt {
+    return Intl.message('No, Keep It.', name: 'noKeepIt', desc: '', args: []);
+  }
+
+  /// `No, Cancel It.`
+  String get noCancelIt {
+    return Intl.message(
+      'No, Cancel It.',
+      name: 'noCancelIt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, Delete It!`
+  String get yesDeleteIt {
+    return Intl.message(
+      'Yes, Delete It!',
+      name: 'yesDeleteIt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, Confirm It!`
+  String get yesConfirmIt {
+    return Intl.message(
+      'Yes, Confirm It!',
+      name: 'yesConfirmIt',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

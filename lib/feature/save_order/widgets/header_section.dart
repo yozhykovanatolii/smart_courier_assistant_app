@@ -3,10 +3,11 @@ import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 
 class HeaderSection extends StatelessWidget {
-  final bool isEditing;
+  final Widget? iconDeleteOrderButton;
+
   const HeaderSection({
     super.key,
-    required this.isEditing,
+    this.iconDeleteOrderButton,
   });
 
   @override
@@ -19,16 +20,7 @@ class HeaderSection extends StatelessWidget {
           S.of(context).saveOrder,
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        isEditing
-            ? IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.delete,
-                  color: Colors.red,
-                  size: 25,
-                ),
-              )
-            : const SizedBox(width: 32),
+        iconDeleteOrderButton ?? const SizedBox(width: 32),
       ],
     );
   }

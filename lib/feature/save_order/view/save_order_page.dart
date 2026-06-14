@@ -82,7 +82,9 @@ class _SaveOrderView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const HeaderSection(isEditing: true),
+              const HeaderSection(
+                iconDeleteOrderButton: IconDeleteOrderButton(),
+              ),
               const SizedBox(height: 20),
               Expanded(
                 child: ListView(
@@ -134,6 +136,8 @@ class _SaveOrderView extends StatelessWidget {
         return l10n.userNotFound;
       case SaveOrderErrorType.locationNotFound:
         return l10n.locationNotFound;
+      case SaveOrderErrorType.routeNotFound:
+        return l10n.routeNotFound;
     }
   }
 }

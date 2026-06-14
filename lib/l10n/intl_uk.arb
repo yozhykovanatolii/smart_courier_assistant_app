@@ -87,5 +87,11 @@
   "routeOptimizationInProgress": "Триває оптимізація маршруту. Будь ласка, зачекайте кілька хвилин.",
   "atRisk": "Під ризиком",
   "onTime": "Вчасно",
-  "delayed": "Затримається"
+  "delayed": "Затримається",
+  "areYouGoingToDeleteOrder": "You're going to delete an order. Are you sure?",
+  "deletingOrder": "Видалити замовлення",
+  "noKeepIt": "Ні, зберегти",
+  "noCancelIt": "Ні, відмінити",
+  "yesDeleteIt": "Так, видалити!",
+  "yesConfirmIt": "Так, підтвердити!"
 }

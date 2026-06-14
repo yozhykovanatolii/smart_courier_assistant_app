@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/geolocation_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/route_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/data/repository/order_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/route_repository.dart';
@@ -54,6 +55,28 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
       minute: minute,
     );
     emit(state.copyWith(deliveryBy: currentDeliveryBy));
+  }
+
+  Future<void> deleteOrder(String orderId) async {
+    emit(state.copyWith(deletingStatus: FormzSubmissionStatus.inProgress));
+    try {
+      await _orderRepository.deleteOrder(orderId);
+      emit(state.copyWith(deletingStatus: FormzSubmissionStatus.success));
+    } on UserNotFoundException {
+      emit(
+        state.copyWith(
+          saveOrderErrorType: SaveOrderErrorType.userNotFound,
+          deletingStatus: FormzSubmissionStatus.success,
+        ),
+      );
+    } on RouteNotFoundException {
+      emit(
+        state.copyWith(
+          saveOrderErrorType: SaveOrderErrorType.routeNotFound,
+          deletingStatus: FormzSubmissionStatus.success,
+        ),
+      );
+    }
   }
 
   Future<void> saveOrder() async {

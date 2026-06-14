@@ -88,5 +88,11 @@
   "routeOptimizationInProgress": "Route optimization in progress. Please wait a few minutes.",
   "atRisk": "At risk",
   "onTime": "On time",
-  "delayed": "Delayed"
+  "delayed": "Delayed",
+  "areYouGoingToDeleteOrder": "You're going to delete an order. Are you sure?",
+  "deletingOrder": "Deleting order",
+  "noKeepIt": "No, Keep It.",
+  "noCancelIt": "No, Cancel It.",
+  "yesDeleteIt": "Yes, Delete It!",
+  "yesConfirmIt": "Yes, Confirm It!"
 }

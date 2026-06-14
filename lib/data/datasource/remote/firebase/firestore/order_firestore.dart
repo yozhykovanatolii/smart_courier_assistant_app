@@ -44,16 +44,18 @@ class OrderFirestore {
     return querySnapshot.docs.map((document) => document.data()).toList();
   }
 
-  Future<void> saveOrders(
-    List<OrderModel> orders,
-    String routeId,
-  ) async {
+  Future<void> saveOrders(List<OrderModel> orders, String routeId) async {
     final collectionReference = _getOrderCollectionReference(routeId);
     final batch = _firestore.batch();
     for (final order in orders) {
       batch.set(collectionReference.doc(order.id), order);
     }
     await batch.commit();
+  }
+
+  Future<void> deleteOrder(String orderId, String routeId) async {
+    final collectionReference = _getOrderCollectionReference(routeId);
+    await collectionReference.doc(orderId).delete();
   }
 
   CollectionReference<OrderModel> _getOrderCollectionReference(String routeId) {

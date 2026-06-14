@@ -48,6 +48,12 @@ class OrderRepository {
     );
   }
 
+  Future<void> deleteOrder(String orderId) async {
+    final courierId = _userAuth.userId;
+    final route = await _routeFirestore.getTodayRoute(courierId);
+    await _orderFirestore.deleteOrder(orderId, route.routeId);
+  }
+
   Future<List<OrderModel>> optimizeOrdersRoute(
     List<OrderModel> orders,
     double latitude,

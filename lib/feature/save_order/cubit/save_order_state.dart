@@ -1,6 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:formz/formz.dart';
-
 import 'package:smart_courier_assistant_app/validation/address_validator.dart';
 import 'package:smart_courier_assistant_app/validation/full_name_validator.dart';
 import 'package:smart_courier_assistant_app/validation/phone_number_validator.dart';
@@ -8,6 +6,7 @@ import 'package:smart_courier_assistant_app/validation/phone_number_validator.da
 enum SaveOrderErrorType {
   userNotFound,
   locationNotFound,
+  routeNotFound,
 }
 
 class SaveOrderState {
@@ -16,6 +15,7 @@ class SaveOrderState {
   final AddressValidator addressValidator;
   final DateTime deliveryBy;
   final FormzSubmissionStatus formStatus;
+  final FormzSubmissionStatus deletingStatus;
   final SaveOrderErrorType? saveOrderErrorType;
 
   SaveOrderState({
@@ -24,6 +24,7 @@ class SaveOrderState {
     required this.addressValidator,
     required this.deliveryBy,
     required this.formStatus,
+    required this.deletingStatus,
     this.saveOrderErrorType,
   });
 
@@ -34,6 +35,7 @@ class SaveOrderState {
       addressValidator: const AddressValidator.pure(),
       deliveryBy: DateTime.now(),
       formStatus: FormzSubmissionStatus.initial,
+      deletingStatus: FormzSubmissionStatus.initial,
     );
   }
 
@@ -49,8 +51,8 @@ class SaveOrderState {
     AddressValidator? addressValidator,
     DateTime? deliveryBy,
     FormzSubmissionStatus? formStatus,
+    FormzSubmissionStatus? deletingStatus,
     SaveOrderErrorType? saveOrderErrorType,
-    bool clearSaveOrderErrorType = false,
   }) {
     return SaveOrderState(
       clientFullNameValidator:
@@ -60,9 +62,8 @@ class SaveOrderState {
       addressValidator: addressValidator ?? this.addressValidator,
       deliveryBy: deliveryBy ?? this.deliveryBy,
       formStatus: formStatus ?? this.formStatus,
-      saveOrderErrorType: clearSaveOrderErrorType
-          ? null
-          : saveOrderErrorType ?? this.saveOrderErrorType,
+      deletingStatus: deletingStatus ?? this.deletingStatus,
+      saveOrderErrorType: saveOrderErrorType ?? this.saveOrderErrorType,
     );
   }
 }

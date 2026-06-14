@@ -33,6 +33,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "addressInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Please enter the order address correctly.",
     ),
+    "areYouGoingToDeleteOrder": MessageLookupByLibrary.simpleMessage(
+      "You\'re going to delete an order. Are you sure?",
+    ),
     "areYouSureYouWantToLogOut": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to log out?",
     ),
@@ -54,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "delayed": MessageLookupByLibrary.simpleMessage("Delayed"),
+    "deletingOrder": MessageLookupByLibrary.simpleMessage("Deleting order"),
     "docs": MessageLookupByLibrary.simpleMessage("Documentation"),
     "done": MessageLookupByLibrary.simpleMessage("✅ Done"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
@@ -114,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Network error. Try again.",
     ),
+    "noCancelIt": MessageLookupByLibrary.simpleMessage("No, Cancel It."),
+    "noKeepIt": MessageLookupByLibrary.simpleMessage("No, Keep It."),
     "onTime": MessageLookupByLibrary.simpleMessage("On time"),
     "optimizeRoute": MessageLookupByLibrary.simpleMessage("Optimize route"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
@@ -212,6 +218,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "Password is wrong, try again.",
     ),
+    "yesConfirmIt": MessageLookupByLibrary.simpleMessage("Yes, Confirm It!"),
+    "yesDeleteIt": MessageLookupByLibrary.simpleMessage("Yes, Delete It!"),
     "yesLogout": MessageLookupByLibrary.simpleMessage("Yes, Logout"),
   };
 }
