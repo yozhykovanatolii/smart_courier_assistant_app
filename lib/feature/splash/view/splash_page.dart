@@ -1,6 +1,9 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_state.dart';
 import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/theme/styles/app_text_styles.dart';
@@ -11,11 +14,19 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final state = context.select((AppBloc appBloc) => appBloc.state);
+    final router = context.router;
+
     return FlutterSplashScreen(
       useImmersiveMode: true,
       duration: const Duration(milliseconds: 2000),
       onEnd: () {
-        context.router.replace(const LoginRoute());
+        if (state is AppAuthenticatedState) {
+          router.replace(const HomeRoute());
+        }
+        if (state is AppUnauthenticatedState) {
+          router.replace(const LoginRoute());
+        }
       },
       splashScreenBody: Container(
         decoration: const BoxDecoration(
@@ -28,6 +39,7 @@ class SplashPage extends StatelessWidget {
             ],
           ),
         ),
+
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
