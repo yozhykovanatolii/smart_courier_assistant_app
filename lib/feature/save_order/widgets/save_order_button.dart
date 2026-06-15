@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_cubit.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
@@ -8,7 +9,12 @@ import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart'
 import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
 
 class SaveOrderButton extends StatelessWidget {
-  const SaveOrderButton({super.key});
+  final OrderModel? order;
+
+  const SaveOrderButton({
+    super.key,
+    this.order,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class SaveOrderButton extends StatelessWidget {
       onPressed: !isValid || isLoading
           ? null
           : () {
-              context.read<SaveOrderCubit>().saveOrder();
+              context.read<SaveOrderCubit>().saveOrder(order);
             },
       padding: isLoading
           ? const EdgeInsetsGeometry.symmetric(vertical: 10)

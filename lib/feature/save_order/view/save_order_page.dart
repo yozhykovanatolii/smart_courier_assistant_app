@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:get_it/get_it.dart';
+import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_state.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/widgets/widgets.dart';
@@ -11,19 +12,50 @@ import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 
 class SaveOrderPage extends StatelessWidget {
-  const SaveOrderPage({super.key});
+  final OrderModel? order;
+
+  const SaveOrderPage({
+    super.key,
+    this.order,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => GetIt.I<SaveOrderCubit>(),
-      child: const _SaveOrderView(),
+      child: _SaveOrderView(order),
     );
   }
 }
 
-class _SaveOrderView extends StatelessWidget {
-  const _SaveOrderView();
+class _SaveOrderView extends StatefulWidget {
+  final OrderModel? order;
+
+  const _SaveOrderView(this.order);
+
+  @override
+  State<_SaveOrderView> createState() => _SaveOrderViewState();
+}
+
+class _SaveOrderViewState extends State<_SaveOrderView> {
+  late final SaveOrderCubit _cubit;
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _clientFullNameController =
+      TextEditingController();
+  final TextEditingController _clientPhoneNumberController =
+      TextEditingController();
+
+  @override
+  void initState() {
+    _cubit = context.read<SaveOrderCubit>();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _cubit.editOrder(widget.order);
+      _addressController.text = widget.order?.address ?? '';
+      _clientFullNameController.text = widget.order?.clientFullName ?? '';
+      _clientPhoneNumberController.text = widget.order?.clientPhoneNumber ?? '';
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +64,15 @@ class _SaveOrderView extends StatelessWidget {
 
     return BlocListener<SaveOrderCubit, SaveOrderState>(
       listenWhen: (previous, current) {
-        return previous.formStatus != current.formStatus;
+        return previous.formStatus != current.formStatus ||
+            previous.deletingStatus != current.deletingStatus;
       },
       listener: (context, state) {
+        final l10n = S.of(context);
         final formStatus = state.formStatus;
-        if (formStatus == FormzSubmissionStatus.failure) {
+        final deletingStatus = state.deletingStatus;
+        if (formStatus == FormzSubmissionStatus.failure ||
+            deletingStatus == FormzSubmissionStatus.failure) {
           final errorMessage = _mapSaveOrderErrorStatusToString(
             context,
             state.saveOrderErrorType,
@@ -47,12 +83,20 @@ class _SaveOrderView extends StatelessWidget {
             isErrorSnackBar: true,
           );
         }
-        if (state.formStatus == FormzSubmissionStatus.success) {
+        if (formStatus == FormzSubmissionStatus.success ||
+            deletingStatus == FormzSubmissionStatus.success) {
+          final isDeletingStatusSuccess =
+              deletingStatus == FormzSubmissionStatus.success;
+          context.router.pop();
+          if (isDeletingStatusSuccess) {
+            context.router.pop();
+          }
           UiHelper.showSnackBar(
             context: context,
-            message: S.of(context).successSavingOrder,
+            message: isDeletingStatusSuccess
+                ? l10n.successDeletingOrder
+                : l10n.successSavingOrder,
           );
-          context.router.maybePop();
         }
       },
       child: Container(
@@ -82,8 +126,12 @@ class _SaveOrderView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const HeaderSection(
-                iconDeleteOrderButton: IconDeleteOrderButton(),
+              HeaderSection(
+                iconDeleteOrderButton: widget.order != null
+                    ? IconDeleteOrderButton(
+                        orderId: widget.order!.id,
+                      )
+                    : null,
               ),
               const SizedBox(height: 20),
               Expanded(
@@ -94,28 +142,36 @@ class _SaveOrderView extends StatelessWidget {
                       style: labelLargeStyle,
                     ),
                     const SizedBox(height: 5),
-                    const AddressTextField(),
+                    AddressTextField(
+                      addressController: _addressController,
+                    ),
                     const SizedBox(height: 20),
                     Text(
                       l10n.client,
                       style: labelLargeStyle,
                     ),
                     const SizedBox(height: 5),
-                    const ClientFullNameTextField(),
+                    ClientFullNameTextField(
+                      clientFullNameController: _clientFullNameController,
+                    ),
                     const SizedBox(height: 20),
                     Text(
                       l10n.contactPhone,
                       style: labelLargeStyle,
                     ),
                     const SizedBox(height: 5),
-                    const ClientPhoneNumberTextField(),
+                    ClientPhoneNumberTextField(
+                      clientPhoneNumberController: _clientPhoneNumberController,
+                    ),
                     const SizedBox(height: 10),
                     const OrderDeliveryTimeSection(),
                   ],
                 ),
               ),
               const SizedBox(height: 45),
-              const SaveOrderButton(),
+              SaveOrderButton(
+                order: widget.order,
+              ),
             ],
           ),
         ),

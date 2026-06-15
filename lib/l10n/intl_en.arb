@@ -78,7 +78,7 @@
   "chat": "💬 Chat",
   "done": "✅ Done",
   "somethingWentWrong": "Something went wrong",
-  "ordersNotFound": "Orders weren\\'t found",
+  "ordersNotFound": "Orders weren't found",
   "routeWasNotFound": "Route was not found",
   "routeNotFound": "Route was not found",
   "locationServiceDisabled": "Location services are disabled.",
@@ -94,5 +94,6 @@
   "noKeepIt": "No, Keep It.",
   "noCancelIt": "No, Cancel It.",
   "yesDeleteIt": "Yes, Delete It!",
-  "yesConfirmIt": "Yes, Confirm It!"
+  "yesConfirmIt": "Yes, Confirm It!",
+  "successDeletingOrder": "Success deleting order"
 }

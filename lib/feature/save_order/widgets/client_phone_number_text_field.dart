@@ -6,7 +6,12 @@ import 'package:smart_courier_assistant_app/ui/widgets/app_text_field.dart';
 import 'package:smart_courier_assistant_app/validation/phone_number_validator.dart';
 
 class ClientPhoneNumberTextField extends StatelessWidget {
-  const ClientPhoneNumberTextField({super.key});
+  final TextEditingController? clientPhoneNumberController;
+
+  const ClientPhoneNumberTextField({
+    super.key,
+    this.clientPhoneNumberController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +29,7 @@ class ClientPhoneNumberTextField extends StatelessWidget {
       spacing: 5,
       children: [
         AppTextField(
+          controller: clientPhoneNumberController,
           hintText: '+380991234567',
           onChanged: context.read<SaveOrderCubit>().setClientPhoneNumber,
           isValid: errorMessage == null,

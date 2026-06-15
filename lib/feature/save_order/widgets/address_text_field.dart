@@ -6,7 +6,12 @@ import 'package:smart_courier_assistant_app/ui/widgets/app_text_field.dart';
 import 'package:smart_courier_assistant_app/validation/address_validator.dart';
 
 class AddressTextField extends StatelessWidget {
-  const AddressTextField({super.key});
+  final TextEditingController? addressController;
+
+  const AddressTextField({
+    super.key,
+    this.addressController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +30,7 @@ class AddressTextField extends StatelessWidget {
       spacing: 5,
       children: [
         AppTextField(
+          controller: addressController,
           hintText: 'London, Baker Street 221B',
           onChanged: context.read<SaveOrderCubit>().setOrderAddress,
           isValid: errorMessage == null,

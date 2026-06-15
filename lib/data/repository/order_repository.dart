@@ -25,17 +25,24 @@ class OrderRepository {
     String clientFullName,
     String clientPhoneNumber,
     String address,
-    DateTime deliveryBy,
-  ) async {
+    DateTime deliveryBy, {
+    OrderModel? order,
+  }) async {
     final location = await GeolocationService.getLocationByAddress(address);
     await _orderFirestore.saveOrder(
       routeId,
+      orderId: order?.id,
       clientFullName: clientFullName,
       clientPhoneNumber: clientPhoneNumber,
       address: address,
       deliveryBy: deliveryBy,
       latitude: location.latitude,
       longitude: location.longitude,
+      recommendation: order?.recommendation,
+      deliveryRisk: order?.deliveryRisk,
+      plannedEta: order?.plannedEta,
+      status: order?.status,
+      orderIndex: order?.orderIndex,
     );
   }
 

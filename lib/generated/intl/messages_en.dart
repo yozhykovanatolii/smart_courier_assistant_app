@@ -125,7 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "or": MessageLookupByLibrary.simpleMessage("Or"),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
     "ordersNotFound": MessageLookupByLibrary.simpleMessage(
-      "Orders weren\\\'t found",
+      "Orders weren\'t found",
     ),
     "parcel": MessageLookupByLibrary.simpleMessage("Parcel"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -196,6 +196,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "successAuthorizationWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Success authorization with Google",
+    ),
+    "successDeletingOrder": MessageLookupByLibrary.simpleMessage(
+      "Success deleting order",
     ),
     "successRegistration": MessageLookupByLibrary.simpleMessage(
       "Success registration",

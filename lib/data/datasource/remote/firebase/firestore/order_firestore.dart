@@ -7,6 +7,7 @@ class OrderFirestore {
 
   Future<void> saveOrder(
     String routeId, {
+    String? orderId,
     String? clientFullName,
     String? clientPhoneNumber,
     String? address,
@@ -21,6 +22,7 @@ class OrderFirestore {
   }) async {
     OrderModel orderModel = OrderModel.initial();
     orderModel = orderModel.copyWith(
+      id: orderId,
       clientFullName: clientFullName,
       clientPhoneNumber: clientPhoneNumber,
       address: address,

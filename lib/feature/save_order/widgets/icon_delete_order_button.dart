@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_cubit.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/information_dialog_box.dart';
 
 class IconDeleteOrderButton extends StatelessWidget {
-  final String? orderId;
+  final String orderId;
 
   const IconDeleteOrderButton({
     super.key,
-    this.orderId,
+    required this.orderId,
   });
 
   @override
@@ -19,10 +21,15 @@ class IconDeleteOrderButton extends StatelessWidget {
       onPressed: () {
         UiHelper.showConfirmDialog(
           context,
-          InformationDialogBox(
-            title: l10n.deletingOrder,
-            description: l10n.areYouGoingToDeleteOrder,
-            onClickActionButton: () {},
+          BlocProvider.value(
+            value: context.read<SaveOrderCubit>(),
+            child: InformationDialogBox(
+              title: l10n.deletingOrder,
+              description: l10n.areYouGoingToDeleteOrder,
+              onClickActionButton: () {
+                context.read<SaveOrderCubit>().deleteOrder(orderId);
+              },
+            ),
           ),
         );
       },

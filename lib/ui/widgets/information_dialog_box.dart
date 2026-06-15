@@ -1,12 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
+import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_cubit.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
+import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
 
 class InformationDialogBox extends StatelessWidget {
   final String title;
   final String description;
-  final bool isDeleting;
   final Function()? onClickActionButton;
 
   const InformationDialogBox({
@@ -14,7 +17,6 @@ class InformationDialogBox extends StatelessWidget {
     required this.title,
     required this.description,
     required this.onClickActionButton,
-    this.isDeleting = true,
   });
 
   @override
@@ -27,10 +29,10 @@ class InformationDialogBox extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              isDeleting ? Icons.dangerous : Icons.check_circle,
+            const Icon(
+              Icons.dangerous,
               size: 65,
-              color: isDeleting ? Colors.red : Colors.green,
+              color: Colors.red,
             ),
             const SizedBox(height: 10),
             Text(
@@ -55,18 +57,23 @@ class InformationDialogBox extends StatelessWidget {
               children: [
                 Expanded(
                   child: _DialogActionButton(
-                    text: isDeleting ? l10n.noKeepIt : l10n.noCancelIt,
                     onPressed: () {
                       context.router.maybePop();
                     },
+                    child: Text(
+                      l10n.noKeepIt,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
                   child: _DialogActionButton(
-                    text: isDeleting ? l10n.yesDeleteIt : l10n.yesConfirmIt,
-                    textColor: Colors.white,
-                    color: isDeleting ? Colors.red : Colors.blue,
+                    color: Colors.red,
                     onPressed: onClickActionButton,
+                    child: const _DeleteOrderContent(),
                   ),
                 ),
               ],
@@ -79,33 +86,45 @@ class InformationDialogBox extends StatelessWidget {
 }
 
 class _DialogActionButton extends StatelessWidget {
-  final String text;
   final Color color;
-  final Color textColor;
+  final Widget child;
   final Function()? onPressed;
 
   const _DialogActionButton({
-    required this.text,
     required this.onPressed,
     this.color = Colors.grey,
-    this.textColor = Colors.black,
+    required this.child,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppElevatedButton(
       onPressed: onPressed,
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 9),
       backgroundColor: color,
-      child: Text(
-        text,
-        softWrap: false,
-        overflow: TextOverflow.fade,
-        style: TextStyle(
-          color: textColor,
-          fontSize: 15,
-        ),
-      ),
+      child: child,
     );
+  }
+}
+
+class _DeleteOrderContent extends StatelessWidget {
+  const _DeleteOrderContent();
+
+  @override
+  Widget build(BuildContext context) {
+    final isLoading = context.select<SaveOrderCubit, bool>(
+      (saveOrderCubit) =>
+          saveOrderCubit.state.deletingStatus ==
+          FormzSubmissionStatus.inProgress,
+    );
+    return isLoading
+        ? const AppProgressIndicator(scale: 0.6)
+        : Text(
+            S.of(context).yesDeleteIt,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 15,
+            ),
+          );
   }
 }

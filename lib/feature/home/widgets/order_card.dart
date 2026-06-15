@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
+import 'package:smart_courier_assistant_app/feature/save_order/view/save_order_page.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
+import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
 
 class OrderCard extends StatelessWidget {
@@ -197,7 +199,14 @@ class _CardHeaderSection extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: order.status == 'Delivered' ? null : () {},
+          onTap: order.status == 'Delivered'
+              ? null
+              : () {
+                  UiHelper.showModalSheet(
+                    context,
+                    SaveOrderPage(order: order),
+                  );
+                },
           child: Icon(
             Icons.keyboard_arrow_right,
             size: 30,

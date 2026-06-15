@@ -3,6 +3,7 @@ import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/geolocation_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/route_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/data/repository/order_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/route_repository.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_state.dart';
@@ -66,20 +67,37 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
       emit(
         state.copyWith(
           saveOrderErrorType: SaveOrderErrorType.userNotFound,
-          deletingStatus: FormzSubmissionStatus.success,
+          deletingStatus: FormzSubmissionStatus.failure,
         ),
       );
     } on RouteNotFoundException {
       emit(
         state.copyWith(
           saveOrderErrorType: SaveOrderErrorType.routeNotFound,
-          deletingStatus: FormzSubmissionStatus.success,
+          deletingStatus: FormzSubmissionStatus.failure,
         ),
       );
     }
   }
 
-  Future<void> saveOrder() async {
+  void editOrder(OrderModel? order) {
+    if (order != null) {
+      emit(
+        state.copyWith(
+          addressValidator: AddressValidator.dirty(address: order.address),
+          clientFullNameValidator: FullNameValidator.dirty(
+            fullName: order.clientFullName,
+          ),
+          clientPhoneNumberValidator: PhoneNumberValidator.dirty(
+            phoneNumber: order.clientPhoneNumber,
+          ),
+          deliveryBy: order.deliveryBy,
+        ),
+      );
+    }
+  }
+
+  Future<void> saveOrder(OrderModel? order) async {
     emit(state.copyWith(formStatus: FormzSubmissionStatus.inProgress));
     try {
       final routeId = await _routeRepository.createRoute();
@@ -89,6 +107,7 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
         state.clientPhoneNumberValidator.value,
         state.addressValidator.value,
         state.deliveryBy,
+        order: order,
       );
       emit(state.copyWith(formStatus: FormzSubmissionStatus.success));
     } on UserNotFoundException {

@@ -699,10 +699,10 @@ class S {
     );
   }
 
-  /// `Orders weren\'t found`
+  /// `Orders weren't found`
   String get ordersNotFound {
     return Intl.message(
-      'Orders weren\\\'t found',
+      'Orders weren\'t found',
       name: 'ordersNotFound',
       desc: '',
       args: [],
@@ -844,6 +844,16 @@ class S {
     return Intl.message(
       'Yes, Confirm It!',
       name: 'yesConfirmIt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success deleting order`
+  String get successDeletingOrder {
+    return Intl.message(
+      'Success deleting order',
+      name: 'successDeletingOrder',
       desc: '',
       args: [],
     );

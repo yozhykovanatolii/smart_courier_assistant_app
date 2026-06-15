@@ -93,5 +93,6 @@
   "noKeepIt": "Ні, зберегти",
   "noCancelIt": "Ні, відмінити",
   "yesDeleteIt": "Так, видалити!",
-  "yesConfirmIt": "Так, підтвердити!"
+  "yesConfirmIt": "Так, підтвердити!",
+  "successDeletingOrder": "Успішне видалення замовлення"
 }
