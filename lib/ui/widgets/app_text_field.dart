@@ -8,10 +8,16 @@ class AppTextField extends StatelessWidget {
     required this.onChanged,
     required this.isValid,
     this.controller,
+    this.padding,
+    this.maxLines = 1,
+    this.minLines = 1,
     this.obscureText = false,
   });
 
   final TextEditingController? controller;
+  final EdgeInsets? padding;
+  final int maxLines;
+  final int minLines;
   final String hintText;
   final ValueChanged<String>? onChanged;
   final bool isValid;
@@ -20,6 +26,7 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: padding,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
@@ -40,6 +47,8 @@ class AppTextField extends StatelessWidget {
         cursorColor: AppColors.blue,
         onChanged: onChanged,
         obscuringCharacter: '*',
+        maxLines: maxLines,
+        minLines: minLines,
         decoration: InputDecoration(hintText: hintText),
       ),
     );

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
-import 'package:smart_courier_assistant_app/feature/save_order/view/save_order_page.dart';
+import 'package:smart_courier_assistant_app/feature/proof_delivery/proof_delivery.dart';
+import 'package:smart_courier_assistant_app/feature/save_order/save_order.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
@@ -142,9 +143,12 @@ class _OrderCardContent extends StatelessWidget {
                         width: 1.5,
                       ),
                       textColor: Colors.green,
-                      onPressed: order.deliveryRisk == DeliveryRisk.unknown
-                          ? null
-                          : () {},
+                      onPressed: () {
+                        UiHelper.showModalSheet(
+                          context,
+                          ProofDeliveryPage(orderId: order.id),
+                        );
+                      },
                     ),
                   ),
                   Expanded(

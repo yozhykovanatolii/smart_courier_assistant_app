@@ -858,6 +858,41 @@ class S {
       args: [],
     );
   }
+
+  /// `Photo`
+  String get photo {
+    return Intl.message('Photo', name: 'photo', desc: '', args: []);
+  }
+
+  /// `Comment`
+  String get comment {
+    return Intl.message('Comment', name: 'comment', desc: '', args: []);
+  }
+
+  /// `Proof of delivery`
+  String get proofOfDelivery {
+    return Intl.message(
+      'Proof of delivery',
+      name: 'proofOfDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message('Confirm', name: 'confirm', desc: '', args: []);
+  }
+
+  /// `Enter comment...`
+  String get enterComment {
+    return Intl.message(
+      'Enter comment...',
+      name: 'enterComment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

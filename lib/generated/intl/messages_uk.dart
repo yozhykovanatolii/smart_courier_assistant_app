@@ -48,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "category": MessageLookupByLibrary.simpleMessage("Категорії"),
     "chat": MessageLookupByLibrary.simpleMessage("💬 Чат"),
     "client": MessageLookupByLibrary.simpleMessage("Клієнт"),
+    "comment": MessageLookupByLibrary.simpleMessage("Коментарій"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Підтвердити"),
     "contactPhone": MessageLookupByLibrary.simpleMessage("Номер телефону"),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Увійти через Google",
@@ -75,6 +77,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "Введена пошта має неправильний формат.",
+    ),
+    "enterComment": MessageLookupByLibrary.simpleMessage(
+      "Введіть коментарій...",
     ),
     "enterYourEmailAddress": MessageLookupByLibrary.simpleMessage(
       "Введіть свою пошту, і ми надішлемо вам посилання для скидання пароля",
@@ -150,10 +155,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Введіть дійсний номер телефону.",
     ),
+    "photo": MessageLookupByLibrary.simpleMessage("Фото замовлення"),
     "photoWasNotSelected": MessageLookupByLibrary.simpleMessage(
       "Фотографію не вибрано",
     ),
     "profile": MessageLookupByLibrary.simpleMessage("Профіль"),
+    "proofOfDelivery": MessageLookupByLibrary.simpleMessage("Докази доставки"),
     "register": MessageLookupByLibrary.simpleMessage("Зареєструватися"),
     "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка під час регістрації.",

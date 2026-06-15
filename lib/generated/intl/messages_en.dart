@@ -48,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "category": MessageLookupByLibrary.simpleMessage("Category"),
     "chat": MessageLookupByLibrary.simpleMessage("💬 Chat"),
     "client": MessageLookupByLibrary.simpleMessage("Client"),
+    "comment": MessageLookupByLibrary.simpleMessage("Comment"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "contactPhone": MessageLookupByLibrary.simpleMessage("Contact Phone"),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Continue with Google",
@@ -74,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "The email entered is in an incorrect format.",
     ),
+    "enterComment": MessageLookupByLibrary.simpleMessage("Enter comment..."),
     "enterYourEmailAddress": MessageLookupByLibrary.simpleMessage(
       "Enter your email address and we will send you a link to reset your password",
     ),
@@ -148,10 +151,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumberInvalidFormat": MessageLookupByLibrary.simpleMessage(
       "Enter a valid phone number.",
     ),
+    "photo": MessageLookupByLibrary.simpleMessage("Photo"),
     "photoWasNotSelected": MessageLookupByLibrary.simpleMessage(
       "Photo was not selected",
     ),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "proofOfDelivery": MessageLookupByLibrary.simpleMessage(
+      "Proof of delivery",
+    ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown register exception occurred.",

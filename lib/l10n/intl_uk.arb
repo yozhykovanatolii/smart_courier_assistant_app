@@ -94,5 +94,10 @@
   "noCancelIt": "Ні, відмінити",
   "yesDeleteIt": "Так, видалити!",
   "yesConfirmIt": "Так, підтвердити!",
-  "successDeletingOrder": "Успішне видалення замовлення"
+  "successDeletingOrder": "Успішне видалення замовлення",
+  "photo": "Фото замовлення",
+  "comment": "Коментарій",
+  "proofOfDelivery": "Докази доставки",
+  "confirm": "Підтвердити",
+  "enterComment": "Введіть коментарій..."
 }

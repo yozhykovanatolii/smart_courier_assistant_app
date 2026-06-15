@@ -95,5 +95,10 @@
   "noCancelIt": "No, Cancel It.",
   "yesDeleteIt": "Yes, Delete It!",
   "yesConfirmIt": "Yes, Confirm It!",
-  "successDeletingOrder": "Success deleting order"
+  "successDeletingOrder": "Success deleting order",
+  "photo": "Photo",
+  "comment": "Comment",
+  "proofOfDelivery": "Proof of delivery",
+  "confirm": "Confirm",
+  "enterComment": "Enter comment..."
 }
