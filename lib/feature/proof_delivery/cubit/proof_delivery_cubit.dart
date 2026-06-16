@@ -2,14 +2,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/permission_deny_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/photo_not_selected_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/route_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/data/repository/delivery_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/order_repository.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/cubit/proof_delivery_state.dart';
 import 'package:smart_courier_assistant_app/validation/courier_comment_validator.dart';
 
 class ProofDeliveryCubit extends Cubit<ProofDeliveryState> {
   final OrderRepository _orderRepository;
+  final DeliveryRepository _deliveryRepository;
 
-  ProofDeliveryCubit(this._orderRepository)
+  ProofDeliveryCubit(this._orderRepository, this._deliveryRepository)
     : super(ProofDeliveryState.initial());
 
   Future<void> addOrderPhoto() async {
@@ -49,5 +53,31 @@ class ProofDeliveryCubit extends Cubit<ProofDeliveryState> {
         ),
       ),
     );
+  }
+
+  Future<void> confirmDelivery(String orderId) async {
+    emit(state.copyWith(formStatus: FormzSubmissionStatus.inProgress));
+    try {
+      await _deliveryRepository.createProofOfDelivery(
+        orderId,
+        state.courierCommentValidator.value,
+        state.orderPhotos,
+      );
+      emit(state.copyWith(formStatus: FormzSubmissionStatus.success));
+    } on UserNotFoundException {
+      emit(
+        state.copyWith(
+          deliveryErrorType: ProofDeliveryErrorType.userNotFound,
+          formStatus: FormzSubmissionStatus.failure,
+        ),
+      );
+    } on RouteNotFoundException {
+      emit(
+        state.copyWith(
+          deliveryErrorType: ProofDeliveryErrorType.routeNotFound,
+          formStatus: FormzSubmissionStatus.failure,
+        ),
+      );
+    }
   }
 }

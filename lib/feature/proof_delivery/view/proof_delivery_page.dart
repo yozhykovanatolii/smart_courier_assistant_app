@@ -22,13 +22,15 @@ class ProofDeliveryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => GetIt.I<ProofDeliveryCubit>(),
-      child: const _ProofDeliveryView(),
+      child: _ProofDeliveryView(orderId),
     );
   }
 }
 
 class _ProofDeliveryView extends StatelessWidget {
-  const _ProofDeliveryView();
+  final String orderId;
+
+  const _ProofDeliveryView(this.orderId);
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +113,9 @@ class _ProofDeliveryView extends StatelessWidget {
                       const SizedBox(height: 15),
                       const PhotoListView(),
                       const SizedBox(height: 80),
-                      const ConfirmButton(),
+                      ConfirmButton(
+                        orderId: orderId,
+                      ),
                     ],
                   ),
                 ),
@@ -138,6 +142,8 @@ class _ProofDeliveryView extends StatelessWidget {
         return l10n.storagePermissionDeny;
       case ProofDeliveryErrorType.photoNotSelected:
         return l10n.photoWasNotSelected;
+      case ProofDeliveryErrorType.routeNotFound:
+        return l10n.routeNotFound;
     }
   }
 }

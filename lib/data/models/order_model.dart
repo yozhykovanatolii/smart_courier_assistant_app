@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:smart_courier_assistant_app/data/models/proof_delivery_model.dart';
 import 'package:uuid/uuid.dart';
 
 enum DeliveryRisk {
@@ -28,6 +29,7 @@ class OrderModel {
   final String recommendation;
   final String status;
   final int orderIndex;
+  final ProofDeliveryModel? proofDelivery;
 
   OrderModel({
     required this.id,
@@ -42,6 +44,7 @@ class OrderModel {
     required this.recommendation,
     required this.status,
     required this.orderIndex,
+    this.proofDelivery,
   });
 
   factory OrderModel.initial() {
@@ -75,6 +78,7 @@ class OrderModel {
       'status': status,
       'recommendation': recommendation,
       'orderIndex': orderIndex,
+      if (proofDelivery != null) 'proofDelivery': proofDelivery!.toFirestore(),
     };
   }
 
@@ -96,6 +100,11 @@ class OrderModel {
       deliveryRisk: DeliveryRisk.fromFirestore(data?['deliveryRisk'] as String),
       recommendation: data?['recommendation'] as String,
       orderIndex: (data?['orderIndex'] ?? 0) as int,
+      proofDelivery: data?['proofDelivery'] != null
+          ? ProofDeliveryModel.fromFirestore(
+              Map<String, dynamic>.from(data?['proofDelivery']),
+            )
+          : null,
     );
   }
 
@@ -112,6 +121,7 @@ class OrderModel {
     String? recommendation,
     String? status,
     int? orderIndex,
+    ProofDeliveryModel? proofDelivery,
   }) {
     return OrderModel(
       id: id ?? this.id,
@@ -125,6 +135,7 @@ class OrderModel {
       deliveryRisk: deliveryRisk ?? this.deliveryRisk,
       recommendation: recommendation ?? this.recommendation,
       status: status ?? this.status,
+      proofDelivery: proofDelivery ?? this.proofDelivery,
       orderIndex: orderIndex ?? this.orderIndex,
     );
   }

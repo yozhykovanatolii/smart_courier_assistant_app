@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/orders_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/data/models/proof_delivery_model.dart';
 
 class OrderFirestore {
   final _firestore = FirebaseFirestore.instance;
@@ -39,9 +40,12 @@ class OrderFirestore {
     await docReference.set(orderModel);
   }
 
-  Future<List<OrderModel>> getAllUserOrders(String routeId) async {
+  Future<List<OrderModel>> getActiveUserOrders(String routeId) async {
     final collectionReference = _getOrderCollectionReference(routeId);
-    final querySnapshot = await collectionReference.orderBy('orderIndex').get();
+    final querySnapshot = await collectionReference
+        .where('status', isNotEqualTo: 'Delivered')
+        .orderBy('orderIndex')
+        .get();
     if (querySnapshot.docs.isEmpty) throw OrdersNotFoundException();
     return querySnapshot.docs.map((document) => document.data()).toList();
   }
@@ -58,6 +62,18 @@ class OrderFirestore {
   Future<void> deleteOrder(String orderId, String routeId) async {
     final collectionReference = _getOrderCollectionReference(routeId);
     await collectionReference.doc(orderId).delete();
+  }
+
+  Future<void> updateOrderProofDelivery(
+    ProofDeliveryModel proofDelivery,
+    String routeId,
+    String orderId,
+  ) async {
+    final docReference = _getOrderDocumentReference(orderId, routeId);
+    await docReference.update({
+      'status': 'Delivered',
+      'proofDelivery': proofDelivery.toFirestore(),
+    });
   }
 
   CollectionReference<OrderModel> _getOrderCollectionReference(String routeId) {

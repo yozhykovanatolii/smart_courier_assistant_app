@@ -5,6 +5,7 @@ enum ProofDeliveryErrorType {
   userNotFound,
   storagePermissionDeny,
   photoNotSelected,
+  routeNotFound,
 }
 
 class ProofDeliveryState {

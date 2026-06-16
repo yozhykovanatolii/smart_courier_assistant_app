@@ -131,55 +131,51 @@ class _OrderCardContent extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           spacing: 10,
-          children: order.status == 'Delivered'
-              ? []
-              : [
-                  Expanded(
-                    child: _OrderActionButton(
-                      text: l10n.done,
-                      backgroundColor: scaffoldBackgroundColor,
-                      border: Border.all(
-                        color: Colors.green,
-                        width: 1.5,
-                      ),
-                      textColor: Colors.green,
-                      onPressed: () {
+          children: [
+            Expanded(
+              child: _OrderActionButton(
+                text: l10n.done,
+                backgroundColor: scaffoldBackgroundColor,
+                border: Border.all(
+                  color: Colors.green,
+                  width: 1.5,
+                ),
+                textColor: Colors.green,
+                onPressed: order.deliveryRisk == DeliveryRisk.unknown
+                    ? null
+                    : () {
                         UiHelper.showModalSheet(
                           context,
                           ScaffoldMessenger(
-                            child: Builder(
-                              builder: (context) {
-                                return ProofDeliveryPage(orderId: order.id);
-                              },
-                            ),
+                            child: ProofDeliveryPage(orderId: order.id),
                           ),
                         );
                       },
-                    ),
-                  ),
-                  Expanded(
-                    child: _OrderActionButton(
-                      text: l10n.call,
-                      backgroundColor: Colors.blue,
-                      onPressed: () {
-                        context.read<HomeCubit>().openCallDialer(
-                          order.clientPhoneNumber,
-                        );
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: _OrderActionButton(
-                      text: l10n.chat,
-                      backgroundColor: Colors.orange,
-                      onPressed: () {
-                        context.read<HomeCubit>().openUserMessanger(
-                          order.clientPhoneNumber,
-                        );
-                      },
-                    ),
-                  ),
-                ],
+              ),
+            ),
+            Expanded(
+              child: _OrderActionButton(
+                text: l10n.call,
+                backgroundColor: Colors.blue,
+                onPressed: () {
+                  context.read<HomeCubit>().openCallDialer(
+                    order.clientPhoneNumber,
+                  );
+                },
+              ),
+            ),
+            Expanded(
+              child: _OrderActionButton(
+                text: l10n.chat,
+                backgroundColor: Colors.orange,
+                onPressed: () {
+                  context.read<HomeCubit>().openUserMessanger(
+                    order.clientPhoneNumber,
+                  );
+                },
+              ),
+            ),
+          ],
         ),
         const Divider(),
       ],

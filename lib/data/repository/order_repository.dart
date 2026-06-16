@@ -54,7 +54,7 @@ class OrderRepository {
     final courierId = _userAuth.userId;
     final routeModel = await _routeFirestore.getTodayRoute(courierId);
     _routeId = routeModel.routeId;
-    return await _orderFirestore.getAllUserOrders(
+    return await _orderFirestore.getActiveUserOrders(
       routeModel.routeId,
     );
   }
