@@ -146,7 +146,13 @@ class _OrderCardContent extends StatelessWidget {
                       onPressed: () {
                         UiHelper.showModalSheet(
                           context,
-                          ProofDeliveryPage(orderId: order.id),
+                          ScaffoldMessenger(
+                            child: Builder(
+                              builder: (context) {
+                                return ProofDeliveryPage(orderId: order.id);
+                              },
+                            ),
+                          ),
                         );
                       },
                     ),

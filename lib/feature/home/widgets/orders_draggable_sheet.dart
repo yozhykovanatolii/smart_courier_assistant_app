@@ -25,7 +25,7 @@ class OrdersDraggableSheet extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
             borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(20),
+              top: Radius.circular(30),
             ),
           ),
           child: SafeArea(

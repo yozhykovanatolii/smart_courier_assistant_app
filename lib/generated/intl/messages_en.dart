@@ -204,6 +204,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "successAuthorizationWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Success authorization with Google",
     ),
+    "successConfirmingADelivery": MessageLookupByLibrary.simpleMessage(
+      "Success confirming a delivery",
+    ),
     "successDeletingOrder": MessageLookupByLibrary.simpleMessage(
       "Success deleting order",
     ),

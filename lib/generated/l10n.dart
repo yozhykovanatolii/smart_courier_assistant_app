@@ -893,6 +893,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Success confirming a delivery`
+  String get successConfirmingADelivery {
+    return Intl.message(
+      'Success confirming a delivery',
+      name: 'successConfirmingADelivery',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

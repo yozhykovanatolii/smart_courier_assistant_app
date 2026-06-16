@@ -20,6 +20,7 @@ import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_prof
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
+import 'package:smart_courier_assistant_app/feature/proof_delivery/cubit/proof_delivery_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/register/cubit/register_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_cubit.dart';
 
@@ -82,6 +83,7 @@ class Dependencies {
           userAuth,
           routeFirestore,
           routeOptimizeClient,
+          supabaseStorage,
         ),
       )
       ..registerFactory<GeolocationRepository>(() => GeolocationRepository());
@@ -123,6 +125,9 @@ class Dependencies {
           geolocationRepository,
           routeRepository,
         ),
+      )
+      ..registerFactory<ProofDeliveryCubit>(
+        () => ProofDeliveryCubit(orderRepository),
       );
   }
 }

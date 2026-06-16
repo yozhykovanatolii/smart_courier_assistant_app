@@ -100,5 +100,6 @@
   "comment": "Comment",
   "proofOfDelivery": "Proof of delivery",
   "confirm": "Confirm",
-  "enterComment": "Enter comment..."
+  "enterComment": "Enter comment...",
+  "successConfirmingADelivery": "Success confirming a delivery"
 }
