@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:smart_courier_assistant_app/data/models/api/route_point.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_state.dart';
 import 'package:smart_courier_assistant_app/ui/marker_factory.dart';
 
 class GoogleMapSection extends StatefulWidget {
@@ -23,7 +23,7 @@ class _GoogleMapSectionState extends State<GoogleMapSection> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<HomeCubit, HomeState>(
+    return BlocListener<HomeBloc, HomeState>(
       listenWhen: (previous, current) {
         return previous.latitude != current.longitude ||
             previous.longitude != current.longitude ||

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_state.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 

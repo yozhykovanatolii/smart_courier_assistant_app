@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_state.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/error_orders_section.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/header_sheet_section.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/order_card.dart';
@@ -30,7 +30,7 @@ class OrdersDraggableSheet extends StatelessWidget {
           ),
           child: SafeArea(
             top: false,
-            child: BlocBuilder<HomeCubit, HomeState>(
+            child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 final orderStatus = state.orderStatus;
                 if (orderStatus == HomeStatus.failure) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class RecommendationRouteSection extends StatelessWidget {
@@ -9,7 +9,7 @@ class RecommendationRouteSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final recommendation = context.select(
-      (HomeCubit homeCubit) => homeCubit.state.routeRecommendation,
+      (HomeBloc homeCubit) => homeCubit.state.routeRecommendation,
     );
     if (recommendation.isEmpty) {
       return const SizedBox.shrink();

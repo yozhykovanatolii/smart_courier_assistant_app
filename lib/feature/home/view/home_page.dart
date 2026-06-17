@@ -2,8 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_event.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_state.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/view/save_order_page.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => GetIt.I<HomeCubit>()..fetchOrders(),
+      create: (_) => GetIt.I<HomeBloc>()..add(HomeOrdersFetched()),
       child: const _HomeView(),
     );
   }
@@ -28,7 +29,7 @@ class _HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<HomeCubit, HomeState>(
+      body: BlocListener<HomeBloc, HomeState>(
         listenWhen: (previous, current) {
           return previous.userActionError != current.userActionError ||
               previous.routeOptimizationStatus !=
@@ -89,7 +90,8 @@ class _HomeView extends StatelessWidget {
               child: ActionFloatingButton(
                 icon: Icons.gps_fixed,
                 heroTag: 'GetUserLocation',
-                onPressed: () => context.read<HomeCubit>().getUserLocation(),
+                onPressed: () =>
+                    context.read<HomeBloc>().add(HomeLocationFetched()),
               ),
             ),
             const OrdersDraggableSheet(),

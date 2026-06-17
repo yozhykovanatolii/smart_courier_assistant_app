@@ -50,13 +50,17 @@ class OrderRepository {
     );
   }
 
-  Future<List<OrderModel>> getAllCourierActiveOrders() async {
-    final courierId = _userAuth.userId;
-    final routeModel = await _routeFirestore.getTodayRoute(courierId);
-    _routeId = routeModel.routeId;
-    return await _orderFirestore.getActiveUserOrders(
-      routeModel.routeId,
-    );
+  Stream<List<OrderModel>> getAllCourierActiveOrders() async* {
+    try {
+      final courierId = _userAuth.userId;
+      final routeModel = await _routeFirestore.getTodayRoute(
+        courierId,
+      );
+      _routeId = routeModel.routeId;
+      yield* _orderFirestore.getActiveUserOrders(routeModel.routeId);
+    } catch (error) {
+      yield* Stream.error(error);
+    }
   }
 
   Future<void> deleteOrder(String orderId) async {

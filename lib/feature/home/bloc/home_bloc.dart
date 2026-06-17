@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/geolocation_exception.dart';
@@ -9,34 +11,69 @@ import 'package:smart_courier_assistant_app/data/repository/geolocation_reposito
 import 'package:smart_courier_assistant_app/data/repository/order_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/route_repository.dart';
 import 'package:smart_courier_assistant_app/data/repository/user_repository.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_state.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_event.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final OrderRepository _orderRepository;
   final UserRepository _userRepository;
   final GeolocationRepository _geolocationRepository;
   final RouteRepository _routeRepository;
 
-  HomeCubit(
+  HomeBloc(
     this._orderRepository,
     this._userRepository,
     this._geolocationRepository,
     this._routeRepository,
-  ) : super(HomeState.initial());
+  ) : super(HomeState.initial()) {
+    on<HomeOrdersFetched>(_fetchOrders);
+    on<HomeCallDialerOpened>(_openCallDialer);
+    on<HomeMessengerOpened>(_openUserMessanger);
+    on<HomeLocationFetched>(_getUserLocation);
+    on<HomeRouteOptimized>(_optimizeOrdersRoute);
+  }
 
-  Future<void> fetchOrders() async {
+  Future<void> _fetchOrders(
+    HomeOrdersFetched event,
+    Emitter<HomeState> emit,
+  ) async {
     emit(state.copyWith(orderStatus: HomeStatus.loading));
+    unawaited(_loadRouteRecommendation(emit));
+    await emit.onEach(
+      _orderRepository.getAllCourierActiveOrders(),
+      onData: (activeOrders) {
+        emit(
+          state.copyWith(
+            orderStatus: HomeStatus.success,
+            orders: activeOrders,
+          ),
+        );
+      },
+      onError: (error, stackTrace) {
+        if (error is OrdersNotFoundException) {
+          emit(
+            state.copyWith(
+              orderStatus: HomeStatus.failure,
+              errorType: OrderErrorType.ordersNotFound,
+            ),
+          );
+          return;
+        }
+        emit(
+          state.copyWith(
+            orderStatus: HomeStatus.failure,
+            errorType: OrderErrorType.unknown,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _loadRouteRecommendation(Emitter<HomeState> emit) async {
     try {
-      final activeOrders = await _orderRepository.getAllCourierActiveOrders();
       final routeRecommendation = await _routeRepository
           .getCurrentRouteRecommendation();
-      emit(
-        state.copyWith(
-          orderStatus: HomeStatus.success,
-          orders: activeOrders,
-          routeRecommendation: routeRecommendation,
-        ),
-      );
+      emit(state.copyWith(routeRecommendation: routeRecommendation));
     } on UserNotFoundException {
       emit(
         state.copyWith(
@@ -51,26 +88,15 @@ class HomeCubit extends Cubit<HomeState> {
           errorType: OrderErrorType.routeNotFound,
         ),
       );
-    } on OrdersNotFoundException {
-      emit(
-        state.copyWith(
-          orderStatus: HomeStatus.failure,
-          errorType: OrderErrorType.ordersNotFound,
-        ),
-      );
-    } on Exception {
-      emit(
-        state.copyWith(
-          orderStatus: HomeStatus.failure,
-          errorType: OrderErrorType.unknown,
-        ),
-      );
     }
   }
 
-  Future<void> openCallDialer(String clientPhoneNumber) async {
+  Future<void> _openCallDialer(
+    HomeCallDialerOpened event,
+    Emitter<HomeState> emit,
+  ) async {
     try {
-      await _userRepository.callUserDialer(clientPhoneNumber);
+      await _userRepository.callUserDialer(event.clientPhoneNumber);
     } catch (_) {
       emit(
         state.copyWith(
@@ -80,9 +106,12 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> openUserMessanger(String clientPhoneNumber) async {
+  Future<void> _openUserMessanger(
+    HomeMessengerOpened event,
+    Emitter<HomeState> emit,
+  ) async {
     try {
-      await _userRepository.messageUser(clientPhoneNumber);
+      await _userRepository.messageUser(event.clientPhoneNumber);
     } catch (_) {
       emit(
         state.copyWith(
@@ -92,7 +121,10 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> getUserLocation() async {
+  Future<void> _getUserLocation(
+    HomeLocationFetched event,
+    Emitter<HomeState> emit,
+  ) async {
     try {
       final location = await _geolocationRepository.getCurrentLocation();
       emit(
@@ -116,7 +148,10 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> optimizeOrdersRoute() async {
+  Future<void> _optimizeOrdersRoute(
+    HomeRouteOptimized event,
+    Emitter<HomeState> emit,
+  ) async {
     emit(
       state.copyWith(routeOptimizationStatus: HomeStatus.loading),
     );

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
-import 'package:smart_courier_assistant_app/feature/home/cubit/home_cubit.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/home/bloc/home_event.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/proof_delivery.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/save_order.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
@@ -158,8 +159,10 @@ class _OrderCardContent extends StatelessWidget {
                 text: l10n.call,
                 backgroundColor: Colors.blue,
                 onPressed: () {
-                  context.read<HomeCubit>().openCallDialer(
-                    order.clientPhoneNumber,
+                  context.read<HomeBloc>().add(
+                    HomeCallDialerOpened(
+                      order.clientPhoneNumber,
+                    ),
                   );
                 },
               ),
@@ -169,8 +172,10 @@ class _OrderCardContent extends StatelessWidget {
                 text: l10n.chat,
                 backgroundColor: Colors.orange,
                 onPressed: () {
-                  context.read<HomeCubit>().openUserMessanger(
-                    order.clientPhoneNumber,
+                  context.read<HomeBloc>().add(
+                    HomeMessengerOpened(
+                      order.clientPhoneNumber,
+                    ),
                   );
                 },
               ),
