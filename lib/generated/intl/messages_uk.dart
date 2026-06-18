@@ -181,6 +181,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "routeOptimizationInProgress": MessageLookupByLibrary.simpleMessage(
       "Триває оптимізація маршруту. Будь ласка, зачекайте кілька хвилин.",
     ),
+    "routesWereNotFound": MessageLookupByLibrary.simpleMessage(
+      "Routes were not found",
+    ),
     "save": MessageLookupByLibrary.simpleMessage("Зберегти"),
     "saveOrder": MessageLookupByLibrary.simpleMessage("Зберегти замовлення"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage(

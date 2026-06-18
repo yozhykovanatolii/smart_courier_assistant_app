@@ -19,6 +19,7 @@ import 'package:smart_courier_assistant_app/data/repository/settings_repository.
 import 'package:smart_courier_assistant_app/data/repository/user_repository.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_cubit.dart';
+import 'package:smart_courier_assistant_app/feature/history/cubit/history_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/cubit/proof_delivery_cubit.dart';
@@ -133,6 +134,9 @@ class Dependencies {
       )
       ..registerFactory<ProofDeliveryCubit>(
         () => ProofDeliveryCubit(orderRepository, deliveryRepository),
+      )
+      ..registerFactory<HistoryCubit>(
+        () => HistoryCubit(routeRepository),
       );
   }
 }

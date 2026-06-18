@@ -8,6 +8,7 @@ import 'package:smart_courier_assistant_app/feature/home/bloc/home_state.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/view/save_order_page.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 
 @RoutePage()
@@ -70,6 +71,14 @@ class _HomeView extends StatelessWidget {
         child: Stack(
           children: [
             const GoogleMapSection(),
+            Positioned(
+              top: 50,
+              left: 15,
+              child: ActionFloatingButton(
+                icon: Icons.menu,
+                onPressed: () => context.router.push(const ProfileRoute()),
+              ),
+            ),
             Positioned(
               bottom: 300,
               right: 15,

@@ -89,7 +89,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
           }
         },
         child: SafeArea(
-          minimum: const EdgeInsets.only(left: 24, right: 24),
+          minimum: const EdgeInsets.only(left: 11, right: 24),
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(
@@ -116,34 +116,46 @@ class _EditProfileViewState extends State<_EditProfileView> {
                 child: SizedBox(height: 40),
               ),
               SliverToBoxAdapter(
-                child: Text(
-                  l10n.fullName,
-                  style: labelLargeStyle,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    l10n.fullName,
+                    style: labelLargeStyle,
+                  ),
                 ),
               ),
               const SliverToBoxAdapter(
                 child: SizedBox(height: 5),
               ),
               SliverToBoxAdapter(
-                child: EditProfileFullNameTextField(
-                  controller: _fullNameController,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: EditProfileFullNameTextField(
+                    controller: _fullNameController,
+                  ),
                 ),
               ),
               const SliverToBoxAdapter(
                 child: SizedBox(height: 25),
               ),
               SliverToBoxAdapter(
-                child: Text(
-                  l10n.phoneNumber,
-                  style: labelLargeStyle,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    l10n.phoneNumber,
+                    style: labelLargeStyle,
+                  ),
                 ),
               ),
               const SliverToBoxAdapter(
                 child: SizedBox(height: 5),
               ),
               SliverToBoxAdapter(
-                child: EditProfilePhoneNumberTextField(
-                  controller: _phoneNumberController,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: EditProfilePhoneNumberTextField(
+                    controller: _phoneNumberController,
+                  ),
                 ),
               ),
               const SliverToBoxAdapter(
@@ -152,7 +164,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
               const SliverFillRemaining(
                 hasScrollBody: false,
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding: EdgeInsets.only(bottom: 20, left: 10),
                   child: Column(
                     children: [
                       Spacer(),

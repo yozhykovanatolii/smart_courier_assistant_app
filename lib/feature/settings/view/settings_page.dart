@@ -17,7 +17,7 @@ class SettingsPage extends StatelessWidget {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 11),
               child: Row(
                 spacing: 11,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

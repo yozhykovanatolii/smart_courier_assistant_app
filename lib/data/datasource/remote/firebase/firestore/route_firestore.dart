@@ -54,6 +54,15 @@ class RouteFirestore {
     await docReference.update({'recommendation': recommendation});
   }
 
+  Future<List<RouteModel>> getAllCourierRoutes(String courierId) async {
+    final collectionReference = _getRouteCollectionReference();
+    final querySnapshot = await collectionReference
+        .where('courierId', isEqualTo: courierId)
+        .get();
+    if (querySnapshot.docs.isEmpty) throw RouteNotFoundException();
+    return querySnapshot.docs.map((document) => document.data()).toList();
+  }
+
   CollectionReference<RouteModel> _getRouteCollectionReference() {
     return _firestore
         .collection('routes')

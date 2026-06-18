@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/feature/profile/widgets/widgets.dart';
-import 'package:smart_courier_assistant_app/feature/save_order/view/save_order_page.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
@@ -19,7 +18,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.symmetric(
-          horizontal: 20,
+          horizontal: 11,
           vertical: 20,
         ),
         child: Column(
@@ -43,6 +42,7 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(height: 30),
             Expanded(
               child: ListView(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 children: [
                   SectionListTile(
                     leadingIcon: Icons.edit,
@@ -54,12 +54,7 @@ class ProfilePage extends StatelessWidget {
                   SectionListTile(
                     leadingIcon: Icons.route,
                     title: l10n.myRoutes,
-                    onTap: () {
-                      UiHelper.showModalSheet(
-                        context,
-                        const SaveOrderPage(),
-                      );
-                    },
+                    onTap: () => router.push(const HistoryRoute()),
                   ),
                   SectionListTile(
                     leadingIcon: Icons.settings,

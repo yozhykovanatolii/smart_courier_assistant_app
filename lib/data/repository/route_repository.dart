@@ -7,6 +7,7 @@ import 'package:smart_courier_assistant_app/data/models/api/risky_order_model.da
 import 'package:smart_courier_assistant_app/data/models/api/route_analysis_model.dart';
 import 'package:smart_courier_assistant_app/data/models/api/route_point.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/data/models/route_model.dart';
 
 class RouteRepository {
   final RouteFirestore _routeFirestore;
@@ -80,5 +81,11 @@ class RouteRepository {
       await _routeFirestore.saveRouteRecommendation(recommendation, routeId);
     }
     return recommendation ?? '';
+  }
+
+  Future<List<RouteModel>> getAllCourierRoutes() async {
+    final courierId = _userAuth.userId;
+    final routes = await _routeFirestore.getAllCourierRoutes(courierId);
+    return routes;
   }
 }

@@ -903,6 +903,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Routes were not found`
+  String get routesWereNotFound {
+    return Intl.message(
+      'Routes were not found',
+      name: 'routesWereNotFound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -182,6 +182,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "routeWasNotFound": MessageLookupByLibrary.simpleMessage(
       "Route was not found",
     ),
+    "routesWereNotFound": MessageLookupByLibrary.simpleMessage(
+      "Routes were not found",
+    ),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "saveOrder": MessageLookupByLibrary.simpleMessage("Save order"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
