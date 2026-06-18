@@ -175,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "Сталася невідома помилка скидання пароля.",
     ),
+    "routeDetail": MessageLookupByLibrary.simpleMessage("Деталі маршруту"),
     "routeNotFound": MessageLookupByLibrary.simpleMessage(
       "Маршрут не знайдено",
     ),
@@ -182,7 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Триває оптимізація маршруту. Будь ласка, зачекайте кілька хвилин.",
     ),
     "routesWereNotFound": MessageLookupByLibrary.simpleMessage(
-      "Routes were not found",
+      "Маршрути не були знайдені",
     ),
     "save": MessageLookupByLibrary.simpleMessage("Зберегти"),
     "saveOrder": MessageLookupByLibrary.simpleMessage("Зберегти замовлення"),

@@ -102,5 +102,6 @@
   "confirm": "Confirm",
   "enterComment": "Enter comment...",
   "successConfirmingADelivery": "Success confirming a delivery",
-  "routesWereNotFound": "Routes were not found"
+  "routesWereNotFound": "Routes were not found",
+  "routeDetail": "Route detail"
 }

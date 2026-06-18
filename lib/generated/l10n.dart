@@ -913,6 +913,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Route detail`
+  String get routeDetail {
+    return Intl.message(
+      'Route detail',
+      name: 'routeDetail',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -173,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown reset password exception occurred.",
     ),
+    "routeDetail": MessageLookupByLibrary.simpleMessage("Route detail"),
     "routeNotFound": MessageLookupByLibrary.simpleMessage(
       "Route was not found",
     ),

@@ -101,5 +101,6 @@
   "confirm": "Підтвердити",
   "enterComment": "Введіть коментарій...",
   "successConfirmingADelivery": "Успішне підтвердження замовлення",
-  "routesWereNotFound": "Routes were not found"
+  "routesWereNotFound": "Маршрути не були знайдені",
+  "routeDetail": "Деталі маршруту"
 }
