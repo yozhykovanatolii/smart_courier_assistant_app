@@ -40,6 +40,13 @@ class OrderFirestore {
     await docReference.set(orderModel);
   }
 
+  Future<List<OrderModel>> getAllRouteOrders(String routeId) async {
+    final collectionReference = _getOrderCollectionReference(routeId);
+    final querySnapshot = await collectionReference.get();
+    if (querySnapshot.docs.isEmpty) throw OrdersNotFoundException();
+    return querySnapshot.docs.map((document) => document.data()).toList();
+  }
+
   Stream<List<OrderModel>> getActiveUserOrders(String routeId) {
     final collectionReference = _getOrderCollectionReference(routeId);
     return collectionReference

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_state.dart';
-import 'package:smart_courier_assistant_app/feature/home/widgets/error_orders_section.dart';
+import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/ui/widgets/error_orders_section.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/header_sheet_section.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/order_card.dart';
 import 'package:smart_courier_assistant_app/feature/home/widgets/recommendation_route_section.dart';
@@ -34,9 +35,11 @@ class OrdersDraggableSheet extends StatelessWidget {
               builder: (context, state) {
                 final orderStatus = state.orderStatus;
                 if (orderStatus == HomeStatus.failure) {
-                  return ErrorOrdersSection(
-                    errorType: state.errorType,
+                  final errorMessage = _mapHomeErrorTypeToMessage(
+                    context,
+                    state.errorType,
                   );
+                  return ErrorOrdersSection(errorMessage: errorMessage);
                 }
                 if (orderStatus == HomeStatus.success) {
                   final activeOrders = state.orders;
@@ -90,5 +93,25 @@ class OrdersDraggableSheet extends StatelessWidget {
         );
       },
     );
+  }
+
+  String _mapHomeErrorTypeToMessage(
+    BuildContext context,
+    OrderErrorType? errorType,
+  ) {
+    final l10n = S.of(context);
+
+    if (errorType == null) return '';
+
+    switch (errorType) {
+      case OrderErrorType.userNotFound:
+        return l10n.userNotFound;
+      case OrderErrorType.routeNotFound:
+        return l10n.routeNotFound;
+      case OrderErrorType.ordersNotFound:
+        return l10n.ordersNotFound;
+      case OrderErrorType.unknown:
+        return l10n.somethingWentWrong;
+    }
   }
 }

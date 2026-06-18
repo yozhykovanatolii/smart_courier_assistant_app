@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
+import 'package:smart_courier_assistant_app/ui/pdf_generator.dart';
 
 class RouteOrderCard extends StatelessWidget {
   final int index;
@@ -39,7 +40,7 @@ class RouteOrderCard extends StatelessWidget {
             const SizedBox(height: 8),
             SizedBox(
               width: 2,
-              height: 90,
+              height: 110,
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   return Column(
@@ -127,7 +128,9 @@ class _CardHeaderSection extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () async {},
+          onTap: () async {
+            await PdfGenerator.generateOrderReportPdf(order, context);
+          },
           child: Icon(
             Icons.save,
             size: 30,

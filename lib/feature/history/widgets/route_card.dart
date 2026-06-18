@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/data/models/route_model.dart';
+import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class RouteCard extends StatelessWidget {
@@ -15,7 +17,9 @@ class RouteCard extends StatelessWidget {
     final bodyLargeStyle = Theme.of(context).textTheme.bodyLarge;
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.router.push(RouteDetailRoute(route: route));
+      },
       child: Card(
         elevation: 2,
         color: Theme.of(context).scaffoldBackgroundColor,
@@ -32,7 +36,7 @@ class RouteCard extends StatelessWidget {
                 route.routeId,
                 style: Theme.of(
                   context,
-                ).textTheme.titleLarge?.copyWith(fontSize: 16),
+                ).textTheme.titleMedium?.copyWith(fontSize: 16),
               ),
               const SizedBox(height: 15),
               Row(

@@ -63,6 +63,10 @@ class OrderRepository {
     }
   }
 
+  Future<List<OrderModel>> getAllRouteOrders(String routeId) async {
+    return await _orderFirestore.getAllRouteOrders(routeId);
+  }
+
   Future<void> deleteOrder(String orderId) async {
     final courierId = _userAuth.userId;
     final route = await _routeFirestore.getTodayRoute(courierId);

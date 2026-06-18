@@ -58,6 +58,8 @@ dependencies:
   geolocator: ^14.0.2
   google_maps_flutter: ^2.17.1
   http: ^1.6.0
+  printing: ^5.14.3
+  pdf: ^3.12.0
 
 dev_dependencies:
   flutter_test:
@@ -95,5 +97,8 @@ flutter:
     - family: PlusJakartaSans
       fonts:
         - asset: assets/fonts/PlusJakartaSans-VariableFont_wght.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
 flutter_intl:
   enabled: true

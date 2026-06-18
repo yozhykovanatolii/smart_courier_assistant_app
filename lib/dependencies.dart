@@ -24,6 +24,7 @@ import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/cubit/proof_delivery_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/register/cubit/register_cubit.dart';
+import 'package:smart_courier_assistant_app/feature/route_detail/cubit/route_detail_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_cubit.dart';
 
 class Dependencies {
@@ -137,6 +138,9 @@ class Dependencies {
       )
       ..registerFactory<HistoryCubit>(
         () => HistoryCubit(routeRepository),
+      )
+      ..registerFactory<RouteDetailCubit>(
+        () => RouteDetailCubit(orderRepository),
       );
   }
 }
