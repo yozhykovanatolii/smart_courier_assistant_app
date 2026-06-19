@@ -103,5 +103,18 @@
   "enterComment": "Enter comment...",
   "successConfirmingADelivery": "Success confirming a delivery",
   "routesWereNotFound": "Routes were not found",
-  "routeDetail": "Route detail"
+  "routeDetail": "Route detail",
+  "routeIdText": "Route #{routeId}",
+  "ordersAndDelayedOrdersCount": "📦 {ordersCount} orders | ⚠️ {delayedOrdersCount} delayed",
+  "orderId": "Order {orderId}",
+  "deliverByEtaAndRisk": "Deliver by {deliverByHour}:{deliverByMinute} • ETA {plannedEtaHour}:{plannedEtaMinute} • {deliveryRisk}",
+  "deliveryRiskPdfText": "Delivery risk: {orderDeliveryRisk}",
+  "clientFullNamePdfText": "Client: {clientFullName}",
+  "clientPhoneNumberPdfText": "Phone: {clientPhoneNumber}",
+  "orderAddressPdfText": "Address: {orderAddress}",
+  "orderStatusPdfText": "Status: {orderStatus}",
+  "orderDeliverByPdfText": "Deliver by: {orderDeliverBy}",
+  "orderPlannedEtaPdfText": "Planned ETA: {orderPlannedEta}",
+  "routeOrdersCount": "{ordersAmount} orders",
+  "routeDelayedOrdersCount": "{delayedOrdersAmount} delayed"
 }

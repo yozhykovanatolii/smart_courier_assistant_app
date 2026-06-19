@@ -20,6 +20,42 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(Object clientFullName) => "Client: ${clientFullName}";
+
+  static String m1(Object clientPhoneNumber) => "Phone: ${clientPhoneNumber}";
+
+  static String m2(
+    Object deliverByHour,
+    Object deliverByMinute,
+    Object plannedEtaHour,
+    Object plannedEtaMinute,
+    Object deliveryRisk,
+  ) =>
+      "Deliver by ${deliverByHour}:${deliverByMinute} • ETA ${plannedEtaHour}:${plannedEtaMinute} • ${deliveryRisk}";
+
+  static String m3(Object orderDeliveryRisk) =>
+      "Delivery risk: ${orderDeliveryRisk}";
+
+  static String m4(Object orderAddress) => "Address: ${orderAddress}";
+
+  static String m5(Object orderDeliverBy) => "Deliver by: ${orderDeliverBy}";
+
+  static String m6(Object orderId) => "Order ${orderId}";
+
+  static String m7(Object orderPlannedEta) => "Planned ETA: ${orderPlannedEta}";
+
+  static String m8(Object orderStatus) => "Status: ${orderStatus}";
+
+  static String m9(Object ordersCount, Object delayedOrdersCount) =>
+      "📦 ${ordersCount} orders | ⚠️ ${delayedOrdersCount} delayed";
+
+  static String m10(Object delayedOrdersAmount) =>
+      "${delayedOrdersAmount} delayed";
+
+  static String m11(Object routeId) => "Route #${routeId}";
+
+  static String m12(Object ordersAmount) => "${ordersAmount} orders";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accountExistsWithDifferentCredentials":
@@ -48,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "category": MessageLookupByLibrary.simpleMessage("Category"),
     "chat": MessageLookupByLibrary.simpleMessage("💬 Chat"),
     "client": MessageLookupByLibrary.simpleMessage("Client"),
+    "clientFullNamePdfText": m0,
+    "clientPhoneNumberPdfText": m1,
     "comment": MessageLookupByLibrary.simpleMessage("Comment"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "contactPhone": MessageLookupByLibrary.simpleMessage("Contact Phone"),
@@ -60,6 +98,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "delayed": MessageLookupByLibrary.simpleMessage("Delayed"),
     "deletingOrder": MessageLookupByLibrary.simpleMessage("Deleting order"),
+    "deliverByEtaAndRisk": m2,
+    "deliveryRiskPdfText": m3,
     "docs": MessageLookupByLibrary.simpleMessage("Documentation"),
     "done": MessageLookupByLibrary.simpleMessage("✅ Done"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
@@ -126,7 +166,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "onTime": MessageLookupByLibrary.simpleMessage("On time"),
     "optimizeRoute": MessageLookupByLibrary.simpleMessage("Optimize route"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
+    "orderAddressPdfText": m4,
+    "orderDeliverByPdfText": m5,
+    "orderId": m6,
+    "orderPlannedEtaPdfText": m7,
+    "orderStatusPdfText": m8,
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
+    "ordersAndDelayedOrdersCount": m9,
     "ordersNotFound": MessageLookupByLibrary.simpleMessage(
       "Orders weren\'t found",
     ),
@@ -173,13 +219,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordErrorUnknown": MessageLookupByLibrary.simpleMessage(
       "An unknown reset password exception occurred.",
     ),
+    "routeDelayedOrdersCount": m10,
     "routeDetail": MessageLookupByLibrary.simpleMessage("Route detail"),
+    "routeIdText": m11,
     "routeNotFound": MessageLookupByLibrary.simpleMessage(
       "Route was not found",
     ),
     "routeOptimizationInProgress": MessageLookupByLibrary.simpleMessage(
       "Route optimization in progress. Please wait a few minutes.",
     ),
+    "routeOrdersCount": m12,
     "routeWasNotFound": MessageLookupByLibrary.simpleMessage(
       "Route was not found",
     ),

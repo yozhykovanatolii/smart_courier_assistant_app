@@ -61,28 +61,25 @@ class _RouteDetailView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              'Route #${route.routeId}',
-              style: const TextStyle(
+              S.of(context).routeIdText(route.routeId),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 10),
             Text(
               '🗓 ${route.date.day}.${route.date.month}.${route.date.year}',
-              style: TextStyle(
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.normal,
                 color: Colors.grey[700],
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              '📦 10 orders | ⚠️ 2 delayed',
-              style: TextStyle(
+            Text(
+              S.of(context).ordersAndDelayedOrdersCount(10, 2),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontSize: 17,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
               ),
             ),
             const Divider(),

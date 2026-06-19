@@ -102,5 +102,18 @@
   "enterComment": "Введіть коментарій...",
   "successConfirmingADelivery": "Успішне підтвердження замовлення",
   "routesWereNotFound": "Маршрути не були знайдені",
-  "routeDetail": "Деталі маршруту"
+  "routeDetail": "Деталі маршруту",
+  "routeIdText": "Маршрут #{routeId}",
+  "ordersAndDelayedOrdersCount": "📦 {ordersCount} замовлень | ⚠️ {delayedOrdersCount} затримані",
+  "orderId": "Замовлення #{orderId}",
+  "deliverByEtaAndRisk": "Доставити до {deliverByHour}:{deliverByMinute} • ETA {plannedEtaHour}:{plannedEtaMinute} • {deliveryRisk}",
+  "deliveryRiskPdfText": "Ризик доставки: {orderDeliveryRisk}",
+  "clientFullNamePdfText": "Клієнт: {clientFullName}",
+  "clientPhoneNumberPdfText": "Номер телефону: {clientPhoneNumber}",
+  "orderAddressPdfText": "Адреса: {orderAddress}",
+  "orderStatusPdfText": "Статус: {orderStatus}",
+  "orderDeliverByPdfText": "Доставити до: {orderDeliverBy}",
+  "orderPlannedEtaPdfText": "Запланована ETA: {orderPlannedEta}",
+  "routeOrdersCount": "{ordersAmount} замовлень",
+  "routeDelayedOrdersCount": "{delayedOrdersAmount} затримані"
 }

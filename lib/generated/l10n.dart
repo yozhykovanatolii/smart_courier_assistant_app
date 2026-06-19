@@ -923,6 +923,151 @@ class S {
       args: [],
     );
   }
+
+  /// `Route #{routeId}`
+  String routeIdText(Object routeId) {
+    return Intl.message(
+      'Route #$routeId',
+      name: 'routeIdText',
+      desc: '',
+      args: [routeId],
+    );
+  }
+
+  /// `📦 {ordersCount} orders | ⚠️ {delayedOrdersCount} delayed`
+  String ordersAndDelayedOrdersCount(
+    Object ordersCount,
+    Object delayedOrdersCount,
+  ) {
+    return Intl.message(
+      '📦 $ordersCount orders | ⚠️ $delayedOrdersCount delayed',
+      name: 'ordersAndDelayedOrdersCount',
+      desc: '',
+      args: [ordersCount, delayedOrdersCount],
+    );
+  }
+
+  /// `Order {orderId}`
+  String orderId(Object orderId) {
+    return Intl.message(
+      'Order $orderId',
+      name: 'orderId',
+      desc: '',
+      args: [orderId],
+    );
+  }
+
+  /// `Deliver by {deliverByHour}:{deliverByMinute} • ETA {plannedEtaHour}:{plannedEtaMinute} • {deliveryRisk}`
+  String deliverByEtaAndRisk(
+    Object deliverByHour,
+    Object deliverByMinute,
+    Object plannedEtaHour,
+    Object plannedEtaMinute,
+    Object deliveryRisk,
+  ) {
+    return Intl.message(
+      'Deliver by $deliverByHour:$deliverByMinute • ETA $plannedEtaHour:$plannedEtaMinute • $deliveryRisk',
+      name: 'deliverByEtaAndRisk',
+      desc: '',
+      args: [
+        deliverByHour,
+        deliverByMinute,
+        plannedEtaHour,
+        plannedEtaMinute,
+        deliveryRisk,
+      ],
+    );
+  }
+
+  /// `Delivery risk: {orderDeliveryRisk}`
+  String deliveryRiskPdfText(Object orderDeliveryRisk) {
+    return Intl.message(
+      'Delivery risk: $orderDeliveryRisk',
+      name: 'deliveryRiskPdfText',
+      desc: '',
+      args: [orderDeliveryRisk],
+    );
+  }
+
+  /// `Client: {clientFullName}`
+  String clientFullNamePdfText(Object clientFullName) {
+    return Intl.message(
+      'Client: $clientFullName',
+      name: 'clientFullNamePdfText',
+      desc: '',
+      args: [clientFullName],
+    );
+  }
+
+  /// `Phone: {clientPhoneNumber}`
+  String clientPhoneNumberPdfText(Object clientPhoneNumber) {
+    return Intl.message(
+      'Phone: $clientPhoneNumber',
+      name: 'clientPhoneNumberPdfText',
+      desc: '',
+      args: [clientPhoneNumber],
+    );
+  }
+
+  /// `Address: {orderAddress}`
+  String orderAddressPdfText(Object orderAddress) {
+    return Intl.message(
+      'Address: $orderAddress',
+      name: 'orderAddressPdfText',
+      desc: '',
+      args: [orderAddress],
+    );
+  }
+
+  /// `Status: {orderStatus}`
+  String orderStatusPdfText(Object orderStatus) {
+    return Intl.message(
+      'Status: $orderStatus',
+      name: 'orderStatusPdfText',
+      desc: '',
+      args: [orderStatus],
+    );
+  }
+
+  /// `Deliver by: {orderDeliverBy}`
+  String orderDeliverByPdfText(Object orderDeliverBy) {
+    return Intl.message(
+      'Deliver by: $orderDeliverBy',
+      name: 'orderDeliverByPdfText',
+      desc: '',
+      args: [orderDeliverBy],
+    );
+  }
+
+  /// `Planned ETA: {orderPlannedEta}`
+  String orderPlannedEtaPdfText(Object orderPlannedEta) {
+    return Intl.message(
+      'Planned ETA: $orderPlannedEta',
+      name: 'orderPlannedEtaPdfText',
+      desc: '',
+      args: [orderPlannedEta],
+    );
+  }
+
+  /// `{ordersAmount} orders`
+  String routeOrdersCount(Object ordersAmount) {
+    return Intl.message(
+      '$ordersAmount orders',
+      name: 'routeOrdersCount',
+      desc: '',
+      args: [ordersAmount],
+    );
+  }
+
+  /// `{delayedOrdersAmount} delayed`
+  String routeDelayedOrdersCount(Object delayedOrdersAmount) {
+    return Intl.message(
+      '$delayedOrdersAmount delayed',
+      name: 'routeDelayedOrdersCount',
+      desc: '',
+      args: [delayedOrdersAmount],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

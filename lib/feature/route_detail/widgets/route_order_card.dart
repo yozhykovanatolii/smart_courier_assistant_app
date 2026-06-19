@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
 import 'package:smart_courier_assistant_app/ui/pdf_generator.dart';
+import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class RouteOrderCard extends StatelessWidget {
   final int index;
@@ -72,31 +74,37 @@ class _OrderCardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
+    final bodyLargeStyle = Theme.of(context).textTheme.bodyLarge;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _CardHeaderSection(order),
         Text(
           order.address,
-          style: const TextStyle(
+          style: bodyLargeStyle?.copyWith(
             fontSize: 16,
-            fontWeight: FontWeight.w500,
           ),
         ),
         Text(
-          'Deliver by ${order.plannedEta.hour}:${order.plannedEta.minute.toString().padLeft(2, '0')} • ETA ${order.plannedEta.hour}:${order.plannedEta.minute.toString().padLeft(2, '0')} • ${order.deliveryRisk.mapDeliveryRiskToText(context)}',
-          style: const TextStyle(
-            color: Color(0xFF6E6E73),
-            fontSize: 14,
+          l10n.deliverByEtaAndRisk(
+            order.deliveryBy.hour,
+            order.deliveryBy.minute.toString().padLeft(2, '0'),
+            order.plannedEta.hour,
+            order.plannedEta.minute.toString().padLeft(2, '0'),
+            order.deliveryRisk.mapDeliveryRiskToText(context) ?? l10n.unknown,
+          ),
+          style: bodyLargeStyle?.copyWith(
+            color: AppColors.grey,
             fontWeight: FontWeight.w400,
           ),
         ),
         const SizedBox(height: 5),
         Text(
           order.status,
-          style: const TextStyle(
+          style: bodyLargeStyle?.copyWith(
             fontSize: 16,
-            fontWeight: FontWeight.bold,
           ),
         ),
         const Divider(),
@@ -117,11 +125,10 @@ class _CardHeaderSection extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            'Order #${order.id}',
+            S.of(context).orderId(order.id),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              color: Color(0xFF1C1C1E),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontSize: 18,
               fontWeight: FontWeight.w700,
             ),

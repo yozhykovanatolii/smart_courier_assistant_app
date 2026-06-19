@@ -4,13 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
 
 class PdfGenerator {
-  static Future<File> generateOrderReportPdf(
+  static Future<void> generateOrderReportPdf(
     OrderModel order,
     BuildContext context,
   ) async {
+    final l10n = S.of(context);
     final orderDeliveryRisk = order.deliveryRisk.mapDeliveryRiskToText(context);
     final pdf = pw.Document();
     final robotoData = await rootBundle.load('assets/fonts/Roboto-Regular.ttf');
@@ -30,7 +32,7 @@ class PdfGenerator {
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
               pw.Text(
-                'Order #${order.id}',
+                l10n.orderId(order.id),
                 style: pw.TextStyle(
                   font: robotoFont,
                   fontSize: 24,
@@ -39,29 +41,29 @@ class PdfGenerator {
               ),
               pw.SizedBox(height: 8),
               pw.Text(
-                'Client: ${order.clientFullName}',
+                l10n.clientFullNamePdfText(order.clientFullName),
                 style: pw.TextStyle(font: robotoFont, fontSize: 16),
               ),
               pw.Text(
-                'Phone: ${order.clientPhoneNumber}',
+                l10n.clientPhoneNumberPdfText(order.clientPhoneNumber),
                 style: pw.TextStyle(font: robotoFont, fontSize: 16),
               ),
               pw.Text(
-                'Address: ${order.address}',
-                style: pw.TextStyle(font: robotoFont, fontSize: 16),
-              ),
-              pw.SizedBox(height: 8),
-              pw.Text(
-                'Deliver by: ${order.deliveryBy}',
-                style: pw.TextStyle(font: robotoFont, fontSize: 16),
-              ),
-              pw.Text(
-                'Planned ETA: ${order.plannedEta}',
+                l10n.orderAddressPdfText(order.address),
                 style: pw.TextStyle(font: robotoFont, fontSize: 16),
               ),
               pw.SizedBox(height: 8),
               pw.Text(
-                'Status: ${order.status}',
+                l10n.orderDeliverByPdfText(order.deliveryBy),
+                style: pw.TextStyle(font: robotoFont, fontSize: 16),
+              ),
+              pw.Text(
+                l10n.orderPlannedEtaPdfText(order.plannedEta),
+                style: pw.TextStyle(font: robotoFont, fontSize: 16),
+              ),
+              pw.SizedBox(height: 8),
+              pw.Text(
+                l10n.orderStatusPdfText(order.status),
                 style: pw.TextStyle(
                   font: robotoFont,
                   fontSize: 18,
@@ -69,7 +71,7 @@ class PdfGenerator {
                 ),
               ),
               pw.Text(
-                'Delivery risk: $orderDeliveryRisk',
+                l10n.deliveryRiskPdfText(orderDeliveryRisk ?? l10n.unknown),
                 style: pw.TextStyle(font: robotoFont, fontSize: 16),
               ),
             ],
@@ -80,6 +82,5 @@ class PdfGenerator {
     final downloadsPath = '/storage/emulated/0/Download';
     final file = File('$downloadsPath/order_${order.id}.pdf');
     await file.writeAsBytes(await pdf.save());
-    return file;
   }
 }
