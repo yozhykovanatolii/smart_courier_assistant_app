@@ -53,4 +53,6 @@ class LoginState {
           : loginGoogleErrorStatus ?? this.loginGoogleErrorStatus,
     );
   }
+
+  bool get isValid => Formz.validate([emailValidator, passwordValidator]);
 }

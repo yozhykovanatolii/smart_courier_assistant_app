@@ -15,9 +15,12 @@ class LogInButton extends StatelessWidget {
     final isLoading = context.select<LoginCubit, bool>(
       (loginCubit) => loginCubit.state.loginStatus.isInProgress,
     );
+    final isValid = context.select<LoginCubit, bool>(
+      (loginCubit) => loginCubit.state.isValid,
+    );
 
     return AppElevatedButton(
-      onPressed: isLoading
+      onPressed: !isValid || isLoading
           ? null
           : () {
               context.read<LoginCubit>().signInWithEmailAndPassword();
@@ -25,8 +28,8 @@ class LogInButton extends StatelessWidget {
       padding: isLoading
           ? const EdgeInsetsGeometry.symmetric(vertical: 10)
           : const EdgeInsetsGeometry.symmetric(vertical: 16),
-      backgroundColor: isLoading ? Colors.grey : AppColors.blue600,
-      boxShadows: isLoading
+      backgroundColor: !isValid || isLoading ? Colors.grey : AppColors.blue600,
+      boxShadows: !isValid || isLoading
           ? null
           : [
               const BoxShadow(
