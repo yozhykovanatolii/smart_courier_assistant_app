@@ -24,24 +24,12 @@ class ClientPhoneNumberTextField extends StatelessWidget {
       context,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 5,
-      children: [
-        AppTextField(
-          controller: clientPhoneNumberController,
-          hintText: '+380991234567',
-          onChanged: context.read<SaveOrderCubit>().setClientPhoneNumber,
-          isValid: errorMessage == null,
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.red,
-            ),
-          ),
-      ],
+    return AppTextField(
+      controller: clientPhoneNumberController,
+      hintText: '+380991234567',
+      onChanged: context.read<SaveOrderCubit>().setClientPhoneNumber,
+      errorMessage: errorMessage,
+      keyboardType: TextInputType.phone,
     );
   }
 }

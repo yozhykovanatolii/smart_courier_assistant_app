@@ -18,23 +18,10 @@ class RegisterFullNameTextField extends StatelessWidget {
       context,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 5,
-      children: [
-        AppTextField(
-          hintText: 'John Dou',
-          onChanged: context.read<RegisterCubit>().setRegisterFullName,
-          isValid: errorMessage == null,
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.red,
-            ),
-          ),
-      ],
+    return AppTextField(
+      hintText: 'John Dou',
+      onChanged: context.read<RegisterCubit>().setRegisterFullName,
+      errorMessage: errorMessage,
     );
   }
 }

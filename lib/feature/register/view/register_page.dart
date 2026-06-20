@@ -34,7 +34,6 @@ class _RegisterView extends StatelessWidget {
     final labelLargeStyle = Theme.of(context).textTheme.labelLarge;
 
     return Scaffold(
-      backgroundColor: Colors.white,
       body: BlocListener<RegisterCubit, RegisterState>(
         listenWhen: (previous, current) {
           return previous.formStatus != current.formStatus;

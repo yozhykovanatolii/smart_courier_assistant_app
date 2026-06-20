@@ -24,24 +24,11 @@ class EditProfileFullNameTextField extends StatelessWidget {
       context,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 5,
-      children: [
-        AppTextField(
-          controller: controller,
-          hintText: 'John Dou',
-          onChanged: context.read<EditProfileCubit>().setProfileFullName,
-          isValid: errorMessage == null,
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.red,
-            ),
-          ),
-      ],
+    return AppTextField(
+      controller: controller,
+      hintText: 'John Dou',
+      onChanged: context.read<EditProfileCubit>().setProfileFullName,
+      errorMessage: errorMessage,
     );
   }
 }

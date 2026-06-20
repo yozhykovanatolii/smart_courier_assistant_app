@@ -19,23 +19,11 @@ class RegisterPhoneNumberTextField extends StatelessWidget {
       context,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 5,
-      children: [
-        AppTextField(
-          hintText: '+380991234567',
-          onChanged: context.read<RegisterCubit>().setRegisterPhoneNumber,
-          isValid: errorMessage == null,
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.red,
-            ),
-          ),
-      ],
+    return AppTextField(
+      hintText: '+380991234567',
+      onChanged: context.read<RegisterCubit>().setRegisterPhoneNumber,
+      errorMessage: errorMessage,
+      keyboardType: TextInputType.phone,
     );
   }
 }

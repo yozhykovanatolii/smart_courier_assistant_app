@@ -18,24 +18,11 @@ class RegisterPasswordTextField extends StatelessWidget {
       context,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 5,
-      children: [
-        AppTextField(
-          hintText: 'exampleA#',
-          obscureText: true,
-          onChanged: context.read<RegisterCubit>().setRegisterPassword,
-          isValid: errorMessage == null,
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.red,
-            ),
-          ),
-      ],
+    return AppTextField(
+      hintText: 'exampleA#',
+      obscureText: true,
+      onChanged: context.read<RegisterCubit>().setRegisterPassword,
+      errorMessage: errorMessage,
     );
   }
 }

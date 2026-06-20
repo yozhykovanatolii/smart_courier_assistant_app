@@ -17,24 +17,11 @@ class LoginPasswordField extends StatelessWidget {
       context,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 5,
-      children: [
-        AppTextField(
-          hintText: 'exampleA#',
-          obscureText: true,
-          onChanged: context.read<LoginCubit>().setLoginPassword,
-          isValid: errorMessage == null,
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.red,
-            ),
-          ),
-      ],
+    return AppTextField(
+      hintText: 'exampleA#',
+      obscureText: true,
+      onChanged: context.read<LoginCubit>().setLoginPassword,
+      errorMessage: errorMessage,
     );
   }
 }

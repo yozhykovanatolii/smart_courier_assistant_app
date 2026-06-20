@@ -18,36 +18,15 @@ class CommentTextField extends StatelessWidget {
       context,
       courierCommentValidator.displayError,
     );
-    final bodyLargeStyle = Theme.of(context).textTheme.bodyLarge;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppTextField(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          maxLines: 3,
-          minLines: 3,
-          hintText: S.of(context).enterComment,
-          onChanged: context.read<ProofDeliveryCubit>().editCourierComment,
-          isValid: errorMessage == null,
-        ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Text(
-            '${courierCommentValidator.value.length}/200',
-            style: bodyLargeStyle?.copyWith(
-              color: errorMessage != null ? Colors.red : null,
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: bodyLargeStyle?.copyWith(color: Colors.red),
-          ),
-      ],
+    return AppTextField(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      maxLines: 3,
+      minLines: 3,
+      hintText: S.of(context).enterComment,
+      onChanged: context.read<ProofDeliveryCubit>().editCourierComment,
+      errorMessage: errorMessage,
+      counterText: '${courierCommentValidator.value.length}/200',
     );
   }
 

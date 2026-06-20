@@ -48,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m8(Object orderStatus) => "Статус: ${orderStatus}";
 
-  static String m9(Object ordersCount, delayedOrdersCount) =>
+  static String m9(Object ordersCount, Object delayedOrdersCount) =>
       "📦 ${ordersCount} замовлень | ⚠️ ${delayedOrdersCount} затримані";
 
   static String m10(Object delayedOrdersAmount) =>

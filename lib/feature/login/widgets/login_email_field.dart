@@ -15,23 +15,10 @@ class LoginEmailField extends StatelessWidget {
     );
     final errorMessage = emailInputError.mapEmailInputErrorToMessage(context);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 5,
-      children: [
-        AppTextField(
-          hintText: 'example@gmail.com',
-          onChanged: context.read<LoginCubit>().setLoginEmail,
-          isValid: errorMessage == null,
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.red,
-            ),
-          ),
-      ],
+    return AppTextField(
+      hintText: 'example@gmail.com',
+      onChanged: context.read<LoginCubit>().setLoginEmail,
+      errorMessage: errorMessage,
     );
   }
 }

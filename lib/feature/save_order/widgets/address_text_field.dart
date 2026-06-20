@@ -25,24 +25,11 @@ class AddressTextField extends StatelessWidget {
       addressInputError,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 5,
-      children: [
-        AppTextField(
-          controller: addressController,
-          hintText: 'London, Baker Street 221B',
-          onChanged: context.read<SaveOrderCubit>().setOrderAddress,
-          isValid: errorMessage == null,
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.red,
-            ),
-          ),
-      ],
+    return AppTextField(
+      controller: addressController,
+      hintText: 'London, Baker Street 221B',
+      onChanged: context.read<SaveOrderCubit>().setOrderAddress,
+      errorMessage: errorMessage,
     );
   }
 

@@ -32,7 +32,6 @@ class _ForgotPasswordView extends StatelessWidget {
     final l10n = S.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
       body: BlocListener<ForgotPasswordCubit, ForgotPasswordState>(
         listenWhen: (previous, current) {
           return previous.formStatus != current.formStatus;

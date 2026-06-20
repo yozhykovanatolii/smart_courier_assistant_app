@@ -24,24 +24,11 @@ class EditProfilePhoneNumberTextField extends StatelessWidget {
       context,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 5,
-      children: [
-        AppTextField(
-          controller: controller,
-          hintText: '+380991234567',
-          onChanged: context.read<EditProfileCubit>().setProfilePhoneNumber,
-          isValid: errorMessage == null,
-        ),
-        if (errorMessage != null)
-          Text(
-            errorMessage,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Colors.red,
-            ),
-          ),
-      ],
+    return AppTextField(
+      controller: controller,
+      hintText: '+380991234567',
+      onChanged: context.read<EditProfileCubit>().setProfilePhoneNumber,
+      errorMessage: errorMessage,
     );
   }
 }

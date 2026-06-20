@@ -4,7 +4,6 @@ import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/gen/assets.gen.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
-import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
 
@@ -13,6 +12,7 @@ class LogInWithGoogle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final isLoading = context.select<LoginCubit, bool>(
       (loginCubit) =>
           loginCubit.state.googleStatus == FormzSubmissionStatus.inProgress,
@@ -27,17 +27,19 @@ class LogInWithGoogle extends StatelessWidget {
       padding: isLoading
           ? const EdgeInsetsGeometry.symmetric(vertical: 10)
           : const EdgeInsetsGeometry.symmetric(vertical: 16),
-      backgroundColor: isLoading ? Colors.grey : Colors.white,
+      backgroundColor: isLoading
+          ? colorScheme.surfaceContainerHighest
+          : colorScheme.surfaceContainerLow,
       border: isLoading
           ? null
           : Border.all(
-              color: AppColors.grey200,
+              color: colorScheme.outline,
             ),
       boxShadows: [
         BoxShadow(
           offset: const Offset(0, -3),
           blurRadius: 6,
-          color: AppColors.grey100.withValues(alpha: 0.6),
+          color: colorScheme.shadow.withValues(alpha: 0.25),
         ),
       ],
       child: isLoading
