@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/route_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/data/repository/route_repository.dart';
+import 'package:smart_courier_assistant_app/domain/repository/route_repository.dart';
 import 'package:smart_courier_assistant_app/feature/history/cubit/history_state.dart';
 
 class HistoryCubit extends Cubit<HistoryState> {

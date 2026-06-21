@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_event.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/proof_delivery.dart';
@@ -13,7 +13,7 @@ import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart'
 
 class OrderCard extends StatelessWidget {
   final int index;
-  final OrderModel order;
+  final OrderEntity order;
 
   const OrderCard({
     super.key,
@@ -95,7 +95,7 @@ class _DottedLine extends StatelessWidget {
 }
 
 class _OrderCardContent extends StatelessWidget {
-  final OrderModel order;
+  final OrderEntity order;
 
   const _OrderCardContent(this.order);
 
@@ -189,7 +189,7 @@ class _OrderCardContent extends StatelessWidget {
 }
 
 class _CardHeaderSection extends StatelessWidget {
-  final OrderModel order;
+  final OrderEntity order;
 
   const _CardHeaderSection(this.order);
 
@@ -200,7 +200,7 @@ class _CardHeaderSection extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            order.address,
+            order.address.name,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(

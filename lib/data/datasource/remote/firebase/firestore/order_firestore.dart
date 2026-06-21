@@ -6,36 +6,7 @@ import 'package:smart_courier_assistant_app/data/models/proof_delivery_model.dar
 class OrderFirestore {
   final _firestore = FirebaseFirestore.instance;
 
-  Future<void> saveOrder(
-    String routeId, {
-    String? orderId,
-    String? clientFullName,
-    String? clientPhoneNumber,
-    String? address,
-    double? latitude,
-    double? longitude,
-    String? recommendation,
-    DeliveryRisk? deliveryRisk,
-    DateTime? plannedEta,
-    DateTime? deliveryBy,
-    String? status,
-    int? orderIndex,
-  }) async {
-    OrderModel orderModel = OrderModel.initial();
-    orderModel = orderModel.copyWith(
-      id: orderId,
-      clientFullName: clientFullName,
-      clientPhoneNumber: clientPhoneNumber,
-      address: address,
-      latitude: latitude,
-      longitude: longitude,
-      plannedEta: plannedEta,
-      deliveryBy: deliveryBy,
-      deliveryRisk: deliveryRisk,
-      recommendation: recommendation,
-      status: status,
-      orderIndex: orderIndex,
-    );
+  Future<void> saveOrder(OrderModel orderModel, String routeId) async {
     final docReference = _getOrderDocumentReference(orderModel.id, routeId);
     await docReference.set(orderModel);
   }

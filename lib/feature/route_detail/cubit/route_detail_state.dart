@@ -1,4 +1,4 @@
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
 
 sealed class RouteDetailState {}
 
@@ -7,7 +7,7 @@ final class RouteDetailInitialState extends RouteDetailState {}
 final class RouteDetailLoadingState extends RouteDetailState {}
 
 final class RouteDetailSuccessState extends RouteDetailState {
-  final List<OrderModel> routeOrders;
+  final List<OrderEntity> routeOrders;
 
   RouteDetailSuccessState(this.routeOrders);
 }

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/reset_password_exception.dart';
-import 'package:smart_courier_assistant_app/data/repository/auth_repository.dart';
+import 'package:smart_courier_assistant_app/domain/repository/auth_repository.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_state.dart';
 import 'package:smart_courier_assistant_app/validation/email_validator.dart';
 

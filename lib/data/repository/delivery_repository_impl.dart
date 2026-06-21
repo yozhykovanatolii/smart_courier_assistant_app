@@ -2,18 +2,20 @@ import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/fire
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/order_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
 import 'package:smart_courier_assistant_app/data/models/proof_delivery_model.dart';
+import 'package:smart_courier_assistant_app/domain/repository/delivery_repository.dart';
 
-class DeliveryRepository {
+class DeliveryRepositoryImpl implements DeliveryRepository {
   final UserAuth _userAuth;
   final RouteFirestore _routeFirestore;
   final OrderFirestore _orderFirestore;
 
-  DeliveryRepository(
+  DeliveryRepositoryImpl(
     this._userAuth,
     this._routeFirestore,
     this._orderFirestore,
   );
 
+  @override
   Future<void> createProofOfDelivery(
     String orderId,
     String courierComment,

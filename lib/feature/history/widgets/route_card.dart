@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/data/models/route_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/route_entity.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class RouteCard extends StatelessWidget {
-  final RouteModel route;
+  final RouteEntity route;
 
   const RouteCard({
     super.key,
@@ -47,7 +47,7 @@ class RouteCard extends StatelessWidget {
                   color: AppColors.blue600,
                 ),
                 text: Text(
-                  "${route.date.day}.${route.date.month}.${route.date.year}",
+                  "${route.createAt.day}.${route.createAt.month}.${route.createAt.year}",
                   style: bodyLargeStyle?.copyWith(
                     color: AppColors.grey,
                   ),
@@ -64,7 +64,7 @@ class RouteCard extends StatelessWidget {
                       color: AppColors.green,
                     ),
                     text: Text(
-                      S.of(context).routeOrdersCount(10),
+                      S.of(context).routeOrdersCount(route.ordersCount),
                       style: const TextStyle(
                         fontSize: 14,
                       ),
@@ -77,7 +77,9 @@ class RouteCard extends StatelessWidget {
                       color: AppColors.red,
                     ),
                     text: Text(
-                      S.of(context).routeDelayedOrdersCount(2),
+                      S
+                          .of(context)
+                          .routeDelayedOrdersCount(route.delayedOrdersCount),
                       style: bodyLargeStyle?.copyWith(
                         color: AppColors.red,
                         fontSize: 14,

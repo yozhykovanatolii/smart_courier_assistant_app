@@ -2,20 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_courier_assistant_app/data/models/proof_delivery_model.dart';
 import 'package:uuid/uuid.dart';
 
-enum DeliveryRisk {
-  unknown,
-  onTime,
-  atRisk,
-  delayed;
-
-  static DeliveryRisk fromFirestore(String risk) {
-    return DeliveryRisk.values.firstWhere(
-      (deliveryRisk) => deliveryRisk.name == risk,
-      orElse: () => DeliveryRisk.unknown,
-    );
-  }
-}
-
 class OrderModel {
   final String id;
   final String clientFullName;
@@ -25,7 +11,7 @@ class OrderModel {
   final double longitude;
   final DateTime plannedEta;
   final DateTime deliveryBy;
-  final DeliveryRisk deliveryRisk;
+  final String deliveryRisk;
   final String recommendation;
   final String status;
   final int orderIndex;
@@ -56,7 +42,7 @@ class OrderModel {
       latitude: 0,
       longitude: 0,
       recommendation: 'Uknown',
-      deliveryRisk: DeliveryRisk.unknown,
+      deliveryRisk: 'Unknown',
       plannedEta: DateTime.now(),
       deliveryBy: DateTime.now(),
       status: 'Active',
@@ -74,7 +60,7 @@ class OrderModel {
       'longitude': longitude,
       'plannedEta': Timestamp.fromDate(plannedEta),
       'deliveryBy': Timestamp.fromDate(deliveryBy),
-      'deliveryRisk': deliveryRisk.name,
+      'deliveryRisk': deliveryRisk,
       'status': status,
       'recommendation': recommendation,
       'orderIndex': orderIndex,
@@ -97,7 +83,7 @@ class OrderModel {
       plannedEta: (data?['plannedEta'] as Timestamp).toDate(),
       deliveryBy: (data?['deliveryBy'] as Timestamp).toDate(),
       status: data?['status'] as String,
-      deliveryRisk: DeliveryRisk.fromFirestore(data?['deliveryRisk'] as String),
+      deliveryRisk: data?['deliveryRisk'] as String,
       recommendation: data?['recommendation'] as String,
       orderIndex: (data?['orderIndex'] ?? 0) as int,
       proofDelivery: data?['proofDelivery'] != null
@@ -117,7 +103,7 @@ class OrderModel {
     double? longitude,
     DateTime? plannedEta,
     DateTime? deliveryBy,
-    DeliveryRisk? deliveryRisk,
+    String? deliveryRisk,
     String? recommendation,
     String? status,
     int? orderIndex,

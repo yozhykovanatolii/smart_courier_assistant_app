@@ -2,8 +2,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:smart_courier_assistant_app/data/models/api/route_point.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
+import 'package:smart_courier_assistant_app/domain/entity/route_point_entity.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_state.dart';
 import 'package:smart_courier_assistant_app/ui/marker_factory.dart';
@@ -61,7 +61,7 @@ class _GoogleMapSectionState extends State<GoogleMapSection> {
     }
   }
 
-  Set<Polyline> _buildRoutePolyline(List<RoutePoint> points) {
+  Set<Polyline> _buildRoutePolyline(List<RoutePointEntity> points) {
     return {
       Polyline(
         polylineId: const PolylineId('route'),
@@ -74,7 +74,7 @@ class _GoogleMapSectionState extends State<GoogleMapSection> {
     };
   }
 
-  Future<void> _updateMarkers(List<OrderModel> orders) async {
+  Future<void> _updateMarkers(List<OrderEntity> orders) async {
     final Set<Marker> markers = {};
     for (int i = 0; i < orders.length; i++) {
       final order = orders[i];
@@ -83,11 +83,11 @@ class _GoogleMapSectionState extends State<GoogleMapSection> {
       markers.add(
         Marker(
           markerId: MarkerId(order.id),
-          position: LatLng(order.latitude, order.longitude),
+          position: LatLng(order.address.latitude, order.address.longitude),
           icon: icon,
           infoWindow: InfoWindow(
             title: order.clientFullName,
-            snippet: order.address,
+            snippet: order.address.name,
           ),
         ),
       );
@@ -98,7 +98,7 @@ class _GoogleMapSectionState extends State<GoogleMapSection> {
     });
   }
 
-  void _moveCameraToBounds(List<RoutePoint> points) {
+  void _moveCameraToBounds(List<RoutePointEntity> points) {
     if (_controller == null || points.isEmpty) return;
 
     double minLat = points.first.latitude;

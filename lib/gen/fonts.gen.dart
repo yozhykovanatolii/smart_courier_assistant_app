@@ -19,4 +19,7 @@ class FontFamily {
 
   /// Font family: PlusJakartaSans
   static const String plusJakartaSans = 'PlusJakartaSans';
+
+  /// Font family: Roboto
+  static const String roboto = 'Roboto';
 }

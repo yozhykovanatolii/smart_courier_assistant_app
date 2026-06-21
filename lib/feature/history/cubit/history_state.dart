@@ -1,4 +1,4 @@
-import 'package:smart_courier_assistant_app/data/models/route_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/route_entity.dart';
 
 sealed class HistoryState {}
 
@@ -7,7 +7,7 @@ final class HistoryInitialState extends HistoryState {}
 final class HistoryLoadingState extends HistoryState {}
 
 final class HistorySuccessState extends HistoryState {
-  final List<RouteModel> routes;
+  final List<RouteEntity> routes;
 
   HistorySuccessState(this.routes);
 }

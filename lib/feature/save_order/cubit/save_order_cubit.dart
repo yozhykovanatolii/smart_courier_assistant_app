@@ -3,9 +3,9 @@ import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/geolocation_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/route_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
-import 'package:smart_courier_assistant_app/data/repository/order_repository.dart';
-import 'package:smart_courier_assistant_app/data/repository/route_repository.dart';
+import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
+import 'package:smart_courier_assistant_app/domain/repository/order_repository.dart';
+import 'package:smart_courier_assistant_app/domain/repository/route_repository.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_state.dart';
 import 'package:smart_courier_assistant_app/validation/address_validator.dart';
 import 'package:smart_courier_assistant_app/validation/full_name_validator.dart';
@@ -80,11 +80,11 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
     }
   }
 
-  void editOrder(OrderModel? order) {
+  void editOrder(OrderEntity? order) {
     if (order != null) {
       emit(
         state.copyWith(
-          addressValidator: AddressValidator.dirty(address: order.address),
+          addressValidator: AddressValidator.dirty(address: order.address.name),
           clientFullNameValidator: FullNameValidator.dirty(
             fullName: order.clientFullName,
           ),
@@ -97,7 +97,7 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
     }
   }
 
-  Future<void> saveOrder(OrderModel? order) async {
+  Future<void> saveOrder(OrderEntity? order) async {
     emit(state.copyWith(formStatus: FormzSubmissionStatus.inProgress));
     try {
       final routeId = await _routeRepository.createRoute();
@@ -107,7 +107,7 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
         state.clientPhoneNumberValidator.value,
         state.addressValidator.value,
         state.deliveryBy,
-        order: order,
+        currentOrder: order,
       );
       emit(state.copyWith(formStatus: FormzSubmissionStatus.success));
     } on UserNotFoundException {

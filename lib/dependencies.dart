@@ -10,13 +10,13 @@ import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/fire
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/user_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/local/settings_shared_preferences.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
-import 'package:smart_courier_assistant_app/data/repository/auth_repository.dart';
-import 'package:smart_courier_assistant_app/data/repository/delivery_repository.dart';
-import 'package:smart_courier_assistant_app/data/repository/geolocation_repository.dart';
-import 'package:smart_courier_assistant_app/data/repository/order_repository.dart';
-import 'package:smart_courier_assistant_app/data/repository/route_repository.dart';
-import 'package:smart_courier_assistant_app/data/repository/settings_repository.dart';
-import 'package:smart_courier_assistant_app/data/repository/user_repository.dart';
+import 'package:smart_courier_assistant_app/data/repository/auth_repository_impl.dart';
+import 'package:smart_courier_assistant_app/data/repository/delivery_repository_impl.dart';
+import 'package:smart_courier_assistant_app/data/repository/geolocation_repository_impl.dart';
+import 'package:smart_courier_assistant_app/data/repository/order_repository_impl.dart';
+import 'package:smart_courier_assistant_app/data/repository/route_repository_impl.dart';
+import 'package:smart_courier_assistant_app/data/repository/settings_repository_impl.dart';
+import 'package:smart_courier_assistant_app/data/repository/user_repository_impl.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/history/cubit/history_cubit.dart';
@@ -62,26 +62,27 @@ class Dependencies {
     final routeDirectionClient = _getIt<RouteDirectionClient>();
     final recommendationGptClient = _getIt<RecommendationGptClient>();
     _getIt
-      ..registerFactory<AuthRepository>(
-        () => AuthRepository(userAuth, userFirestore),
+      ..registerFactory<AuthRepositoryImpl>(
+        () => AuthRepositoryImpl(userAuth, userFirestore),
       )
-      ..registerFactory<SettingsRepository>(
-        () => SettingsRepository(settingsSharedPreference),
+      ..registerFactory<SettingsRepositoryImpl>(
+        () => SettingsRepositoryImpl(settingsSharedPreference),
       )
-      ..registerFactory<UserRepository>(
-        () => UserRepository(userAuth, userFirestore, supabaseStorage),
+      ..registerFactory<UserRepositoryImpl>(
+        () => UserRepositoryImpl(userAuth, userFirestore, supabaseStorage),
       )
-      ..registerFactory<RouteRepository>(
-        () => RouteRepository(
+      ..registerFactory<RouteRepositoryImpl>(
+        () => RouteRepositoryImpl(
           routeFirestore,
           userAuth,
           routeDirectionClient,
           recommendationGptClient,
           settingsSharedPreference,
+          orderFirestore,
         ),
       )
-      ..registerFactory<OrderRepository>(
-        () => OrderRepository(
+      ..registerFactory<OrderRepositoryImpl>(
+        () => OrderRepositoryImpl(
           orderFirestore,
           userAuth,
           routeFirestore,
@@ -89,20 +90,22 @@ class Dependencies {
           supabaseStorage,
         ),
       )
-      ..registerFactory<GeolocationRepository>(() => GeolocationRepository())
-      ..registerFactory<DeliveryRepository>(
-        () => DeliveryRepository(userAuth, routeFirestore, orderFirestore),
+      ..registerFactory<GeolocationRepositoryImpl>(
+        () => GeolocationRepositoryImpl(),
+      )
+      ..registerFactory<DeliveryRepositoryImpl>(
+        () => DeliveryRepositoryImpl(userAuth, routeFirestore, orderFirestore),
       );
   }
 
   static void _setupBloc() {
-    final authRepository = _getIt<AuthRepository>();
-    final userRepository = _getIt<UserRepository>();
-    final settingsRepository = _getIt<SettingsRepository>();
-    final orderRepository = _getIt<OrderRepository>();
-    final routeRepository = _getIt<RouteRepository>();
-    final geolocationRepository = _getIt<GeolocationRepository>();
-    final deliveryRepository = _getIt<DeliveryRepository>();
+    final authRepository = _getIt<AuthRepositoryImpl>();
+    final userRepository = _getIt<UserRepositoryImpl>();
+    final settingsRepository = _getIt<SettingsRepositoryImpl>();
+    final orderRepository = _getIt<OrderRepositoryImpl>();
+    final routeRepository = _getIt<RouteRepositoryImpl>();
+    final geolocationRepository = _getIt<GeolocationRepositoryImpl>();
+    final deliveryRepository = _getIt<DeliveryRepositoryImpl>();
     _getIt
       ..registerFactory<LoginCubit>(
         () => LoginCubit(authRepository),

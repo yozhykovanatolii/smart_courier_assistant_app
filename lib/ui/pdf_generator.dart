@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
 
 class PdfGenerator {
   static Future<void> generateOrderReportPdf(
-    OrderModel order,
+    OrderEntity order,
     BuildContext context,
   ) async {
     final l10n = S.of(context);

@@ -3,14 +3,14 @@ import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/permission_deny_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/photo_not_selected_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/data/models/user_model.dart';
-import 'package:smart_courier_assistant_app/data/repository/user_repository.dart';
+import 'package:smart_courier_assistant_app/data/repository/user_repository_impl.dart';
+import 'package:smart_courier_assistant_app/domain/entity/user_entity.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_state.dart';
 import 'package:smart_courier_assistant_app/validation/full_name_validator.dart';
 import 'package:smart_courier_assistant_app/validation/phone_number_validator.dart';
 
 class EditProfileCubit extends Cubit<EditProfileState> {
-  final UserRepository _userRepository;
+  final UserRepositoryImpl _userRepository;
 
   EditProfileCubit(this._userRepository) : super(EditProfileState.initial());
 
@@ -57,7 +57,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     );
   }
 
-  void fetchUserProfile(UserModel user) {
+  void fetchUserProfile(UserEntity user) {
     emit(
       state.copyWith(
         fullNameValidator: FullNameValidator.dirty(fullName: user.fullName),

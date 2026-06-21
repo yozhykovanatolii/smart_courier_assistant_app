@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/login_exception.dart';
 import 'package:smart_courier_assistant_app/core/exceptions/login_with_google_exception.dart';
-import 'package:smart_courier_assistant_app/data/repository/auth_repository.dart';
+import 'package:smart_courier_assistant_app/domain/repository/auth_repository.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_state.dart';
 import 'package:smart_courier_assistant_app/validation/email_validator.dart';
 import 'package:smart_courier_assistant_app/validation/password_validator.dart';

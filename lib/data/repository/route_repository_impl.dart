@@ -2,28 +2,36 @@ import 'package:smart_courier_assistant_app/data/datasource/local/settings_share
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_gpt_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_direction_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/order_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
+import 'package:smart_courier_assistant_app/data/mapper/order_mapper.dart';
+import 'package:smart_courier_assistant_app/data/mapper/route_mapper.dart';
+import 'package:smart_courier_assistant_app/data/mapper/route_point_mapper.dart';
 import 'package:smart_courier_assistant_app/data/models/api/risky_order_model.dart';
 import 'package:smart_courier_assistant_app/data/models/api/route_analysis_model.dart';
-import 'package:smart_courier_assistant_app/data/models/api/route_point.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
-import 'package:smart_courier_assistant_app/data/models/route_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
+import 'package:smart_courier_assistant_app/domain/entity/route_entity.dart';
+import 'package:smart_courier_assistant_app/domain/entity/route_point_entity.dart';
+import 'package:smart_courier_assistant_app/domain/repository/route_repository.dart';
 
-class RouteRepository {
+class RouteRepositoryImpl implements RouteRepository {
   final RouteFirestore _routeFirestore;
+  final OrderFirestore _orderFirestore;
   final UserAuth _userAuth;
   final RouteDirectionClient _directionClient;
   final RecommendationGptClient _gptClient;
   final SettingsSharedPreference _settingsSharedPreference;
 
-  RouteRepository(
+  RouteRepositoryImpl(
     this._routeFirestore,
     this._userAuth,
     this._directionClient,
     this._gptClient,
     this._settingsSharedPreference,
+    this._orderFirestore,
   );
 
+  @override
   Future<String> createRoute() async {
     final courierId = _userAuth.userId;
     final routeId = await _routeFirestore.getTodayRouteId(courierId);
@@ -34,39 +42,47 @@ class RouteRepository {
     return routeId;
   }
 
-  Future<List<RoutePoint>> buildRoutePolyline(
-    List<OrderModel> orders,
+  @override
+  Future<List<RoutePointEntity>> buildRoutePolyline(
+    List<OrderEntity> orders,
     double startLat,
     double startLng,
   ) async {
-    return await _directionClient.getRoutePolyline(
-      orders,
+    final ordersModel = orders
+        .map((order) => OrderMapper.fromEntity(order))
+        .toList();
+    final routePoints = await _directionClient.getRoutePolyline(
+      ordersModel,
       startLat,
       startLng,
     );
+    return routePoints.map((routePoint) => routePoint.toEntity()).toList();
   }
 
+  @override
   Future<String> getCurrentRouteRecommendation() async {
     final courierId = _userAuth.userId;
     final routeModel = await _routeFirestore.getTodayRoute(courierId);
     return routeModel.recommendation;
   }
 
+  @override
   Future<String> getRouteRecommendationByAI(
-    List<OrderModel> ordersModel,
+    List<OrderEntity> ordersEntity,
   ) async {
     final languageCode = await _settingsSharedPreference.loadLanguageCode();
-    final riskyOrders = ordersModel
+    final riskyOrders = ordersEntity
+        .map(OrderMapper.fromEntity)
         .where(
           (orderModel) =>
-              orderModel.deliveryRisk == DeliveryRisk.delayed ||
-              orderModel.deliveryRisk == DeliveryRisk.atRisk,
+              orderModel.deliveryRisk == 'Delayed' ||
+              orderModel.deliveryRisk == 'At risk',
         )
         .map(RiskyOrderModel.fromOrderModel)
         .toList();
     final currentTimeDateTime = DateTime.now();
     final analysis = RouteAnalysisModel(
-      totalOrders: ordersModel.length,
+      totalOrders: ordersEntity.length,
       riskyOrders: riskyOrders,
       currentTime:
           '${currentTimeDateTime.hour}:${currentTimeDateTime.minute.toString().padLeft(2, '0')}',
@@ -83,9 +99,16 @@ class RouteRepository {
     return recommendation ?? '';
   }
 
-  Future<List<RouteModel>> getAllCourierRoutes() async {
+  @override
+  Future<List<RouteEntity>> getAllCourierRoutes() async {
     final courierId = _userAuth.userId;
     final routes = await _routeFirestore.getAllCourierRoutes(courierId);
-    return routes;
+    final futures = routes.map((route) async {
+      final ordersModel = await _orderFirestore.getAllRouteOrders(
+        route.routeId,
+      );
+      return route.toEntity(ordersModel);
+    }).toList();
+    return await Future.wait(futures);
   }
 }

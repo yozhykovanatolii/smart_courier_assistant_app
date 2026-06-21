@@ -3,12 +3,16 @@ import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/fire
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/order_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
+import 'package:smart_courier_assistant_app/data/mapper/order_mapper.dart';
+import 'package:smart_courier_assistant_app/data/mapper/proof_delivery_mapper.dart';
 import 'package:smart_courier_assistant_app/data/models/order_model.dart';
 import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
 import 'package:smart_courier_assistant_app/data/service/geolocation_service.dart';
+import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
+import 'package:smart_courier_assistant_app/domain/repository/order_repository.dart';
 import 'package:smart_courier_assistant_app/util/calculation_eta_util.dart';
 
-class OrderRepository {
+class OrderRepositoryImpl implements OrderRepository {
   final OrderFirestore _orderFirestore;
   final UserAuth _userAuth;
   final RouteFirestore _routeFirestore;
@@ -16,7 +20,7 @@ class OrderRepository {
   final SupabaseStorage _supabaseStorage;
   String _routeId = '';
 
-  OrderRepository(
+  OrderRepositoryImpl(
     this._orderFirestore,
     this._userAuth,
     this._routeFirestore,
@@ -24,73 +28,87 @@ class OrderRepository {
     this._supabaseStorage,
   );
 
+  @override
   Future<void> saveOrder(
     String routeId,
     String clientFullName,
     String clientPhoneNumber,
     String address,
     DateTime deliveryBy, {
-    OrderModel? order,
+    OrderEntity? currentOrder,
   }) async {
     final location = await GeolocationService.getLocationByAddress(address);
-    await _orderFirestore.saveOrder(
-      routeId,
-      orderId: order?.id,
+    OrderModel orderModel = OrderModel.initial();
+    orderModel = orderModel.copyWith(
+      id: currentOrder?.id,
       clientFullName: clientFullName,
       clientPhoneNumber: clientPhoneNumber,
       address: address,
-      deliveryBy: deliveryBy,
       latitude: location.latitude,
       longitude: location.longitude,
-      recommendation: order?.recommendation,
-      deliveryRisk: order?.deliveryRisk,
-      plannedEta: order?.plannedEta,
-      status: order?.status,
-      orderIndex: order?.orderIndex,
+      deliveryBy: deliveryBy,
+      plannedEta: currentOrder?.plannedEta,
+      recommendation: currentOrder?.recommendation ?? orderModel.recommendation,
+      proofDelivery: ProofDeliveryMapper.fromEntity(
+        currentOrder?.proofDeliveryEntity,
+      ),
     );
+    await _orderFirestore.saveOrder(orderModel, routeId);
   }
 
-  Stream<List<OrderModel>> getAllCourierActiveOrders() async* {
-    try {
-      final courierId = _userAuth.userId;
-      final routeModel = await _routeFirestore.getTodayRoute(
-        courierId,
-      );
-      _routeId = routeModel.routeId;
-      yield* _orderFirestore.getActiveUserOrders(routeModel.routeId);
-    } catch (error) {
-      yield* Stream.error(error);
-    }
+  @override
+  Stream<List<OrderEntity>> getAllCourierActiveOrders() {
+    final courierId = _userAuth.userId;
+    return Stream.fromFuture(
+      _routeFirestore.getTodayRoute(courierId),
+    ).asyncExpand((route) {
+      _routeId = route.routeId;
+      return _orderFirestore
+          .getActiveUserOrders(route.routeId)
+          .map((orders) => orders.map(OrderMapper.toEntity).toList());
+    });
   }
 
-  Future<List<OrderModel>> getAllRouteOrders(String routeId) async {
-    return await _orderFirestore.getAllRouteOrders(routeId);
+  @override
+  Future<List<OrderEntity>> getAllRouteOrders(String routeId) async {
+    final ordersModel = await _orderFirestore.getAllRouteOrders(routeId);
+    return ordersModel
+        .map((orderModel) => OrderMapper.toEntity(orderModel))
+        .toList();
   }
 
+  @override
   Future<void> deleteOrder(String orderId) async {
     final courierId = _userAuth.userId;
     final route = await _routeFirestore.getTodayRoute(courierId);
     await _orderFirestore.deleteOrder(orderId, route.routeId);
   }
 
-  Future<List<OrderModel>> optimizeOrdersRoute(
-    List<OrderModel> orders,
+  @override
+  Future<List<OrderEntity>> optimizeOrdersRoute(
+    List<OrderEntity> orders,
     double latitude,
     double longitude,
   ) async {
+    final ordersModel = orders
+        .map((order) => OrderMapper.fromEntity(order))
+        .toList();
     final steps = await _optimizeClient.optimizeRoute(
-      orders,
+      ordersModel,
       latitude,
       longitude,
     );
     final updatedOrders = CalculationEtaUtil.calculateEtaForOrders(
       steps,
-      orders,
+      ordersModel,
     );
     await _orderFirestore.saveOrders(updatedOrders, _routeId);
-    return updatedOrders;
+    return updatedOrders
+        .map((updatedOrder) => OrderMapper.toEntity(updatedOrder))
+        .toList();
   }
 
+  @override
   Future<String> getOrderPhoto() async {
     final orderImageFile = await CameraPickerService.pickImageFileFromGallery();
     final orderImageUrl = await _supabaseStorage.saveImage(

@@ -1,16 +1,19 @@
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/user_firestore.dart';
+import 'package:smart_courier_assistant_app/domain/repository/auth_repository.dart';
 
-class AuthRepository {
+class AuthRepositoryImpl implements AuthRepository {
   final UserAuth _userAuth;
   final UserFirestore _userFirestore;
 
-  AuthRepository(this._userAuth, this._userFirestore);
+  AuthRepositoryImpl(this._userAuth, this._userFirestore);
 
+  @override
   Future<void> signInUser(String email, String password) async {
     await _userAuth.signInWithEmailAndPassword(email, password);
   }
 
+  @override
   Future<void> signInWithGoogle() async {
     final user = await _userAuth.signInWithGoogle();
     final isUserExist = await _userFirestore.isUserExist(user!.uid);
@@ -24,10 +27,12 @@ class AuthRepository {
     }
   }
 
+  @override
   Future<void> resetPassword(String email) async {
     return await _userAuth.resetPassword(email);
   }
 
+  @override
   Future<void> signUpUser(
     String email,
     String password,
@@ -45,5 +50,6 @@ class AuthRepository {
     );
   }
 
+  @override
   Future<void> logOut() async => _userAuth.signOut();
 }

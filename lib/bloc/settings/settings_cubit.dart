@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_state.dart';
-import 'package:smart_courier_assistant_app/data/repository/settings_repository.dart';
+import 'package:smart_courier_assistant_app/domain/repository/settings_repository.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
   final SettingsRepository settingsRepository;

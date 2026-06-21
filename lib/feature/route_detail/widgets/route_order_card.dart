@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
 import 'package:smart_courier_assistant_app/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
 import 'package:smart_courier_assistant_app/ui/pdf_generator.dart';
@@ -7,7 +7,7 @@ import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class RouteOrderCard extends StatelessWidget {
   final int index;
-  final OrderModel order;
+  final OrderEntity order;
 
   const RouteOrderCard({
     super.key,
@@ -68,7 +68,7 @@ class RouteOrderCard extends StatelessWidget {
 }
 
 class _OrderCardContent extends StatelessWidget {
-  final OrderModel order;
+  final OrderEntity order;
 
   const _OrderCardContent(this.order);
 
@@ -82,7 +82,7 @@ class _OrderCardContent extends StatelessWidget {
       children: [
         _CardHeaderSection(order),
         Text(
-          order.address,
+          order.address.name,
           style: bodyLargeStyle?.copyWith(
             fontSize: 16,
           ),
@@ -114,7 +114,7 @@ class _OrderCardContent extends StatelessWidget {
 }
 
 class _CardHeaderSection extends StatelessWidget {
-  final OrderModel order;
+  final OrderEntity order;
 
   const _CardHeaderSection(this.order);
 

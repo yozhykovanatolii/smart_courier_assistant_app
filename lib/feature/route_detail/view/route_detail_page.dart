@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:smart_courier_assistant_app/data/models/route_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/route_entity.dart';
 import 'package:smart_courier_assistant_app/feature/route_detail/cubit/route_detail_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/route_detail/cubit/route_detail_state.dart';
 import 'package:smart_courier_assistant_app/feature/route_detail/widgets/widgets.dart';
@@ -13,7 +13,7 @@ import 'package:smart_courier_assistant_app/ui/widgets/error_orders_section.dart
 
 @RoutePage()
 class RouteDetailPage extends StatelessWidget {
-  final RouteModel route;
+  final RouteEntity route;
 
   const RouteDetailPage({
     super.key,
@@ -32,7 +32,7 @@ class RouteDetailPage extends StatelessWidget {
 }
 
 class _RouteDetailView extends StatelessWidget {
-  final RouteModel route;
+  final RouteEntity route;
 
   const _RouteDetailView(this.route);
 
@@ -68,7 +68,7 @@ class _RouteDetailView extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              '🗓 ${route.date.day}.${route.date.month}.${route.date.year}',
+              '🗓 ${route.createAt.day}.${route.createAt.month}.${route.createAt.year}',
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.normal,

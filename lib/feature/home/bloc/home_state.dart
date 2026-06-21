@@ -1,5 +1,5 @@
-import 'package:smart_courier_assistant_app/data/models/api/route_point.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
+import 'package:smart_courier_assistant_app/domain/entity/route_point_entity.dart';
 
 enum HomeStatus { initial, loading, success, failure }
 
@@ -23,8 +23,8 @@ enum OptimizationErrorType {
 }
 
 class HomeState {
-  final List<OrderModel> orders;
-  final List<RoutePoint> routePoints;
+  final List<OrderEntity> orders;
+  final List<RoutePointEntity> routePoints;
   final HomeStatus orderStatus;
   final HomeStatus routeOptimizationStatus;
   final String routeRecommendation;
@@ -60,8 +60,8 @@ class HomeState {
   }
 
   HomeState copyWith({
-    List<OrderModel>? orders,
-    List<RoutePoint>? routePoints,
+    List<OrderEntity>? orders,
+    List<RoutePointEntity>? routePoints,
     HomeStatus? orderStatus,
     HomeStatus? routeOptimizationStatus,
     String? routeRecommendation,

@@ -11,25 +11,28 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i11;
 import 'package:flutter/material.dart' as _i12;
-import 'package:smart_courier_assistant_app/data/models/route_model.dart'
+import 'package:smart_courier_assistant_app/domain/entity/route_entity.dart'
     as _i13;
-import 'package:smart_courier_assistant_app/feature/edit_profile/edit_profile.dart'
+import 'package:smart_courier_assistant_app/feature/edit_profile/view/edit_profile_page.dart'
     as _i1;
-import 'package:smart_courier_assistant_app/feature/forgot_password/forgot_password.dart'
+import 'package:smart_courier_assistant_app/feature/forgot_password/view/forgot_password_page.dart'
     as _i2;
-import 'package:smart_courier_assistant_app/feature/history/history.dart'
+import 'package:smart_courier_assistant_app/feature/history/view/history_page.dart'
     as _i3;
-import 'package:smart_courier_assistant_app/feature/home/home.dart' as _i4;
-import 'package:smart_courier_assistant_app/feature/login/login.dart' as _i5;
-import 'package:smart_courier_assistant_app/feature/profile/profile.dart'
+import 'package:smart_courier_assistant_app/feature/home/view/home_page.dart'
+    as _i4;
+import 'package:smart_courier_assistant_app/feature/login/view/login_page.dart'
+    as _i5;
+import 'package:smart_courier_assistant_app/feature/profile/view/profile_page.dart'
     as _i6;
-import 'package:smart_courier_assistant_app/feature/register/register.dart'
+import 'package:smart_courier_assistant_app/feature/register/view/register_page.dart'
     as _i7;
-import 'package:smart_courier_assistant_app/feature/route_detail/route_detail.dart'
+import 'package:smart_courier_assistant_app/feature/route_detail/view/route_detail_page.dart'
     as _i8;
-import 'package:smart_courier_assistant_app/feature/settings/settings.dart'
+import 'package:smart_courier_assistant_app/feature/settings/view/settings_page.dart'
     as _i9;
-import 'package:smart_courier_assistant_app/feature/splash/splash.dart' as _i10;
+import 'package:smart_courier_assistant_app/feature/splash/view/splash_page.dart'
+    as _i10;
 
 /// generated route for
 /// [_i1.EditProfilePage]
@@ -148,7 +151,7 @@ class RegisterRoute extends _i11.PageRouteInfo<void> {
 class RouteDetailRoute extends _i11.PageRouteInfo<RouteDetailRouteArgs> {
   RouteDetailRoute({
     _i12.Key? key,
-    required _i13.RouteModel route,
+    required _i13.RouteEntity route,
     List<_i11.PageRouteInfo>? children,
   }) : super(
          RouteDetailRoute.name,
@@ -172,7 +175,7 @@ class RouteDetailRouteArgs {
 
   final _i12.Key? key;
 
-  final _i13.RouteModel route;
+  final _i13.RouteEntity route;
 
   @override
   String toString() {
