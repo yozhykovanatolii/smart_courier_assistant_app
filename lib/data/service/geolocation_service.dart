@@ -1,6 +1,6 @@
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/geolocation_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/geolocation_exception.dart';
 
 class GeolocationService {
   static Future<Position> getCurrentLocation() async {

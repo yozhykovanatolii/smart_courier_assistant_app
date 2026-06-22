@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/reset_password_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/reset_password_exception.dart';
 import 'package:smart_courier_assistant_app/validation/email_validator.dart';
 
 class ForgotPasswordState {

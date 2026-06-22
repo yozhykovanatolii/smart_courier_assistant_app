@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/gen/assets.gen.dart';
-import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_elevated_button.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
 

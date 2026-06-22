@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/orders_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/orders_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/data/repository/order_repository_impl.dart';
 import 'package:smart_courier_assistant_app/feature/route_detail/cubit/route_detail_state.dart';
 

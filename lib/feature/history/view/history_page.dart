@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/feature/history/cubit/history_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/history/cubit/history_state.dart';
 import 'package:smart_courier_assistant_app/feature/history/widgets/widgets.dart';
-import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 

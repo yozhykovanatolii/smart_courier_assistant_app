@@ -101,4 +101,6 @@ flutter:
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
 flutter_intl:
-  enabled: true
+  enabled: false
+  arb_dir: lib/localization/l10n
+  output_dir: lib/localization/generated

@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/cubit/proof_delivery_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/cubit/proof_delivery_state.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/widgets/widgets.dart';
-import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 

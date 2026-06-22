@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/register_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/register_exception.dart';
 import 'package:smart_courier_assistant_app/validation/email_validator.dart';
 import 'package:smart_courier_assistant_app/validation/full_name_validator.dart';
 import 'package:smart_courier_assistant_app/validation/password_validator.dart';

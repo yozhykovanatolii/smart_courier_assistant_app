@@ -9,7 +9,7 @@ import 'package:smart_courier_assistant_app/bloc/app/app_state.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_state.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/widgets/widgets.dart';
-import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 

@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/login_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/login_with_google_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/register_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/reset_password_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/login_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/login_with_google_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/register_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/reset_password_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/user_not_found_exception.dart';
 
 class UserAuth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;

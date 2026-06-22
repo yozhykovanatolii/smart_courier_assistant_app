@@ -6,7 +6,7 @@ import 'package:smart_courier_assistant_app/domain/entity/route_entity.dart';
 import 'package:smart_courier_assistant_app/feature/route_detail/cubit/route_detail_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/route_detail/cubit/route_detail_state.dart';
 import 'package:smart_courier_assistant_app/feature/route_detail/widgets/widgets.dart';
-import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/app_progress_indicator.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/error_orders_section.dart';

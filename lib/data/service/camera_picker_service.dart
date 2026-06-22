@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/permission_deny_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/photo_not_selected_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/permission_deny_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/photo_not_selected_exception.dart';
 
 class CameraPickerService {
   static final _imagePicker = ImagePicker();

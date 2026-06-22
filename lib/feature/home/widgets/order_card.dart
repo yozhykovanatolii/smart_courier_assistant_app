@@ -5,7 +5,7 @@ import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_event.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/proof_delivery.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/save_order.dart';
-import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';

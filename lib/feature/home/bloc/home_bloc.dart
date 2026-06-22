@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/geolocation_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/optimization_route_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/orders_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/route_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/geolocation_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/optimization_route_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/orders_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/route_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/user_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/domain/repository/geolocation_repository.dart';
 import 'package:smart_courier_assistant_app/domain/repository/order_repository.dart';
 import 'package:smart_courier_assistant_app/domain/repository/route_repository.dart';

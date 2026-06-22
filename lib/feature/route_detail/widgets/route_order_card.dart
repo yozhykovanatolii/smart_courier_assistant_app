@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
-import 'package:smart_courier_assistant_app/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/extensions/delivery_risk_extension.dart';
 import 'package:smart_courier_assistant_app/ui/pdf_generator.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';

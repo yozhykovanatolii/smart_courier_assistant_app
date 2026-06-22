@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/permission_deny_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/photo_not_selected_exception.dart';
-import 'package:smart_courier_assistant_app/core/exceptions/user_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/permission_deny_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/photo_not_selected_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/user_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/data/repository/user_repository_impl.dart';
 import 'package:smart_courier_assistant_app/domain/entity/user_entity.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_state.dart';
