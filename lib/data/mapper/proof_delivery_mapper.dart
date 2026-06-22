@@ -1,4 +1,4 @@
-import 'package:smart_courier_assistant_app/data/models/proof_delivery_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/proof_delivery_model.dart';
 import 'package:smart_courier_assistant_app/domain/entity/proof_delivery_entity.dart';
 
 class ProofDeliveryMapper {

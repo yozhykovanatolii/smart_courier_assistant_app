@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_courier_assistant_app/exceptions/route_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/data/models/route_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/route_model.dart';
 
 class RouteFirestore {
   final _firestore = FirebaseFirestore.instance;

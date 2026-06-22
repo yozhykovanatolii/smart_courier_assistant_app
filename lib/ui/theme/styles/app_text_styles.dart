@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_courier_assistant_app/gen/fonts.gen.dart';
+import 'package:smart_courier_assistant_app/ui/gen/fonts.gen.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
 class AppTextStyles {

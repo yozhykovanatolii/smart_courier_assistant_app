@@ -5,7 +5,7 @@ import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/fire
 import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
 import 'package:smart_courier_assistant_app/data/mapper/order_mapper.dart';
 import 'package:smart_courier_assistant_app/data/mapper/proof_delivery_mapper.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/order_model.dart';
 import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
 import 'package:smart_courier_assistant_app/data/service/geolocation_service.dart';
 import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';

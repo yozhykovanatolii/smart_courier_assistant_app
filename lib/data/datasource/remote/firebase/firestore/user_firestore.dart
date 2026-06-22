@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:smart_courier_assistant_app/data/models/user_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/user_model.dart';
 
 class UserFirestore {
   final _firestore = FirebaseFirestore.instance;

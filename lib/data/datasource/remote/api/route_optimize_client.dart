@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_courier_assistant_app/exceptions/optimization_route_exception.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/order_model.dart';
 
 class RouteOptimizeClient {
   static final _apiKey = dotenv.env['OPENROUTE_API_KEY'] ?? '';

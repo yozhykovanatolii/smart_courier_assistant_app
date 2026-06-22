@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:smart_courier_assistant_app/data/models/proof_delivery_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/proof_delivery_model.dart';
 import 'package:uuid/uuid.dart';
 
 class OrderModel {

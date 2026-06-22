@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_courier_assistant_app/exceptions/orders_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
-import 'package:smart_courier_assistant_app/data/models/proof_delivery_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/order_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/proof_delivery_model.dart';
 
 class OrderFirestore {
   final _firestore = FirebaseFirestore.instance;

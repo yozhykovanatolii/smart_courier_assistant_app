@@ -1,4 +1,4 @@
-import 'package:smart_courier_assistant_app/data/models/order_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/order_model.dart';
 
 class RiskyOrderModel {
   final String id;
