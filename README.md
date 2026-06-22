@@ -1,17 +1,13 @@
-# smart_courier_assistant_app
+<div align="center">
 
-A new Flutter project.
+# 🚚 Smart Courier Assistant
 
-## Getting Started
+**Mobile application for courier delivery management with routes, ETA and proof of delivery**
 
-This project is a starting point for a Flutter application.
+</div>
 
-A few resources to get you started if this is your first Flutter project:
+## 📄 About
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Smart Courier Assistant is a mobile application designed to help couriers manage daily deliveries more efficiently and predictably.
+The app provides tools for order management, route visualization, ETA tracking, and delivery confirmation, allowing couriers to reduce delays, minimize errors, and make better decisions during delivery execution.
+Key capabilities include real-time route maps, ETA risk indication, route optimization, proof of delivery (photo and notes), and personalized route recommendations by using AI when delivery delays are likely.
