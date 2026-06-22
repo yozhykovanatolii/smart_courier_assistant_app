@@ -32,18 +32,18 @@ class RouteFirestore {
   }
 
   Future<RouteModel> getTodayRoute(String courierId) async {
-    final now = DateTime.now();
-    final startOfDay = DateTime(now.year, now.month, now.day);
-    final endOfDay = startOfDay.add(const Duration(days: 1));
-    final collectionReference = _getRouteCollectionReference();
-    final querySnapshot = await collectionReference
-        .where('courierId', isEqualTo: courierId)
-        .where('date', isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
-        .where('date', isLessThan: Timestamp.fromDate(endOfDay))
-        .limit(1)
-        .get();
-    if (querySnapshot.docs.isEmpty) throw RouteNotFoundException();
-    return querySnapshot.docs.first.data();
+    final snapshot = await _todayRouteQuery(courierId).get();
+    if (snapshot.docs.isEmpty) throw RouteNotFoundException();
+    return snapshot.docs.first.data();
+  }
+
+  Stream<RouteModel> watchTodayRoute(String courierId) {
+    return _todayRouteQuery(courierId).snapshots().map(
+      (snapshot) {
+        if (snapshot.docs.isEmpty) throw RouteNotFoundException();
+        return snapshot.docs.first.data();
+      },
+    );
   }
 
   Future<void> saveRouteRecommendation(
@@ -61,6 +61,18 @@ class RouteFirestore {
         .get();
     if (querySnapshot.docs.isEmpty) throw RouteNotFoundException();
     return querySnapshot.docs.map((document) => document.data()).toList();
+  }
+
+  Query<RouteModel> _todayRouteQuery(String courierId) {
+    final now = DateTime.now();
+    final startOfDay = DateTime(now.year, now.month, now.day);
+    final endOfDay = startOfDay.add(const Duration(days: 1));
+
+    return _getRouteCollectionReference()
+        .where('courierId', isEqualTo: courierId)
+        .where('date', isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
+        .where('date', isLessThan: Timestamp.fromDate(endOfDay))
+        .limit(1);
   }
 
   CollectionReference<RouteModel> _getRouteCollectionReference() {

@@ -59,12 +59,10 @@ class OrderRepositoryImpl implements OrderRepository {
   @override
   Stream<List<OrderEntity>> getAllCourierActiveOrders() {
     final courierId = _userAuth.userId;
-    return Stream.fromFuture(
-      _routeFirestore.getTodayRoute(courierId),
-    ).asyncExpand((route) {
-      _routeId = route.routeId;
+    return _routeFirestore.watchTodayRoute(courierId).asyncExpand((routeModel) {
+      _routeId = routeModel.routeId;
       return _orderFirestore
-          .getActiveUserOrders(route.routeId)
+          .getActiveUserOrders(routeModel.routeId)
           .map((orders) => orders.map(OrderMapper.toEntity).toList());
     });
   }

@@ -170,7 +170,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       );
       emit(
         state.copyWith(
-          orders: updatedOrders,
           routePoints: routePoints,
           routeRecommendation: recommendation,
           routeOptimizationStatus: HomeStatus.success,
