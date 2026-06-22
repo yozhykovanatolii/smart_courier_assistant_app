@@ -62,3 +62,48 @@ Key capabilities include real-time route maps, ETA risk indication, route optimi
 - **UUID** – Unique ID generation
 - **HTTP** – Networking
 - **PDF & Printing** – PDF generation and printing
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Flutter SDK (>= 3.x)
+- Dart
+- Android Studio or VS Code
+- Android emulator or physical Android device
+
+### Installation
+1. Clone the repository
+```
+git clone https://github.com/yozhykovanatolii/SmartCourierAssistant.git
+```
+
+2. Install dependencies
+```
+flutter pub get
+```
+
+3. Configure environment variables  
+
+This project uses external services to provide routing and AI-assisted features, as well as file storage.
+
+- **OpenRouteService** — route calculation and ETA estimation
+- **OpenAI API** — AI-assisted route recommendations
+- **Supabase Storage** — file storage for user uploads and media management
+
+To configure these services:
+- Create an account at https://openrouteservice.org and generate an API key
+- Create an account at https://platform.openai.com and generate an API key
+- Create a project in Supabase at https://supabase.com and get your project credentials(URL and anon key)
+- Open the `.env` file in the project root and set the following values:
+
+```
+SUPABASE_PROJECT_URL=your_supabase_project_url
+SUPABASE_PROJECT_KEY=your_supabase_project_key
+OPENAI_API_KEY=your_openai_api_key
+OPENROUTE_API_KEY=your_openrouteservice_api_key
+```
+
+4. Run the application
+```
+flutter run
+```
