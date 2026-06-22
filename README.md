@@ -107,3 +107,49 @@ OPENROUTE_API_KEY=your_openrouteservice_api_key
 ```
 flutter run
 ```
+
+## 📸 Screenshots
+<details>
+<summary>📦 <strong>Order Management</strong></summary>
+<div align="center">
+<img src="screenshots/orders_crud.jpg" width="250" style="display: inline-block; margin: 10px;">
+<br>
+CRUD Orders: Add / Edit / Delete
+</div>
+</details>
+
+<details>
+<summary>📍 <strong>Routes & ETA</strong></summary>
+<div align="center">
+<img src="screenshots/route_map_markers.jpg" width="250" style="display: inline-block; margin: 10px;">
+<br>
+Route Map with Markers
+</div>
+</details>
+
+<details>
+<summary>🧠 <strong>Personalized Recommendations</strong></summary>
+<div align="center">
+<img src="screenshots/recommendation_with_orders.jpg" width="250" style="display: inline-block; margin: 10px;">
+<br>
+AI-based Route Recommendation • Partially shows related orders
+</div>
+</details>
+
+<details>
+<summary>📦 <strong>Additional Orders</strong></summary>
+<div align="center">
+<img src="screenshots/orders_remaining.jpg" width="250" style="display: inline-block; margin: 10px;">
+<br>
+Orders not included in Recommendations view
+</div>
+</details>
+
+<details>
+<summary>📸 <strong>Proof of Delivery (POD)</strong></summary>
+<div align="center">
+<img src="screenshots/pod.jpg" width="250" style="display: inline-block; margin: 10px;">
+<br>
+Photo confirmation and note field
+</div>
+</details>
