@@ -1,7 +1,6 @@
 enum RegisterErrorStatus {
-  invalidEmail,
+  validationFailed,
   emailAlreadyInUse,
-  weakPassword,
   unknown,
 }
 
@@ -12,14 +11,12 @@ class RegisterException implements Exception {
     this.registerErrorStatus = RegisterErrorStatus.unknown,
   ]);
 
-  factory RegisterException.convertFromCode(String code) {
+  factory RegisterException.convertFromCode(int code) {
     switch (code) {
-      case 'invalid-email':
-        return RegisterException(RegisterErrorStatus.invalidEmail);
-      case 'email-already-in-use':
+      case 422:
+        return RegisterException(RegisterErrorStatus.validationFailed);
+      case 409:
         return RegisterException(RegisterErrorStatus.emailAlreadyInUse);
-      case 'weak-password':
-        return RegisterException(RegisterErrorStatus.weakPassword);
       default:
         return RegisterException();
     }

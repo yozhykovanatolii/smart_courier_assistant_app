@@ -1068,6 +1068,16 @@ class S {
       args: [delayedOrdersAmount],
     );
   }
+
+  /// `Validation failed. Please check your input`
+  String get registerValidationFailed {
+    return Intl.message(
+      'Validation failed. Please check your input',
+      name: 'registerValidationFailed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

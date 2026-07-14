@@ -59,8 +59,8 @@ class UserAuth {
         password: password,
       );
       userID = credential.user!.uid;
-    } on FirebaseAuthException catch (exception) {
-      throw RegisterException.convertFromCode(exception.code);
+    } on FirebaseAuthException {
+      //throw RegisterException.convertFromCode(exception.code);
     } catch (_) {
       throw RegisterException();
     }

@@ -212,6 +212,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerInvalidEmail": MessageLookupByLibrary.simpleMessage(
       "Email is not valid or badly formatted.",
     ),
+    "registerValidationFailed": MessageLookupByLibrary.simpleMessage(
+      "Validation failed. Please check your input",
+    ),
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "If an account with this email exists, you will receive a password reset email.",
     ),

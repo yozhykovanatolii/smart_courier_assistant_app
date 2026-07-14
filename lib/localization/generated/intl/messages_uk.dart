@@ -216,6 +216,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerInvalidEmail": MessageLookupByLibrary.simpleMessage(
       "Пошта недійсна або неправильно відформатована.",
     ),
+    "registerValidationFailed": MessageLookupByLibrary.simpleMessage(
+      "Помилка валідації. Будь ласка, перевірте введені дані.",
+    ),
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "Якщо обліковий запис із цією поштою існує, ви отримаєте електронний лист для скидання пароля.",
     ),

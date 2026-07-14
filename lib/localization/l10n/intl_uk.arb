@@ -115,5 +115,6 @@
   "orderDeliverByPdfText": "Доставити до: {orderDeliverBy}",
   "orderPlannedEtaPdfText": "Запланована ETA: {orderPlannedEta}",
   "routeOrdersCount": "{ordersAmount} замовлень",
-  "routeDelayedOrdersCount": "{delayedOrdersAmount} затримані"
+  "routeDelayedOrdersCount": "{delayedOrdersAmount} затримані",
+  "registerValidationFailed": "Помилка валідації. Будь ласка, перевірте введені дані."
 }

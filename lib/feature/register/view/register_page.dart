@@ -8,7 +8,6 @@ import 'package:smart_courier_assistant_app/feature/register/cubit/register_cubi
 import 'package:smart_courier_assistant_app/feature/register/cubit/register_state.dart';
 import 'package:smart_courier_assistant_app/feature/register/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
-import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 
@@ -56,7 +55,7 @@ class _RegisterView extends StatelessWidget {
               context: context,
               message: S.of(context).successRegistration,
             );
-            context.router.replace(const HomeRoute());
+            context.router.maybePop(context);
           }
         },
         child: SafeArea(
@@ -128,12 +127,10 @@ class _RegisterView extends StatelessWidget {
     if (registerErrorStatus == null) return '';
 
     switch (registerErrorStatus) {
-      case RegisterErrorStatus.invalidEmail:
-        return l10n.registerInvalidEmail;
+      case RegisterErrorStatus.validationFailed:
+        return l10n.registerValidationFailed;
       case RegisterErrorStatus.emailAlreadyInUse:
         return l10n.emailAlreadyInUse;
-      case RegisterErrorStatus.weakPassword:
-        return l10n.weakPassword;
       case RegisterErrorStatus.unknown:
         return l10n.registerErrorUnknown;
     }

@@ -116,5 +116,6 @@
   "orderDeliverByPdfText": "Deliver by: {orderDeliverBy}",
   "orderPlannedEtaPdfText": "Planned ETA: {orderPlannedEta}",
   "routeOrdersCount": "{ordersAmount} orders",
-  "routeDelayedOrdersCount": "{delayedOrdersAmount} delayed"
+  "routeDelayedOrdersCount": "{delayedOrdersAmount} delayed",
+  "registerValidationFailed": "Validation failed. Please check your input"
 }
