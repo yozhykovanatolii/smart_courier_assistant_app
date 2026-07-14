@@ -4,12 +4,14 @@ import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_gpt_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_direction_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/user_auth_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/order_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/user_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/local/settings_shared_preferences.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
+import 'package:smart_courier_assistant_app/data/repository/auth_repository_api_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/delivery_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/geolocation_repository_impl.dart';
@@ -48,7 +50,8 @@ class Dependencies {
       ..registerSingleton<SupabaseStorage>(SupabaseStorage())
       ..registerSingleton<RouteOptimizeClient>(RouteOptimizeClient())
       ..registerSingleton<RouteDirectionClient>(RouteDirectionClient())
-      ..registerSingleton<RecommendationGptClient>(RecommendationGptClient());
+      ..registerSingleton<RecommendationGptClient>(RecommendationGptClient())
+      ..registerSingleton<UserAuthClient>(UserAuthClient());
   }
 
   static void _setupRepositories() {
@@ -61,9 +64,13 @@ class Dependencies {
     final routeOptimizeClient = _getIt<RouteOptimizeClient>();
     final routeDirectionClient = _getIt<RouteDirectionClient>();
     final recommendationGptClient = _getIt<RecommendationGptClient>();
+    final userAuthClient = _getIt<UserAuthClient>();
     _getIt
       ..registerFactory<AuthRepositoryImpl>(
         () => AuthRepositoryImpl(userAuth, userFirestore),
+      )
+      ..registerFactory<AuthRepositoryApiImpl>(
+        () => AuthRepositoryApiImpl(userAuthClient),
       )
       ..registerFactory<SettingsRepositoryImpl>(
         () => SettingsRepositoryImpl(settingsSharedPreference),
@@ -100,6 +107,7 @@ class Dependencies {
 
   static void _setupBloc() {
     final authRepository = _getIt<AuthRepositoryImpl>();
+    final authRepositoryApi = _getIt<AuthRepositoryApiImpl>();
     final userRepository = _getIt<UserRepositoryImpl>();
     final settingsRepository = _getIt<SettingsRepositoryImpl>();
     final orderRepository = _getIt<OrderRepositoryImpl>();
@@ -114,7 +122,7 @@ class Dependencies {
         () => ForgotPasswordCubit(authRepository),
       )
       ..registerFactory<RegisterCubit>(
-        () => RegisterCubit(authRepository),
+        () => RegisterCubit(authRepositoryApi),
       )
       ..registerFactory<SettingsCubit>(
         () => SettingsCubit(settingsRepository),
