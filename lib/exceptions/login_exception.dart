@@ -1,7 +1,5 @@
 enum LoginErrorStatus {
-  invalidEmail,
-  userDisabled,
-  wrongPassword,
+  validationFailed,
   invalidCredential,
   unknown,
 }
@@ -11,15 +9,11 @@ class LoginException implements Exception {
 
   LoginException([this.errorStatus = LoginErrorStatus.unknown]);
 
-  factory LoginException.convertFromCode(String code) {
+  factory LoginException.convertFromCode(int code) {
     switch (code) {
-      case 'invalid-email':
-        return LoginException(LoginErrorStatus.invalidEmail);
-      case 'user-disabled':
-        return LoginException(LoginErrorStatus.userDisabled);
-      case 'wrong-password':
-        return LoginException(LoginErrorStatus.wrongPassword);
-      case 'invalid-credential':
+      case 422:
+        return LoginException(LoginErrorStatus.validationFailed);
+      case 401:
         return LoginException(LoginErrorStatus.invalidCredential);
       default:
         return LoginException();

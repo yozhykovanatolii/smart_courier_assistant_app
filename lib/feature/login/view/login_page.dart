@@ -78,7 +78,7 @@ class _LoginView extends StatelessWidget {
               context: context,
               message: l10n.successAuthorization,
             );
-            context.router.replace(const HomeRoute());
+            //context.router.replace(const HomeRoute());
           }
         },
         child: SafeArea(
@@ -148,12 +148,8 @@ class _LoginView extends StatelessWidget {
     if (loginErrorStatus == null) return '';
 
     switch (loginErrorStatus) {
-      case LoginErrorStatus.invalidEmail:
-        return l10n.invalidEmail;
-      case LoginErrorStatus.userDisabled:
-        return l10n.userDisabled;
-      case LoginErrorStatus.wrongPassword:
-        return l10n.wrongPassword;
+      case LoginErrorStatus.validationFailed:
+        return l10n.registerValidationFailed;
       case LoginErrorStatus.invalidCredential:
         return l10n.invalidCredential;
       case LoginErrorStatus.unknown:

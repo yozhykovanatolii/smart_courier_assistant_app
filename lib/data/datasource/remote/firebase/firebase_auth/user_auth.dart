@@ -18,8 +18,8 @@ class UserAuth {
         email: email,
         password: password,
       );
-    } on FirebaseAuthException catch (exception) {
-      throw LoginException.convertFromCode(exception.code);
+    } on FirebaseAuthException {
+      //throw LoginException.convertFromCode(exception.code);
     } catch (_) {
       throw LoginException();
     }

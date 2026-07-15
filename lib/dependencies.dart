@@ -116,7 +116,7 @@ class Dependencies {
     final deliveryRepository = _getIt<DeliveryRepositoryImpl>();
     _getIt
       ..registerFactory<LoginCubit>(
-        () => LoginCubit(authRepository),
+        () => LoginCubit(authRepositoryApi),
       )
       ..registerFactory<ForgotPasswordCubit>(
         () => ForgotPasswordCubit(authRepository),

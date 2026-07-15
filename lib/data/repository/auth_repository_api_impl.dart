@@ -18,7 +18,7 @@ class AuthRepositoryApiImpl implements AuthRepository {
 
   @override
   Future<void> signInUser(String email, String password) async {
-    throw UnimplementedError();
+    await _userAuthClient.loginUser(email, password);
   }
 
   @override
