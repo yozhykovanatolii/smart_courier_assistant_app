@@ -42,7 +42,6 @@ class UserAuthClient {
       },
       body: jsonEncode(request.toJson()),
     );
-    print(response.statusCode);
     if (response.statusCode != 200) {
       throw LoginException.convertFromCode(response.statusCode);
     }
