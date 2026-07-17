@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
+import 'package:smart_courier_assistant_app/data/datasource/local/secure_storage.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_gpt_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_direction_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
@@ -47,6 +48,7 @@ class Dependencies {
       ..registerSingleton<SettingsSharedPreference>(
         SettingsSharedPreference(),
       )
+      ..registerSingleton<SecureStorage>(SecureStorage())
       ..registerSingleton<SupabaseStorage>(SupabaseStorage())
       ..registerSingleton<RouteOptimizeClient>(RouteOptimizeClient())
       ..registerSingleton<RouteDirectionClient>(RouteDirectionClient())
@@ -65,12 +67,13 @@ class Dependencies {
     final routeDirectionClient = _getIt<RouteDirectionClient>();
     final recommendationGptClient = _getIt<RecommendationGptClient>();
     final userAuthClient = _getIt<UserAuthClient>();
+    final secureStorage = _getIt<SecureStorage>();
     _getIt
       ..registerFactory<AuthRepositoryImpl>(
         () => AuthRepositoryImpl(userAuth, userFirestore),
       )
       ..registerFactory<AuthRepositoryApiImpl>(
-        () => AuthRepositoryApiImpl(userAuthClient),
+        () => AuthRepositoryApiImpl(userAuthClient, secureStorage),
       )
       ..registerFactory<SettingsRepositoryImpl>(
         () => SettingsRepositoryImpl(settingsSharedPreference),

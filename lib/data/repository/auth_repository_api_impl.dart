@@ -1,10 +1,12 @@
+import 'package:smart_courier_assistant_app/data/datasource/local/secure_storage.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/user_auth_client.dart';
 import 'package:smart_courier_assistant_app/domain/repository/auth_repository.dart';
 
 class AuthRepositoryApiImpl implements AuthRepository {
   final UserAuthClient _userAuthClient;
+  final SecureStorage _secureStorage;
 
-  AuthRepositoryApiImpl(this._userAuthClient);
+  AuthRepositoryApiImpl(this._userAuthClient, this._secureStorage);
 
   @override
   Future<void> logOut() async {
@@ -18,7 +20,9 @@ class AuthRepositoryApiImpl implements AuthRepository {
 
   @override
   Future<void> signInUser(String email, String password) async {
-    await _userAuthClient.loginUser(email, password);
+    final response = await _userAuthClient.loginUser(email, password);
+    await _secureStorage.saveToken('access', response['access_token']);
+    await _secureStorage.saveToken('refresh', response['refresh_token']);
   }
 
   @override

@@ -30,7 +30,7 @@ class UserAuthClient {
     }
   }
 
-  Future<void> loginUser(
+  Future<Map<String, dynamic>> loginUser(
     String email,
     String password,
   ) async {
@@ -45,5 +45,6 @@ class UserAuthClient {
     if (response.statusCode != 200) {
       throw LoginException.convertFromCode(response.statusCode);
     }
+    return jsonDecode(response.body);
   }
 }
