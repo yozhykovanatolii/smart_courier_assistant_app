@@ -10,7 +10,8 @@ class AuthRepositoryApiImpl implements AuthRepository {
 
   @override
   Future<void> logOut() async {
-    throw UnimplementedError();
+    await _secureStorage.deleteToken('access');
+    await _secureStorage.deleteToken('refresh');
   }
 
   @override
