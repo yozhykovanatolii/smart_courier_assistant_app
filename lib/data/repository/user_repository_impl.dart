@@ -1,6 +1,6 @@
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/user_firestore.dart';
-import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
 import 'package:smart_courier_assistant_app/data/mapper/user_mapper.dart';
 import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
 import 'package:smart_courier_assistant_app/data/service/native_service.dart';
@@ -10,12 +10,12 @@ import 'package:smart_courier_assistant_app/domain/repository/user_repository.da
 class UserRepositoryImpl implements UserRepository {
   final UserAuth _userAuth;
   final UserFirestore _userFirestore;
-  final SupabaseStorage _supabaseStorage;
+  final StorageClient _storageClient;
 
   UserRepositoryImpl(
     this._userAuth,
     this._userFirestore,
-    this._supabaseStorage,
+    this._storageClient,
   );
 
   @override
@@ -46,7 +46,7 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<String> getUserImage() async {
     final userImageFile = await CameraPickerService.pickImageFileFromGallery();
-    final userImageUrl = await _supabaseStorage.saveImage(
+    final userImageUrl = await _storageClient.uploadPhoto(
       userImageFile,
       'users',
     );

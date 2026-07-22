@@ -5,13 +5,13 @@ import 'package:smart_courier_assistant_app/data/datasource/local/secure_storage
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_gpt_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_direction_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/user_auth_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/order_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/user_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/local/settings_shared_preferences.dart';
-import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository_api_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/delivery_repository_impl.dart';
@@ -49,7 +49,7 @@ class Dependencies {
         SettingsSharedPreference(),
       )
       ..registerSingleton<SecureStorage>(SecureStorage())
-      ..registerSingleton<SupabaseStorage>(SupabaseStorage())
+      ..registerSingleton<StorageClient>(StorageClient())
       ..registerSingleton<RouteOptimizeClient>(RouteOptimizeClient())
       ..registerSingleton<RouteDirectionClient>(RouteDirectionClient())
       ..registerSingleton<RecommendationGptClient>(RecommendationGptClient())
@@ -62,7 +62,7 @@ class Dependencies {
     final orderFirestore = _getIt<OrderFirestore>();
     final userFirestore = _getIt<UserFirestore>();
     final settingsSharedPreference = _getIt<SettingsSharedPreference>();
-    final supabaseStorage = _getIt<SupabaseStorage>();
+    final storageClient = _getIt<StorageClient>();
     final routeOptimizeClient = _getIt<RouteOptimizeClient>();
     final routeDirectionClient = _getIt<RouteDirectionClient>();
     final recommendationGptClient = _getIt<RecommendationGptClient>();
@@ -79,7 +79,7 @@ class Dependencies {
         () => SettingsRepositoryImpl(settingsSharedPreference),
       )
       ..registerFactory<UserRepositoryImpl>(
-        () => UserRepositoryImpl(userAuth, userFirestore, supabaseStorage),
+        () => UserRepositoryImpl(userAuth, userFirestore, storageClient),
       )
       ..registerFactory<RouteRepositoryImpl>(
         () => RouteRepositoryImpl(
@@ -97,7 +97,7 @@ class Dependencies {
           userAuth,
           routeFirestore,
           routeOptimizeClient,
-          supabaseStorage,
+          storageClient,
         ),
       )
       ..registerFactory<GeolocationRepositoryImpl>(

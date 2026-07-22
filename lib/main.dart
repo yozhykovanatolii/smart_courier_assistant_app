@@ -7,33 +7,18 @@ import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_event.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
-import 'package:smart_courier_assistant_app/exceptions/missing_supabase_config_exception.dart';
 import 'package:smart_courier_assistant_app/dependencies.dart';
 import 'package:smart_courier_assistant_app/firebase_options.dart';
 import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/router/app_router.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_theme.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
-  final supabaseProjectUrl = dotenv.env['SUPABASE_PROJECT_URL'];
-  final supabaseProjectKey = dotenv.env['SUPABASE_PROJECT_KEY'];
-  if (supabaseProjectUrl == null || supabaseProjectKey == null) {
-    throw MissingSupabaseConfigException(
-      'Supabase project config is missing',
-    );
-  }
-  await Future.wait([
-    Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    ),
-    Supabase.initialize(
-      url: supabaseProjectUrl,
-      publishableKey: supabaseProjectKey,
-    ),
-  ]);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   Dependencies.setupDependencies();
   runApp(
     MultiBlocProvider(

@@ -1,8 +1,8 @@
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/order_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
-import 'package:smart_courier_assistant_app/data/datasource/remote/supabase/supabase_storage.dart';
 import 'package:smart_courier_assistant_app/data/mapper/order_mapper.dart';
 import 'package:smart_courier_assistant_app/data/mapper/proof_delivery_mapper.dart';
 import 'package:smart_courier_assistant_app/data/models/firestore/order_model.dart';
@@ -17,7 +17,7 @@ class OrderRepositoryImpl implements OrderRepository {
   final UserAuth _userAuth;
   final RouteFirestore _routeFirestore;
   final RouteOptimizeClient _optimizeClient;
-  final SupabaseStorage _supabaseStorage;
+  final StorageClient _storageClient;
   String _routeId = '';
 
   OrderRepositoryImpl(
@@ -25,7 +25,7 @@ class OrderRepositoryImpl implements OrderRepository {
     this._userAuth,
     this._routeFirestore,
     this._optimizeClient,
-    this._supabaseStorage,
+    this._storageClient,
   );
 
   @override
@@ -109,7 +109,7 @@ class OrderRepositoryImpl implements OrderRepository {
   @override
   Future<String> getOrderPhoto() async {
     final orderImageFile = await CameraPickerService.pickImageFileFromGallery();
-    final orderImageUrl = await _supabaseStorage.saveImage(
+    final orderImageUrl = await _storageClient.uploadPhoto(
       orderImageFile,
       'orders',
     );

@@ -49,7 +49,6 @@ dependencies:
   auto_route: ^11.1.0
   cloud_firestore: ^6.5.0
   shared_preferences: ^2.5.5
-  supabase_flutter: ^2.14.1
   image_picker: ^1.2.2
   flutter_dotenv: ^6.0.1
   permission_handler: ^12.0.3
