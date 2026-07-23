@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_event.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_state.dart';
-import 'package:smart_courier_assistant_app/data/repository/user_repository_impl.dart';
 import 'package:smart_courier_assistant_app/domain/repository/auth_repository.dart';
+import 'package:smart_courier_assistant_app/domain/repository/user_repository.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc(this._authRepository, this._userRepository)
@@ -12,7 +12,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   final AuthRepository _authRepository;
-  final UserRepositoryImpl _userRepository;
+  final UserRepository _userRepository;
 
   Future<void> _onUserSubscriptionRequested(
     AppUserSubscriptionRequested event,

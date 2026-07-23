@@ -7,8 +7,8 @@ class SecureStorage {
     await _storage.write(key: tokenType, value: token);
   }
 
-  Future<String> getToken(String tokenType) async {
-    return await _storage.read(key: tokenType) ?? '';
+  Future<String?> getToken(String tokenType) async {
+    return await _storage.read(key: tokenType);
   }
 
   Future<void> deleteToken(String tokenType) async {

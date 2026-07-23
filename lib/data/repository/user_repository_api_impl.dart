@@ -1,0 +1,50 @@
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
+import 'package:smart_courier_assistant_app/data/manager/session_manager.dart';
+import 'package:smart_courier_assistant_app/data/mapper/user_mapper.dart';
+import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
+import 'package:smart_courier_assistant_app/data/service/native_service.dart';
+import 'package:smart_courier_assistant_app/domain/entity/user_entity.dart';
+import 'package:smart_courier_assistant_app/domain/repository/user_repository.dart';
+
+class UserRepositoryApiImpl implements UserRepository {
+  final StorageClient _storageClient;
+  final SessionManager _sessionManager;
+
+  UserRepositoryApiImpl(
+    this._storageClient,
+    this._sessionManager,
+  );
+
+  @override
+  Future<void> callUserDialer(String userPhoneNumber) async {
+    await NativeService.openExtrenal('openDialer', userPhoneNumber);
+  }
+
+  @override
+  Stream<UserEntity?> getUserCurrentData() {
+    return _sessionManager.userChanges.map((userModel) {
+      return userModel?.toEntity();
+    });
+  }
+
+  @override
+  Future<String> getUserImage() async {
+    final userImageFile = await CameraPickerService.pickImageFileFromGallery();
+    final userImageUrl = await _storageClient.uploadPhoto(
+      userImageFile,
+      'users',
+    );
+    return userImageUrl;
+  }
+
+  @override
+  Future<void> messageUser(String userPhoneNumber) async {
+    await NativeService.openExtrenal('openWhatsAppChat', userPhoneNumber);
+  }
+
+  @override
+  Future<void> updateUser(String avatar, String fullName, String phoneNumber) {
+    // TODO: implement updateUser
+    throw UnimplementedError();
+  }
+}

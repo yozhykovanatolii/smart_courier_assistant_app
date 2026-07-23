@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
@@ -12,6 +13,8 @@ import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/fire
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/user_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/local/settings_shared_preferences.dart';
+import 'package:smart_courier_assistant_app/data/interceptors/auth_interceptor.dart';
+import 'package:smart_courier_assistant_app/data/manager/session_manager.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository_api_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/delivery_repository_impl.dart';
@@ -19,6 +22,7 @@ import 'package:smart_courier_assistant_app/data/repository/geolocation_reposito
 import 'package:smart_courier_assistant_app/data/repository/order_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/route_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/settings_repository_impl.dart';
+import 'package:smart_courier_assistant_app/data/repository/user_repository_api_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/user_repository_impl.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/forgot_password/cubit/forgot_password_cubit.dart';
@@ -53,7 +57,22 @@ class Dependencies {
       ..registerSingleton<RouteOptimizeClient>(RouteOptimizeClient())
       ..registerSingleton<RouteDirectionClient>(RouteDirectionClient())
       ..registerSingleton<RecommendationGptClient>(RecommendationGptClient())
-      ..registerSingleton<UserAuthClient>(UserAuthClient());
+      ..registerSingleton<UserAuthClient>(UserAuthClient())
+      ..registerSingleton<SessionManager>(SessionManager());
+    _setupDio();
+  }
+
+  static void _setupDio() {
+    final secureStorage = _getIt<SecureStorage>();
+    final sessionManager = _getIt<SessionManager>();
+    _getIt.registerSingleton<SessionManager>(SessionManager());
+    _getIt.registerLazySingleton<Dio>(() {
+      final dio = Dio();
+      dio.interceptors.add(
+        AuthInterceptor(dio, secureStorage, sessionManager),
+      );
+      return dio;
+    });
   }
 
   static void _setupRepositories() {
@@ -68,6 +87,7 @@ class Dependencies {
     final recommendationGptClient = _getIt<RecommendationGptClient>();
     final userAuthClient = _getIt<UserAuthClient>();
     final secureStorage = _getIt<SecureStorage>();
+    final sessionManager = _getIt<SessionManager>();
     _getIt
       ..registerFactory<AuthRepositoryImpl>(
         () => AuthRepositoryImpl(userAuth, userFirestore),
@@ -80,6 +100,9 @@ class Dependencies {
       )
       ..registerFactory<UserRepositoryImpl>(
         () => UserRepositoryImpl(userAuth, userFirestore, storageClient),
+      )
+      ..registerFactory<UserRepositoryApiImpl>(
+        () => UserRepositoryApiImpl(storageClient, sessionManager),
       )
       ..registerFactory<RouteRepositoryImpl>(
         () => RouteRepositoryImpl(
@@ -112,6 +135,7 @@ class Dependencies {
     final authRepository = _getIt<AuthRepositoryImpl>();
     final authRepositoryApi = _getIt<AuthRepositoryApiImpl>();
     final userRepository = _getIt<UserRepositoryImpl>();
+    final userRepositoryApi = _getIt<UserRepositoryApiImpl>();
     final settingsRepository = _getIt<SettingsRepositoryImpl>();
     final orderRepository = _getIt<OrderRepositoryImpl>();
     final routeRepository = _getIt<RouteRepositoryImpl>();
@@ -131,7 +155,7 @@ class Dependencies {
         () => SettingsCubit(settingsRepository),
       )
       ..registerFactory<AppBloc>(
-        () => AppBloc(authRepository, userRepository),
+        () => AppBloc(authRepository, userRepositoryApi),
       )
       ..registerFactory<EditProfileCubit>(
         () => EditProfileCubit(userRepository),
