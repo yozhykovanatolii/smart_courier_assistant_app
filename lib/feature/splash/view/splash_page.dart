@@ -22,7 +22,7 @@ class SplashPage extends StatelessWidget {
       duration: const Duration(milliseconds: 2000),
       onEnd: () {
         if (state is AppAuthenticatedState) {
-          router.replace(const HomeRoute());
+          router.replace(const RegisterRoute());
         }
         if (state is AppUnauthenticatedState) {
           router.replace(const LoginRoute());

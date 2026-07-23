@@ -1,16 +1,19 @@
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/user_client.dart';
 import 'package:smart_courier_assistant_app/data/manager/session_manager.dart';
-import 'package:smart_courier_assistant_app/data/mapper/user_mapper.dart';
+import 'package:smart_courier_assistant_app/data/mapper/user_info_mapper.dart';
 import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
 import 'package:smart_courier_assistant_app/data/service/native_service.dart';
 import 'package:smart_courier_assistant_app/domain/entity/user_entity.dart';
 import 'package:smart_courier_assistant_app/domain/repository/user_repository.dart';
 
 class UserRepositoryApiImpl implements UserRepository {
+  final UserClient _userClient;
   final StorageClient _storageClient;
   final SessionManager _sessionManager;
 
   UserRepositoryApiImpl(
+    this._userClient,
     this._storageClient,
     this._sessionManager,
   );
@@ -46,5 +49,11 @@ class UserRepositoryApiImpl implements UserRepository {
   Future<void> updateUser(String avatar, String fullName, String phoneNumber) {
     // TODO: implement updateUser
     throw UnimplementedError();
+  }
+
+  @override
+  Future<void> loadUserData() async {
+    final userInfo = await _userClient.getCurrentUserData();
+    _sessionManager.update(userInfo);
   }
 }

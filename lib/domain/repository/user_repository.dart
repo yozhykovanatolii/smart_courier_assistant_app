@@ -7,6 +7,7 @@ abstract interface class UserRepository {
     String fullName,
     String phoneNumber,
   );
+  Future<void> loadUserData();
   Stream<UserEntity?> getUserCurrentData();
   Future<void> callUserDialer(String userPhoneNumber);
   Future<void> messageUser(String userPhoneNumber);

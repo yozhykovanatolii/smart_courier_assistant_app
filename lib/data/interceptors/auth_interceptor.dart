@@ -78,9 +78,10 @@ class AuthInterceptor implements Interceptor {
     _refreshCompleter = Completer<void>();
     try {
       final refreshToken = await _secureStorage.getToken('refresh');
+      print(refreshToken);
       final response = await _dio.post(
         '/auth/refresh',
-        data: {'refreshToken': refreshToken},
+        queryParameters: {'token': refreshToken},
       );
       final data = response.data as Map<String, dynamic>;
       await _secureStorage.saveToken('access', data['access_token']);

@@ -62,4 +62,9 @@ class UserRepositoryImpl implements UserRepository {
   Future<void> messageUser(String userPhoneNumber) async {
     await NativeService.openExtrenal('openWhatsAppChat', userPhoneNumber);
   }
+
+  @override
+  Future<void> loadUserData() {
+    throw UnimplementedError();
+  }
 }

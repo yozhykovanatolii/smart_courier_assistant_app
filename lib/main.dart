@@ -24,8 +24,13 @@ Future<void> main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) =>
-              GetIt.I<AppBloc>()..add(AppUserSubscriptionRequested()),
+          create: (_) {
+            final appBloc = GetIt.I<AppBloc>();
+            appBloc
+              ..add(AppUserSubscriptionRequested())
+              ..add(AppStarted());
+            return appBloc;
+          },
         ),
         BlocProvider(
           create: (_) => GetIt.I<SettingsCubit>()..fetchSettings(),

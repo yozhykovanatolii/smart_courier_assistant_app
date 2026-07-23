@@ -8,6 +8,7 @@ import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_dir
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/user_auth_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/user_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/order_firestore.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
@@ -60,14 +61,19 @@ class Dependencies {
       ..registerSingleton<UserAuthClient>(UserAuthClient())
       ..registerSingleton<SessionManager>(SessionManager());
     _setupDio();
+    _setupApiClients();
+  }
+
+  static void _setupApiClients() {
+    final dio = _getIt<Dio>();
+    _getIt.registerSingleton<UserClient>(UserClient(dio));
   }
 
   static void _setupDio() {
     final secureStorage = _getIt<SecureStorage>();
     final sessionManager = _getIt<SessionManager>();
-    _getIt.registerSingleton<SessionManager>(SessionManager());
     _getIt.registerLazySingleton<Dio>(() {
-      final dio = Dio();
+      final dio = Dio(BaseOptions(baseUrl: 'http://192.168.1.6:8000'));
       dio.interceptors.add(
         AuthInterceptor(dio, secureStorage, sessionManager),
       );
@@ -80,6 +86,7 @@ class Dependencies {
     final routeFirestore = _getIt<RouteFirestore>();
     final orderFirestore = _getIt<OrderFirestore>();
     final userFirestore = _getIt<UserFirestore>();
+    final userClient = _getIt<UserClient>();
     final settingsSharedPreference = _getIt<SettingsSharedPreference>();
     final storageClient = _getIt<StorageClient>();
     final routeOptimizeClient = _getIt<RouteOptimizeClient>();
@@ -102,7 +109,7 @@ class Dependencies {
         () => UserRepositoryImpl(userAuth, userFirestore, storageClient),
       )
       ..registerFactory<UserRepositoryApiImpl>(
-        () => UserRepositoryApiImpl(storageClient, sessionManager),
+        () => UserRepositoryApiImpl(userClient, storageClient, sessionManager),
       )
       ..registerFactory<RouteRepositoryImpl>(
         () => RouteRepositoryImpl(

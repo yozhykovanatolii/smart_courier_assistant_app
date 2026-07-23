@@ -8,6 +8,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc(this._authRepository, this._userRepository)
     : super(AppInitialState()) {
     on<AppUserSubscriptionRequested>(_onUserSubscriptionRequested);
+    on<AppStarted>(_onAppStarted);
     on<AppLogoutPressed>(_onLogoutPressed);
   }
 
@@ -26,6 +27,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             : AppAuthenticatedState(user);
       },
     );
+  }
+
+  Future<void> _onAppStarted(
+    AppStarted event,
+    Emitter<AppState> emit,
+  ) async {
+    await _userRepository.loadUserData();
   }
 
   Future<void> _onLogoutPressed(

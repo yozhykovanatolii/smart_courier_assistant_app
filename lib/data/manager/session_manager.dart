@@ -1,13 +1,13 @@
 import 'dart:async';
-import 'package:smart_courier_assistant_app/data/models/firestore/user_model.dart';
+import 'package:smart_courier_assistant_app/data/models/api/user_info_model.dart';
 
 class SessionManager {
-  final StreamController<UserModel?> _controller =
-      StreamController<UserModel?>.broadcast();
+  final StreamController<UserInfoModel?> _controller =
+      StreamController<UserInfoModel?>.broadcast();
 
-  Stream<UserModel?> get userChanges => _controller.stream;
+  Stream<UserInfoModel?> get userChanges => _controller.stream;
 
-  void update(UserModel? user) {
+  void update(UserInfoModel? user) {
     _controller.add(user);
   }
 }
