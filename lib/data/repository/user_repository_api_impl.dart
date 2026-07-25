@@ -46,9 +46,12 @@ class UserRepositoryApiImpl implements UserRepository {
   }
 
   @override
-  Future<void> updateUser(String avatar, String fullName, String phoneNumber) {
-    // TODO: implement updateUser
-    throw UnimplementedError();
+  Future<void> updateUser(
+    String avatar,
+    String fullName,
+    String phoneNumber,
+  ) async {
+    await _userClient.updateUser(fullName, phoneNumber, avatar);
   }
 
   @override

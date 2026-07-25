@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:get_it/get_it.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_event.dart';
 import 'package:smart_courier_assistant_app/exceptions/login_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/login_with_google_exception.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
@@ -78,7 +80,8 @@ class _LoginView extends StatelessWidget {
               context: context,
               message: l10n.successAuthorization,
             );
-            //context.router.replace(const HomeRoute());
+            context.read<AppBloc>().add(AppStarted());
+            context.router.replace(const ProfileRoute());
           }
         },
         child: SafeArea(

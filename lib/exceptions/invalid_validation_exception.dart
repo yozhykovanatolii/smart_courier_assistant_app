@@ -1,0 +1,1 @@
+class InvalidValidationException implements Exception {}

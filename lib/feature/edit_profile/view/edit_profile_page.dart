@@ -85,7 +85,7 @@ class _EditProfileViewState extends State<_EditProfileView> {
               context: context,
               message: S.of(context).successUpdatingProfile,
             );
-            context.read<AppBloc>().add(AppUserSubscriptionRequested());
+            context.read<AppBloc>().add(AppStarted());
           }
         },
         child: SafeArea(
@@ -191,8 +191,10 @@ class _EditProfileViewState extends State<_EditProfileView> {
     switch (editProfileErrorType) {
       case EditProfileErrorType.storagePermissionDeny:
         return l10n.storagePermissionDeny;
-      case EditProfileErrorType.userNotFound:
-        return l10n.userNotFound;
+      case EditProfileErrorType.invalidCredentials:
+        return l10n.invalidCredential;
+      case EditProfileErrorType.invalidValidation:
+        return l10n.registerValidationFailed;
       case EditProfileErrorType.userPhotoNotSelected:
         return l10n.photoWasNotSelected;
     }

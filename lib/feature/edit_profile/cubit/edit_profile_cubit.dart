@@ -1,16 +1,17 @@
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:smart_courier_assistant_app/domain/repository/user_repository.dart';
+import 'package:smart_courier_assistant_app/exceptions/invalid_credentials_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/invalid_validation_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/permission_deny_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/photo_not_selected_exception.dart';
-import 'package:smart_courier_assistant_app/exceptions/user_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/data/repository/user_repository_impl.dart';
 import 'package:smart_courier_assistant_app/domain/entity/user_entity.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_state.dart';
 import 'package:smart_courier_assistant_app/validation/full_name_validator.dart';
 import 'package:smart_courier_assistant_app/validation/phone_number_validator.dart';
 
 class EditProfileCubit extends Cubit<EditProfileState> {
-  final UserRepositoryImpl _userRepository;
+  final UserRepository _userRepository;
 
   EditProfileCubit(this._userRepository) : super(EditProfileState.initial());
 
@@ -83,11 +84,18 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           clearEditProfileErrorType: true,
         ),
       );
-    } on UserNotFoundException {
+    } on InvalidCredentialsException {
       emit(
         state.copyWith(
           formStatus: FormzSubmissionStatus.failure,
-          editProfileErrorType: EditProfileErrorType.userNotFound,
+          editProfileErrorType: EditProfileErrorType.invalidCredentials,
+        ),
+      );
+    } on InvalidValidationException {
+      emit(
+        state.copyWith(
+          formStatus: FormzSubmissionStatus.failure,
+          editProfileErrorType: EditProfileErrorType.invalidValidation,
         ),
       );
     }

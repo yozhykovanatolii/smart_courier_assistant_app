@@ -171,7 +171,7 @@ class Dependencies {
         () => AppBloc(authRepository, userRepositoryApi),
       )
       ..registerFactory<EditProfileCubit>(
-        () => EditProfileCubit(userRepository),
+        () => EditProfileCubit(userRepositoryApi),
       )
       ..registerFactory<SaveOrderCubit>(
         () => SaveOrderCubit(orderRepository, routeRepository),

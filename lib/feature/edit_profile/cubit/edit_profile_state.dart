@@ -3,9 +3,10 @@ import 'package:smart_courier_assistant_app/validation/full_name_validator.dart'
 import 'package:smart_courier_assistant_app/validation/phone_number_validator.dart';
 
 enum EditProfileErrorType {
-  userNotFound,
+  invalidCredentials,
   storagePermissionDeny,
   userPhotoNotSelected,
+  invalidValidation,
 }
 
 class EditProfileState {
