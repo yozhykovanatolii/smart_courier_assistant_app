@@ -19,9 +19,9 @@ class UserClient {
   }
 
   Future<void> updateUser(
+    String avatarUrl,
     String fullName,
     String phoneNumber,
-    String avatarUrl,
   ) async {
     final userUpdateRequest = UserUpdateRequest(
       fullName: fullName,

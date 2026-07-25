@@ -7,8 +7,7 @@ extension UserInfoMapper on UserInfoModel {
       id: id.toString(),
       fullName: fullName,
       phoneNumber: phoneNumber,
-      avatar:
-          'https://fojohxjzxvieoakjyzwz.supabase.co/storage/v1/object/public/images/users/default_avatar.jpg',
+      avatar: avatarUrl,
     );
   }
 }

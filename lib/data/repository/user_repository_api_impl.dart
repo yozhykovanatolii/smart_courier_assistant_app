@@ -51,7 +51,7 @@ class UserRepositoryApiImpl implements UserRepository {
     String fullName,
     String phoneNumber,
   ) async {
-    await _userClient.updateUser(fullName, phoneNumber, avatar);
+    await _userClient.updateUser(avatar, fullName, phoneNumber);
   }
 
   @override

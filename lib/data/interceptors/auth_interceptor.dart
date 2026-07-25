@@ -45,9 +45,8 @@ class AuthInterceptor implements Interceptor {
     }
 
     final refreshToken = await _secureStorage.getToken('refresh');
-
-    // Нет refresh token — пользователь не авторизован
     if (refreshToken == null) {
+      _sessionManager.update(null);
       return handler.next(err);
     }
 

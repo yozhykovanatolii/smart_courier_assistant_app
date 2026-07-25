@@ -14,7 +14,7 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.select((AppBloc appBloc) => appBloc.state);
+    final state = context.watch<AppBloc>().state;
     final router = context.router;
 
     return FlutterSplashScreen(

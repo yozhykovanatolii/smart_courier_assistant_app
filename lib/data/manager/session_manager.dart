@@ -8,6 +8,6 @@ class SessionManager {
   Stream<UserInfoModel?> get userChanges => _controller.stream;
 
   void update(UserInfoModel? user) {
-    _controller.add(user);
+    _controller.sink.add(user);
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 class StorageClient {
   Future<String> uploadPhoto(File imageFile, String bucket) async {
@@ -10,7 +11,11 @@ class StorageClient {
     );
     request.fields['bucket'] = bucket;
     request.files.add(
-      await http.MultipartFile.fromPath('file', imageFile.path),
+      await http.MultipartFile.fromPath(
+        'file',
+        imageFile.path,
+        contentType: MediaType('image', 'jpeg'),
+      ),
     );
     var response = await request.send();
     final responseBody = await response.stream.bytesToString();
