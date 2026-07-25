@@ -73,7 +73,9 @@ class Dependencies {
     final secureStorage = _getIt<SecureStorage>();
     final sessionManager = _getIt<SessionManager>();
     _getIt.registerLazySingleton<Dio>(() {
-      final dio = Dio(BaseOptions(baseUrl: 'http://192.168.1.6:8000'));
+      final dio = Dio(
+        BaseOptions(baseUrl: 'http://192.168.1.6:8000'),
+      );
       dio.interceptors.add(
         AuthInterceptor(dio, secureStorage, sessionManager),
       );
@@ -100,7 +102,11 @@ class Dependencies {
         () => AuthRepositoryImpl(userAuth, userFirestore),
       )
       ..registerFactory<AuthRepositoryApiImpl>(
-        () => AuthRepositoryApiImpl(userAuthClient, secureStorage),
+        () => AuthRepositoryApiImpl(
+          userAuthClient,
+          secureStorage,
+          sessionManager,
+        ),
       )
       ..registerFactory<SettingsRepositoryImpl>(
         () => SettingsRepositoryImpl(settingsSharedPreference),

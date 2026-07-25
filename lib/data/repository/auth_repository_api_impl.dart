@@ -1,17 +1,26 @@
 import 'package:smart_courier_assistant_app/data/datasource/local/secure_storage.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/user_auth_client.dart';
+import 'package:smart_courier_assistant_app/data/manager/session_manager.dart';
 import 'package:smart_courier_assistant_app/domain/repository/auth_repository.dart';
 
 class AuthRepositoryApiImpl implements AuthRepository {
   final UserAuthClient _userAuthClient;
   final SecureStorage _secureStorage;
+  final SessionManager _sessionManager;
 
-  AuthRepositoryApiImpl(this._userAuthClient, this._secureStorage);
+  AuthRepositoryApiImpl(
+    this._userAuthClient,
+    this._secureStorage,
+    this._sessionManager,
+  );
 
   @override
   Future<void> logOut() async {
-    await _secureStorage.deleteToken('access');
-    await _secureStorage.deleteToken('refresh');
+    await Future.wait([
+      _secureStorage.deleteToken('access'),
+      _secureStorage.deleteToken('refresh'),
+    ]);
+    _sessionManager.update(null);
   }
 
   @override
@@ -22,8 +31,10 @@ class AuthRepositoryApiImpl implements AuthRepository {
   @override
   Future<void> signInUser(String email, String password) async {
     final response = await _userAuthClient.loginUser(email, password);
-    await _secureStorage.saveToken('access', response['access_token']);
-    await _secureStorage.saveToken('refresh', response['refresh_token']);
+    await Future.wait([
+      _secureStorage.saveToken('access', response['access_token']),
+      _secureStorage.saveToken('refresh', response['refresh_token']),
+    ]);
   }
 
   @override

@@ -3,6 +3,7 @@ import 'package:smart_courier_assistant_app/bloc/app/app_event.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_state.dart';
 import 'package:smart_courier_assistant_app/domain/repository/auth_repository.dart';
 import 'package:smart_courier_assistant_app/domain/repository/user_repository.dart';
+import 'package:smart_courier_assistant_app/exceptions/invalid_credentials_exception.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc(this._authRepository, this._userRepository)
@@ -33,7 +34,11 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     AppStarted event,
     Emitter<AppState> emit,
   ) async {
-    await _userRepository.loadUserData();
+    try {
+      await _userRepository.loadUserData();
+    } on InvalidCredentialsException {
+      emit(AppUnauthenticatedState());
+    }
   }
 
   Future<void> _onLogoutPressed(
