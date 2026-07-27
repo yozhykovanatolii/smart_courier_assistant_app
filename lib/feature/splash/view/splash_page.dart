@@ -14,46 +14,45 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AppBloc>().state;
-    final router = context.router;
-
     return FlutterSplashScreen(
       useImmersiveMode: true,
       duration: const Duration(milliseconds: 2000),
-      onEnd: () {
-        if (state is AppAuthenticatedState) {
-          router.replace(const ProfileRoute());
-        }
-        if (state is AppUnauthenticatedState) {
-          router.replace(const LoginRoute());
-        }
-      },
-      splashScreenBody: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: AlignmentGeometry.topCenter,
-            end: AlignmentGeometry.bottomCenter,
-            colors: [
-              AppColors.blue,
-              AppColors.cyan,
-            ],
+      splashScreenBody: BlocListener<AppBloc, AppState>(
+        listener: (context, state) {
+          final router = context.router;
+          if (state is AppAuthenticatedState) {
+            router.replace(const ProfileRoute());
+          }
+          if (state is AppUnauthenticatedState) {
+            router.replace(const LoginRoute());
+          }
+        },
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: AlignmentGeometry.topCenter,
+              end: AlignmentGeometry.bottomCenter,
+              colors: [
+                AppColors.blue,
+                AppColors.cyan,
+              ],
+            ),
           ),
-        ),
-
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(
-                Icons.local_shipping_outlined,
-                size: 100,
-                color: Colors.white,
-              ),
-              Text(
-                'Smart Courier Assistant',
-                style: AppTextStyles.splashTextStyle,
-              ),
-            ],
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.local_shipping_outlined,
+                  size: 100,
+                  color: Colors.white,
+                ),
+                Text(
+                  'Smart Courier Assistant',
+                  style: AppTextStyles.splashTextStyle,
+                ),
+              ],
+            ),
           ),
         ),
       ),

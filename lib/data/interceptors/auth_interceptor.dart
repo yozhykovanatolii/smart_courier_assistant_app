@@ -56,7 +56,6 @@ class AuthInterceptor implements Interceptor {
       await _logout();
       return handler.reject(err);
     }
-
     if (_isRefreshRequest(request)) {
       await _logout();
       return handler.reject(err);
