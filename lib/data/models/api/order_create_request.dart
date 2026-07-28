@@ -1,0 +1,28 @@
+class OrderCreateRequest {
+  final String clientFullName;
+  final String clientPhoneNumber;
+  final DateTime deliveryBy;
+  final String address;
+  final double latitude;
+  final double longitude;
+
+  OrderCreateRequest({
+    required this.clientFullName,
+    required this.clientPhoneNumber,
+    required this.deliveryBy,
+    required this.address,
+    required this.latitude,
+    required this.longitude,
+  });
+
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'client_full_name': clientFullName,
+      'client_phone_number': clientPhoneNumber,
+      'delivery_by': deliveryBy.millisecondsSinceEpoch,
+      'address': address,
+      'latitude': latitude,
+      'longitude': longitude,
+    };
+  }
+}
