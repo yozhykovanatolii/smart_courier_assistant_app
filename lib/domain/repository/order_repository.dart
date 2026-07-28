@@ -2,11 +2,11 @@ import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
 
 abstract interface class OrderRepository {
   Future<void> saveOrder(
-    String routeId,
     String clientFullName,
     String clientPhoneNumber,
     String address,
     DateTime deliveryBy, {
+    String? routeId,
     OrderEntity? currentOrder,
   });
   Future<List<OrderEntity>> getAllRouteOrders(String routeId);

@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
 import 'package:smart_courier_assistant_app/data/datasource/local/secure_storage.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/order_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_gpt_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_direction_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
@@ -20,6 +21,7 @@ import 'package:smart_courier_assistant_app/data/repository/auth_repository_api_
 import 'package:smart_courier_assistant_app/data/repository/auth_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/delivery_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/geolocation_repository_impl.dart';
+import 'package:smart_courier_assistant_app/data/repository/order_repository_api_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/order_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/route_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/settings_repository_impl.dart';
@@ -66,7 +68,9 @@ class Dependencies {
 
   static void _setupApiClients() {
     final dio = _getIt<Dio>();
-    _getIt.registerSingleton<UserClient>(UserClient(dio));
+    _getIt
+      ..registerSingleton<UserClient>(UserClient(dio))
+      ..registerSingleton<OrderClient>(OrderClient(dio));
   }
 
   static void _setupDio() {
@@ -87,6 +91,7 @@ class Dependencies {
     final userAuth = _getIt<UserAuth>();
     final routeFirestore = _getIt<RouteFirestore>();
     final orderFirestore = _getIt<OrderFirestore>();
+    final orderClient = _getIt<OrderClient>();
     final userFirestore = _getIt<UserFirestore>();
     final userClient = _getIt<UserClient>();
     final settingsSharedPreference = _getIt<SettingsSharedPreference>();
@@ -136,6 +141,12 @@ class Dependencies {
           storageClient,
         ),
       )
+      ..registerFactory<OrderRepositoryApiImpl>(
+        () => OrderRepositoryApiImpl(
+          orderClient,
+          storageClient,
+        ),
+      )
       ..registerFactory<GeolocationRepositoryImpl>(
         () => GeolocationRepositoryImpl(),
       )
@@ -151,6 +162,7 @@ class Dependencies {
     final userRepositoryApi = _getIt<UserRepositoryApiImpl>();
     final settingsRepository = _getIt<SettingsRepositoryImpl>();
     final orderRepository = _getIt<OrderRepositoryImpl>();
+    final orderRepositoryApi = _getIt<OrderRepositoryApiImpl>();
     final routeRepository = _getIt<RouteRepositoryImpl>();
     final geolocationRepository = _getIt<GeolocationRepositoryImpl>();
     final deliveryRepository = _getIt<DeliveryRepositoryImpl>();
@@ -174,7 +186,7 @@ class Dependencies {
         () => EditProfileCubit(userRepositoryApi),
       )
       ..registerFactory<SaveOrderCubit>(
-        () => SaveOrderCubit(orderRepository, routeRepository),
+        () => SaveOrderCubit(orderRepositoryApi, routeRepository),
       )
       ..registerFactory<HomeBloc>(
         () => HomeBloc(

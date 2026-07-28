@@ -81,7 +81,7 @@ class _LoginView extends StatelessWidget {
               message: l10n.successAuthorization,
             );
             context.read<AppBloc>().add(AppStarted());
-            context.router.replace(const ProfileRoute());
+            context.router.replace(const HomeRoute());
           }
         },
         child: SafeArea(

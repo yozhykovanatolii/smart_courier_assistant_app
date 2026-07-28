@@ -30,11 +30,11 @@ class OrderRepositoryImpl implements OrderRepository {
 
   @override
   Future<void> saveOrder(
-    String routeId,
     String clientFullName,
     String clientPhoneNumber,
     String address,
     DateTime deliveryBy, {
+    String? routeId,
     OrderEntity? currentOrder,
   }) async {
     final location = await GeolocationService.getLocationByAddress(address);
@@ -53,7 +53,7 @@ class OrderRepositoryImpl implements OrderRepository {
         currentOrder?.proofDeliveryEntity,
       ),
     );
-    await _orderFirestore.saveOrder(orderModel, routeId);
+    await _orderFirestore.saveOrder(orderModel, routeId!);
   }
 
   @override

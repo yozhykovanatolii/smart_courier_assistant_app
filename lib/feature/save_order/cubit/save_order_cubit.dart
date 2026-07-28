@@ -1,8 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/exceptions/geolocation_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/invalid_credentials_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/invalid_validation_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/route_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/exceptions/user_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
 import 'package:smart_courier_assistant_app/domain/repository/order_repository.dart';
 import 'package:smart_courier_assistant_app/domain/repository/route_repository.dart';
@@ -63,10 +64,10 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
     try {
       await _orderRepository.deleteOrder(orderId);
       emit(state.copyWith(deletingStatus: FormzSubmissionStatus.success));
-    } on UserNotFoundException {
+    } on InvalidCredentialsException {
       emit(
         state.copyWith(
-          saveOrderErrorType: SaveOrderErrorType.userNotFound,
+          saveOrderErrorType: SaveOrderErrorType.invalidCredentials,
           deletingStatus: FormzSubmissionStatus.failure,
         ),
       );
@@ -100,21 +101,28 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
   Future<void> saveOrder(OrderEntity? order) async {
     emit(state.copyWith(formStatus: FormzSubmissionStatus.inProgress));
     try {
-      final routeId = await _routeRepository.createRoute();
+      //final routeId = await _routeRepository.createRoute();
       await _orderRepository.saveOrder(
-        routeId,
         state.clientFullNameValidator.value,
         state.clientPhoneNumberValidator.value,
         state.addressValidator.value,
         state.deliveryBy,
+        routeId: '',
         currentOrder: order,
       );
       emit(state.copyWith(formStatus: FormzSubmissionStatus.success));
-    } on UserNotFoundException {
+    } on InvalidCredentialsException {
       emit(
         state.copyWith(
-          saveOrderErrorType: SaveOrderErrorType.userNotFound,
+          saveOrderErrorType: SaveOrderErrorType.invalidCredentials,
           formStatus: FormzSubmissionStatus.success,
+        ),
+      );
+    } on InvalidValidationException {
+      emit(
+        state.copyWith(
+          formStatus: FormzSubmissionStatus.failure,
+          saveOrderErrorType: SaveOrderErrorType.invalidValidation,
         ),
       );
     } on GeolocationException {

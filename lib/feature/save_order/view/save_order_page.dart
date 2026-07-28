@@ -188,8 +188,10 @@ class _SaveOrderViewState extends State<_SaveOrderView> {
     if (saveOrderErrorStatus == null) return '';
 
     switch (saveOrderErrorStatus) {
-      case SaveOrderErrorType.userNotFound:
-        return l10n.userNotFound;
+      case SaveOrderErrorType.invalidCredentials:
+        return l10n.invalidCredential;
+      case SaveOrderErrorType.invalidValidation:
+        return l10n.registerValidationFailed;
       case SaveOrderErrorType.locationNotFound:
         return l10n.locationNotFound;
       case SaveOrderErrorType.routeNotFound:

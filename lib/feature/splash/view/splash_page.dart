@@ -21,7 +21,7 @@ class SplashPage extends StatelessWidget {
         listener: (context, state) {
           final router = context.router;
           if (state is AppAuthenticatedState) {
-            router.replace(const ProfileRoute());
+            router.replace(const HomeRoute());
           }
           if (state is AppUnauthenticatedState) {
             router.replace(const LoginRoute());
