@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "accessDenied": MessageLookupByLibrary.simpleMessage("Access denied"),
     "accountExistsWithDifferentCredentials":
         MessageLookupByLibrary.simpleMessage(
           "Account exists with different credentials.",
@@ -96,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create an account to continue!",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "dataNotFound": MessageLookupByLibrary.simpleMessage("Data were not found"),
     "delayed": MessageLookupByLibrary.simpleMessage("Delayed"),
     "deletingOrder": MessageLookupByLibrary.simpleMessage("Deleting order"),
     "deliverByEtaAndRisk": m2,

@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "accessDenied": MessageLookupByLibrary.simpleMessage("Доступ заборонено"),
     "accountExistsWithDifferentCredentials":
         MessageLookupByLibrary.simpleMessage(
           "Обліковий запис існує з іншими обліковими даними.",
@@ -98,6 +99,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Створіть обліковий запис, щоб продовжити!",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Темна тема"),
+    "dataNotFound": MessageLookupByLibrary.simpleMessage(
+      "Дані не були знайдені",
+    ),
     "delayed": MessageLookupByLibrary.simpleMessage("Затримається"),
     "deletingOrder": MessageLookupByLibrary.simpleMessage(
       "Видалити замовлення",

@@ -192,10 +192,12 @@ class _SaveOrderViewState extends State<_SaveOrderView> {
         return l10n.invalidCredential;
       case SaveOrderErrorType.invalidValidation:
         return l10n.registerValidationFailed;
+      case SaveOrderErrorType.accessDenied:
+        return l10n.accessDenied;
       case SaveOrderErrorType.locationNotFound:
         return l10n.locationNotFound;
-      case SaveOrderErrorType.routeNotFound:
-        return l10n.routeNotFound;
+      case SaveOrderErrorType.dataNotFound:
+        return l10n.dataNotFound;
     }
   }
 }

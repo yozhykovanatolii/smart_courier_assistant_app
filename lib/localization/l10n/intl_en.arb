@@ -117,5 +117,7 @@
   "orderPlannedEtaPdfText": "Planned ETA: {orderPlannedEta}",
   "routeOrdersCount": "{ordersAmount} orders",
   "routeDelayedOrdersCount": "{delayedOrdersAmount} delayed",
-  "registerValidationFailed": "Validation failed. Please check your input"
+  "registerValidationFailed": "Validation failed. Please check your input",
+  "accessDenied": "Access denied",
+  "dataNotFound": "Data were not found"
 }

@@ -1078,6 +1078,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Access denied`
+  String get accessDenied {
+    return Intl.message(
+      'Access denied',
+      name: 'accessDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data were not found`
+  String get dataNotFound {
+    return Intl.message(
+      'Data were not found',
+      name: 'dataNotFound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

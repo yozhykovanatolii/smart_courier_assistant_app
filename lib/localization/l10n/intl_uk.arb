@@ -116,5 +116,7 @@
   "orderPlannedEtaPdfText": "Запланована ETA: {orderPlannedEta}",
   "routeOrdersCount": "{ordersAmount} замовлень",
   "routeDelayedOrdersCount": "{delayedOrdersAmount} затримані",
-  "registerValidationFailed": "Помилка валідації. Будь ласка, перевірте введені дані."
+  "registerValidationFailed": "Помилка валідації. Будь ласка, перевірте введені дані.",
+  "accessDenied": "Доступ заборонено",
+  "dataNotFound": "Дані не були знайдені"
 }

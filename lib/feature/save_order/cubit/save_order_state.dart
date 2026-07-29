@@ -7,7 +7,8 @@ enum SaveOrderErrorType {
   invalidCredentials,
   invalidValidation,
   locationNotFound,
-  routeNotFound,
+  dataNotFound,
+  accessDenied,
 }
 
 class SaveOrderState {

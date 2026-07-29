@@ -12,9 +12,8 @@ class OrderRepositoryApiImpl implements OrderRepository {
   OrderRepositoryApiImpl(this._orderClient, this._storageClient);
 
   @override
-  Future<void> deleteOrder(String orderId) {
-    // TODO: implement deleteOrder
-    throw UnimplementedError();
+  Future<void> deleteOrder(String orderId) async {
+    await _orderClient.deleteOrder(int.parse(orderId));
   }
 
   @override

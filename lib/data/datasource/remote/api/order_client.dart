@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:smart_courier_assistant_app/data/models/api/order_create_request.dart';
+import 'package:smart_courier_assistant_app/exceptions/access_denied_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/data_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/invalid_credentials_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/invalid_validation_exception.dart';
 
@@ -36,6 +38,23 @@ class OrderClient {
       }
       if (statusCode == 422) {
         throw InvalidValidationException();
+      }
+    }
+  }
+
+  Future<void> deleteOrder(int orderId) async {
+    try {
+      await _dio.post('/orders/$orderId');
+    } on DioException catch (exception) {
+      final statusCode = exception.response?.statusCode;
+      if (statusCode == 401) {
+        throw InvalidCredentialsException();
+      }
+      if (statusCode == 404) {
+        throw DataNotFoundException();
+      }
+      if (statusCode == 403) {
+        throw AccessDeniedException();
       }
     }
   }
