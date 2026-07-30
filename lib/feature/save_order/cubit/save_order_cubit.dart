@@ -140,6 +140,20 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
           formStatus: FormzSubmissionStatus.failure,
         ),
       );
+    } on AccessDeniedException {
+      emit(
+        state.copyWith(
+          saveOrderErrorType: SaveOrderErrorType.accessDenied,
+          deletingStatus: FormzSubmissionStatus.failure,
+        ),
+      );
+    } on DataNotFoundException {
+      emit(
+        state.copyWith(
+          saveOrderErrorType: SaveOrderErrorType.dataNotFound,
+          deletingStatus: FormzSubmissionStatus.failure,
+        ),
+      );
     }
   }
 }

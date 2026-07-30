@@ -1,4 +1,4 @@
-class OrderCreateRequest {
+class OrderSaveRequest {
   final String clientFullName;
   final String clientPhoneNumber;
   final DateTime deliveryBy;
@@ -6,7 +6,7 @@ class OrderCreateRequest {
   final double latitude;
   final double longitude;
 
-  OrderCreateRequest({
+  OrderSaveRequest({
     required this.clientFullName,
     required this.clientPhoneNumber,
     required this.deliveryBy,

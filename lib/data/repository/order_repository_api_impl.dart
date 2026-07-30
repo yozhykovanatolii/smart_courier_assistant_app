@@ -58,13 +58,26 @@ class OrderRepositoryApiImpl implements OrderRepository {
     OrderEntity? currentOrder,
   }) async {
     final location = await GeolocationService.getLocationByAddress(address);
-    await _orderClient.createOrder(
-      clientFullName,
-      clientPhoneNumber,
-      address,
-      deliveryBy,
-      location.latitude,
-      location.longitude,
-    );
+    final orderId = currentOrder?.id;
+    if (orderId == null) {
+      await _orderClient.createOrder(
+        clientFullName,
+        clientPhoneNumber,
+        address,
+        deliveryBy,
+        location.latitude,
+        location.longitude,
+      );
+    } else {
+      await _orderClient.updateOrder(
+        int.parse(orderId),
+        clientFullName,
+        clientPhoneNumber,
+        address,
+        deliveryBy,
+        location.latitude,
+        location.longitude,
+      );
+    }
   }
 }
