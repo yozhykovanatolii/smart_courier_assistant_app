@@ -115,4 +115,9 @@ class OrderRepositoryImpl implements OrderRepository {
     );
     return orderImageUrl;
   }
+
+  @override
+  Future<void> loadTodayOrders() {
+    throw UnimplementedError();
+  }
 }

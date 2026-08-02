@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:smart_courier_assistant_app/exceptions/data_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/geolocation_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/invalid_credentials_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/optimization_route_exception.dart';
-import 'package:smart_courier_assistant_app/exceptions/orders_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/exceptions/route_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/user_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/domain/repository/geolocation_repository.dart';
 import 'package:smart_courier_assistant_app/domain/repository/order_repository.dart';
@@ -25,6 +25,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     this._geolocationRepository,
     this._routeRepository,
   ) : super(HomeState.initial()) {
+    on<HomeOrdersSubscripted>(_subscribeOnOrders);
     on<HomeOrdersFetched>(_fetchOrders);
     on<HomeCallDialerOpened>(_openCallDialer);
     on<HomeMessengerOpened>(_openUserMessanger);
@@ -36,8 +37,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeOrdersFetched event,
     Emitter<HomeState> emit,
   ) async {
+    //unawaited(_loadRouteRecommendation(emit));
+    await _orderRepository.loadTodayOrders();
+  }
+
+  Future<void> _subscribeOnOrders(
+    HomeOrdersSubscripted event,
+    Emitter<HomeState> emit,
+  ) async {
     emit(state.copyWith(orderStatus: HomeStatus.loading));
-    unawaited(_loadRouteRecommendation(emit));
     await emit.onEach(
       _orderRepository.getAllCourierActiveOrders(),
       onData: (activeOrders) {
@@ -49,11 +57,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         );
       },
       onError: (error, stackTrace) {
-        if (error is OrdersNotFoundException) {
+        if (error is InvalidCredentialsException) {
           emit(
             state.copyWith(
               orderStatus: HomeStatus.failure,
-              errorType: OrderErrorType.ordersNotFound,
+              errorType: OrderErrorType.invalidCredentials,
+            ),
+          );
+          return;
+        }
+        if (error is DataNotFoundException) {
+          emit(
+            state.copyWith(
+              orderStatus: HomeStatus.failure,
+              errorType: OrderErrorType.dataNotFound,
             ),
           );
           return;
@@ -69,25 +86,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _loadRouteRecommendation(Emitter<HomeState> emit) async {
-    try {
-      final routeRecommendation = await _routeRepository
-          .getCurrentRouteRecommendation();
-      emit(state.copyWith(routeRecommendation: routeRecommendation));
-    } on UserNotFoundException {
-      emit(
-        state.copyWith(
-          orderStatus: HomeStatus.failure,
-          errorType: OrderErrorType.userNotFound,
-        ),
-      );
-    } on RouteNotFoundException {
-      emit(
-        state.copyWith(
-          orderStatus: HomeStatus.failure,
-          errorType: OrderErrorType.routeNotFound,
-        ),
-      );
-    }
+    final routeRecommendation = await _routeRepository
+        .getCurrentRouteRecommendation();
+    emit(state.copyWith(routeRecommendation: routeRecommendation));
   }
 
   Future<void> _openCallDialer(

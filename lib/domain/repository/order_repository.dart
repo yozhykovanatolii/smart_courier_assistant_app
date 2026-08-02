@@ -11,6 +11,7 @@ abstract interface class OrderRepository {
   });
   Future<List<OrderEntity>> getAllRouteOrders(String routeId);
   Stream<List<OrderEntity>> getAllCourierActiveOrders();
+  Future<void> loadTodayOrders();
   Future<List<OrderEntity>> optimizeOrdersRoute(
     List<OrderEntity> orders,
     double latitude,

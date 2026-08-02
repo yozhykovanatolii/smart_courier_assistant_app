@@ -18,7 +18,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => GetIt.I<HomeBloc>(),
+      create: (_) => GetIt.I<HomeBloc>()
+        ..add(HomeOrdersSubscripted())
+        ..add(HomeOrdersFetched()),
       child: const _HomeView(),
     );
   }

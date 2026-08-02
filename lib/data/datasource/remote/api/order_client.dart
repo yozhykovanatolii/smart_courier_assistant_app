@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:smart_courier_assistant_app/data/models/api/order_info_model.dart';
 import 'package:smart_courier_assistant_app/data/models/api/order_save_request.dart';
 import 'package:smart_courier_assistant_app/exceptions/access_denied_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/data_not_found_exception.dart';
@@ -95,6 +96,28 @@ class OrderClient {
       if (statusCode == 403) {
         throw AccessDeniedException();
       }
+    }
+  }
+
+  Future<List<OrderInfoModel>> getTodayOrders() async {
+    try {
+      final response = await _dio.get('/orders/today');
+      final jsonList = response.data as List;
+      return jsonList
+          .map(
+            (element) =>
+                OrderInfoModel.fromJson(element as Map<String, dynamic>),
+          )
+          .toList();
+    } on DioException catch (exception) {
+      final statusCode = exception.response?.statusCode;
+      if (statusCode == 401) {
+        throw InvalidCredentialsException();
+      }
+      if (statusCode == 404) {
+        throw DataNotFoundException();
+      }
+      rethrow;
     }
   }
 }

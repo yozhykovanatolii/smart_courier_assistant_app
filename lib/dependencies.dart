@@ -158,7 +158,7 @@ class Dependencies {
   static void _setupBloc() {
     final authRepository = _getIt<AuthRepositoryImpl>();
     final authRepositoryApi = _getIt<AuthRepositoryApiImpl>();
-    final userRepository = _getIt<UserRepositoryImpl>();
+    //final userRepository = _getIt<UserRepositoryImpl>();
     final userRepositoryApi = _getIt<UserRepositoryApiImpl>();
     final settingsRepository = _getIt<SettingsRepositoryImpl>();
     final orderRepository = _getIt<OrderRepositoryImpl>();
@@ -190,8 +190,8 @@ class Dependencies {
       )
       ..registerFactory<HomeBloc>(
         () => HomeBloc(
-          orderRepository,
-          userRepository,
+          orderRepositoryApi,
+          userRepositoryApi,
           geolocationRepository,
           routeRepository,
         ),

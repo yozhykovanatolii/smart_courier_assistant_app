@@ -104,12 +104,10 @@ class OrdersDraggableSheet extends StatelessWidget {
     if (errorType == null) return '';
 
     switch (errorType) {
-      case OrderErrorType.userNotFound:
-        return l10n.userNotFound;
-      case OrderErrorType.routeNotFound:
-        return l10n.routeNotFound;
-      case OrderErrorType.ordersNotFound:
-        return l10n.ordersNotFound;
+      case OrderErrorType.invalidCredentials:
+        return l10n.invalidCredential;
+      case OrderErrorType.dataNotFound:
+        return l10n.dataNotFound;
       case OrderErrorType.unknown:
         return l10n.somethingWentWrong;
     }

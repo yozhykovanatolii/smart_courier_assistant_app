@@ -4,10 +4,9 @@ import 'package:smart_courier_assistant_app/domain/entity/route_point_entity.dar
 enum HomeStatus { initial, loading, success, failure }
 
 enum OrderErrorType {
-  userNotFound,
+  invalidCredentials,
   unknown,
-  routeNotFound,
-  ordersNotFound,
+  dataNotFound,
 }
 
 enum UserActionError {
@@ -85,5 +84,10 @@ class HomeState {
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
     );
+  }
+
+  @override
+  String toString() {
+    return 'HomeState(status: $orderStatus, orders: ${orders.length})';
   }
 }

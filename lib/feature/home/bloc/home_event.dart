@@ -1,5 +1,7 @@
 sealed class HomeEvent {}
 
+final class HomeOrdersSubscripted extends HomeEvent {}
+
 final class HomeOrdersFetched extends HomeEvent {}
 
 final class HomeLocationFetched extends HomeEvent {}
