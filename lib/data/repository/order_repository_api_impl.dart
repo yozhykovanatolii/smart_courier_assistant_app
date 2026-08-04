@@ -100,4 +100,18 @@ class OrderRepositoryApiImpl implements OrderRepository {
     }
     await loadTodayOrders();
   }
+
+  @override
+  Future<void> createOrderProofOfDelivery(
+    String orderId,
+    String courierComment,
+    List<String> orderPhotos,
+  ) async {
+    await _orderClient.proofDeliveryOfOrder(
+      orderId,
+      courierComment,
+      orderPhotos,
+    );
+    await loadTodayOrders();
+  }
 }

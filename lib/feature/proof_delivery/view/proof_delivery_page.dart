@@ -136,14 +136,18 @@ class _ProofDeliveryView extends StatelessWidget {
     if (proofDeliveryErrorStatus == null) return '';
 
     switch (proofDeliveryErrorStatus) {
-      case ProofDeliveryErrorType.userNotFound:
-        return l10n.userNotFound;
+      case ProofDeliveryErrorType.invalidCredentials:
+        return l10n.invalidCredential;
       case ProofDeliveryErrorType.storagePermissionDeny:
         return l10n.storagePermissionDeny;
       case ProofDeliveryErrorType.photoNotSelected:
         return l10n.photoWasNotSelected;
-      case ProofDeliveryErrorType.routeNotFound:
-        return l10n.routeNotFound;
+      case ProofDeliveryErrorType.invalidValidation:
+        return l10n.registerValidationFailed;
+      case ProofDeliveryErrorType.accessDenied:
+        return l10n.accessDenied;
+      case ProofDeliveryErrorType.dataNotFound:
+        return l10n.dataNotFound;
     }
   }
 }

@@ -19,4 +19,9 @@ abstract interface class OrderRepository {
   );
   Future<void> deleteOrder(String orderId);
   Future<String> getOrderPhoto();
+  Future<void> createOrderProofOfDelivery(
+    String orderId,
+    String courierComment,
+    List<String> orderPhotos,
+  );
 }

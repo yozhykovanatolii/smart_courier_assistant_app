@@ -6,6 +6,7 @@ import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/fire
 import 'package:smart_courier_assistant_app/data/mapper/order_mapper.dart';
 import 'package:smart_courier_assistant_app/data/mapper/proof_delivery_mapper.dart';
 import 'package:smart_courier_assistant_app/data/models/firestore/order_model.dart';
+import 'package:smart_courier_assistant_app/data/models/firestore/proof_delivery_model.dart';
 import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
 import 'package:smart_courier_assistant_app/data/service/geolocation_service.dart';
 import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
@@ -119,5 +120,25 @@ class OrderRepositoryImpl implements OrderRepository {
   @override
   Future<void> loadTodayOrders() {
     throw UnimplementedError();
+  }
+
+  @override
+  Future<void> createOrderProofOfDelivery(
+    String orderId,
+    String courierComment,
+    List<String> orderPhotos,
+  ) async {
+    final courierId = _userAuth.userId;
+    final route = await _routeFirestore.getTodayRoute(courierId);
+    final proofDelivery = ProofDeliveryModel(
+      courierComment: courierComment,
+      orderPhotos: orderPhotos,
+      confirmedAt: DateTime.now(),
+    );
+    await _orderFirestore.updateOrderProofDelivery(
+      proofDelivery,
+      route.routeId,
+      orderId,
+    );
   }
 }

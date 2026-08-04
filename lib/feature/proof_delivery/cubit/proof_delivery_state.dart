@@ -2,10 +2,12 @@ import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/validation/courier_comment_validator.dart';
 
 enum ProofDeliveryErrorType {
-  userNotFound,
+  invalidCredentials,
   storagePermissionDeny,
   photoNotSelected,
-  routeNotFound,
+  dataNotFound,
+  invalidValidation,
+  accessDenied,
 }
 
 class ProofDeliveryState {

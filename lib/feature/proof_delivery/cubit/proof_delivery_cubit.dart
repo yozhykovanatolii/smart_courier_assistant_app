@@ -1,19 +1,19 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:smart_courier_assistant_app/domain/repository/order_repository.dart';
+import 'package:smart_courier_assistant_app/exceptions/access_denied_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/data_not_found_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/invalid_credentials_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/invalid_validation_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/permission_deny_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/photo_not_selected_exception.dart';
-import 'package:smart_courier_assistant_app/exceptions/route_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/exceptions/user_not_found_exception.dart';
-import 'package:smart_courier_assistant_app/data/repository/order_repository_impl.dart';
-import 'package:smart_courier_assistant_app/domain/repository/delivery_repository.dart';
 import 'package:smart_courier_assistant_app/feature/proof_delivery/cubit/proof_delivery_state.dart';
 import 'package:smart_courier_assistant_app/validation/courier_comment_validator.dart';
 
 class ProofDeliveryCubit extends Cubit<ProofDeliveryState> {
-  final OrderRepositoryImpl _orderRepository;
-  final DeliveryRepository _deliveryRepository;
+  final OrderRepository _orderRepository;
 
-  ProofDeliveryCubit(this._orderRepository, this._deliveryRepository)
+  ProofDeliveryCubit(this._orderRepository)
     : super(ProofDeliveryState.initial());
 
   Future<void> addOrderPhoto() async {
@@ -58,23 +58,37 @@ class ProofDeliveryCubit extends Cubit<ProofDeliveryState> {
   Future<void> confirmDelivery(String orderId) async {
     emit(state.copyWith(formStatus: FormzSubmissionStatus.inProgress));
     try {
-      await _deliveryRepository.createProofOfDelivery(
+      await _orderRepository.createOrderProofOfDelivery(
         orderId,
         state.courierCommentValidator.value,
         state.orderPhotos,
       );
       emit(state.copyWith(formStatus: FormzSubmissionStatus.success));
-    } on UserNotFoundException {
+    } on InvalidCredentialsException {
       emit(
         state.copyWith(
-          deliveryErrorType: ProofDeliveryErrorType.userNotFound,
+          deliveryErrorType: ProofDeliveryErrorType.invalidCredentials,
           formStatus: FormzSubmissionStatus.failure,
         ),
       );
-    } on RouteNotFoundException {
+    } on InvalidValidationException {
       emit(
         state.copyWith(
-          deliveryErrorType: ProofDeliveryErrorType.routeNotFound,
+          deliveryErrorType: ProofDeliveryErrorType.invalidValidation,
+          formStatus: FormzSubmissionStatus.failure,
+        ),
+      );
+    } on AccessDeniedException {
+      emit(
+        state.copyWith(
+          deliveryErrorType: ProofDeliveryErrorType.accessDenied,
+          formStatus: FormzSubmissionStatus.failure,
+        ),
+      );
+    } on DataNotFoundException {
+      emit(
+        state.copyWith(
+          deliveryErrorType: ProofDeliveryErrorType.dataNotFound,
           formStatus: FormzSubmissionStatus.failure,
         ),
       );

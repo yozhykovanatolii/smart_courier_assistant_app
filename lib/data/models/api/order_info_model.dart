@@ -1,6 +1,5 @@
 class OrderInfoModel {
   final int id;
-  final int routeId;
   final String clientFullName;
   final String clientPhoneNumber;
   final String address;
@@ -10,10 +9,12 @@ class OrderInfoModel {
   final DateTime deliveryBy;
   final String deliveryRisk;
   final String status;
+  final String? courierComment;
+  final DateTime? confirmedAt;
+  final List<String>? orderPhotosUrl;
 
   OrderInfoModel({
     required this.id,
-    required this.routeId,
     required this.clientFullName,
     required this.clientPhoneNumber,
     required this.address,
@@ -23,21 +24,50 @@ class OrderInfoModel {
     required this.deliveryBy,
     required this.deliveryRisk,
     required this.status,
+    this.courierComment,
+    this.confirmedAt,
+    this.orderPhotosUrl,
   });
 
-  factory OrderInfoModel.fromJson(Map<String, dynamic> json) {
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'client_full_name': clientFullName,
+      'client_phone_number': clientPhoneNumber,
+      'address': address,
+      'latitude': latitude,
+      'longitude': longitude,
+      'planned_eta': plannedEta.millisecondsSinceEpoch,
+      'delivery_by': deliveryBy.millisecondsSinceEpoch,
+      'delivery_risk': deliveryRisk,
+      'status': status,
+      'courier_comment': courierComment,
+      'confirmed_at': confirmedAt?.millisecondsSinceEpoch,
+      'order_photos_url': orderPhotosUrl,
+    };
+  }
+
+  factory OrderInfoModel.fromJson(Map<String, dynamic> map) {
     return OrderInfoModel(
-      id: json['id'] as int,
-      routeId: json['route_id'] as int,
-      clientFullName: json['client_full_name'] as String,
-      clientPhoneNumber: json['client_phone_number'] as String,
-      address: json['address'] as String,
-      latitude: json['latitude'] as double,
-      longitude: json['longitude'] as double,
-      plannedEta: DateTime.parse(json['planned_eta'] as String),
-      deliveryBy: DateTime.parse(json['delivery_by'] as String),
-      deliveryRisk: json['delivery_risk'] as String,
-      status: json['status'] as String,
+      id: map['id'] as int,
+      clientFullName: map['client_full_name'] as String,
+      clientPhoneNumber: map['client_phone_number'] as String,
+      address: map['address'] as String,
+      latitude: map['latitude'] as double,
+      longitude: map['longitude'] as double,
+      plannedEta: DateTime.parse(map['planned_eta'] as String),
+      deliveryBy: DateTime.parse(map['delivery_by'] as String),
+      deliveryRisk: map['delivery_risk'] as String,
+      status: map['status'] as String,
+      courierComment: map['courier_comment'] != null
+          ? map['courier_comment'] as String
+          : null,
+      confirmedAt: map['confirmed_at'] != null
+          ? DateTime.parse(map['confirmed_at'] as String)
+          : null,
+      orderPhotosUrl: map['order_photos_url'] != null
+          ? List<String>.from((map['order_photos_url'] as List<String>))
+          : null,
     );
   }
 }

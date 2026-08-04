@@ -19,7 +19,6 @@ import 'package:smart_courier_assistant_app/data/interceptors/auth_interceptor.d
 import 'package:smart_courier_assistant_app/data/manager/session_manager.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository_api_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/auth_repository_impl.dart';
-import 'package:smart_courier_assistant_app/data/repository/delivery_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/geolocation_repository_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/order_repository_api_impl.dart';
 import 'package:smart_courier_assistant_app/data/repository/order_repository_impl.dart';
@@ -149,9 +148,6 @@ class Dependencies {
       )
       ..registerFactory<GeolocationRepositoryImpl>(
         () => GeolocationRepositoryImpl(),
-      )
-      ..registerFactory<DeliveryRepositoryImpl>(
-        () => DeliveryRepositoryImpl(userAuth, routeFirestore, orderFirestore),
       );
   }
 
@@ -165,7 +161,6 @@ class Dependencies {
     final orderRepositoryApi = _getIt<OrderRepositoryApiImpl>();
     final routeRepository = _getIt<RouteRepositoryImpl>();
     final geolocationRepository = _getIt<GeolocationRepositoryImpl>();
-    final deliveryRepository = _getIt<DeliveryRepositoryImpl>();
     _getIt
       ..registerFactory<LoginCubit>(
         () => LoginCubit(authRepositoryApi),
@@ -197,7 +192,7 @@ class Dependencies {
         ),
       )
       ..registerFactory<ProofDeliveryCubit>(
-        () => ProofDeliveryCubit(orderRepository, deliveryRepository),
+        () => ProofDeliveryCubit(orderRepository),
       )
       ..registerFactory<HistoryCubit>(
         () => HistoryCubit(routeRepository),

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:smart_courier_assistant_app/data/models/api/order_delivery_proof_request.dart';
 import 'package:smart_courier_assistant_app/data/models/api/order_info_model.dart';
 import 'package:smart_courier_assistant_app/data/models/api/order_save_request.dart';
 import 'package:smart_courier_assistant_app/exceptions/access_denied_exception.dart';
@@ -118,6 +119,37 @@ class OrderClient {
         throw DataNotFoundException();
       }
       rethrow;
+    }
+  }
+
+  Future<void> proofDeliveryOfOrder(
+    String orderId,
+    String courierComment,
+    List<String> orderPhotos,
+  ) async {
+    final orderDeliveryProof = OrderDeliveryProofRequest.initial(
+      courierComment,
+      orderPhotos,
+    );
+    try {
+      await _dio.patch(
+        '/orders/$orderId/proof-delivery',
+        data: orderDeliveryProof.toJson(),
+      );
+    } on DioException catch (exception) {
+      final statusCode = exception.response?.statusCode;
+      if (statusCode == 401) {
+        throw InvalidCredentialsException();
+      }
+      if (statusCode == 422) {
+        throw InvalidValidationException();
+      }
+      if (statusCode == 404) {
+        throw DataNotFoundException();
+      }
+      if (statusCode == 403) {
+        throw AccessDeniedException();
+      }
     }
   }
 }
