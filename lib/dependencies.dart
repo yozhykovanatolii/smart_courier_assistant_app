@@ -5,6 +5,7 @@ import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
 import 'package:smart_courier_assistant_app/data/datasource/local/secure_storage.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/order_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_gpt_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_direction_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
@@ -69,7 +70,8 @@ class Dependencies {
     final dio = _getIt<Dio>();
     _getIt
       ..registerSingleton<UserClient>(UserClient(dio))
-      ..registerSingleton<OrderClient>(OrderClient(dio));
+      ..registerSingleton<OrderClient>(OrderClient(dio))
+      ..registerSingleton<RouteClient>(RouteClient(dio));
   }
 
   static void _setupDio() {
@@ -89,6 +91,7 @@ class Dependencies {
   static void _setupRepositories() {
     final userAuth = _getIt<UserAuth>();
     final routeFirestore = _getIt<RouteFirestore>();
+    final routeClient = _getIt<RouteClient>();
     final orderFirestore = _getIt<OrderFirestore>();
     final orderClient = _getIt<OrderClient>();
     final userFirestore = _getIt<UserFirestore>();
@@ -143,6 +146,7 @@ class Dependencies {
       ..registerFactory<OrderRepositoryApiImpl>(
         () => OrderRepositoryApiImpl(
           orderClient,
+          routeClient,
           storageClient,
         ),
       )

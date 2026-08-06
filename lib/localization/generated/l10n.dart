@@ -1098,6 +1098,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Failed calculate optimal route. Try again.`
+  String get failedCalculateOptimalRoute {
+    return Intl.message(
+      'Failed calculate optimal route. Try again.',
+      name: 'failedCalculateOptimalRoute',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

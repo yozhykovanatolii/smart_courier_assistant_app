@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/order_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
 import 'package:smart_courier_assistant_app/data/mapper/order_info_mapper.dart';
+import 'package:smart_courier_assistant_app/data/mapper/order_optimization_mapper.dart';
 import 'package:smart_courier_assistant_app/data/models/api/order_info_model.dart';
 import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
 import 'package:smart_courier_assistant_app/data/service/geolocation_service.dart';
@@ -10,11 +12,16 @@ import 'package:smart_courier_assistant_app/domain/repository/order_repository.d
 
 class OrderRepositoryApiImpl implements OrderRepository {
   final OrderClient _orderClient;
+  final RouteClient _routeClient;
   final StorageClient _storageClient;
 
   final _ordersController = StreamController<List<OrderInfoModel>>();
 
-  OrderRepositoryApiImpl(this._orderClient, this._storageClient);
+  OrderRepositoryApiImpl(
+    this._orderClient,
+    this._routeClient,
+    this._storageClient,
+  );
 
   @override
   Future<void> loadTodayOrders() async {
@@ -62,9 +69,15 @@ class OrderRepositoryApiImpl implements OrderRepository {
     List<OrderEntity> orders,
     double latitude,
     double longitude,
-  ) {
-    // TODO: implement optimizeOrdersRoute
-    throw UnimplementedError();
+  ) async {
+    final ordersOptimization = orders
+        .map(
+          (order) => OrderOptimizationMapper.fromEntity(order),
+        )
+        .toList();
+    await _routeClient.optimizeRoute(latitude, longitude, ordersOptimization);
+    await loadTodayOrders();
+    return [];
   }
 
   @override

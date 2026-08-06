@@ -27,7 +27,7 @@ class OrderInfoMapper {
       proofDeliveryEntity: proofDeliveryEntity,
       recommendation: '',
       status: orderModel.status,
-      orderIndex: 0,
+      orderIndex: orderModel.orderIndex,
     );
   }
 
@@ -46,6 +46,7 @@ class OrderInfoMapper {
       courierComment: order.proofDeliveryEntity?.courierComment,
       confirmedAt: order.proofDeliveryEntity?.confirmedAt,
       orderPhotosUrl: order.proofDeliveryEntity?.orderPhotos,
+      orderIndex: order.orderIndex,
     );
   }
 

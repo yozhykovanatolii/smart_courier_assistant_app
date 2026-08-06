@@ -12,6 +12,7 @@ class OrderInfoModel {
   final String? courierComment;
   final DateTime? confirmedAt;
   final List<String>? orderPhotosUrl;
+  final int orderIndex;
 
   OrderInfoModel({
     required this.id,
@@ -24,6 +25,7 @@ class OrderInfoModel {
     required this.deliveryBy,
     required this.deliveryRisk,
     required this.status,
+    required this.orderIndex,
     this.courierComment,
     this.confirmedAt,
     this.orderPhotosUrl,
@@ -44,29 +46,31 @@ class OrderInfoModel {
       'courier_comment': courierComment,
       'confirmed_at': confirmedAt?.millisecondsSinceEpoch,
       'order_photos_url': orderPhotosUrl,
+      'order_index': orderIndex,
     };
   }
 
-  factory OrderInfoModel.fromJson(Map<String, dynamic> map) {
+  factory OrderInfoModel.fromJson(Map<String, dynamic> json) {
     return OrderInfoModel(
-      id: map['id'] as int,
-      clientFullName: map['client_full_name'] as String,
-      clientPhoneNumber: map['client_phone_number'] as String,
-      address: map['address'] as String,
-      latitude: map['latitude'] as double,
-      longitude: map['longitude'] as double,
-      plannedEta: DateTime.parse(map['planned_eta'] as String),
-      deliveryBy: DateTime.parse(map['delivery_by'] as String),
-      deliveryRisk: map['delivery_risk'] as String,
-      status: map['status'] as String,
-      courierComment: map['courier_comment'] != null
-          ? map['courier_comment'] as String
+      id: json['id'] as int,
+      clientFullName: json['client_full_name'] as String,
+      clientPhoneNumber: json['client_phone_number'] as String,
+      address: json['address'] as String,
+      latitude: json['latitude'] as double,
+      longitude: json['longitude'] as double,
+      plannedEta: DateTime.parse(json['planned_eta'] as String),
+      deliveryBy: DateTime.parse(json['delivery_by'] as String),
+      deliveryRisk: json['delivery_risk'] as String,
+      status: json['status'] as String,
+      orderIndex: json['order_index'] as int,
+      courierComment: json['courier_comment'] != null
+          ? json['courier_comment'] as String
           : null,
-      confirmedAt: map['confirmed_at'] != null
-          ? DateTime.parse(map['confirmed_at'] as String)
+      confirmedAt: json['confirmed_at'] != null
+          ? DateTime.parse(json['confirmed_at'] as String)
           : null,
-      orderPhotosUrl: map['order_photos_url'] != null
-          ? List<String>.from((map['order_photos_url'] as List<String>))
+      orderPhotosUrl: json['order_photos_url'] != null
+          ? List<String>.from((json['order_photos_url'] as List<String>))
           : null,
     );
   }

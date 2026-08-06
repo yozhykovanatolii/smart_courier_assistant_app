@@ -51,9 +51,13 @@ class _HomeView extends StatelessWidget {
             context.router.maybePop(context);
           }
           if (optimizationStatus == HomeStatus.failure) {
+            final optimizationErrorMessage = _mapOptimizationErrorToMessage(
+              context,
+              state.optimizationErrorType!,
+            );
             UiHelper.showSnackBar(
               context: context,
-              message: '',
+              message: optimizationErrorMessage,
               isErrorSnackBar: true,
             );
             context.router.maybePop(context);
@@ -110,6 +114,22 @@ class _HomeView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _mapOptimizationErrorToMessage(
+    BuildContext context,
+    OptimizationErrorType optimizationError,
+  ) {
+    final l10n = S.of(context);
+
+    switch (optimizationError) {
+      case OptimizationErrorType.invalidCredentials:
+        return l10n.invalidCredential;
+      case OptimizationErrorType.accessDenied:
+        return l10n.accessDenied;
+      case OptimizationErrorType.failedCalculateOptimalRoute:
+        return l10n.failedCalculateOptimalRoute;
+    }
   }
 
   String _mapUserActionErrorToMessage(

@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:smart_courier_assistant_app/exceptions/access_denied_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/data_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/geolocation_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/invalid_credentials_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/optimization_route_exception.dart';
-import 'package:smart_courier_assistant_app/exceptions/user_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/domain/repository/geolocation_repository.dart';
 import 'package:smart_courier_assistant_app/domain/repository/order_repository.dart';
 import 'package:smart_courier_assistant_app/domain/repository/route_repository.dart';
@@ -184,10 +184,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           routeOptimizationStatus: HomeStatus.failure,
         ),
       );
-    } on UserNotFoundException {
+    } on InvalidCredentialsException {
       emit(
         state.copyWith(
-          optimizationErrorType: OptimizationErrorType.userNotFound,
+          optimizationErrorType: OptimizationErrorType.invalidCredentials,
+          routeOptimizationStatus: HomeStatus.failure,
+        ),
+      );
+    } on AccessDeniedException {
+      emit(
+        state.copyWith(
+          optimizationErrorType: OptimizationErrorType.accessDenied,
           routeOptimizationStatus: HomeStatus.failure,
         ),
       );

@@ -17,7 +17,8 @@ enum UserActionError {
 }
 
 enum OptimizationErrorType {
-  userNotFound,
+  invalidCredentials,
+  accessDenied,
   failedCalculateOptimalRoute,
 }
 

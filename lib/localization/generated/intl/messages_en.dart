@@ -125,6 +125,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourEmailAndPasswordToLogIn": MessageLookupByLibrary.simpleMessage(
       "Enter your email and password to log in",
     ),
+    "failedCalculateOptimalRoute": MessageLookupByLibrary.simpleMessage(
+      "Failed calculate optimal route. Try again.",
+    ),
     "food": MessageLookupByLibrary.simpleMessage("Food"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "fullName": MessageLookupByLibrary.simpleMessage("Full name"),

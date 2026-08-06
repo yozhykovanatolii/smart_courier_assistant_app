@@ -133,6 +133,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourEmailAndPasswordToLogIn": MessageLookupByLibrary.simpleMessage(
       "Введіть свою пошту та пароль для входу",
     ),
+    "failedCalculateOptimalRoute": MessageLookupByLibrary.simpleMessage(
+      "Не вдалося розрахувати оптимальний маршрут. Спробуйте ще раз.",
+    ),
     "food": MessageLookupByLibrary.simpleMessage("Їжа"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Забув Пароль?"),
     "fullName": MessageLookupByLibrary.simpleMessage("ПІБ"),
