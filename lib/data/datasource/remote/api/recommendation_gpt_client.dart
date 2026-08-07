@@ -7,10 +7,7 @@ class RecommendationGptClient {
   final String _apiKey = dotenv.env['OPENAI_API_KEY'] ?? '';
   final _endpoint = 'https://api.openai.com/v1/chat/completions';
 
-  Future<String?> getRouteRecommendation(
-    RouteAnalysisModel analysis,
-    String languageCode,
-  ) async {
+  Future<String?> getRouteRecommendation(RouteAnalysisModel analysis) async {
     final riskyOrders = analysis.riskyOrders;
     if (riskyOrders.isEmpty || riskyOrders.length == 1 || _apiKey.isEmpty) {
       return null;
@@ -34,7 +31,7 @@ You are a delivery assistant in a courier app.
 
 Task:
 Generate one concise route recommendation block for the courier based on risky or delayed deliveries. 
-Do not include On time orders. Only suggest actions to avoid or reduce delays. And return text of recommendation by this language code: $languageCode
+Do not include On time orders. Only suggest actions to avoid or reduce delays. And return text of recommendation by this language code: ${analysis.languageCode}
 
 Rules:
 - Maximum 3 sentences

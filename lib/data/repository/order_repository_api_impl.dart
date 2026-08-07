@@ -75,9 +75,15 @@ class OrderRepositoryApiImpl implements OrderRepository {
           (order) => OrderOptimizationMapper.fromEntity(order),
         )
         .toList();
-    await _routeClient.optimizeRoute(latitude, longitude, ordersOptimization);
-    await loadTodayOrders();
-    return [];
+    final updatedOrders = await _routeClient.optimizeRoute(
+      latitude,
+      longitude,
+      ordersOptimization,
+    );
+    _ordersController.sink.add(updatedOrders);
+    return updatedOrders
+        .map((updatedOrder) => OrderInfoMapper.toEntity(updatedOrder))
+        .toList();
   }
 
   @override

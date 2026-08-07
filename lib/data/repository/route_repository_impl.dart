@@ -80,19 +80,14 @@ class RouteRepositoryImpl implements RouteRepository {
         )
         .map(RiskyOrderModel.fromOrderModel)
         .toList();
-    final currentTimeDateTime = DateTime.now();
     final analysis = RouteAnalysisModel(
+      languageCode: languageCode,
       totalOrders: ordersEntity.length,
       riskyOrders: riskyOrders,
-      currentTime:
-          '${currentTimeDateTime.hour}:${currentTimeDateTime.minute.toString().padLeft(2, '0')}',
     );
     final courierId = _userAuth.userId;
     final routeId = await _routeFirestore.getTodayRouteId(courierId);
-    final recommendation = await _gptClient.getRouteRecommendation(
-      analysis,
-      languageCode,
-    );
+    final recommendation = await _gptClient.getRouteRecommendation(analysis);
     if (routeId != null && recommendation != null) {
       await _routeFirestore.saveRouteRecommendation(recommendation, routeId);
     }

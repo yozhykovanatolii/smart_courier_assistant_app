@@ -164,14 +164,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final recommendation = await _routeRepository.getRouteRecommendationByAI(
         updatedOrders,
       );
+      /*
       final routePoints = await _routeRepository.buildRoutePolyline(
         updatedOrders,
         state.latitude,
         state.longitude,
       );
+      */
       emit(
         state.copyWith(
-          routePoints: routePoints,
+          //routePoints: routePoints,
           routeRecommendation: recommendation,
           routeOptimizationStatus: HomeStatus.success,
         ),
