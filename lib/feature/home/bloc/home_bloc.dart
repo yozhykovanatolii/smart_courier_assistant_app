@@ -37,8 +37,28 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeOrdersFetched event,
     Emitter<HomeState> emit,
   ) async {
-    //unawaited(_loadRouteRecommendation(emit));
-    await _orderRepository.loadTodayOrders();
+    try {
+      await _orderRepository.loadTodayOrders();
+      final routeRecommendation = await _routeRepository
+          .getCurrentRouteRecommendation();
+      emit(state.copyWith(routeRecommendation: routeRecommendation));
+    } on InvalidCredentialsException {
+      emit(
+        state.copyWith(
+          orderStatus: HomeStatus.failure,
+          errorType: OrderErrorType.invalidCredentials,
+        ),
+      );
+      return;
+    } on DataNotFoundException {
+      emit(
+        state.copyWith(
+          orderStatus: HomeStatus.failure,
+          errorType: OrderErrorType.dataNotFound,
+        ),
+      );
+      return;
+    }
   }
 
   Future<void> _subscribeOnOrders(
@@ -83,12 +103,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         );
       },
     );
-  }
-
-  Future<void> _loadRouteRecommendation(Emitter<HomeState> emit) async {
-    final routeRecommendation = await _routeRepository
-        .getCurrentRouteRecommendation();
-    emit(state.copyWith(routeRecommendation: routeRecommendation));
   }
 
   Future<void> _openCallDialer(

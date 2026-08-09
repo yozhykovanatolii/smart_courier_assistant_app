@@ -40,9 +40,8 @@ class RouteRepositoryApiImpl implements RouteRepository {
   }
 
   @override
-  Future<String> getCurrentRouteRecommendation() {
-    // TODO: implement getCurrentRouteRecommendation
-    throw UnimplementedError();
+  Future<String> getCurrentRouteRecommendation() async {
+    return await _recommendationAiClient.getTodayRouteRecommendation();
   }
 
   @override

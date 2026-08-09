@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:smart_courier_assistant_app/data/models/api/route_analysis_model.dart';
 import 'package:smart_courier_assistant_app/exceptions/access_denied_exception.dart';
+import 'package:smart_courier_assistant_app/exceptions/data_not_found_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/invalid_credentials_exception.dart';
 import 'package:smart_courier_assistant_app/exceptions/optimization_route_exception.dart';
 
@@ -28,6 +29,20 @@ class RecommendationAiClient {
         throw AccessDeniedException();
       }
       throw OptimizationRouteException();
+    }
+  }
+
+  Future<String> getTodayRouteRecommendation() async {
+    try {
+      final response = await _dio.get('/routes/today/recommendation');
+      final jsonData = response.data as Map<String, dynamic>;
+      return jsonData['recommendation'];
+    } on DioException catch (exception) {
+      final statusCode = exception.response?.statusCode;
+      if (statusCode == 401) {
+        throw InvalidCredentialsException();
+      }
+      throw DataNotFoundException();
     }
   }
 }
