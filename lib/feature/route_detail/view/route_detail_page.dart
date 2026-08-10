@@ -128,8 +128,10 @@ class _RouteDetailView extends StatelessWidget {
     final l10n = S.of(context);
 
     switch (routeDetailErrorType) {
-      case RouteDetailErrorType.ordersNotFound:
-        return l10n.userNotFound;
+      case RouteDetailErrorType.invalidCredentials:
+        return l10n.invalidCredential;
+      case RouteDetailErrorType.dataNotFound:
+        return l10n.dataNotFound;
       case RouteDetailErrorType.unknown:
         return l10n.somethingWentWrong;
     }

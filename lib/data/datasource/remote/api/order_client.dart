@@ -122,6 +122,31 @@ class OrderClient {
     }
   }
 
+  Future<List<OrderInfoModel>> getRouteOrders(int routeId) async {
+    try {
+      final response = await _dio.get(
+        '/orders',
+        queryParameters: {'route_id': routeId},
+      );
+      final jsonList = response.data as List;
+      return jsonList
+          .map(
+            (element) =>
+                OrderInfoModel.fromJson(element as Map<String, dynamic>),
+          )
+          .toList();
+    } on DioException catch (exception) {
+      final statusCode = exception.response?.statusCode;
+      if (statusCode == 401) {
+        throw InvalidCredentialsException();
+      }
+      if (statusCode == 404) {
+        throw DataNotFoundException();
+      }
+      rethrow;
+    }
+  }
+
   Future<void> proofDeliveryOfOrder(
     String orderId,
     String courierComment,

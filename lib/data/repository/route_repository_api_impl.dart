@@ -1,7 +1,10 @@
 import 'package:smart_courier_assistant_app/data/datasource/local/settings_shared_preferences.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/direction_route_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/order_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_ai_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_client.dart';
 import 'package:smart_courier_assistant_app/data/mapper/order_info_mapper.dart';
+import 'package:smart_courier_assistant_app/data/mapper/route_info_mapper.dart';
 import 'package:smart_courier_assistant_app/data/mapper/route_point_mapper.dart';
 import 'package:smart_courier_assistant_app/data/models/api/risky_order_model.dart';
 import 'package:smart_courier_assistant_app/data/models/api/route_analysis_model.dart';
@@ -15,11 +18,15 @@ class RouteRepositoryApiImpl implements RouteRepository {
   final SettingsSharedPreference _settingsSharedPreference;
   final RecommendationAiClient _recommendationAiClient;
   final DirectionRouteClient _directionRouteClient;
+  final RouteClient _routeClient;
+  final OrderClient _orderClient;
 
   RouteRepositoryApiImpl(
     this._settingsSharedPreference,
     this._recommendationAiClient,
     this._directionRouteClient,
+    this._routeClient,
+    this._orderClient,
   );
 
   @override
@@ -53,9 +60,15 @@ class RouteRepositoryApiImpl implements RouteRepository {
   }
 
   @override
-  Future<List<RouteEntity>> getAllCourierRoutes() {
-    // TODO: implement getAllCourierRoutes
-    throw UnimplementedError();
+  Future<List<RouteEntity>> getAllCourierRoutes() async {
+    final routes = await _routeClient.getCourierRoutes();
+    final futures = routes.map((route) async {
+      final ordersModel = await _orderClient.getRouteOrders(
+        route.routeId,
+      );
+      return route.toEntity(ordersModel);
+    }).toList();
+    return await Future.wait(futures);
   }
 
   @override

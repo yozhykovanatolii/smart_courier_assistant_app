@@ -13,7 +13,8 @@ final class RouteDetailSuccessState extends RouteDetailState {
 }
 
 enum RouteDetailErrorType {
-  ordersNotFound,
+  invalidCredentials,
+  dataNotFound,
   unknown,
 }
 

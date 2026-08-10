@@ -49,9 +49,9 @@ class OrderRepositoryApiImpl implements OrderRepository {
   }
 
   @override
-  Future<List<OrderEntity>> getAllRouteOrders(String routeId) {
-    // TODO: implement getAllRouteOrders
-    throw UnimplementedError();
+  Future<List<OrderEntity>> getAllRouteOrders(String routeId) async {
+    final orders = await _orderClient.getRouteOrders(int.parse(routeId));
+    return orders.map((order) => OrderInfoMapper.toEntity(order)).toList();
   }
 
   @override

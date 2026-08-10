@@ -13,8 +13,8 @@ final class HistorySuccessState extends HistoryState {
 }
 
 enum HistoryErrorType {
-  userNotFound,
-  routesNotFound,
+  invalidCredentials,
+  dataNotFound,
   unknown,
 }
 

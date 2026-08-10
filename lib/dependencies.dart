@@ -146,6 +146,8 @@ class Dependencies {
           settingsSharedPreference,
           recommendationAiClient,
           directionRouteClient,
+          routeClient,
+          orderClient,
         ),
       )
       ..registerFactory<OrderRepositoryImpl>(
@@ -214,10 +216,10 @@ class Dependencies {
         () => ProofDeliveryCubit(orderRepository),
       )
       ..registerFactory<HistoryCubit>(
-        () => HistoryCubit(routeRepository),
+        () => HistoryCubit(routeRepositoryApi),
       )
       ..registerFactory<RouteDetailCubit>(
-        () => RouteDetailCubit(orderRepository),
+        () => RouteDetailCubit(orderRepositoryApi),
       );
   }
 }

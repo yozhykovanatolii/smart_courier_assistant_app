@@ -43,10 +43,10 @@ class ErrorRoutesSection extends StatelessWidget {
     final l10n = S.of(context);
 
     switch (errorType) {
-      case HistoryErrorType.userNotFound:
-        return l10n.userNotFound;
-      case HistoryErrorType.routesNotFound:
-        return l10n.routesWereNotFound;
+      case HistoryErrorType.invalidCredentials:
+        return l10n.invalidCredential;
+      case HistoryErrorType.dataNotFound:
+        return l10n.dataNotFound;
       case HistoryErrorType.unknown:
         return l10n.somethingWentWrong;
     }
