@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
 import 'package:smart_courier_assistant_app/data/datasource/local/secure_storage.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/direction_route_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/order_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_ai_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_gpt_client.dart';
@@ -74,7 +75,8 @@ class Dependencies {
       ..registerSingleton<UserClient>(UserClient(dio))
       ..registerSingleton<OrderClient>(OrderClient(dio))
       ..registerSingleton<RouteClient>(RouteClient(dio))
-      ..registerSingleton<RecommendationAiClient>(RecommendationAiClient(dio));
+      ..registerSingleton<RecommendationAiClient>(RecommendationAiClient(dio))
+      ..registerSingleton<DirectionRouteClient>(DirectionRouteClient(dio));
   }
 
   static void _setupDio() {
@@ -103,6 +105,7 @@ class Dependencies {
     final storageClient = _getIt<StorageClient>();
     final routeOptimizeClient = _getIt<RouteOptimizeClient>();
     final routeDirectionClient = _getIt<RouteDirectionClient>();
+    final directionRouteClient = _getIt<DirectionRouteClient>();
     final recommendationGptClient = _getIt<RecommendationGptClient>();
     final recommendationAiClient = _getIt<RecommendationAiClient>();
     final userAuthClient = _getIt<UserAuthClient>();
@@ -142,6 +145,7 @@ class Dependencies {
         () => RouteRepositoryApiImpl(
           settingsSharedPreference,
           recommendationAiClient,
+          directionRouteClient,
         ),
       )
       ..registerFactory<OrderRepositoryImpl>(

@@ -1,8 +1,11 @@
 import 'package:smart_courier_assistant_app/data/datasource/local/settings_shared_preferences.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/api/direction_route_client.dart';
 import 'package:smart_courier_assistant_app/data/datasource/remote/api/recommendation_ai_client.dart';
 import 'package:smart_courier_assistant_app/data/mapper/order_info_mapper.dart';
+import 'package:smart_courier_assistant_app/data/mapper/route_point_mapper.dart';
 import 'package:smart_courier_assistant_app/data/models/api/risky_order_model.dart';
 import 'package:smart_courier_assistant_app/data/models/api/route_analysis_model.dart';
+import 'package:smart_courier_assistant_app/data/models/api/route_point.dart';
 import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
 import 'package:smart_courier_assistant_app/domain/entity/route_entity.dart';
 import 'package:smart_courier_assistant_app/domain/entity/route_point_entity.dart';
@@ -11,10 +14,12 @@ import 'package:smart_courier_assistant_app/domain/repository/route_repository.d
 class RouteRepositoryApiImpl implements RouteRepository {
   final SettingsSharedPreference _settingsSharedPreference;
   final RecommendationAiClient _recommendationAiClient;
+  final DirectionRouteClient _directionRouteClient;
 
   RouteRepositoryApiImpl(
     this._settingsSharedPreference,
     this._recommendationAiClient,
+    this._directionRouteClient,
   );
 
   @override
@@ -22,9 +27,23 @@ class RouteRepositoryApiImpl implements RouteRepository {
     List<OrderEntity> orders,
     double startLat,
     double startLng,
-  ) {
-    // TODO: implement buildRoutePolyline
-    throw UnimplementedError();
+  ) async {
+    final routeStartedPoints = [
+      RoutePoint(
+        latitude: startLat,
+        longitude: startLng,
+      ),
+      ...orders.map(
+        (order) => RoutePoint(
+          latitude: order.address.latitude,
+          longitude: order.address.longitude,
+        ),
+      ),
+    ];
+    final routePoints = await _directionRouteClient.getRoutePolyline(
+      routeStartedPoints,
+    );
+    return routePoints.map((routePoint) => routePoint.toEntity()).toList();
   }
 
   @override
