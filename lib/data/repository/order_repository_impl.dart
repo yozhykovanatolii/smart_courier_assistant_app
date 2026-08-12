@@ -1,110 +1,57 @@
-import 'package:smart_courier_assistant_app/data/datasource/remote/api/route_optimize_client.dart';
-import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
-import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
-import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/order_firestore.dart';
-import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/route_firestore.dart';
-import 'package:smart_courier_assistant_app/data/mapper/order_mapper.dart';
-import 'package:smart_courier_assistant_app/data/mapper/proof_delivery_mapper.dart';
-import 'package:smart_courier_assistant_app/data/models/firestore/order_model.dart';
-import 'package:smart_courier_assistant_app/data/models/firestore/proof_delivery_model.dart';
+import 'dart:async';
+import 'package:smart_courier_assistant_app/data/datasource/remote/order_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/route_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/storage_client.dart';
+import 'package:smart_courier_assistant_app/data/mapper/order_info_mapper.dart';
+import 'package:smart_courier_assistant_app/data/mapper/order_optimization_mapper.dart';
+import 'package:smart_courier_assistant_app/data/models/api/order_info_model.dart';
 import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
 import 'package:smart_courier_assistant_app/data/service/geolocation_service.dart';
 import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
 import 'package:smart_courier_assistant_app/domain/repository/order_repository.dart';
-import 'package:smart_courier_assistant_app/util/calculation_eta_util.dart';
 
 class OrderRepositoryImpl implements OrderRepository {
-  final OrderFirestore _orderFirestore;
-  final UserAuth _userAuth;
-  final RouteFirestore _routeFirestore;
-  final RouteOptimizeClient _optimizeClient;
+  final OrderClient _orderClient;
+  final RouteClient _routeClient;
   final StorageClient _storageClient;
-  String _routeId = '';
+
+  final _ordersController = StreamController<List<OrderInfoModel>>();
 
   OrderRepositoryImpl(
-    this._orderFirestore,
-    this._userAuth,
-    this._routeFirestore,
-    this._optimizeClient,
+    this._orderClient,
+    this._routeClient,
     this._storageClient,
   );
 
   @override
-  Future<void> saveOrder(
-    String clientFullName,
-    String clientPhoneNumber,
-    String address,
-    DateTime deliveryBy, {
-    String? routeId,
-    OrderEntity? currentOrder,
-  }) async {
-    final location = await GeolocationService.getLocationByAddress(address);
-    OrderModel orderModel = OrderModel.initial();
-    orderModel = orderModel.copyWith(
-      id: currentOrder?.id,
-      clientFullName: clientFullName,
-      clientPhoneNumber: clientPhoneNumber,
-      address: address,
-      latitude: location.latitude,
-      longitude: location.longitude,
-      deliveryBy: deliveryBy,
-      plannedEta: currentOrder?.plannedEta,
-      recommendation: currentOrder?.recommendation ?? orderModel.recommendation,
-      proofDelivery: ProofDeliveryMapper.fromEntity(
-        currentOrder?.proofDeliveryEntity,
-      ),
-    );
-    await _orderFirestore.saveOrder(orderModel, routeId!);
+  Future<void> loadTodayOrders() async {
+    try {
+      final todayOrders = await _orderClient.getTodayOrders();
+      _ordersController.sink.add(todayOrders);
+    } catch (exception) {
+      _ordersController.addError(exception);
+    }
+  }
+
+  @override
+  Future<void> deleteOrder(String orderId) async {
+    await _orderClient.deleteOrder(int.parse(orderId));
+    await loadTodayOrders();
   }
 
   @override
   Stream<List<OrderEntity>> getAllCourierActiveOrders() {
-    final courierId = _userAuth.userId;
-    return _routeFirestore.watchTodayRoute(courierId).asyncExpand((routeModel) {
-      _routeId = routeModel.routeId;
-      return _orderFirestore
-          .getActiveUserOrders(routeModel.routeId)
-          .map((orders) => orders.map(OrderMapper.toEntity).toList());
+    return _ordersController.stream.map((todayOrders) {
+      return todayOrders
+          .map((todayOrder) => OrderInfoMapper.toEntity(todayOrder))
+          .toList();
     });
   }
 
   @override
   Future<List<OrderEntity>> getAllRouteOrders(String routeId) async {
-    final ordersModel = await _orderFirestore.getAllRouteOrders(routeId);
-    return ordersModel
-        .map((orderModel) => OrderMapper.toEntity(orderModel))
-        .toList();
-  }
-
-  @override
-  Future<void> deleteOrder(String orderId) async {
-    final courierId = _userAuth.userId;
-    final route = await _routeFirestore.getTodayRoute(courierId);
-    await _orderFirestore.deleteOrder(orderId, route.routeId);
-  }
-
-  @override
-  Future<List<OrderEntity>> optimizeOrdersRoute(
-    List<OrderEntity> orders,
-    double latitude,
-    double longitude,
-  ) async {
-    final ordersModel = orders
-        .map((order) => OrderMapper.fromEntity(order))
-        .toList();
-    final steps = await _optimizeClient.optimizeRoute(
-      ordersModel,
-      latitude,
-      longitude,
-    );
-    final updatedOrders = CalculationEtaUtil.calculateEtaForOrders(
-      steps,
-      ordersModel,
-    );
-    await _orderFirestore.saveOrders(updatedOrders, _routeId);
-    return updatedOrders
-        .map((updatedOrder) => OrderMapper.toEntity(updatedOrder))
-        .toList();
+    final orders = await _orderClient.getRouteOrders(int.parse(routeId));
+    return orders.map((order) => OrderInfoMapper.toEntity(order)).toList();
   }
 
   @override
@@ -118,8 +65,59 @@ class OrderRepositoryImpl implements OrderRepository {
   }
 
   @override
-  Future<void> loadTodayOrders() {
-    throw UnimplementedError();
+  Future<List<OrderEntity>> optimizeOrdersRoute(
+    List<OrderEntity> orders,
+    double latitude,
+    double longitude,
+  ) async {
+    final ordersOptimization = orders
+        .map(
+          (order) => OrderOptimizationMapper.fromEntity(order),
+        )
+        .toList();
+    final updatedOrders = await _routeClient.optimizeRoute(
+      latitude,
+      longitude,
+      ordersOptimization,
+    );
+    _ordersController.sink.add(updatedOrders);
+    return updatedOrders
+        .map((updatedOrder) => OrderInfoMapper.toEntity(updatedOrder))
+        .toList();
+  }
+
+  @override
+  Future<void> saveOrder(
+    String clientFullName,
+    String clientPhoneNumber,
+    String address,
+    DateTime deliveryBy, {
+    String? routeId,
+    OrderEntity? currentOrder,
+  }) async {
+    final location = await GeolocationService.getLocationByAddress(address);
+    final orderId = currentOrder?.id;
+    if (orderId == null) {
+      await _orderClient.createOrder(
+        clientFullName,
+        clientPhoneNumber,
+        address,
+        deliveryBy,
+        location.latitude,
+        location.longitude,
+      );
+    } else {
+      await _orderClient.updateOrder(
+        int.parse(orderId),
+        clientFullName,
+        clientPhoneNumber,
+        address,
+        deliveryBy,
+        location.latitude,
+        location.longitude,
+      );
+    }
+    await loadTodayOrders();
   }
 
   @override
@@ -128,17 +126,11 @@ class OrderRepositoryImpl implements OrderRepository {
     String courierComment,
     List<String> orderPhotos,
   ) async {
-    final courierId = _userAuth.userId;
-    final route = await _routeFirestore.getTodayRoute(courierId);
-    final proofDelivery = ProofDeliveryModel(
-      courierComment: courierComment,
-      orderPhotos: orderPhotos,
-      confirmedAt: DateTime.now(),
-    );
-    await _orderFirestore.updateOrderProofDelivery(
-      proofDelivery,
-      route.routeId,
+    await _orderClient.proofDeliveryOfOrder(
       orderId,
+      courierComment,
+      orderPhotos,
     );
+    await loadTodayOrders();
   }
 }

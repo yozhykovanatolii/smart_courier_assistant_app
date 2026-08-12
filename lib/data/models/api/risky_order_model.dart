@@ -1,6 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:smart_courier_assistant_app/data/models/api/order_info_model.dart';
-import 'package:smart_courier_assistant_app/data/models/firestore/order_model.dart';
 
 class RiskyOrderModel {
   final String id;
@@ -30,16 +28,6 @@ class RiskyOrderModel {
   @override
   String toString() {
     return 'Order #$id at "$address" is delivery risk $deliveryRisk, delay about $delayMinutes min, position $positionInRoute in route';
-  }
-
-  factory RiskyOrderModel.fromOrderModel(OrderModel order) {
-    return RiskyOrderModel(
-      id: order.id,
-      address: order.address,
-      deliveryRisk: order.deliveryRisk,
-      delayMinutes: order.deliveryBy.difference(order.plannedEta).inMinutes,
-      positionInRoute: order.orderIndex,
-    );
   }
 
   factory RiskyOrderModel.fromOrderInfo(OrderInfoModel orderInfo) {

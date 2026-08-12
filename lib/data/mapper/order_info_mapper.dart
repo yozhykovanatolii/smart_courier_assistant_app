@@ -25,7 +25,6 @@ class OrderInfoMapper {
       deliveryBy: orderModel.deliveryBy,
       deliveryRisk: _mapFromText(orderModel.deliveryRisk),
       proofDeliveryEntity: proofDeliveryEntity,
-      recommendation: '',
       status: orderModel.status,
       orderIndex: orderModel.orderIndex,
     );

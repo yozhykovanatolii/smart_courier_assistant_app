@@ -21,7 +21,6 @@ class OrderEntity {
   final DateTime deliveryBy;
   final DeliveryRisk deliveryRisk;
   final ProofDeliveryEntity? proofDeliveryEntity;
-  final String recommendation;
   final String status;
   final int orderIndex;
 
@@ -34,7 +33,6 @@ class OrderEntity {
     required this.deliveryBy,
     required this.deliveryRisk,
     required this.proofDeliveryEntity,
-    required this.recommendation,
     required this.status,
     required this.orderIndex,
   });
@@ -49,7 +47,6 @@ class OrderEntity {
       deliveryBy: DateTime.now(),
       deliveryRisk: DeliveryRisk.onTime,
       proofDeliveryEntity: null,
-      recommendation: '',
       status: '',
       orderIndex: 0,
     );
@@ -64,7 +61,6 @@ class OrderEntity {
     DateTime? deliveryBy,
     DeliveryRisk? deliveryRisk,
     ProofDeliveryEntity? proofDeliveryEntity,
-    String? recommendation,
     String? status,
     int? orderIndex,
   }) {
@@ -77,7 +73,6 @@ class OrderEntity {
       deliveryBy: deliveryBy ?? this.deliveryBy,
       deliveryRisk: deliveryRisk ?? this.deliveryRisk,
       proofDeliveryEntity: proofDeliveryEntity ?? this.proofDeliveryEntity,
-      recommendation: recommendation ?? this.recommendation,
       status: status ?? this.status,
       orderIndex: orderIndex ?? this.orderIndex,
     );

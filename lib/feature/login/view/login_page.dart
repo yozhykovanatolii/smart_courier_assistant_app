@@ -6,7 +6,6 @@ import 'package:get_it/get_it.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_event.dart';
 import 'package:smart_courier_assistant_app/exceptions/login_exception.dart';
-import 'package:smart_courier_assistant_app/exceptions/login_with_google_exception.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_cubit.dart';
 import 'package:smart_courier_assistant_app/feature/login/cubit/login_state.dart';
 import 'package:smart_courier_assistant_app/feature/login/widgets/widgets.dart';
@@ -44,26 +43,6 @@ class _LoginView extends StatelessWidget {
         listener: (context, state) {
           final l10n = S.of(context);
           final loginStatus = state.loginStatus;
-          final googleStatus = state.googleStatus;
-
-          if (googleStatus == FormzSubmissionStatus.failure) {
-            final errorMessage = _mapLoginGoogleErrorStatusToString(
-              context,
-              state.loginGoogleErrorStatus,
-            );
-            UiHelper.showSnackBar(
-              context: context,
-              message: errorMessage,
-              isErrorSnackBar: true,
-            );
-          }
-          if (googleStatus == FormzSubmissionStatus.success) {
-            UiHelper.showSnackBar(
-              context: context,
-              message: l10n.successAuthorizationWithGoogle,
-            );
-            context.router.replace(const HomeRoute());
-          }
           if (loginStatus == FormzSubmissionStatus.failure) {
             final errorMessage = _mapLoginErrorStatusToString(
               context,
@@ -120,17 +99,8 @@ class _LoginView extends StatelessWidget {
               const SizedBox(height: 5),
               const LoginPasswordField(),
               const SizedBox(height: 20),
-              const Align(
-                alignment: AlignmentGeometry.centerEnd,
-                child: ForgotPasswordTextButton(),
-              ),
-              const SizedBox(height: 20),
               const LogInButton(),
-              const SizedBox(height: 30),
-              const LoginDivider(),
-              const SizedBox(height: 30),
-              const LogInWithGoogle(),
-              const SizedBox(height: 65),
+              const SizedBox(height: 200),
               const Align(
                 alignment: AlignmentGeometry.bottomCenter,
                 child: HaveNotAccountSection(),
@@ -156,28 +126,6 @@ class _LoginView extends StatelessWidget {
       case LoginErrorStatus.invalidCredential:
         return l10n.invalidCredential;
       case LoginErrorStatus.unknown:
-        return l10n.loginErrorUnknown;
-    }
-  }
-
-  String _mapLoginGoogleErrorStatusToString(
-    BuildContext context,
-    LoginGoogleErrorStatus? loginGoogleErrorStatus,
-  ) {
-    final l10n = S.of(context);
-
-    if (loginGoogleErrorStatus == null) return '';
-
-    switch (loginGoogleErrorStatus) {
-      case LoginGoogleErrorStatus.accountWithDifferentCredential:
-        return l10n.accountExistsWithDifferentCredentials;
-      case LoginGoogleErrorStatus.userDisabled:
-        return l10n.userDisabled;
-      case LoginGoogleErrorStatus.wrongPassword:
-        return l10n.wrongPassword;
-      case LoginGoogleErrorStatus.invalidCredential:
-        return l10n.invalidCredential;
-      case LoginGoogleErrorStatus.unknown:
         return l10n.loginErrorUnknown;
     }
   }

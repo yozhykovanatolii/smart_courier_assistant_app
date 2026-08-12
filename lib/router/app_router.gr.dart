@@ -15,8 +15,6 @@ import 'package:smart_courier_assistant_app/domain/entity/route_entity.dart'
     as _i13;
 import 'package:smart_courier_assistant_app/feature/edit_profile/view/edit_profile_page.dart'
     as _i1;
-import 'package:smart_courier_assistant_app/feature/forgot_password/view/forgot_password_page.dart'
-    as _i2;
 import 'package:smart_courier_assistant_app/feature/history/view/history_page.dart'
     as _i3;
 import 'package:smart_courier_assistant_app/feature/home/view/home_page.dart'
@@ -46,22 +44,6 @@ class EditProfileRoute extends _i11.PageRouteInfo<void> {
     name,
     builder: (data) {
       return const _i1.EditProfilePage();
-    },
-  );
-}
-
-/// generated route for
-/// [_i2.ForgotPasswordPage]
-class ForgotPasswordRoute extends _i11.PageRouteInfo<void> {
-  const ForgotPasswordRoute({List<_i11.PageRouteInfo>? children})
-    : super(ForgotPasswordRoute.name, initialChildren: children);
-
-  static const String name = 'ForgotPasswordRoute';
-
-  static _i11.PageInfo page = _i11.PageInfo(
-    name,
-    builder: (data) {
-      return const _i2.ForgotPasswordPage();
     },
   );
 }

@@ -1,6 +1,5 @@
 import 'package:formz/formz.dart';
 import 'package:smart_courier_assistant_app/exceptions/login_exception.dart';
-import 'package:smart_courier_assistant_app/exceptions/login_with_google_exception.dart';
 import 'package:smart_courier_assistant_app/validation/email_validator.dart';
 import 'package:smart_courier_assistant_app/validation/password_validator.dart';
 
@@ -10,7 +9,6 @@ class LoginState {
   final FormzSubmissionStatus loginStatus;
   final FormzSubmissionStatus googleStatus;
   final LoginErrorStatus? loginErrorStatus;
-  final LoginGoogleErrorStatus? loginGoogleErrorStatus;
 
   LoginState({
     required this.emailValidator,
@@ -18,7 +16,6 @@ class LoginState {
     required this.loginStatus,
     required this.googleStatus,
     this.loginErrorStatus,
-    this.loginGoogleErrorStatus,
   });
 
   factory LoginState.initial() {
@@ -36,9 +33,7 @@ class LoginState {
     FormzSubmissionStatus? loginStatus,
     FormzSubmissionStatus? googleStatus,
     LoginErrorStatus? loginErrorStatus,
-    LoginGoogleErrorStatus? loginGoogleErrorStatus,
     bool clearLoginErrorStatus = false,
-    bool clearLoginGoogleErrorStatus = false,
   }) {
     return LoginState(
       emailValidator: emailValidator ?? this.emailValidator,
@@ -48,9 +43,6 @@ class LoginState {
       loginErrorStatus: clearLoginErrorStatus
           ? null
           : loginErrorStatus ?? this.loginErrorStatus,
-      loginGoogleErrorStatus: clearLoginGoogleErrorStatus
-          ? null
-          : loginGoogleErrorStatus ?? this.loginGoogleErrorStatus,
     );
   }
 

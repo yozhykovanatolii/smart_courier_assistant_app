@@ -1,46 +1,33 @@
-import 'package:smart_courier_assistant_app/data/datasource/remote/api/storage_client.dart';
-import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firebase_auth/user_auth.dart';
-import 'package:smart_courier_assistant_app/data/datasource/remote/firebase/firestore/user_firestore.dart';
-import 'package:smart_courier_assistant_app/data/mapper/user_mapper.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/storage_client.dart';
+import 'package:smart_courier_assistant_app/data/datasource/remote/user_client.dart';
+import 'package:smart_courier_assistant_app/data/manager/session_manager.dart';
+import 'package:smart_courier_assistant_app/data/mapper/user_info_mapper.dart';
 import 'package:smart_courier_assistant_app/data/service/camera_picker_service.dart';
 import 'package:smart_courier_assistant_app/data/service/native_service.dart';
 import 'package:smart_courier_assistant_app/domain/entity/user_entity.dart';
 import 'package:smart_courier_assistant_app/domain/repository/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  final UserAuth _userAuth;
-  final UserFirestore _userFirestore;
+  final UserClient _userClient;
   final StorageClient _storageClient;
+  final SessionManager _sessionManager;
 
   UserRepositoryImpl(
-    this._userAuth,
-    this._userFirestore,
+    this._userClient,
     this._storageClient,
+    this._sessionManager,
   );
 
   @override
-  Stream<UserEntity?> getUserCurrentData() {
-    final userStream = _userAuth.user;
-    return userStream.asyncMap((user) async {
-      if (user == null) return null;
-      final userModel = await _userFirestore.getUserModelById(user.uid);
-      return userModel.toEntity();
-    });
+  Future<void> callUserDialer(String userPhoneNumber) async {
+    await NativeService.openExtrenal('openDialer', userPhoneNumber);
   }
 
   @override
-  Future<void> updateUser(
-    String avatar,
-    String fullName,
-    String phoneNumber,
-  ) async {
-    final userId = _userAuth.userId;
-    await _userFirestore.saveUser(
-      userId,
-      avatarUrl: avatar,
-      fullName: fullName,
-      phoneNumber: phoneNumber,
-    );
+  Stream<UserEntity?> getUserCurrentData() {
+    return _sessionManager.userChanges.map((userModel) {
+      return userModel?.toEntity();
+    });
   }
 
   @override
@@ -54,17 +41,29 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> callUserDialer(String userPhoneNumber) async {
-    await NativeService.openExtrenal('openDialer', userPhoneNumber);
-  }
-
-  @override
   Future<void> messageUser(String userPhoneNumber) async {
-    await NativeService.openExtrenal('openWhatsAppChat', userPhoneNumber);
+    await NativeService.openExtrenal(
+      'openWhatsAppChat',
+      userPhoneNumber,
+    );
   }
 
   @override
-  Future<void> loadUserData() {
-    throw UnimplementedError();
+  Future<void> updateUser(
+    String avatar,
+    String fullName,
+    String phoneNumber,
+  ) async {
+    await _userClient.updateUser(
+      avatar,
+      fullName,
+      phoneNumber,
+    );
+  }
+
+  @override
+  Future<void> loadUserData() async {
+    final userInfo = await _userClient.getCurrentUserData();
+    _sessionManager.update(userInfo);
   }
 }

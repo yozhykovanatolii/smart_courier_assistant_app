@@ -7,7 +7,6 @@ import 'package:smart_courier_assistant_app/exceptions/invalid_credentials_excep
 import 'package:smart_courier_assistant_app/exceptions/invalid_validation_exception.dart';
 import 'package:smart_courier_assistant_app/domain/entity/order_entity.dart';
 import 'package:smart_courier_assistant_app/domain/repository/order_repository.dart';
-import 'package:smart_courier_assistant_app/domain/repository/route_repository.dart';
 import 'package:smart_courier_assistant_app/feature/save_order/cubit/save_order_state.dart';
 import 'package:smart_courier_assistant_app/validation/address_validator.dart';
 import 'package:smart_courier_assistant_app/validation/full_name_validator.dart';
@@ -15,10 +14,8 @@ import 'package:smart_courier_assistant_app/validation/phone_number_validator.da
 
 class SaveOrderCubit extends Cubit<SaveOrderState> {
   final OrderRepository _orderRepository;
-  final RouteRepository _routeRepository;
 
-  SaveOrderCubit(this._orderRepository, this._routeRepository)
-    : super(SaveOrderState.initial());
+  SaveOrderCubit(this._orderRepository) : super(SaveOrderState.initial());
 
   void setClientFullName(String clientFullName) {
     emit(
@@ -109,13 +106,11 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
   Future<void> saveOrder(OrderEntity? order) async {
     emit(state.copyWith(formStatus: FormzSubmissionStatus.inProgress));
     try {
-      //final routeId = await _routeRepository.createRoute();
       await _orderRepository.saveOrder(
         state.clientFullNameValidator.value,
         state.clientPhoneNumberValidator.value,
         state.addressValidator.value,
         state.deliveryBy,
-        routeId: '',
         currentOrder: order,
       );
       emit(state.copyWith(formStatus: FormzSubmissionStatus.success));

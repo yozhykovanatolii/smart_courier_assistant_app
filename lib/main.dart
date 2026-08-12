@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -8,7 +7,7 @@ import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
 import 'package:smart_courier_assistant_app/bloc/app/app_event.dart';
 import 'package:smart_courier_assistant_app/bloc/settings/settings_cubit.dart';
 import 'package:smart_courier_assistant_app/dependencies.dart';
-import 'package:smart_courier_assistant_app/firebase_options.dart';
+import 'package:smart_courier_assistant_app/exceptions/missing_api_config_exception.dart';
 import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/router/app_router.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_theme.dart';
@@ -16,10 +15,11 @@ import 'package:smart_courier_assistant_app/ui/theme/app_theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  Dependencies.setupDependencies();
+  final apiBaseUrl = dotenv.env['API_BASE_URL'];
+  if (apiBaseUrl == null) {
+    throw MissingApiConfigException('API config is missing');
+  }
+  Dependencies.setupDependencies(apiBaseUrl);
   runApp(
     MultiBlocProvider(
       providers: [
