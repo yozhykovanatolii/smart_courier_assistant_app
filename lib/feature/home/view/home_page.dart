@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_bloc.dart';
+import 'package:smart_courier_assistant_app/bloc/app/app_state.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_bloc.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_event.dart';
 import 'package:smart_courier_assistant_app/feature/home/bloc/home_state.dart';
@@ -32,48 +34,59 @@ class _HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<HomeBloc, HomeState>(
-        listenWhen: (previous, current) {
-          return previous.userActionError != current.userActionError ||
-              previous.routeOptimizationStatus !=
-                  current.routeOptimizationStatus;
-        },
-        listener: (context, state) {
-          final userActionError = state.userActionError;
-          final optimizationStatus = state.routeOptimizationStatus;
-          if (optimizationStatus == HomeStatus.loading) {
-            UiHelper.showConfirmDialog(
-              context,
-              const RouteOptimizationDialog(),
-            );
-          }
-          if (optimizationStatus == HomeStatus.success) {
-            context.router.maybePop(context);
-          }
-          if (optimizationStatus == HomeStatus.failure) {
-            final optimizationErrorMessage = _mapOptimizationErrorToMessage(
-              context,
-              state.optimizationErrorType!,
-            );
-            UiHelper.showSnackBar(
-              context: context,
-              message: optimizationErrorMessage,
-              isErrorSnackBar: true,
-            );
-            context.router.maybePop(context);
-          }
-          if (userActionError != null) {
-            final actionErrorMessage = _mapUserActionErrorToMessage(
-              context,
-              userActionError,
-            );
-            UiHelper.showSnackBar(
-              context: context,
-              message: actionErrorMessage,
-              isErrorSnackBar: true,
-            );
-          }
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<AppBloc, AppState>(
+            listener: (context, state) {
+              if (state is AppUnauthenticatedState) {
+                context.router.replace(const LoginRoute());
+              }
+            },
+          ),
+          BlocListener<HomeBloc, HomeState>(
+            listenWhen: (previous, current) {
+              return previous.userActionError != current.userActionError ||
+                  previous.routeOptimizationStatus !=
+                      current.routeOptimizationStatus;
+            },
+            listener: (context, state) {
+              final userActionError = state.userActionError;
+              final optimizationStatus = state.routeOptimizationStatus;
+              if (optimizationStatus == HomeStatus.loading) {
+                UiHelper.showConfirmDialog(
+                  context,
+                  const RouteOptimizationDialog(),
+                );
+              }
+              if (optimizationStatus == HomeStatus.success) {
+                context.router.maybePop(context);
+              }
+              if (optimizationStatus == HomeStatus.failure) {
+                final optimizationErrorMessage = _mapOptimizationErrorToMessage(
+                  context,
+                  state.optimizationErrorType!,
+                );
+                UiHelper.showSnackBar(
+                  context: context,
+                  message: optimizationErrorMessage,
+                  isErrorSnackBar: true,
+                );
+                context.router.maybePop(context);
+              }
+              if (userActionError != null) {
+                final actionErrorMessage = _mapUserActionErrorToMessage(
+                  context,
+                  userActionError,
+                );
+                UiHelper.showSnackBar(
+                  context: context,
+                  message: actionErrorMessage,
+                  isErrorSnackBar: true,
+                );
+              }
+            },
+          ),
+        ],
         child: Stack(
           children: [
             const GoogleMapSection(),

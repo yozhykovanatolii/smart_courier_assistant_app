@@ -10,6 +10,7 @@ import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_prof
 import 'package:smart_courier_assistant_app/feature/edit_profile/cubit/edit_profile_state.dart';
 import 'package:smart_courier_assistant_app/feature/edit_profile/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
+import 'package:smart_courier_assistant_app/router/app_router.gr.dart';
 import 'package:smart_courier_assistant_app/ui/ui_helper.dart';
 import 'package:smart_courier_assistant_app/ui/widgets/arrow_back_button.dart';
 
@@ -63,31 +64,42 @@ class _EditProfileViewState extends State<_EditProfileView> {
     final labelLargeStyle = Theme.of(context).textTheme.labelLarge;
 
     return Scaffold(
-      body: BlocListener<EditProfileCubit, EditProfileState>(
-        listenWhen: (previous, current) {
-          return previous.formStatus != current.formStatus;
-        },
-        listener: (context, state) {
-          final formStatus = state.formStatus;
-          if (formStatus == FormzSubmissionStatus.failure) {
-            final errorMessage = _mapEditProfileErrorTypeToMessage(
-              context,
-              state.editProfileErrorType,
-            );
-            UiHelper.showSnackBar(
-              context: context,
-              message: errorMessage,
-              isErrorSnackBar: true,
-            );
-          }
-          if (formStatus == FormzSubmissionStatus.success) {
-            UiHelper.showSnackBar(
-              context: context,
-              message: S.of(context).successUpdatingProfile,
-            );
-            context.read<AppBloc>().add(AppStarted());
-          }
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<AppBloc, AppState>(
+            listener: (context, state) {
+              if (state is AppUnauthenticatedState) {
+                context.router.replace(const LoginRoute());
+              }
+            },
+          ),
+          BlocListener<EditProfileCubit, EditProfileState>(
+            listenWhen: (previous, current) {
+              return previous.formStatus != current.formStatus;
+            },
+            listener: (context, state) {
+              final formStatus = state.formStatus;
+              if (formStatus == FormzSubmissionStatus.failure) {
+                final errorMessage = _mapEditProfileErrorTypeToMessage(
+                  context,
+                  state.editProfileErrorType,
+                );
+                UiHelper.showSnackBar(
+                  context: context,
+                  message: errorMessage,
+                  isErrorSnackBar: true,
+                );
+              }
+              if (formStatus == FormzSubmissionStatus.success) {
+                UiHelper.showSnackBar(
+                  context: context,
+                  message: S.of(context).successUpdatingProfile,
+                );
+                context.read<AppBloc>().add(AppStarted());
+              }
+            },
+          ),
+        ],
         child: SafeArea(
           minimum: const EdgeInsets.only(left: 11, right: 24),
           child: CustomScrollView(
