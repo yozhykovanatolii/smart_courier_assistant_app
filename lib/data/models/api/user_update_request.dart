@@ -11,9 +11,9 @@ class UserUpdateRequest {
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'fullName': fullName,
-      'phoneNumber': phoneNumber,
-      'avatarUrl': avatarUrl,
+      'full_name': fullName,
+      'phone_number': phoneNumber,
+      'avatar_url': avatarUrl,
     };
   }
 }

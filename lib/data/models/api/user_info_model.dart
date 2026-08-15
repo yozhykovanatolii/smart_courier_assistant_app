@@ -16,10 +16,10 @@ class UserInfoModel {
   factory UserInfoModel.fromJson(Map<String, dynamic> json) {
     return UserInfoModel(
       id: json['id'] as int,
-      fullName: json['fullName'] as String,
+      fullName: json['full_name'] as String,
       email: json['email'] as String,
-      phoneNumber: json['phoneNumber'] as String,
-      avatarUrl: json['avatarUrl'] as String,
+      phoneNumber: json['phone_number'] as String,
+      avatarUrl: json['avatar_url'] as String,
     );
   }
 }
