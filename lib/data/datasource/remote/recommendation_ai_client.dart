@@ -13,6 +13,10 @@ class RecommendationAiClient {
   Future<String> generateRouteRecommendation(
     RouteAnalysisModel analysis,
   ) async {
+    if (analysis.riskyOrders.isEmpty || analysis.riskyOrders.length == 1) {
+      return '';
+    }
+
     try {
       final response = await _dio.post(
         '/routes/analysis',
