@@ -120,5 +120,6 @@
   "registerValidationFailed": "Validation failed. Please check your input",
   "accessDenied": "Access denied",
   "dataNotFound": "Data were not found",
-  "failedCalculateOptimalRoute": "Failed calculate optimal route. Try again."
+  "failedCalculateOptimalRoute": "Failed calculate optimal route. Try again.",
+  "passwordNotVerified": "Password was not verified"
 }

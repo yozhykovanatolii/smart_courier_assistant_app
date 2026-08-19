@@ -203,6 +203,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordLengthLessEight": MessageLookupByLibrary.simpleMessage(
       "Пароль має містити щонайменше 8 символів",
     ),
+    "passwordNotVerified": MessageLookupByLibrary.simpleMessage(
+      "Пароль не було перевірено",
+    ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефону"),
     "phoneNumberEmpty": MessageLookupByLibrary.simpleMessage(
       "Номер телефону не може бути порожнім.",

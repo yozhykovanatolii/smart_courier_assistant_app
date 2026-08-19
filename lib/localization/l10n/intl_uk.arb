@@ -119,5 +119,6 @@
   "registerValidationFailed": "Помилка валідації. Будь ласка, перевірте введені дані.",
   "accessDenied": "Доступ заборонено",
   "dataNotFound": "Дані не були знайдені",
-  "failedCalculateOptimalRoute": "Не вдалося розрахувати оптимальний маршрут. Спробуйте ще раз."
+  "failedCalculateOptimalRoute": "Не вдалося розрахувати оптимальний маршрут. Спробуйте ще раз.",
+  "passwordNotVerified": "Пароль не було перевірено"
 }

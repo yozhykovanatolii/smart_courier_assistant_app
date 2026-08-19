@@ -1108,6 +1108,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Password was not verified`
+  String get passwordNotVerified {
+    return Intl.message(
+      'Password was not verified',
+      name: 'passwordNotVerified',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

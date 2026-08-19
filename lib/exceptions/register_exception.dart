@@ -11,11 +11,11 @@ class RegisterException implements Exception {
     this.registerErrorStatus = RegisterErrorStatus.unknown,
   ]);
 
-  factory RegisterException.convertFromCode(int code) {
-    switch (code) {
-      case 422:
+  factory RegisterException.convertFromCode(String errorCode) {
+    switch (errorCode) {
+      case 'validation_error':
         return RegisterException(RegisterErrorStatus.validationFailed);
-      case 409:
+      case 'email_already_use':
         return RegisterException(RegisterErrorStatus.emailAlreadyInUse);
       default:
         return RegisterException();

@@ -27,9 +27,10 @@ class UserAuthClient {
         data: registerRequest.toJson(),
       );
     } on DioException catch (exception) {
-      final statusCode = exception.response?.statusCode;
-      if (statusCode != null) {
-        throw RegisterException.convertFromCode(statusCode);
+      final data = exception.response?.data;
+      if (data != null) {
+        final String errorCode = data['error_code'];
+        throw RegisterException.convertFromCode(errorCode);
       }
     }
   }
@@ -46,9 +47,10 @@ class UserAuthClient {
       );
       return response.data as Map<String, dynamic>;
     } on DioException catch (exception) {
-      final statusCode = exception.response?.statusCode;
-      if (statusCode != null) {
-        throw LoginException.convertFromCode(statusCode);
+      final data = exception.response?.data;
+      if (data != null) {
+        final String errorCode = data['error_code'];
+        throw LoginException.convertFromCode(errorCode);
       }
       rethrow;
     }

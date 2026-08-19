@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     Object deliverByMinute,
     Object plannedEtaHour,
     Object plannedEtaMinute,
-    Object deliveryRisk,
+    deliveryRisk,
   ) =>
       "Deliver by ${deliverByHour}:${deliverByMinute} • ETA ${plannedEtaHour}:${plannedEtaMinute} • ${deliveryRisk}";
 
@@ -194,6 +194,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "passwordLengthLessEight": MessageLookupByLibrary.simpleMessage(
       "The password must be at least 8 characters long",
+    ),
+    "passwordNotVerified": MessageLookupByLibrary.simpleMessage(
+      "Password was not verified",
     ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
     "phoneNumberEmpty": MessageLookupByLibrary.simpleMessage(

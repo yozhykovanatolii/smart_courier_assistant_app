@@ -123,8 +123,10 @@ class _LoginView extends StatelessWidget {
     switch (loginErrorStatus) {
       case LoginErrorStatus.validationFailed:
         return l10n.registerValidationFailed;
-      case LoginErrorStatus.invalidCredential:
-        return l10n.invalidCredential;
+      case LoginErrorStatus.passwordNotVerified:
+        return l10n.passwordNotVerified;
+      case LoginErrorStatus.userNotFound:
+        return l10n.userNotFound;
       case LoginErrorStatus.unknown:
         return l10n.loginErrorUnknown;
     }
