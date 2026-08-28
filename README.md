@@ -35,13 +35,6 @@ Key capabilities include real-time route maps, ETA risk indication, route optimi
 **Dependency Injection**
 - **GetIt** – Service locator and dependency injection
 
-**Backend & Cloud Services**
-- **Firebase**
-  - **Firebase Auth** – User authentication
-  - **Cloud Firestore** – Real-time NoSQL database
-- **Google Sign-In** – OAuth authentication
-- **Supabase** – File storage for photos and user's avatar
-
 **Navigation**
 - **AutoRoute** – Navigation and routing
 
@@ -60,7 +53,7 @@ Key capabilities include real-time route maps, ETA risk indication, route optimi
 
 **Utilities**
 - **UUID** – Unique ID generation
-- **HTTP** – Networking
+- **Dio** – Networking
 - **PDF & Printing** – PDF generation and printing
 
 ## 🚀 Getting Started
