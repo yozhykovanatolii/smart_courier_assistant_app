@@ -77,24 +77,15 @@ flutter pub get
 
 3. Configure environment variables  
 
-This project uses external services to provide routing and AI-assisted features, as well as file storage.
-
-- **OpenRouteService** — route calculation and ETA estimation
-- **OpenAI API** — AI-assisted route recommendations
-- **Supabase Storage** — file storage for user uploads and media management
-
-To configure these services:
-- Create an account at https://openrouteservice.org and generate an API key
-- Create an account at https://platform.openai.com and generate an API key
-- Create a project in Supabase at https://supabase.com and get your project credentials(URL and anon key)
-- Open the `.env` file in the project root and set the following values:
+The application communicates with the [backend API](https://github.com/yozhykovanatolii/smart_courier_assistant_backend). Create a .env file in the project root and set the backend API URL:
 
 ```
-SUPABASE_PROJECT_URL=your_supabase_project_url
-SUPABASE_PROJECT_KEY=your_supabase_project_key
-OPENAI_API_KEY=your_openai_api_key
-OPENROUTE_API_KEY=your_openrouteservice_api_key
+API_URL=http://<backend-host>:8000
 ```
+
+Replace <backend-host> with the host or IP address where the backend is running.
+> [!NOTE]
+> When running the application on a physical device, use the IP address of the computer running the backend instead of `localhost`.
 
 4. Run the application
 ```
