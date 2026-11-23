@@ -124,6 +124,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "Введена пошта має неправильний формат.",
     ),
+    "emailNotVerified": MessageLookupByLibrary.simpleMessage(
+      "Пошта не підтверджена",
+    ),
     "enterComment": MessageLookupByLibrary.simpleMessage(
       "Введіть коментарій...",
     ),

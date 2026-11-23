@@ -2,6 +2,7 @@ enum LoginErrorStatus {
   validationFailed,
   userNotFound,
   passwordNotVerified,
+  emailNotVerified,
   unknown,
 }
 
@@ -18,6 +19,8 @@ class LoginException implements Exception {
         return LoginException(LoginErrorStatus.passwordNotVerified);
       case 'user_not_found':
         return LoginException(LoginErrorStatus.userNotFound);
+      case 'email_not_verified':
+        return LoginException(LoginErrorStatus.emailNotVerified);
       default:
         return LoginException();
     }

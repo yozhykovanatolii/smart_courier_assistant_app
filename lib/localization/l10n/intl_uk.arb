@@ -120,5 +120,6 @@
   "accessDenied": "Доступ заборонено",
   "dataNotFound": "Дані не були знайдені",
   "failedCalculateOptimalRoute": "Не вдалося розрахувати оптимальний маршрут. Спробуйте ще раз.",
-  "passwordNotVerified": "Пароль не було перевірено"
+  "passwordNotVerified": "Пароль не було перевірено",
+  "emailNotVerified": "Пошта не підтверджена"
 }
