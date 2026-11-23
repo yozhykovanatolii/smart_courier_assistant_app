@@ -56,7 +56,9 @@ class _RegisterView extends StatelessWidget {
               context: context,
               message: S.of(context).successRegistration,
             );
-            context.router.replace(const VerificationRoute());
+            context.router.replace(
+              VerificationRoute(email: state.emailValidator.value),
+            );
           }
         },
         child: SafeArea(

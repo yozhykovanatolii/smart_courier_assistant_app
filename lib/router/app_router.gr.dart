@@ -208,16 +208,47 @@ class SplashRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.VerificationPage]
-class VerificationRoute extends _i11.PageRouteInfo<void> {
-  const VerificationRoute({List<_i11.PageRouteInfo>? children})
-    : super(VerificationRoute.name, initialChildren: children);
+class VerificationRoute extends _i11.PageRouteInfo<VerificationRouteArgs> {
+  VerificationRoute({
+    required String email,
+    _i12.Key? key,
+    List<_i11.PageRouteInfo>? children,
+  }) : super(
+         VerificationRoute.name,
+         args: VerificationRouteArgs(email: email, key: key),
+         initialChildren: children,
+       );
 
   static const String name = 'VerificationRoute';
 
   static _i11.PageInfo page = _i11.PageInfo(
     name,
     builder: (data) {
-      return const _i10.VerificationPage();
+      final args = data.argsAs<VerificationRouteArgs>();
+      return _i10.VerificationPage(email: args.email, key: args.key);
     },
   );
+}
+
+class VerificationRouteArgs {
+  const VerificationRouteArgs({required this.email, this.key});
+
+  final String email;
+
+  final _i12.Key? key;
+
+  @override
+  String toString() {
+    return 'VerificationRouteArgs{email: $email, key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! VerificationRouteArgs) return false;
+    return email == other.email && key == other.key;
+  }
+
+  @override
+  int get hashCode => email.hashCode ^ key.hashCode;
 }

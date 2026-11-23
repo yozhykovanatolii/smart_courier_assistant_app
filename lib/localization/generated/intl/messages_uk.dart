@@ -123,6 +123,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "Для цієї пошти вже існує обліковий запис.",
     ),
+    "emailAlreadyVerified": MessageLookupByLibrary.simpleMessage(
+      "Пошта вже підтверджена",
+    ),
     "emailEmpty": MessageLookupByLibrary.simpleMessage(
       "Пошта не повинна бути порожньою",
     ),
@@ -131,6 +134,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "emailNotVerified": MessageLookupByLibrary.simpleMessage(
       "Пошта не підтверджена",
+    ),
+    "emailVerifiedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Пошту успішно підтверджено",
     ),
     "enterComment": MessageLookupByLibrary.simpleMessage(
       "Введіть коментарій...",
@@ -158,6 +164,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Недійсна пошта, спробуйте ще раз.",
+    ),
+    "invalidOtpCode": MessageLookupByLibrary.simpleMessage(
+      "Недійсний або прострочений OTP-код",
     ),
     "language": MessageLookupByLibrary.simpleMessage("Мова"),
     "languages": MessageLookupByLibrary.simpleMessage("Мови"),
@@ -244,6 +253,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Помилка валідації. Будь ласка, перевірте введені дані.",
     ),
     "resend": MessageLookupByLibrary.simpleMessage("Переслати"),
+    "resendingErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "Виник виняток при повторному надсиланні коду",
+    ),
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "Якщо обліковий запис із цією поштою існує, ви отримаєте електронний лист для скидання пароля.",
     ),
@@ -312,6 +324,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "userNotFound": MessageLookupByLibrary.simpleMessage(
       "Користувач не був знайдений",
+    ),
+    "verificationCodeSent": MessageLookupByLibrary.simpleMessage(
+      "Код підтвердження надіслано повторно",
+    ),
+    "verificationErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "Виникла невідома помилка перевірки",
     ),
     "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
       "Підтвердіть свою пошту",

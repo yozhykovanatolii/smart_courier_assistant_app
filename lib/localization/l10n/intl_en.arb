@@ -129,5 +129,11 @@
   "didntReceiveCode": "Didn't receive the code?",
   "sentCodeToEmail": "We sent a 6-digit code to {email}",
   "optCodeEmpty": "The opt code must not be empty",
-  "optCodeLengthLessSix": "The opt code must be 6 digits"
+  "optCodeLengthLessSix": "The opt code must be 6 digits",
+  "invalidOtpCode": "Invalid or expired OTP code",
+  "verificationErrorUnknown": "An unknown verification exception occurred.",
+  "resendingErrorUnknown": "An unknown code resending exception occurred.",
+  "emailAlreadyVerified": "Email is already verified",
+  "verificationCodeSent": "Verification code has been resent",
+  "emailVerifiedSuccessfully": "Email verified successfully"
 }

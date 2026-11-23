@@ -117,6 +117,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "An account already exists for that email.",
     ),
+    "emailAlreadyVerified": MessageLookupByLibrary.simpleMessage(
+      "Email is already verified",
+    ),
     "emailEmpty": MessageLookupByLibrary.simpleMessage(
       "The email should not be empty",
     ),
@@ -125,6 +128,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "emailNotVerified": MessageLookupByLibrary.simpleMessage(
       "Email is not verified",
+    ),
+    "emailVerifiedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Email verified successfully",
     ),
     "enterComment": MessageLookupByLibrary.simpleMessage("Enter comment..."),
     "enterYourEmailAddress": MessageLookupByLibrary.simpleMessage(
@@ -150,6 +156,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Invalid email, try again.",
+    ),
+    "invalidOtpCode": MessageLookupByLibrary.simpleMessage(
+      "Invalid or expired OTP code",
     ),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "languages": MessageLookupByLibrary.simpleMessage("Languages"),
@@ -238,6 +247,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Validation failed. Please check your input",
     ),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+    "resendingErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "An unknown code resending exception occurred.",
+    ),
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "If an account with this email exists, you will receive a password reset email.",
     ),
@@ -306,6 +318,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "userDisabled": MessageLookupByLibrary.simpleMessage("User are disabled."),
     "userNotFound": MessageLookupByLibrary.simpleMessage("User was not found"),
+    "verificationCodeSent": MessageLookupByLibrary.simpleMessage(
+      "Verification code has been resent",
+    ),
+    "verificationErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "An unknown verification exception occurred.",
+    ),
     "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
       "Verify your email",
     ),

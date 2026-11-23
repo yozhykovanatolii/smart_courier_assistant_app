@@ -1188,6 +1188,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Invalid or expired OTP code`
+  String get invalidOtpCode {
+    return Intl.message(
+      'Invalid or expired OTP code',
+      name: 'invalidOtpCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown verification exception occurred.`
+  String get verificationErrorUnknown {
+    return Intl.message(
+      'An unknown verification exception occurred.',
+      name: 'verificationErrorUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown code resending exception occurred.`
+  String get resendingErrorUnknown {
+    return Intl.message(
+      'An unknown code resending exception occurred.',
+      name: 'resendingErrorUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is already verified`
+  String get emailAlreadyVerified {
+    return Intl.message(
+      'Email is already verified',
+      name: 'emailAlreadyVerified',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification code has been resent`
+  String get verificationCodeSent {
+    return Intl.message(
+      'Verification code has been resent',
+      name: 'verificationCodeSent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email verified successfully`
+  String get emailVerifiedSuccessfully {
+    return Intl.message(
+      'Email verified successfully',
+      name: 'emailVerifiedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
