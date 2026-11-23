@@ -118,6 +118,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailIncorrectFormat": MessageLookupByLibrary.simpleMessage(
       "The email entered is in an incorrect format.",
     ),
+    "emailNotVerified": MessageLookupByLibrary.simpleMessage(
+      "Email is not verified",
+    ),
     "enterComment": MessageLookupByLibrary.simpleMessage("Enter comment..."),
     "enterYourEmailAddress": MessageLookupByLibrary.simpleMessage(
       "Enter your email address and we will send you a link to reset your password",

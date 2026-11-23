@@ -121,5 +121,6 @@
   "accessDenied": "Access denied",
   "dataNotFound": "Data were not found",
   "failedCalculateOptimalRoute": "Failed calculate optimal route. Try again.",
-  "passwordNotVerified": "Password was not verified"
+  "passwordNotVerified": "Password was not verified",
+  "emailNotVerified": "Email is not verified"
 }

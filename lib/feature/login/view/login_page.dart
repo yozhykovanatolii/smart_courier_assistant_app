@@ -127,6 +127,8 @@ class _LoginView extends StatelessWidget {
         return l10n.passwordNotVerified;
       case LoginErrorStatus.userNotFound:
         return l10n.userNotFound;
+      case LoginErrorStatus.emailNotVerified:
+        return l10n.emailNotVerified;
       case LoginErrorStatus.unknown:
         return l10n.loginErrorUnknown;
     }
