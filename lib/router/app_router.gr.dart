@@ -13,23 +13,22 @@ import 'package:auto_route/auto_route.dart' as _i11;
 import 'package:flutter/material.dart' as _i12;
 import 'package:smart_courier_assistant_app/domain/entity/route_entity.dart'
     as _i13;
-import 'package:smart_courier_assistant_app/feature/edit_profile/view/edit_profile_page.dart'
+import 'package:smart_courier_assistant_app/feature/edit_profile/edit_profile.dart'
     as _i1;
-import 'package:smart_courier_assistant_app/feature/history/view/history_page.dart'
-    as _i3;
-import 'package:smart_courier_assistant_app/feature/home/view/home_page.dart'
-    as _i4;
-import 'package:smart_courier_assistant_app/feature/login/view/login_page.dart'
+import 'package:smart_courier_assistant_app/feature/history/history.dart'
+    as _i2;
+import 'package:smart_courier_assistant_app/feature/home/home.dart' as _i3;
+import 'package:smart_courier_assistant_app/feature/login/login.dart' as _i4;
+import 'package:smart_courier_assistant_app/feature/profile/profile.dart'
     as _i5;
-import 'package:smart_courier_assistant_app/feature/profile/view/profile_page.dart'
+import 'package:smart_courier_assistant_app/feature/register/register.dart'
     as _i6;
-import 'package:smart_courier_assistant_app/feature/register/view/register_page.dart'
+import 'package:smart_courier_assistant_app/feature/route_detail/route_detail.dart'
     as _i7;
-import 'package:smart_courier_assistant_app/feature/route_detail/view/route_detail_page.dart'
+import 'package:smart_courier_assistant_app/feature/settings/settings.dart'
     as _i8;
-import 'package:smart_courier_assistant_app/feature/settings/view/settings_page.dart'
-    as _i9;
-import 'package:smart_courier_assistant_app/feature/splash/view/splash_page.dart'
+import 'package:smart_courier_assistant_app/feature/splash/splash.dart' as _i9;
+import 'package:smart_courier_assistant_app/feature/verification/verification.dart'
     as _i10;
 
 /// generated route for
@@ -49,7 +48,7 @@ class EditProfileRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.HistoryPage]
+/// [_i2.HistoryPage]
 class HistoryRoute extends _i11.PageRouteInfo<void> {
   const HistoryRoute({List<_i11.PageRouteInfo>? children})
     : super(HistoryRoute.name, initialChildren: children);
@@ -59,13 +58,13 @@ class HistoryRoute extends _i11.PageRouteInfo<void> {
   static _i11.PageInfo page = _i11.PageInfo(
     name,
     builder: (data) {
-      return const _i3.HistoryPage();
+      return const _i2.HistoryPage();
     },
   );
 }
 
 /// generated route for
-/// [_i4.HomePage]
+/// [_i3.HomePage]
 class HomeRoute extends _i11.PageRouteInfo<void> {
   const HomeRoute({List<_i11.PageRouteInfo>? children})
     : super(HomeRoute.name, initialChildren: children);
@@ -75,13 +74,13 @@ class HomeRoute extends _i11.PageRouteInfo<void> {
   static _i11.PageInfo page = _i11.PageInfo(
     name,
     builder: (data) {
-      return const _i4.HomePage();
+      return const _i3.HomePage();
     },
   );
 }
 
 /// generated route for
-/// [_i5.LoginPage]
+/// [_i4.LoginPage]
 class LoginRoute extends _i11.PageRouteInfo<void> {
   const LoginRoute({List<_i11.PageRouteInfo>? children})
     : super(LoginRoute.name, initialChildren: children);
@@ -91,13 +90,13 @@ class LoginRoute extends _i11.PageRouteInfo<void> {
   static _i11.PageInfo page = _i11.PageInfo(
     name,
     builder: (data) {
-      return const _i5.LoginPage();
+      return const _i4.LoginPage();
     },
   );
 }
 
 /// generated route for
-/// [_i6.ProfilePage]
+/// [_i5.ProfilePage]
 class ProfileRoute extends _i11.PageRouteInfo<void> {
   const ProfileRoute({List<_i11.PageRouteInfo>? children})
     : super(ProfileRoute.name, initialChildren: children);
@@ -107,13 +106,13 @@ class ProfileRoute extends _i11.PageRouteInfo<void> {
   static _i11.PageInfo page = _i11.PageInfo(
     name,
     builder: (data) {
-      return const _i6.ProfilePage();
+      return const _i5.ProfilePage();
     },
   );
 }
 
 /// generated route for
-/// [_i7.RegisterPage]
+/// [_i6.RegisterPage]
 class RegisterRoute extends _i11.PageRouteInfo<void> {
   const RegisterRoute({List<_i11.PageRouteInfo>? children})
     : super(RegisterRoute.name, initialChildren: children);
@@ -123,13 +122,13 @@ class RegisterRoute extends _i11.PageRouteInfo<void> {
   static _i11.PageInfo page = _i11.PageInfo(
     name,
     builder: (data) {
-      return const _i7.RegisterPage();
+      return const _i6.RegisterPage();
     },
   );
 }
 
 /// generated route for
-/// [_i8.RouteDetailPage]
+/// [_i7.RouteDetailPage]
 class RouteDetailRoute extends _i11.PageRouteInfo<RouteDetailRouteArgs> {
   RouteDetailRoute({
     _i12.Key? key,
@@ -147,7 +146,7 @@ class RouteDetailRoute extends _i11.PageRouteInfo<RouteDetailRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<RouteDetailRouteArgs>();
-      return _i8.RouteDetailPage(key: args.key, route: args.route);
+      return _i7.RouteDetailPage(key: args.key, route: args.route);
     },
   );
 }
@@ -176,7 +175,7 @@ class RouteDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i9.SettingsPage]
+/// [_i8.SettingsPage]
 class SettingsRoute extends _i11.PageRouteInfo<void> {
   const SettingsRoute({List<_i11.PageRouteInfo>? children})
     : super(SettingsRoute.name, initialChildren: children);
@@ -186,13 +185,13 @@ class SettingsRoute extends _i11.PageRouteInfo<void> {
   static _i11.PageInfo page = _i11.PageInfo(
     name,
     builder: (data) {
-      return const _i9.SettingsPage();
+      return const _i8.SettingsPage();
     },
   );
 }
 
 /// generated route for
-/// [_i10.SplashPage]
+/// [_i9.SplashPage]
 class SplashRoute extends _i11.PageRouteInfo<void> {
   const SplashRoute({List<_i11.PageRouteInfo>? children})
     : super(SplashRoute.name, initialChildren: children);
@@ -202,7 +201,23 @@ class SplashRoute extends _i11.PageRouteInfo<void> {
   static _i11.PageInfo page = _i11.PageInfo(
     name,
     builder: (data) {
-      return const _i10.SplashPage();
+      return const _i9.SplashPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i10.VerificationPage]
+class VerificationRoute extends _i11.PageRouteInfo<void> {
+  const VerificationRoute({List<_i11.PageRouteInfo>? children})
+    : super(VerificationRoute.name, initialChildren: children);
+
+  static const String name = 'VerificationRoute';
+
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return const _i10.VerificationPage();
     },
   );
 }
