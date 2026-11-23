@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:smart_courier_assistant_app/data/repository/auth_repository_impl.dart';
 import 'package:smart_courier_assistant_app/feature/verification/cubit/cubit.dart';
 import 'package:smart_courier_assistant_app/feature/verification/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
@@ -13,6 +15,7 @@ class VerificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => VerificationCubit(
+        GetIt.I<AuthRepositoryImpl>(),
         email: 'gamet5560@gmail.com',
       ),
       child: const _VerificationView(),
