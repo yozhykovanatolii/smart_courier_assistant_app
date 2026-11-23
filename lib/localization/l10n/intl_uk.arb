@@ -126,5 +126,7 @@
   "submit": "Підтвердити",
   "resend": "Переслати",
   "didntReceiveCode": "Не отримали код?",
-  "sentCodeToEmail": "We sent a 6-digit code to {email}"
+  "sentCodeToEmail": "We sent a 6-digit code to {email}",
+  "optCodeEmpty": "Код не повинен бути порожнім",
+  "optCodeLengthLessSix": "Код має складатися з 6 цифр"
 }

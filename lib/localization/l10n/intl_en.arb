@@ -127,5 +127,7 @@
   "submit": "Submit",
   "resend": "Resend",
   "didntReceiveCode": "Didn't receive the code?",
-  "sentCodeToEmail": "We sent a 6-digit code to {email}"
+  "sentCodeToEmail": "We sent a 6-digit code to {email}",
+  "optCodeEmpty": "The opt code must not be empty",
+  "optCodeLengthLessSix": "The opt code must be 6 digits"
 }

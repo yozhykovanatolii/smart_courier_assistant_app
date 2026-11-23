@@ -177,6 +177,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "noCancelIt": MessageLookupByLibrary.simpleMessage("No, Cancel It."),
     "noKeepIt": MessageLookupByLibrary.simpleMessage("No, Keep It."),
     "onTime": MessageLookupByLibrary.simpleMessage("On time"),
+    "optCodeEmpty": MessageLookupByLibrary.simpleMessage(
+      "The opt code must not be empty",
+    ),
+    "optCodeLengthLessSix": MessageLookupByLibrary.simpleMessage(
+      "The opt code must be 6 digits",
+    ),
     "optimizeRoute": MessageLookupByLibrary.simpleMessage("Optimize route"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
     "orderAddressPdfText": m4,

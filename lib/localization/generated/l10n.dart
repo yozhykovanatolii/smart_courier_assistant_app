@@ -1168,6 +1168,26 @@ class S {
       args: [email],
     );
   }
+
+  /// `The opt code must not be empty`
+  String get optCodeEmpty {
+    return Intl.message(
+      'The opt code must not be empty',
+      name: 'optCodeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The opt code must be 6 digits`
+  String get optCodeLengthLessSix {
+    return Intl.message(
+      'The opt code must be 6 digits',
+      name: 'optCodeLengthLessSix',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

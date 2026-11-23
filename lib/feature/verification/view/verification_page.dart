@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/verification/cubit/cubit.dart';
 import 'package:smart_courier_assistant_app/feature/verification/widgets/widgets.dart';
 import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 
@@ -9,7 +11,12 @@ class VerificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const _VerificationView();
+    return BlocProvider(
+      create: (_) => VerificationCubit(
+        email: 'gamet5560@gmail.com',
+      ),
+      child: const _VerificationView(),
+    );
   }
 }
 

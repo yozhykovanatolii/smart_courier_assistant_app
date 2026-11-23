@@ -185,6 +185,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "noCancelIt": MessageLookupByLibrary.simpleMessage("Ні, відмінити"),
     "noKeepIt": MessageLookupByLibrary.simpleMessage("Ні, зберегти"),
     "onTime": MessageLookupByLibrary.simpleMessage("Вчасно"),
+    "optCodeEmpty": MessageLookupByLibrary.simpleMessage(
+      "Код не повинен бути порожнім",
+    ),
+    "optCodeLengthLessSix": MessageLookupByLibrary.simpleMessage(
+      "Код має складатися з 6 цифр",
+    ),
     "optimizeRoute": MessageLookupByLibrary.simpleMessage("Оптимізувати"),
     "or": MessageLookupByLibrary.simpleMessage("Або"),
     "orderAddressPdfText": m4,
