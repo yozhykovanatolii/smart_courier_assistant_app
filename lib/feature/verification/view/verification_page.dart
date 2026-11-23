@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:smart_courier_assistant_app/feature/verification/widgets/widgets.dart';
+import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 
 @RoutePage()
 class VerificationPage extends StatelessWidget {
@@ -16,6 +18,31 @@ class _VerificationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SafeArea(
+        minimum: const EdgeInsets.only(
+          top: 50,
+          left: 24,
+          right: 24,
+        ),
+        child: Column(
+          children: [
+            Text(
+              S.of(context).verifyYourEmail,
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            const SizedBox(height: 10),
+            const VerificationEmailText(),
+            const Spacer(),
+            const VerificationCodeTextField(),
+            const SizedBox(height: 50),
+            const SubmitCodeButton(),
+            const SizedBox(height: 20),
+            const ResendCodeSection(),
+            const Spacer(),
+          ],
+        ),
+      ),
+    );
   }
 }

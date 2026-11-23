@@ -1128,6 +1128,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Verify your email`
+  String get verifyYourEmail {
+    return Intl.message(
+      'Verify your email',
+      name: 'verifyYourEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message('Submit', name: 'submit', desc: '', args: []);
+  }
+
+  /// `Resend`
+  String get resend {
+    return Intl.message('Resend', name: 'resend', desc: '', args: []);
+  }
+
+  /// `Didn't receive the code?`
+  String get didntReceiveCode {
+    return Intl.message(
+      'Didn\'t receive the code?',
+      name: 'didntReceiveCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We sent a 6-digit code to {email}`
+  String sentCodeToEmail(Object email) {
+    return Intl.message(
+      'We sent a 6-digit code to $email',
+      name: 'sentCodeToEmail',
+      desc: '',
+      args: [email],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

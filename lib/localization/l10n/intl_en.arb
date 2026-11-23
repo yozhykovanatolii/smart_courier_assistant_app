@@ -122,5 +122,10 @@
   "dataNotFound": "Data were not found",
   "failedCalculateOptimalRoute": "Failed calculate optimal route. Try again.",
   "passwordNotVerified": "Password was not verified",
-  "emailNotVerified": "Email is not verified"
+  "emailNotVerified": "Email is not verified",
+  "verifyYourEmail": "Verify your email",
+  "submit": "Submit",
+  "resend": "Resend",
+  "didntReceiveCode": "Didn't receive the code?",
+  "sentCodeToEmail": "We sent a 6-digit code to {email}"
 }

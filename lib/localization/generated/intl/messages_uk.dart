@@ -58,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m12(Object ordersAmount) => "${ordersAmount} замовлень";
 
+  static String m13(Object email) => "We sent a 6-digit code to ${email}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessDenied": MessageLookupByLibrary.simpleMessage("Доступ заборонено"),
@@ -108,6 +110,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "deliverByEtaAndRisk": m2,
     "deliveryRiskPdfText": m3,
+    "didntReceiveCode": MessageLookupByLibrary.simpleMessage(
+      "Не отримали код?",
+    ),
     "docs": MessageLookupByLibrary.simpleMessage("Документ"),
     "done": MessageLookupByLibrary.simpleMessage("✅ Зроблено"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
@@ -232,6 +237,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerValidationFailed": MessageLookupByLibrary.simpleMessage(
       "Помилка валідації. Будь ласка, перевірте введені дані.",
     ),
+    "resend": MessageLookupByLibrary.simpleMessage("Переслати"),
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "Якщо обліковий запис із цією поштою існує, ви отримаєте електронний лист для скидання пароля.",
     ),
@@ -257,6 +263,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
       "Виберіть мову, якою вам найзручніше користуватися застосунком.",
     ),
+    "sentCodeToEmail": m13,
     "settings": MessageLookupByLibrary.simpleMessage("Налаштування"),
     "signInToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Увійдіть до свого облікового запису",
@@ -268,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "storagePermissionDeny": MessageLookupByLibrary.simpleMessage(
       "У доступі до галереї відмовлено",
     ),
+    "submit": MessageLookupByLibrary.simpleMessage("Підтвердити"),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Успішна авторизація.",
     ),
@@ -298,6 +306,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "userNotFound": MessageLookupByLibrary.simpleMessage(
       "Користувач не був знайдений",
+    ),
+    "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
+      "Підтвердіть свою пошту",
     ),
     "weakPassword": MessageLookupByLibrary.simpleMessage(
       "Будь ласка, введіть надійніший пароль.",
