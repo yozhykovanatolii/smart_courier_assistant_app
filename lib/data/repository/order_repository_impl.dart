@@ -91,7 +91,8 @@ class OrderRepositoryImpl implements OrderRepository {
     String clientFullName,
     String clientPhoneNumber,
     String address,
-    DateTime deliveryBy, {
+    DateTime deliveryBy,
+    int bottleQuantity, {
     String? routeId,
     OrderEntity? currentOrder,
   }) async {
@@ -105,6 +106,7 @@ class OrderRepositoryImpl implements OrderRepository {
         deliveryBy,
         location.latitude,
         location.longitude,
+        bottleQuantity,
       );
     } else {
       await _orderClient.updateOrder(
@@ -115,6 +117,7 @@ class OrderRepositoryImpl implements OrderRepository {
         deliveryBy,
         location.latitude,
         location.longitude,
+        bottleQuantity,
       );
     }
     await loadTodayOrders();

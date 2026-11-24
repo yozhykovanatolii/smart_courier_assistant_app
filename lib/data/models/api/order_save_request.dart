@@ -5,6 +5,7 @@ class OrderSaveRequest {
   final String address;
   final double latitude;
   final double longitude;
+  final int bottleQuantity;
 
   OrderSaveRequest({
     required this.clientFullName,
@@ -13,6 +14,7 @@ class OrderSaveRequest {
     required this.address,
     required this.latitude,
     required this.longitude,
+    required this.bottleQuantity,
   });
 
   Map<String, dynamic> toJson() {
@@ -23,6 +25,7 @@ class OrderSaveRequest {
       'address': address,
       'latitude': latitude,
       'longitude': longitude,
+      'bottle_quantity': bottleQuantity,
     };
   }
 }

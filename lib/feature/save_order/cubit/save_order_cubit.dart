@@ -122,6 +122,7 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
         state.clientPhoneNumberValidator.value,
         state.addressValidator.value,
         state.deliveryBy,
+        state.bottleQuantity,
         currentOrder: order,
       );
       emit(state.copyWith(formStatus: FormzSubmissionStatus.success));
