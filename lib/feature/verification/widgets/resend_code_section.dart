@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_courier_assistant_app/feature/verification/cubit/verification_cubit.dart';
 import 'package:smart_courier_assistant_app/localization/generated/l10n.dart';
 import 'package:smart_courier_assistant_app/ui/theme/app_colors.dart';
 
@@ -29,7 +31,10 @@ class ResendCodeSection extends StatelessWidget {
               decoration: TextDecoration.underline,
               decorationColor: AppColors.blue500,
             ),
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                context.read<VerificationCubit>().resendCode();
+              },
           ),
         ],
       ),

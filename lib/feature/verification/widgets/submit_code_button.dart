@@ -20,7 +20,11 @@ class SubmitCodeButton extends StatelessWidget {
     );
 
     return AppElevatedButton(
-      onPressed: !isValid || isLoading ? null : () {},
+      onPressed: !isValid || isLoading
+          ? null
+          : () {
+              context.read<VerificationCubit>().verifyUserEmail();
+            },
       padding: isLoading
           ? const EdgeInsetsGeometry.symmetric(vertical: 10)
           : const EdgeInsetsGeometry.symmetric(vertical: 16),
