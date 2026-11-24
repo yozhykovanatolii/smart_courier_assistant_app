@@ -81,6 +81,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Ви впевнені, що хочете вийти?",
     ),
     "atRisk": MessageLookupByLibrary.simpleMessage("Під ризиком"),
+    "bottleQuantityText": MessageLookupByLibrary.simpleMessage(
+      "Кількість бутилів",
+    ),
     "call": MessageLookupByLibrary.simpleMessage("📞 Виклик"),
     "callUnavailable": MessageLookupByLibrary.simpleMessage(
       "Виклик недоступний. Спробуйте ще раз.",

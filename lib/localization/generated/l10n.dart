@@ -1248,6 +1248,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Bottle quantity`
+  String get bottleQuantityText {
+    return Intl.message(
+      'Bottle quantity',
+      name: 'bottleQuantityText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

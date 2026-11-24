@@ -135,5 +135,6 @@
   "resendingErrorUnknown": "An unknown code resending exception occurred.",
   "emailAlreadyVerified": "Email is already verified",
   "verificationCodeSent": "Verification code has been resent",
-  "emailVerifiedSuccessfully": "Email verified successfully"
+  "emailVerifiedSuccessfully": "Email verified successfully",
+  "bottleQuantityText": "Bottle quantity"
 }

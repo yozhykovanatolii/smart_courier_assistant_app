@@ -37,6 +37,17 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
     );
   }
 
+  void increaseBottleQuantity() {
+    final currentBottleQuantity = state.bottleQuantity;
+    emit(state.copyWith(bottleQuantity: currentBottleQuantity + 1));
+  }
+
+  void decreaseBottleQuantity() {
+    final currentBottleQuantity = state.bottleQuantity;
+    if (currentBottleQuantity <= 1) return;
+    emit(state.copyWith(bottleQuantity: currentBottleQuantity - 1));
+  }
+
   void setOrderAddress(String address) {
     emit(
       state.copyWith(

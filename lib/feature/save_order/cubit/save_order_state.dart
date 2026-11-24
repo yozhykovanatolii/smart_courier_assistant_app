@@ -19,6 +19,7 @@ class SaveOrderState {
   final FormzSubmissionStatus formStatus;
   final FormzSubmissionStatus deletingStatus;
   final SaveOrderErrorType? saveOrderErrorType;
+  final int bottleQuantity;
 
   SaveOrderState({
     required this.clientFullNameValidator,
@@ -27,6 +28,7 @@ class SaveOrderState {
     required this.deliveryBy,
     required this.formStatus,
     required this.deletingStatus,
+    required this.bottleQuantity,
     this.saveOrderErrorType,
   });
 
@@ -38,6 +40,7 @@ class SaveOrderState {
       deliveryBy: DateTime.now(),
       formStatus: FormzSubmissionStatus.initial,
       deletingStatus: FormzSubmissionStatus.initial,
+      bottleQuantity: 2,
     );
   }
 
@@ -55,6 +58,7 @@ class SaveOrderState {
     FormzSubmissionStatus? formStatus,
     FormzSubmissionStatus? deletingStatus,
     SaveOrderErrorType? saveOrderErrorType,
+    int? bottleQuantity,
   }) {
     return SaveOrderState(
       clientFullNameValidator:
@@ -66,6 +70,7 @@ class SaveOrderState {
       formStatus: formStatus ?? this.formStatus,
       deletingStatus: deletingStatus ?? this.deletingStatus,
       saveOrderErrorType: saveOrderErrorType ?? this.saveOrderErrorType,
+      bottleQuantity: bottleQuantity ?? this.bottleQuantity,
     );
   }
 }
