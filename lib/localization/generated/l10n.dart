@@ -1128,6 +1128,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Verify your email`
+  String get verifyYourEmail {
+    return Intl.message(
+      'Verify your email',
+      name: 'verifyYourEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message('Submit', name: 'submit', desc: '', args: []);
+  }
+
+  /// `Resend`
+  String get resend {
+    return Intl.message('Resend', name: 'resend', desc: '', args: []);
+  }
+
+  /// `Didn't receive the code?`
+  String get didntReceiveCode {
+    return Intl.message(
+      'Didn\'t receive the code?',
+      name: 'didntReceiveCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We sent a 6-digit code to {email}`
+  String sentCodeToEmail(Object email) {
+    return Intl.message(
+      'We sent a 6-digit code to $email',
+      name: 'sentCodeToEmail',
+      desc: '',
+      args: [email],
+    );
+  }
+
+  /// `The opt code must not be empty`
+  String get optCodeEmpty {
+    return Intl.message(
+      'The opt code must not be empty',
+      name: 'optCodeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The opt code must be 6 digits`
+  String get optCodeLengthLessSix {
+    return Intl.message(
+      'The opt code must be 6 digits',
+      name: 'optCodeLengthLessSix',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid or expired OTP code`
+  String get invalidOtpCode {
+    return Intl.message(
+      'Invalid or expired OTP code',
+      name: 'invalidOtpCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown verification exception occurred.`
+  String get verificationErrorUnknown {
+    return Intl.message(
+      'An unknown verification exception occurred.',
+      name: 'verificationErrorUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown code resending exception occurred.`
+  String get resendingErrorUnknown {
+    return Intl.message(
+      'An unknown code resending exception occurred.',
+      name: 'resendingErrorUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is already verified`
+  String get emailAlreadyVerified {
+    return Intl.message(
+      'Email is already verified',
+      name: 'emailAlreadyVerified',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification code has been resent`
+  String get verificationCodeSent {
+    return Intl.message(
+      'Verification code has been resent',
+      name: 'verificationCodeSent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email verified successfully`
+  String get emailVerifiedSuccessfully {
+    return Intl.message(
+      'Email verified successfully',
+      name: 'emailVerifiedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

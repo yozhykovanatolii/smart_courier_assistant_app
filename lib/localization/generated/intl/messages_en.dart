@@ -56,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m12(Object ordersAmount) => "${ordersAmount} orders";
 
+  static String m13(Object email) => "We sent a 6-digit code to ${email}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "accessDenied": MessageLookupByLibrary.simpleMessage("Access denied"),
@@ -102,6 +104,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "deletingOrder": MessageLookupByLibrary.simpleMessage("Deleting order"),
     "deliverByEtaAndRisk": m2,
     "deliveryRiskPdfText": m3,
+    "didntReceiveCode": MessageLookupByLibrary.simpleMessage(
+      "Didn\'t receive the code?",
+    ),
     "docs": MessageLookupByLibrary.simpleMessage("Documentation"),
     "done": MessageLookupByLibrary.simpleMessage("✅ Done"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
@@ -112,6 +117,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "An account already exists for that email.",
     ),
+    "emailAlreadyVerified": MessageLookupByLibrary.simpleMessage(
+      "Email is already verified",
+    ),
     "emailEmpty": MessageLookupByLibrary.simpleMessage(
       "The email should not be empty",
     ),
@@ -120,6 +128,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "emailNotVerified": MessageLookupByLibrary.simpleMessage(
       "Email is not verified",
+    ),
+    "emailVerifiedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Email verified successfully",
     ),
     "enterComment": MessageLookupByLibrary.simpleMessage("Enter comment..."),
     "enterYourEmailAddress": MessageLookupByLibrary.simpleMessage(
@@ -145,6 +156,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Invalid email, try again.",
+    ),
+    "invalidOtpCode": MessageLookupByLibrary.simpleMessage(
+      "Invalid or expired OTP code",
     ),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "languages": MessageLookupByLibrary.simpleMessage("Languages"),
@@ -172,6 +186,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "noCancelIt": MessageLookupByLibrary.simpleMessage("No, Cancel It."),
     "noKeepIt": MessageLookupByLibrary.simpleMessage("No, Keep It."),
     "onTime": MessageLookupByLibrary.simpleMessage("On time"),
+    "optCodeEmpty": MessageLookupByLibrary.simpleMessage(
+      "The opt code must not be empty",
+    ),
+    "optCodeLengthLessSix": MessageLookupByLibrary.simpleMessage(
+      "The opt code must be 6 digits",
+    ),
     "optimizeRoute": MessageLookupByLibrary.simpleMessage("Optimize route"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
     "orderAddressPdfText": m4,
@@ -226,6 +246,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerValidationFailed": MessageLookupByLibrary.simpleMessage(
       "Validation failed. Please check your input",
     ),
+    "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+    "resendingErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "An unknown code resending exception occurred.",
+    ),
     "resetEmailLetter": MessageLookupByLibrary.simpleMessage(
       "If an account with this email exists, you will receive a password reset email.",
     ),
@@ -254,6 +278,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectLanguage": MessageLookupByLibrary.simpleMessage(
       "Select the language that is most convenient for you to use the application in.",
     ),
+    "sentCodeToEmail": m13,
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "signInToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Sign in to your Account",
@@ -265,6 +290,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "storagePermissionDeny": MessageLookupByLibrary.simpleMessage(
       "Gallery permission was denied",
     ),
+    "submit": MessageLookupByLibrary.simpleMessage("Submit"),
     "successAuthorization": MessageLookupByLibrary.simpleMessage(
       "Success authorization.",
     ),
@@ -292,6 +318,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "userDisabled": MessageLookupByLibrary.simpleMessage("User are disabled."),
     "userNotFound": MessageLookupByLibrary.simpleMessage("User was not found"),
+    "verificationCodeSent": MessageLookupByLibrary.simpleMessage(
+      "Verification code has been resent",
+    ),
+    "verificationErrorUnknown": MessageLookupByLibrary.simpleMessage(
+      "An unknown verification exception occurred.",
+    ),
+    "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
+      "Verify your email",
+    ),
     "weakPassword": MessageLookupByLibrary.simpleMessage(
       "Please enter a stronger password.",
     ),

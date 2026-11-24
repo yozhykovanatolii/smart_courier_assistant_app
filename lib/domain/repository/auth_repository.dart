@@ -6,5 +6,7 @@ abstract interface class AuthRepository {
     String fullName,
     String phoneNumber,
   );
+  Future<void> verifyEmail(String email, String otpCode);
+  Future<void> resendCode(String email);
   Future<void> logOut();
 }

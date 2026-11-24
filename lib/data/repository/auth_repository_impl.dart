@@ -46,4 +46,14 @@ class AuthRepositoryImpl implements AuthRepository {
       phoneNumber,
     );
   }
+
+  @override
+  Future<void> resendCode(String email) async {
+    await _userAuthClient.resendCode(email);
+  }
+
+  @override
+  Future<void> verifyEmail(String email, String otpCode) async {
+    await _userAuthClient.verifyEmail(email, otpCode);
+  }
 }

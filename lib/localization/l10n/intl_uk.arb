@@ -121,5 +121,18 @@
   "dataNotFound": "Дані не були знайдені",
   "failedCalculateOptimalRoute": "Не вдалося розрахувати оптимальний маршрут. Спробуйте ще раз.",
   "passwordNotVerified": "Пароль не було перевірено",
-  "emailNotVerified": "Пошта не підтверджена"
+  "emailNotVerified": "Пошта не підтверджена",
+  "verifyYourEmail": "Підтвердіть свою пошту",
+  "submit": "Підтвердити",
+  "resend": "Переслати",
+  "didntReceiveCode": "Не отримали код?",
+  "sentCodeToEmail": "We sent a 6-digit code to {email}",
+  "optCodeEmpty": "Код не повинен бути порожнім",
+  "optCodeLengthLessSix": "Код має складатися з 6 цифр",
+  "invalidOtpCode": "Недійсний або прострочений OTP-код",
+  "verificationErrorUnknown": "Виникла невідома помилка перевірки",
+  "resendingErrorUnknown": "Виник виняток при повторному надсиланні коду",
+  "emailAlreadyVerified": "Пошта вже підтверджена",
+  "verificationCodeSent": "Код підтвердження надіслано повторно",
+  "emailVerifiedSuccessfully": "Пошту успішно підтверджено"
 }
