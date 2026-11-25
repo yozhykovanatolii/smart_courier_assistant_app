@@ -19,6 +19,7 @@ class OrderClient {
     DateTime deliveryBy,
     double latitude,
     double longitude,
+    int bottleQuantity,
   ) async {
     final orderSave = OrderSaveRequest(
       clientFullName: clientFullName,
@@ -26,6 +27,7 @@ class OrderClient {
       deliveryBy: deliveryBy,
       address: address,
       latitude: latitude,
+      bottleQuantity: bottleQuantity,
       longitude: longitude,
     );
     try {
@@ -69,6 +71,7 @@ class OrderClient {
     DateTime deliveryBy,
     double latitude,
     double longitude,
+    int bottleQuantity,
   ) async {
     final orderSave = OrderSaveRequest(
       clientFullName: clientFullName,
@@ -76,6 +79,7 @@ class OrderClient {
       deliveryBy: deliveryBy,
       address: address,
       latitude: latitude,
+      bottleQuantity: bottleQuantity,
       longitude: longitude,
     );
     try {

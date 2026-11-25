@@ -10,6 +10,7 @@ class OrderOptimizationMapper {
       deliveryBy: orderEntity.deliveryBy,
       deliveryRisk: orderEntity.deliveryRisk.text,
       plannedEta: orderEntity.plannedEta,
+      bottleQuantity: orderEntity.bottleQuantity,
       orderIndex: orderEntity.orderIndex,
     );
   }

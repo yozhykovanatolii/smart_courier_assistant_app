@@ -5,6 +5,7 @@ class OrderOptimizationModel {
   final DateTime deliveryBy;
   final String deliveryRisk;
   final DateTime plannedEta;
+  final int bottleQuantity;
   final int orderIndex;
   OrderOptimizationModel({
     required this.id,
@@ -13,6 +14,7 @@ class OrderOptimizationModel {
     required this.deliveryBy,
     required this.deliveryRisk,
     required this.plannedEta,
+    required this.bottleQuantity,
     required this.orderIndex,
   });
 
@@ -22,6 +24,7 @@ class OrderOptimizationModel {
       'latitude': latitude,
       'longitude': longitude,
       'delivery_by': deliveryBy.millisecondsSinceEpoch,
+      'bottle_quantity': bottleQuantity,
       'delivery_risk': deliveryRisk,
       'planned_eta': plannedEta.millisecondsSinceEpoch,
       'order_index': orderIndex,

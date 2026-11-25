@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     Object deliverByMinute,
     Object plannedEtaHour,
     Object plannedEtaMinute,
-    deliveryRisk,
+    Object deliveryRisk,
   ) =>
       "Deliver by ${deliverByHour}:${deliverByMinute} • ETA ${plannedEtaHour}:${plannedEtaMinute} • ${deliveryRisk}";
 
@@ -79,6 +79,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to log out?",
     ),
     "atRisk": MessageLookupByLibrary.simpleMessage("At risk"),
+    "bottleQuantityText": MessageLookupByLibrary.simpleMessage(
+      "Bottle quantity",
+    ),
     "call": MessageLookupByLibrary.simpleMessage("📞 Call"),
     "callUnavailable": MessageLookupByLibrary.simpleMessage(
       "Call is unavailable. Try again.",

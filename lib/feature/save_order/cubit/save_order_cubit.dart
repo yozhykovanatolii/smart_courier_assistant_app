@@ -37,6 +37,17 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
     );
   }
 
+  void increaseBottleQuantity() {
+    final currentBottleQuantity = state.bottleQuantity;
+    emit(state.copyWith(bottleQuantity: currentBottleQuantity + 1));
+  }
+
+  void decreaseBottleQuantity() {
+    final currentBottleQuantity = state.bottleQuantity;
+    if (currentBottleQuantity <= 1) return;
+    emit(state.copyWith(bottleQuantity: currentBottleQuantity - 1));
+  }
+
   void setOrderAddress(String address) {
     emit(
       state.copyWith(
@@ -98,6 +109,7 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
             phoneNumber: order.clientPhoneNumber,
           ),
           deliveryBy: order.deliveryBy,
+          bottleQuantity: order.bottleQuantity,
         ),
       );
     }
@@ -111,6 +123,7 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
         state.clientPhoneNumberValidator.value,
         state.addressValidator.value,
         state.deliveryBy,
+        state.bottleQuantity,
         currentOrder: order,
       );
       emit(state.copyWith(formStatus: FormzSubmissionStatus.success));

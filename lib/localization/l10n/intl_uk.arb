@@ -134,5 +134,6 @@
   "resendingErrorUnknown": "Виник виняток при повторному надсиланні коду",
   "emailAlreadyVerified": "Пошта вже підтверджена",
   "verificationCodeSent": "Код підтвердження надіслано повторно",
-  "emailVerifiedSuccessfully": "Пошту успішно підтверджено"
+  "emailVerifiedSuccessfully": "Пошту успішно підтверджено",
+  "bottleQuantityText": "Кількість бутилів"
 }

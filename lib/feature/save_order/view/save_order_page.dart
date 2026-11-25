@@ -145,7 +145,9 @@ class _SaveOrderViewState extends State<_SaveOrderView> {
                     AddressTextField(
                       addressController: _addressController,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
+                    const BottleQuantinySection(),
+                    const SizedBox(height: 15),
                     Text(
                       l10n.client,
                       style: labelLargeStyle,

@@ -5,7 +5,8 @@ abstract interface class OrderRepository {
     String clientFullName,
     String clientPhoneNumber,
     String address,
-    DateTime deliveryBy, {
+    DateTime deliveryBy,
+    int bottleQuantity, {
     OrderEntity? currentOrder,
   });
   Future<List<OrderEntity>> getAllRouteOrders(String routeId);
