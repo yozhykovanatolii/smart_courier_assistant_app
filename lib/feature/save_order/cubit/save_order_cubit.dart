@@ -109,6 +109,7 @@ class SaveOrderCubit extends Cubit<SaveOrderState> {
             phoneNumber: order.clientPhoneNumber,
           ),
           deliveryBy: order.deliveryBy,
+          bottleQuantity: order.bottleQuantity,
         ),
       );
     }

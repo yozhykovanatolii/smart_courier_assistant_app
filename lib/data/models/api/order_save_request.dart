@@ -21,11 +21,11 @@ class OrderSaveRequest {
     return <String, dynamic>{
       'client_full_name': clientFullName,
       'client_phone_number': clientPhoneNumber,
-      'delivery_by': deliveryBy.millisecondsSinceEpoch,
+      'delivery_by': deliveryBy.toIso8601String(),
+      'bottle_quantity': bottleQuantity,
       'address': address,
       'latitude': latitude,
       'longitude': longitude,
-      'bottle_quantity': bottleQuantity,
     };
   }
 }

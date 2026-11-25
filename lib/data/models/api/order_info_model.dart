@@ -5,6 +5,7 @@ class OrderInfoModel {
   final String address;
   final double latitude;
   final double longitude;
+  final int bottleQuantity;
   final DateTime plannedEta;
   final DateTime deliveryBy;
   final String deliveryRisk;
@@ -21,6 +22,7 @@ class OrderInfoModel {
     required this.address,
     required this.latitude,
     required this.longitude,
+    required this.bottleQuantity,
     required this.plannedEta,
     required this.deliveryBy,
     required this.deliveryRisk,
@@ -39,6 +41,7 @@ class OrderInfoModel {
       'address': address,
       'latitude': latitude,
       'longitude': longitude,
+      'bottle_quantity': bottleQuantity,
       'planned_eta': plannedEta.millisecondsSinceEpoch,
       'delivery_by': deliveryBy.millisecondsSinceEpoch,
       'delivery_risk': deliveryRisk,
@@ -58,6 +61,7 @@ class OrderInfoModel {
       address: json['address'] as String,
       latitude: json['latitude'] as double,
       longitude: json['longitude'] as double,
+      bottleQuantity: json['bottle_quantity'] as int,
       plannedEta: DateTime.parse(json['planned_eta'] as String),
       deliveryBy: DateTime.parse(json['delivery_by'] as String),
       deliveryRisk: json['delivery_risk'] as String,

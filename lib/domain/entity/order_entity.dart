@@ -17,6 +17,7 @@ class OrderEntity {
   final String clientFullName;
   final String clientPhoneNumber;
   final AddressEntity address;
+  final int bottleQuantity;
   final DateTime plannedEta;
   final DateTime deliveryBy;
   final DeliveryRisk deliveryRisk;
@@ -29,6 +30,7 @@ class OrderEntity {
     required this.clientFullName,
     required this.clientPhoneNumber,
     required this.address,
+    required this.bottleQuantity,
     required this.plannedEta,
     required this.deliveryBy,
     required this.deliveryRisk,
@@ -43,6 +45,7 @@ class OrderEntity {
       clientFullName: '',
       clientPhoneNumber: '',
       address: AddressEntity.initial(),
+      bottleQuantity: 2,
       plannedEta: DateTime.now(),
       deliveryBy: DateTime.now(),
       deliveryRisk: DeliveryRisk.onTime,
@@ -57,6 +60,7 @@ class OrderEntity {
     String? clientFullName,
     String? clientPhoneNumber,
     AddressEntity? address,
+    int? bottleQuantity,
     DateTime? plannedEta,
     DateTime? deliveryBy,
     DeliveryRisk? deliveryRisk,
@@ -69,6 +73,7 @@ class OrderEntity {
       clientFullName: clientFullName ?? this.clientFullName,
       clientPhoneNumber: clientPhoneNumber ?? this.clientPhoneNumber,
       address: address ?? this.address,
+      bottleQuantity: bottleQuantity ?? this.bottleQuantity,
       plannedEta: plannedEta ?? this.plannedEta,
       deliveryBy: deliveryBy ?? this.deliveryBy,
       deliveryRisk: deliveryRisk ?? this.deliveryRisk,
